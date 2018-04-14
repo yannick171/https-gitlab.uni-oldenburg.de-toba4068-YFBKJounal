@@ -26,6 +26,7 @@ li a {
 li a:hover {
     background-color: #0512ac;
 }
+
 </style>
 </head>
 <body>
@@ -34,7 +35,7 @@ li a:hover {
         <div align="right"> <b>E-Mail:</b><input name="email">
         <b>Passwort:</b><input type="password" name="pw">
         <button type="submit">Submit</button>
-        </div>
+    </div>
 </form></ul>
     <header>
         <h1>Evole Journal</h1>
@@ -47,7 +48,16 @@ li a:hover {
             <li><a href="#about">Über uns</a></li>
             <li><a href="#archiv">Archiv</a></li>
             <li><a href="#profil">Profil</a></li>
-            <li style="float:right"> <a href="registration.html">Registrieren</a></li>
+            <li style="float:right"> <a href="registration.html">Registrieren</a>
+            </li>
+            <li style="float: right">
+            <div class="search-container">
+            <form action="archiv.html">
+                <input type="text" placeholder="Suche im Archiv nach.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            </div>
+            </li>
         </ul><br>
     </nav>
     
