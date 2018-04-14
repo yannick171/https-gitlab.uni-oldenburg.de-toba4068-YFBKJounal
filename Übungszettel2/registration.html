@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+ ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #425abe;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #0512ac;
+}
+</style>
+</head>
+<body>
+    
+    <ul> <form action="startseite.html" method="POST">
+        <div align="right"> <b>E-Mail:</b><input name="email">
+        <b>Passwort:</b><input type="password" name="pw">
+        <button type="submit">Submit</button>
+        </div>
+</form></ul>
+    <header>
+        <h1>Evole Journal</h1>
+    </header>
+    
+    <nav class="nav_main">
+        <!-- quelle https://www.w3schools.com/css/css_navbar.asp -->
+        <ul>
+            <li><a href="startseite.html">Startseite</a></li>
+            <li><a href="#about">Über uns</a></li>
+            <li><a href="#archiv">Archiv</a></li>
+            <li><a href="#profil">Profil</a></li>
+            <li style="float:right"> <a href="registration.html">Registrieren</a></li>
+        </ul><br>
+    </nav>
+    
+    <main>
+        <h2>Registration</h2>
+        <p>
+            <label><b>Andrede:</b><br>
+                <select name="andrede" size="1">
+                    <option value="herr" selected>Herr</option>
+                    <option value="frau" selected>Frau</option>
+                </select>
+            </label>
+        </p>
+        <p>
+            <label><b>Name:</b><br>
+                <input name="name" type="test" size="30" maxlength="30">
+            </label>
+        </p>
+        <p>
+            <label><b>Vorname:</b><br>
+                <input name="vorname" type="test" size="30" maxlength="30">
+            </label>
+        </p>
+        
+        <p>
+            <label><b>E-Mail:</b><br>
+                <input name="email" type="email" size="30" maxlength="30">
+            </label>
+        </p>
+        
+        <p>
+            <label><b>Setze Passwort</b><br>
+                <input name="pw" type="password" size="30" maxlength="30">
+            </label>
+        </p>
+        <p>
+            <label><b>Passwort wiederholen</b><br>
+                <input name="pwwdh" type="password" size="30" maxlength="30">
+            </label>
+        </p><br>
+        <input type="submit" value="Anmelden">
+        
+    </main>
+<footer>
+    <address>copyright etc</address>
+</footer>
+    </body>
+</html>
