@@ -2,9 +2,34 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <style>
+ ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #425abe;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #0512ac;
+}
+</style>
 </head>
 <body>
-
+    
     <ul> <form action="startseite.html" method="POST">
         <div align="right"> <b>E-Mail:</b><input name="email">
         <b>Passwort:</b><input type="password" name="pw">
@@ -14,28 +39,36 @@
     <header>
         <h1>Evole Journal</h1>
     </header>
-
-    <div class="nav_main">
+    
+    <nav class="nav_main">
+        <!-- quelle https://www.w3schools.com/css/css_navbar.asp -->
         <ul>
             <li><a href="startseite.html">Startseite</a></li>
-            <li><a href="about.html">Über uns</a></li>
-            <li><a href="archiv.html">Archiv</a></li>
-            <li><a href="autor.html">Profil</a></li>
-            <li style="float:right"> <a href="registration.html">Registrieren</a>
-            </li>
-            <li style="float: right">
-            <div class="search-container">
-            <form action="archiv.html">
-                <input type="text" placeholder="Suche im Archiv nach.." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-            </div>
-            </li>
+            <li><a href="#about">Über uns</a></li>
+            <li><a href="#archiv">Archiv</a></li>
+            <li><a href="#profil">Profil</a></li>
+            <li style="float:right"> <a href="registration.html">Registrieren</a></li>
         </ul><br>
-    </div>
-
+    </nav>
+    
     <main>
-
+        <h1>Autor</h1>
+            <nav class="nav_main">
+        <!-- quelle https://www.w3schools.com/css/css_navbar.asp -->
+        <ul>
+            <li><a href="Autorseite.html">Mein Profil</a></li>
+        </ul><br>         
+    </nav>
+        
+    <div style="width:250px;height:250px;border:2px solid #999999;
+          background-image: url(images/monimage.gif);background-repeat: no-repeat;">
+        <img src="ton fond de cadre" width="250" height="250">
+        
+        </div>    
+    <FORM>
+<TEXTAREA name="nom" rows=4 cols=33>Valeur par défaut</TEXTAREA>
+</FORM>
+        <table width="0%" border="0" align="right"> <tr> <td>Ton texte</td> </tr> </table>
     </main>
 <footer>
     <address>copyright etc</address>
