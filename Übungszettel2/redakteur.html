@@ -2,218 +2,225 @@
 <html>
     <head>
         <meta charset="utf-8">
-</head>
-<body>
+		<title>
+			Redakteur Profil - Evolve
+		</title>
+	</head>
+	
+	<body>
 
-    <ul> <form action="startseite.html" method="POST">
-        <div> <b>E-Mail:</b><input name="email">
-        <b>Passwort:</b><input type="password" name="pw">
-        <button type="submit">Submit</button>
-        </div>
-</form></ul>
-    <header>
-        <h1>Evolve Journal</h1>
-    </header>
-
-    <div class="nav_main">
-        <ul>
-            <li><a href="startseite.html">Startseite</a></li>
-            <li><a href="about.html">Über uns</a></li>
-            <li><a href="archiv.html">Archiv</a></li>
-            <li><a href="autor.html">Profil (Autor)</a></li>
-			<li><a href="redakteur.html">Profil (Redakteur)</a></li>
-            <li> <a href="registration.html">Registrieren</a>
-            </li>
-            <li>
-            <div class="search-container">
-            <form action="archiv.html">
-                <input type="text" placeholder="Suche im Archiv nach.." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-            </div>
-            </li>
-        </ul><br>
-    </div>
-
-    <main>
-
-	<h1>Redakteur</h1>
-         <h2>Mein Profil<br></h2>
-        
-		<img src="ressources/redakteurseite/profilbild.png" width = 250 height = 250
-           align="left"  />
-		
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
-		<label>Andrede: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <select name="andrede" size="1">
-                <option value="herr" selected>Herr</option>
-                <option value="frau" selected>Frau</option>
-            </select>
-        </label>
-		<br><br><br>
-		
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <label>Name: <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input name="name" type="test" size="30" maxlength="30">
-        </label>
-		<br><br><br>
-
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <label>Vorname: <br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input name="vorname" type="test" size="30" maxlength="30">
-        </label>
-		<br><br><br>
-		
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <label>E-Mail: <br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input name="email" type="email" size="30" maxlength="30">
-        </label>
-		
-        <br><br><br><br><br><br><br><br>
-        
-        <h2>Arbeitsbereich</h2>
-		
-		<details>
-			<summary><b>Artikel zu prüfen:</b> 
-			</summary>
-			<table>
-				<tr>
-					<th>Artikel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>Autor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>Datum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>Prüfen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-				</tr>
-				<tr>
-					<td>
-						<a href = "ressources/archivseite/Zeitung%202.txt">
-							Google entwickelt Schach KI
-						</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					</td>
-					<td>Friedrich Petersen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>19.03.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>
-						<form>
-							<select>
-								<option value="todo">ToDo</option>
-								<option value="yes">Akzeptiert</option>
-								<option value="no">Abgelehnt</option>
-							</select>
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a href = "ressources/archivseite/Zeitung%202.txt">
-							Neue Netze
-						</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					</td>
-					<td>Gertrud Wallacher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>22.01.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>
-						<form>
-							<select>
-								<option value="todo">ToDo</option>
-								<option value="yes">Akzeptiert</option>
-								<option value="no">Abgelehnt</option>
-							</select>
-						</form>
-					</td>
-				</tr>
-			</table>
-		</details>
-		
-		<br><br><br>
-		
-		<details>
-			<summary><b>Geprüfte Artikel:</b> 
-			</summary>
-			<table>
-				<tr>
-					<th>Artikel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>Autor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>Datum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>Hinzufügen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-				</tr>
-				<tr>
-					<td>
-						<a href = "ressources/archivseite/Zeitung%202.txt">
-							Der Zusammenhang aus Größe und Effektivität
-						</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					</td>
-					<td>Friedrich Petersen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>19.03.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>
-						<form>
-							<select>
-								<option value="todo">ToDo</option>
-								<option value="yes">Zur nächsten Ausgabe</option>
-							</select>
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<a href = "ressources/archivseite/Zeitung%202.txt">
-							Wege im Netz
-						</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					</td>
-					<td>Gertrud Wallacher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>22.01.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>
-						<form>
-							<select>
-								<option value="todo">ToDo</option>
-								<option value="yes">Zur nächsten Ausgabe</option>
-							</select>
-						</form>
-					</td>
-				</tr>
-			</table>
-        </details>
-		
-		<br><br><br>
-		
-		<details>
-			<summary><b>Nächste Ausgabe der Zeitung:</b> 
-			</summary>
-			<table>
-				<tr>
-					<th>Artikel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>Autor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>Datum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-				</tr>
-				<tr>
-					<td>
-						<a href = "ressources/archivseite/Zeitung%202.txt">
-							Warum gerichtete Netze?
-						</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					</td>
-					<td>Friedrich Petersen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>19.03.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-				</tr>
-				<tr>
-					<td>
-						<a href = "ressources/archivseite/Zeitung%202.txt">
-							Kleine neuronale Netze als KI
-						</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					</td>
-					<td>Gertrud Wallacher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>22.01.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-				</tr>
-			</table>
-			<br>
-			<a href = "ressources/archivseite/Zeitung%202.txt">Gesamte PDF der Zeitung</a><br>
-			<button type="button">Veröffentlichen</button>
-        </details>
-		
-		<br><br><br><br><br>
+		<form action="startseite.html" method="POST">
+			<div> 
+				<b>E-Mail:</b>
+				<input name="email">
+				<b>Passwort:</b>
+				<input type="password" name="pw">
+				<button type="submit">Submit</button>
+			</div>
+		</form>
     
-    </main>
-<footer>
-    <address>copyright etc</address>
-</footer>
+		<header>
+			<h1>Evolve Journal</h1>
+		</header>
+	
+		<div class="nav_main">
+			<ul>
+				<li><a href="startseite.html">Startseite</a></li>
+				<li><a href="about.html">Über uns</a></li>
+				<li><a href="archiv.html">Archiv</a></li>
+				<li><a href="autor.html">Profil (Autor)</a></li>
+				<li><a href="redakteur.html">Profil (Redakteur)</a></li>
+				<li> <a href="registration.html">Registrieren</a></li>
+			</ul>	
+		</div>	
+		<div class="search-container">
+			<form action="archiv.html">
+				<input type="text" placeholder="Suche im Archiv nach.." name="search">
+				<button type="submit"><i class="fa fa-search"></i></button>
+			</form>
+		</div>
+		
+		<br>
+		
+		<main>
+		
+			<h1>Redakteur</h1>
+		
+			<h2>Mein Profil<br></h2>
+			
+			<img src="ressources/redakteurseite/profilbild.png" alt="picture" width = 250 height = 250 align="left"  />
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
+			<label>Andrede: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<select multiple name="andrede" size="1">
+					<option value="herr" selected>Herr</option>
+					<option value="frau" selected>Frau</option>
+				</select>
+			</label>
+			<br><br><br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label>Name: <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="name" type="text" size="30" maxlength="30">
+			</label>
+			<br><br><br>
+	
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label>Vorname: <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="vorname" type="text" size="30" maxlength="30">
+			</label>
+			<br><br><br>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label>E-Mail: <br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input name="email" type="email" size="30" maxlength="30">
+			</label>
+			
+			<br><br><br><br><br><br><br><br>
+			
+			<h2>Arbeitsbereich</h2>
+			
+			<details>
+				<summary><b>Artikel zu prüfen:</b> 
+				</summary>
+				<table>
+					<tr>
+						<th>Artikel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>Autor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>Datum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>Prüfen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+					</tr>
+					<tr>
+						<td>
+							<a href = "ressources/archivseite/Zeitung%202.txt">
+								Google entwickelt Schach KI
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+						<td>Friedrich Petersen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>19.03.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+							<form>
+								<select multiple>
+									<option value="todo">ToDo</option>
+									<option value="yes">Akzeptiert</option>
+									<option value="no">Abgelehnt</option>
+								</select>
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href = "ressources/archivseite/Zeitung%202.txt">
+								Neue Netze
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+						<td>Gertrud Wallacher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>22.01.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+							<form>
+								<select multiple>
+									<option value="todo">ToDo</option>
+									<option value="yes">Akzeptiert</option>
+									<option value="no">Abgelehnt</option>
+								</select>
+							</form>
+						</td>
+					</tr>
+				</table>
+			</details>
+			
+			<br><br><br>
+			
+			<details>
+				<summary><b>Geprüfte Artikel:</b> 
+				</summary>
+				<table>
+					<tr>
+						<th>Artikel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>Autor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>Datum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>Hinzufügen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+					</tr>
+					<tr>
+						<td>
+							<a href = "ressources/archivseite/Zeitung%202.txt">
+								Der Zusammenhang aus Größe und Effektivität
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+						<td>Friedrich Petersen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>19.03.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+							<form>
+								<select multiple>
+									<option value="todo">ToDo</option>
+									<option value="yes">Zur nächsten Ausgabe</option>
+								</select>
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href = "ressources/archivseite/Zeitung%202.txt">
+								Wege im Netz
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+						<td>Gertrud Wallacher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>22.01.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+							<form>
+								<select multiple>
+									<option value="todo">ToDo</option>
+									<option value="yes">Zur nächsten Ausgabe</option>
+								</select>
+							</form>
+						</td>
+					</tr>
+				</table>
+			</details>
+			
+			<br><br><br>
+			
+			<details>
+				<summary><b>Nächste Ausgabe der Zeitung:</b> 
+				</summary>
+				<table>
+					<tr>
+						<th>Artikel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>Autor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th>Datum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+					</tr>
+					<tr>
+						<td>
+							<a href = "ressources/archivseite/Zeitung%202.txt">
+								Warum gerichtete Netze?
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+						<td>Friedrich Petersen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>19.03.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					</tr>
+					<tr>
+						<td>
+							<a href = "ressources/archivseite/Zeitung%202.txt">
+								Kleine neuronale Netze als KI
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+						<td>Gertrud Wallacher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>22.01.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					</tr>
+				</table>
+				<br>
+				<a href = "ressources/archivseite/Zeitung%202.txt">Gesamte PDF der Zeitung</a><br>
+				<button type="button">Veröffentlichen</button>
+			</details>
+			
+			<br><br><br><br><br>
+		
+		</main>
+		<footer>
+			<address>copyright etc</address>
+		</footer>
     </body>
 </html>
