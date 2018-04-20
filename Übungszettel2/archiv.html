@@ -1,92 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang = "de">
     <head>
         <meta charset="utf-8">
-</style>
-</head>
-<body>
+        <title>Archiv</title>
+    </head>
+    
+    <body>
+        <header>
+            <h1>Evolve Journal</h1>
+        </header>
 
-    <ul> <form action="startseite.html" method="POST">
-        <div> <b>E-Mail:</b><input name="email">
-        <b>Passwort:</b><input type="password" name="pw">
-        <button type="submit">Submit</button>
+        <div class="nav_main">
+            <ul>
+                <li><a href="startseite.html">Startseite</a></li>
+                <li><a href="about.html">Über uns</a></li>
+                <li><a href="archiv.html">Archiv</a></li>
+                <li><a href="autor.html">Profil</a></li>
+                <li> <a href="registration.html">Registrieren</a></li>
+                <li>
+                    <div class="search-container">
+                        <form action="archiv.html">
+                            <input type="text" placeholder="Suche im Archiv nach.." name="search">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </li>
+            </ul><br>
         </div>
-</form></ul>
-    <header>
-        <h1>Evolve Journal</h1>
-    </header>
 
-    <div class="nav_main">
-        <ul>
-            <li><a href="startseite.html">Startseite</a></li>
-            <li><a href="about.html">Über uns</a></li>
-            <li><a href="archiv.html">Archiv</a></li>
-            <li><a href="autor.html">Profil</a></li>
-            <li> <a href="registration.html">Registrieren</a>
-            </li>
-            <li>
-            <div class="search-container">
-            <form action="archiv.html">
-                <input type="text" placeholder="Suche im Archiv nach.." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-            </div>
-            </li>
-        </ul><br>
-    </div>
+        <main>
+            <h1>Archiv</h1>
+            <aside>
+                <form>
+                    <select>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                    </select>
+                </form>
+            </aside>
+            <h2>2018</h2>
 
-    <main>
-        <h1>Archiv</h1>
-        <aside>
-            <form>
-                <select>
-                    <option value="2018">2018</option>
-                    <option value="2017">2017</option>
-                    <option value="2016">2016</option>
-                </select>
-            </form>
-        </aside>
-        <h2>2018</h2>
+            <h2>2017</h2>
+            <details>
+                <summary>
+                </summary>
 
-        <h2>2017</h2>
-        <details>
-            <summary>
-            </summary>
-
-            <article>
-                <img src = "ressouces/archivseite/TitelSeite.jpg" width = 150 height = 100></img>
-                <h3>Die Grenzen der Computational Intelligence</h3>
-                <p>
-                    Diese Ausgabe wird von Beiträgen zum Thema der Grenzen der Computational Intelligence dominiert.
-                    Begleiten Sie uns auf einer Reise zu den Grenzen des Machbaren.
-                </p>
-                <p>
-                    Laden Sie sich die Ausgabe <a href = "ressouces/archivseite/Zeitung%201.txt">hier</a> herunter
-                </p>
-            </article>
-        </details>
-
-        <h2>2016</h2>
-        <details>
-            <summary>
-            </summary>
-
-            <article>
-                <img src = "ressouces/archivseite/TitelSeite2.jpg" width = 150 height = 100></img>
-                <h3>Der Weg des Computers zur Kreativität</h3>
-                <p>
-                    Diesen Monat beschäftigen wir uns mit der Königsdiziplin des Menschen.<br>
-                    Wie können wir der Krativität mit Maschinen nahekommen? Diese und andere Fragen werden in dieser Ausgabe geklärt.
+                <article>
+                    <img src = "ressouces/archivseite/TitelSeite.jpg" alt = "Titelbild der Ausgabe" width = 150 height = 100>
+                    <h3>Die Grenzen der Computational Intelligence</h3>
                     <p>
+                        Diese Ausgabe wird von Beiträgen zum Thema der Grenzen der Computational Intelligence dominiert.
+                        Begleiten Sie uns auf einer Reise zu den Grenzen des Machbaren.
+                    </p>
+                
+                    <p>
+                        Laden Sie sich die Ausgabe <a href = "ressouces/archivseite/Zeitung%201.txt">hier</a> herunter
+                    </p>
+                
+                </article>
+            </details>
+
+            <h2>2016</h2>
+            <details>
+                <summary>
+                </summary>
+
+                <article>
+                    <img src = "ressouces/archivseite/TitelSeite2.jpg" alt = "Titelbild der Ausgabe" width = 150 height = 100>
+                    <h3>Der Weg des Computers zur Kreativität</h3>
+                    <p>
+                        Diesen Monat beschäftigen wir uns mit der Königsdiziplin des Menschen.<br>
+                        Wie können wir der Krativität mit Maschinen nahekommen? Diese und andere Fragen werden in dieser Ausgabe geklärt.
                         Laden Sie sich die Ausgabe <a href = "ressouces/archivseite/Zeitung%202.txt">hier</a> herunter
                     </p>
-                </p>
-            </article>
-        </details>
+                </article>
+            </details>
+        </main>
 
-    </main>
-<footer>
-    <address>copyright etc</address>
-</footer>
-    </body>
+        <footer>
+            <address>copyright etc</address>
+        </footer>
+        </body>
 </html>
