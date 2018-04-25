@@ -5,12 +5,14 @@
 </head>
 <body>
 
-    <ul> <form action="startseite.html" method="POST">
-        <div> <b>E-Mail:</b><input name="email">
-        <b>Passwort:</b><input type="password" name="pw">
-        <button type="submit">Submit</button>
-        </div>
-</form></ul>
+    <ul> 
+        <form action="startseite.html" method="POST">
+           <div> <b>E-Mail:</b><input name="email">
+            <b>Passwort:</b><input type="password" name="pw">
+               <button type="submit">Submit</button>
+           </div>
+       </form>
+    </ul>
     <header>
         <h1>Evolve Journal</h1>
     </header>
@@ -36,10 +38,95 @@
     </div>
 
     <main>
-        <h1>Autor</h1>
-        <h2>Mein Profil<br></h2>
-        <label>Name: <br>
-         <input name="name" type="text" size="31" maxlength="33"><br>
+      
+        <h1>Autor/in</h1>
+          
+                    <ul>
+                   <p>Aktuelle Beiträge</p>
+                         <ul>  
+                             <li> <a href= "aktuelle.html"> Aktuell </a>&nbsp;&nbsp;&nbsp;
+                             <a href= "archiv.html"> Archiv </a>
+                            </li>
+                        
+                 </ul><br>
+    
+    				<table>
+					<tr>
+						<th>Artikel_ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                        <th>Titel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                        <th>Autor/inen &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                        <th>Status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+					</tr>
+					<tr>
+						<td>
+							<a href = "ressources/archivseite/Zeitung%202.txt">
+								.............
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         </td>
+                        <td>
+                            <a href = "ressources/archivseite/Zeitung%202.txt">
+								.............
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                                                <td>
+                            <a href = "ressources/archivseite/Zeitung%202.txt">
+								.............
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                                                <td>
+                            <a id= "ressources/archivseite/Zeitung%202.txt">
+								abgelenht
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+						
+					</tr>
+                        					<tr>
+						<td>
+							<a href = "ressources/archivseite/Zeitung%202.txt">
+								.............
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         </td>
+                        <td>
+                            <a href = "ressources/archivseite/Zeitung%202.txt">
+								.............
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                                                <td>
+                            <a href = "ressources/archivseite/Zeitung%202.txt">
+								.............
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                                                <td>
+                            <a id= "ressources/archivseite/Zeitung%202.txt">
+								angenommen
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+						
+					</tr>
+               </table><br>                       
+                    <details> 
+                    <summary><b>Neuer Beitrag einreichen</b></summary><br>
+                <label>
+                   <input name="name" value="Titel:" type="text" size="31" maxlength="33"><br>
+                </label>
+                        <br>
+                 <label>
+                   <input name="name" value="Autor/in:" type="text" size="31" maxlength="33"><br>
+                </label><br>
+                        <p> hier muss noch viel hinzugefügt werden
+                        </p>
+                        <br><br>
+                        <p>Datei hinzufügen</p>
+                          <form action="/actions_page.php" >
+                                 <input type="file" name="img" multiple> <input type="submit">
+                           </form>
+                        
+                        </details>
+                          <br>
+        <details>
+       <summary> <b>Mein Profil<br></b></summary>
+        <label>
+         <input name="name" value="Yannick Watat Sunou" type="text" size="31" maxlength="33"><br>
         </label>
         <img src="ressources/autorseite/liebedeutschland.jpg" width = 250 height = 250
            align="left"  />
@@ -56,57 +143,18 @@
         </TEXTAREA>
         <br>
         <label>views: <br>
-         <input name="name" type="text" size="31" maxlength="33"><br>
-        </label>
-     <h1>Aktionen</h1>
-        			<details>
-				<summary><b>Datei veröffentlichen</b>
-                    </summary>
-				<table>
-					<tr>
-						<th>Quelle auswählen &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th> 
-						<th>Option&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					</tr>
-					<tr>
-						<td>
-							<a href = "ressources/archivseite/Zeitung%202.txt">
-								Meine Computer
-							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</td>
-						
-						<td>
-                    <button type="button">Veröffentlichen</button>
-						</td>
-					</tr>
-				</table>
-			</details><br><br>
-        
-            
-              			<details>
-				<summary><b>Artikel in Bearbeitung</b>
-                    </summary>
-				<table>
-					<tr>
-						<th>Artikel angenommen &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th> 
-                        <th>Artikel abgelehnt &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th> 
-					</tr>
-					<tr>
-						<td>
-							<a href = "ressources/archivseite/Zeitung%202.txt">
-								.............
-							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         </td>
-                        <td>
-                            <a href = "ressources/archivseite/Zeitung%202.txt">
-								.............
-							</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </td>
-						
-					</tr>
-				</table>
-			</details>      
-    
-        
+         <input name="name" type="text" size="31" maxlength="33"> <br>
+        </label><br>
+             <div style="width: 200px; float: left;">
+             <nav>
+                 <ul>
+                      <li><a href= "archiv.html"> Mein Profil bearbeitung </a></li>
+                      <li><a href= "registration.html"> Ausloggen </a></li>
+                      
+                </ul>
+            </nav>
+       </div>
+        </details></ul> <br>
     </main>
     <br> <br>
 <footer>
