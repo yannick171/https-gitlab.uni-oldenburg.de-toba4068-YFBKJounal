@@ -1,27 +1,55 @@
 <!DOCTYPE html>
 <html lang = "de">
     <head>
+        <link rel = "stylesheet" type="text/css" href = "ressources/archivseite/archiv_style_sheet.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">   
         <meta charset="utf-8">
-        <title>Archiv</title>
+        <title>
+            Archiv
+        </title>
     </head>
     
     <body>
         <header>
-            <h1>Evolve Journal</h1>
+            <h1>
+                Evolve Journal
+            </h1>
         </header>
 
         <div class="nav_main">
             <ul>
-                <li><a href="startseite.html">Startseite</a></li>
-                <li><a href="about.html">Über uns</a></li>
-                <li><a href="archiv.html">Archiv</a></li>
-                <li><a href="autor.html">Profil</a></li>
-                <li> <a href="registration.html">Registrieren</a></li>
+                <li>
+                    <a href="startseite.html">
+                        Startseite
+                    </a>
+                </li>
+                <li>
+                    <a href="about.html">
+                        Über uns
+                    </a>
+                </li>
+                <li>
+                    <a href="archiv.html">
+                        Archiv
+                    </a>
+                </li>
+                <li>
+                    <a href="autor.html">
+                        Profil
+                    </a>
+                </li>
+                <li>
+                    <a href="registration.html">
+                        Registrieren
+                    </a>
+                </li>
                 <li>
                     <div class="search-container">
                         <form action="archiv.html">
                             <input type="text" placeholder="Suche im Archiv nach.." name="search">
-                            <button type="submit"><i class="fa fa-search"></i></button>
+                            <button type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
                         </form>
                     </div>
                 </li>
@@ -29,55 +57,76 @@
         </div>
 
         <main>
-            <h1>Archiv</h1>
+            <h1 id = gradient>
+                Archiv
+            </h1>
             <aside>
                 <form>
                     <select>
-                        <option value="2018">2018</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
+                        <option value="2018">
+                            2018
+                        </option>
+                        <option value="2017">
+                            2017
+                        </option>
+                        <option value="2016">
+                            2016
+                        </option>
                     </select>
                 </form>
             </aside>
-            <h2>2018</h2>
+            <h2>
+                2018
+            </h2>
 
-        <h2>2017</h2>
-        <details>
-            <summary>
-            </summary>
-
-            <article>
-                <img src = "ressources/archivseite/TitelSeite.jpg" alt = "Titelseite des Magazins" width = 150 height = 100>
-                <h3>Die Grenzen der Computational Intelligence</h3>
-                <p>
-                    Diese Ausgabe wird von Beiträgen zum Thema der Grenzen der Computational Intelligence dominiert.
-                    Begleiten Sie uns auf einer Reise zu den Grenzen des Machbaren.
-                </p>
-                <p>
-                    Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung%201.txt">hier</a> herunter
-                </p>
-            </article>
-        </details>
-            <h2>2016</h2>
-            <details>
-                <summary>
-                </summary>
-
-            <article>
-                <img src = "ressources/archivseite/TitelSeite2.jpg" alt = "Titelseite des Magazins" width = 150 height = 100>
-                <h3>Der Weg des Computers zur Kreativität</h3>
-                <p>
-                    Diesen Monat beschäftigen wir uns mit der Königsdiziplin des Menschen.<br>
-                    Wie können wir der Krativität mit Maschinen nahekommen? Diese und andere Fragen werden in dieser Ausgabe geklärt.
-                    <p>
-                        Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung%202.txt">hier</a> herunter
-                    </p>
+            <h2>
+                2017
+            </h2>
+                <article>
+                    <details>
+                        <summary>
+                            Die Grenzen der Computational Intelligence
+                        </summary>
+                        <section>
+                            <div class="grid-container">
+                                <div>
+                                    <img src = "ressources/archivseite/TitelSeite.jpg" alt = "Titelseite des Magazins">
+                                </div>
+                                <div>
+                                    <p>
+                                        Diese Ausgabe wird von Beiträgen zum Thema der Grenzen der Computational Intelligence dominiert.
+                                        Begleiten Sie uns auf einer Reise zu den Grenzen des Machbaren.
+                                        Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung%201.txt">hier</a> herunter
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </details>
                 </article>
-            </details>
+            <h2>
+                2016
+            </h2>
+                <article>
+                    <details>
+                        <summary>
+                            Der Weg des Computers zur Kreativität
+                        </summary>
+                        <section>
+                            <img src = "ressources/archivseite/TitelSeite2.jpg" alt = "Titelseite des Magazins">
+                            <p>
+                                Diesen Monat beschäftigen wir uns mit der Königsdiziplin des Menschen.<br>
+                                Wie können wir der Krativität mit Maschinen nahekommen? Diese und andere Fragen werden in dieser Ausgabe geklärt.
+                                Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung%202.txt">hier</a> herunter
+                            </p>
+                        </section>
+                    </details>
+                </article>
         </main>
 
         <footer>
-            <address>copyright etc</address>
+            <address>
+                copyright etc
+            </address>
         </footer>
         </body>
 </html>
