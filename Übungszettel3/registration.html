@@ -3,6 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>Registration</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" type="text/css" href = "ressources/registrierungsseite/registrierung_style_sheet.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">   
+        <meta charset="utf-8">
 </head>
 <body>
 <div>
@@ -36,43 +41,45 @@
 
     <main>
         <h2>Registration</h2>
-        <p>
-            <label><b>Andrede:</b><br>
-                <select name="andrede" size="1">
-                    <option value="herr" selected>Herr</option>
-                    <option value="frau">Frau</option>
-                </select>
-            </label>
-        </p>
-        <p>
-            <label><b>Name:</b><br>
-                <input name="name" type="text" size="30" maxlength="30">
-            </label>
-        </p>
-        <p>
-            <label><b>Vorname:</b><br>
-                <input name="vorname" type="text" size="30" maxlength="30">
-            </label>
-        </p>
+        <form>
+            <p>
+                <label><b>Andrede:</b><br>
+                    <select id = "formInput" name="andrede" size="1">
+                        <option value="herr" selected>Herr</option>
+                        <option value="frau">Frau</option>
+                    </select>
+                </label>
+            </p>
+            <p>
+                <label><b>Name:</b>
+                    <input id = "formInput" name="name" type="text" size="30" maxlength="30">
+                </label>
+            </p>
+            <p>
+                <label><b>Vorname:</b>
+                    <input id = "formInput" name="vorname" type="text" size="30" maxlength="30">
+                </label>
+            </p>
 
-        <p>
-            <label><b>E-Mail:</b><br>
-                <input name="email" type="email" size="30" maxlength="30">
-            </label>
-        </p>
+            <p>
+                <label><b>E-Mail:</b>
+                    <input id = "formInput" name="email" type="email" size="30" maxlength="30">
+                </label>
+            </p>
 
-        <p>
-            <label><b>Setze Passwort</b><br>
-                <input name="pw" type="password" size="30" maxlength="30">
-            </label>
-        </p>
-        <p>
-            <label><b>Passwort wiederholen</b><br>
-                <input name="pwwdh" type="password" size="30" maxlength="30">
-            </label>
-        </p><br>
-        <input type="submit" value="Anmelden">
-
+            <p>
+                <label><b>Setze Passwort</b>
+                    <input id = "formInput" name="pw" type="password" size="30" maxlength="30">
+                </label>
+            </p>
+            <p>
+                <label><b>Passwort wiederholen</b>
+                    <input id = "formInput" name="pwwdh" type="password" size="30" maxlength="30">
+                </label>
+            </p>
+            <br>
+            <input id = "formInput" class = "roundCorner" type="submit" value="Anmelden">
+        </form>
     </main>
 <footer>
     <address>copyright etc</address>
