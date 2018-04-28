@@ -1,0 +1,13 @@
+body
+{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+
+}
+
+.home_intro {
+  border-style:double;;
+  border-color: #000000;
+  border-left: none;
+  border-right: none;
+}
