@@ -28,6 +28,8 @@ img{
 }
 
 .wrapper{
+  border-width: 4px;
+  border-style: ridge;
     margin-left:16.66%;
     margin-right: 16.66%;
     display: grid;
@@ -36,7 +38,8 @@ img{
     grid-auto-rows: minmax(200px,auto);
     grid-template-areas:
     "box1    box1    box2    box2"
-    "preview article article article"
+    " preview preview preview preview"
+    "article article article article"
     "footer  footer  footer  footer";
 }
 
