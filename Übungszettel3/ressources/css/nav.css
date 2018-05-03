@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #24489a;
+    background: linear-gradient(to top right, #0076ff, darkblue);
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
