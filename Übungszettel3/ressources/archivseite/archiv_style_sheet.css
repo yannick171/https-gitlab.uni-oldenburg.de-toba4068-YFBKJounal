@@ -1,5 +1,5 @@
 /*general Stuff*/
-* 
+*
 {
     box-sizing: border-box;
 }
@@ -13,9 +13,9 @@
 
 
 /*body style*/
-body 
+body
 {
-    
+
     background-color: azure;
     font-family: 'Open Sans', sans-serif;
 }
@@ -54,7 +54,7 @@ h2
     {
         grid-column: 1 / span 1;
         grid-row: 3;
-        
+
     }
     .grid-container-article
     {
@@ -63,7 +63,7 @@ h2
 }
 @media only screen and (max-width: 800px)
 {
-    img 
+    img
     {
         display: block;
         margin-left: auto;
