@@ -2,8 +2,11 @@
 <html lang = "de">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href = "ressources/css/nav.css" rel = "stylesheet">
         <link rel = "stylesheet" type="text/css" href = "ressources/archivseite/archiv_style_sheet.css">
+        <link href = "ressources/css/article" rel= "stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">   
+        
         <meta charset="utf-8">
         <title>
             Archiv
@@ -11,52 +14,46 @@
     </head>
     
     <body>
-        <header>
-            <h1>
-                Evolve Journal
-            </h1>
-        </header>
+<div class="login">
+        <ul>
+            <li>
+                <a href="*.html"> Anmelden</a>
+            </li>
+        </ul>
+    </div>
+    <header>
+        <h1>Evolve Journal</h1>
+    </header>
 
-        <div class="nav_main">
-            <ul>
-                <li>
-                    <a href="startseite.html">
-                        Startseite
-                    </a>
-                </li>
-                <li>
-                    <a href="about.html">
-                        Über uns
-                    </a>
-                </li>
-                <li>
-                    <a href="archiv.html">
-                        Archiv
-                    </a>
-                </li>
-                <li>
-                    <a href="autor.html">
-                        Profil
-                    </a>
-                </li>
-                <li>
-                    <a href="registration.html">
-                        Registrieren
-                    </a>
-                </li>
-                <li>
-                    <div class="search-container">
-                        <form action="archiv.html">
-                            <input type="text" placeholder="Suche im Archiv nach.." name="search">
-                            <button type="submit">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </form>
-                    </div>
-                </li>
-            </ul><br>
-        </div>
-
+    <div class="nav_main">
+        <ul>
+          <li>
+              <a href="startseite.html">
+                  Startseite
+              </a>
+          </li>
+            <li>
+                <a href="about.html">
+                    Über uns
+                </a>
+            </li>
+            <li>
+                <a href="archiv.html">
+                    Archiv
+                </a>
+            </li>
+            <li>
+                <a href="autor.html">
+                    Profil
+                </a>
+            </li>
+            <div class="search">
+                <form action="/action_page.php">
+                    <input type="text" placeholder="Suche im Archiv nach.." name="search">
+                </form>
+            </div>
+        </ul>
+    </div>
         <main>
             <h1 id = gradient>
                 Archiv
