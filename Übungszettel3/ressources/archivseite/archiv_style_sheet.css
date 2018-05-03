@@ -15,26 +15,26 @@
 /*body style*/
 body 
 {
-    margin-left: 6%;
-    margin-right: 6%;
+    
     background-color: azure;
     font-family: 'Open Sans', sans-serif;
 }
+main
+{
+    margin-left: 6%;
+    margin-right: 6%;
+}
 /*heading style*/
-h1, h2
+h1
+{
+    text-align: left;
+}
+h2
 {
     color:  snow;
     border-style: solid;
     border-width: 1px;
     margin: 1px;
-}
-h1
-{
-    background: linear-gradient(to top right, #0076ff, darkblue);
-    text-align: center;
-}
-h2
-{
     background: linear-gradient(to top right, #0076ff, darkblue);
     text-align: left;
 }

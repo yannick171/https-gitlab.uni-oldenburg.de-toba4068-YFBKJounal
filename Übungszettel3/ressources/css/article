@@ -10,7 +10,6 @@
 }
 .item-down-article
 {
-    
     background-color: rgb(230,230,230);
     padding-left: 5%;
     padding-right: 5%;
