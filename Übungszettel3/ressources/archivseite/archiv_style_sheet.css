@@ -9,6 +9,25 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+.headingGrid
+{
+    background: rgb(210,210,220);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    
+}
+#headingParagraph
+{
+    padding-top: 15%;
+    padding-left: 18%;
+}
+.headingImage
+{
+    margin: auto;
+    padding-right: 5%;
+    height: 300px;
+    width: 400px;
+}
 .titelbild
 {
 	padding: 0;
@@ -16,7 +35,6 @@
 	height: 100%;
 	width: 100%;
 }
-
 
 /*body style*/
 body
