@@ -20,27 +20,33 @@
   height: 100%;
   width: 100%;
 }
+.nav_main {
+  background: linear-gradient(to top right, #0076ff, darkblue);
+}
 
+.login ul{
+  background: linear-gradient(to top right, #0076ff, darkblue);
+}
 .login ul ,.nav_main ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background: linear-gradient(to top right, #0076ff, darkblue);
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
 }
 
-.search ,.login li {
-    float: right
+.searchbutton, .login li {
+    float: right;
+
 }
 
 .nav_main li {
     float: left;
 }
 
-.login li a, .nav_main li a {
+.login li a, .nav_main li a, .nav_main button {
     display: block;
     color: white;
     text-align: center;

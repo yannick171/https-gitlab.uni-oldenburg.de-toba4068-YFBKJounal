@@ -4,6 +4,7 @@ img{
   width:100%;
   height: 100%;
 }
+
 [class*="box-"]{
   padding: 5%;
 }
@@ -26,8 +27,6 @@ img{
 .wrapper{
   border-width: 4px;
   border-style: ridge;
-    /*margin-left:16.66%;
-    margin-right: 16.66%;*/
     display: grid;
     grid-gap: 5%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
