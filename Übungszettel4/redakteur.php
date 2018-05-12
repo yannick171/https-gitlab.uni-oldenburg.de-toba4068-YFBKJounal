@@ -9,10 +9,6 @@
         <link rel = "stylesheet" type="text/css" href = "ressources/redakteurseite/redakteur.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 		<link href = "ressources/css/article.css" rel= "stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
 	</head>
 
@@ -238,5 +234,6 @@
                 Hier steht so footer-typisches Zeug und so..
             </address>
         </footer>
+        <?php include ("ressources/snippets/loadjavascript.php") ;?>
     </body>
 </html>
