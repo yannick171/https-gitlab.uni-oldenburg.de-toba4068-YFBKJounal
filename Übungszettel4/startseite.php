@@ -13,7 +13,7 @@
   <!-- Header -->
   <?php include ("ressources/snippets/head.php") ;?>
 
-  <main class="defaultstyle">
+  <main id="maincontent" class="defaultstyle">
     <div class="wrapper">
 
       <div class="box-1">

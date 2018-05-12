@@ -73,9 +73,11 @@ footer {
 
 
 @media only screen and (max-width: 768px) {
-  .nav_main ul { width: 100%; font-weight: normal; }
+
+
+  /*.nav_main ul { width: 100%; font-weight: normal; }
    	.nav_main ul li { width: 50%; float: left; }
    	.nav_main ul li:nth-of-type(odd) a { border-right: 1px solid #ccc; }
    	.nav_main ul li a { padding: 8px 0px; border-bottom: 1px solid #ccc; display: block; }
-    .search {width: 48%;}
+    .search {width: 48%;}*/
 }
