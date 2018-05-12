@@ -75,5 +75,6 @@
       </address>
         </footer>
 
+        <?php include ("ressources/snippets/loadjavascript.php") ;?>
     </body>
 </html>
