@@ -2,14 +2,14 @@
 <html>
     <head>
         <title>Registration</title>
-        
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel = "stylesheet" type="text/css" href = "ressources/registrierungsseite/registrierung_style_sheet.css">
         <link href = "ressources/css/nav.css" rel = "stylesheet">
         <link href="ressources/css/footer.css"rel  ="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">   
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
         <meta charset="utf-8">
-        
+
         <!--Scripts for using bootstrap-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -18,50 +18,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <div class="login">
-            <ul>
-                <li>
-                    <a href="*.html"> Anmelden</a>
-                </li>
-                <li>
-                  <a href="registration.html"> Registrieren</a>
-                </li>
-            </ul>
-        </div>
-        <header>
-            <img class = "titelbild" src = "ressources/startseite/neural-network.jpg" alt = "Titelbild">
-        </header>
 
-        <div class="nav_main">
-            <ul>
-              <li>
-                  <a href="startseite.html">
-                      Startseite
-                  </a>
-              </li>
-                <li>
-                    <a href="about.html">
-                        Über uns
-                    </a>
-                </li>
-                <li>
-                    <a href="archiv.html">
-                        Archiv
-                    </a>
-                </li>
-                <li>
-                    <a href="autor.html">
-                        Profil
-                    </a>
-                </li>
-                <div class="search">
-                    <form action="/action_page.php">
-                        <input type="text" placeholder="Suche im Archiv nach.." name="search">
-                    </form>
-                </div>
-            </ul>
-          </div>
-
+          <?php include ("ressources/snippets/head.php") ;?>
+          
         <main>
             <h2>Registration</h2>
             <form>
@@ -103,7 +62,7 @@
                 <br>
                 <input id = "formInput" class = "roundCorner" type="submit" value="Anmelden">
             </form>
-            
+
         </main>
         <footer>
             <address>

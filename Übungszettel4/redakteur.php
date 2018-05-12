@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>  
+    <head>
         <title>
 			Redakteur Profil - Evolve
 		</title>
@@ -8,70 +8,23 @@
 		<link href = "ressources/css/nav.css" rel = "stylesheet">
         <link rel = "stylesheet" type="text/css" href = "ressources/redakteurseite/redakteur.css">
         <link href = "ressources/css/footer.css" rel = "stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">   
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 		<link href = "ressources/css/article.css" rel= "stylesheet">
         <meta charset="utf-8">
-        
+
         <!--Scripts for using bootstrap-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-		
+
 	</head>
-	
+
 	<body>
 
-		<div class="login">
-        <ul>
-            <li>
-                <a href="*.html"> Anmelden</a>
-            </li>
-            <li>
-              <a href="registration.html"> Registrieren</a>
-            </li>
-        </ul>
-    </div>
-		
-
-		<header>
-			<img class = "titelbild" src = "ressources/startseite/neural-network.jpg" alt = "Titelbild">
-	
-		</header>
-	
-		<div class="nav_main">
-			<ul>
-			<li>
-				<a href="startseite.html">
-					Startseite
-				</a>
-			</li>
-				<li>
-					<a href="about.html">
-						Über uns
-					</a>
-				</li>
-				<li>
-					<a href="archiv.html">
-						Archiv
-					</a>
-				</li>
-				<li>
-					<a href="autor.html">
-						Profil
-					</a>
-				</li>
-				<div class="search">
-					<form action="/action_page.php">
-						<input type="text" placeholder="Suche im Archiv nach.." name="search">
-					</form>
-				</div>
-			</ul>
-		</div>
-		
-		<br>
-		
+		  <?php include ("ressources/snippets/head.php") ;?>
+      
 		<main>
 			<h1>Redakteur Profil</h1>
             <article>
@@ -89,14 +42,14 @@
 								Namh Cnupeno
 							</label>
 							<br><br>
-					
+
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<label>Vorname: <br>
 								&nbsp;&nbsp;&nbsp;&nbsp;
 								Saitama
 							</label>
 							<br><br>
-							
+
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<label>E-Mail: <br>
 								&nbsp;&nbsp;&nbsp;&nbsp;
@@ -113,15 +66,15 @@
 					</div>
                 </section>
             </article>
-			
+
 			<h1>Arbeitsbereich</h1>
-			
+
             <article>
                 <section class="grid-container-article">
                     <div class="item-down-article">
-                       
-						<h2>Zu prüfen:</h2> 
-						
+
+						<h2>Zu prüfen:</h2>
+
 						<table>
 							<tr>
 								<th>Artikel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -166,11 +119,11 @@
 								</td>
 							</tr>
 						</table>
-					
+
 						<br><br><br>
-			
-						<h2>Geprüfte Artikel:</h2> 
-						
+
+						<h2>Geprüfte Artikel:</h2>
+
 						<table>
 							<tr>
 								<th>Artikel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -216,7 +169,7 @@
                     </div>
                 </section>
             </article>
-			
+
 			<article>
 				<h2>Nächste Ausgabe:   Die Grenzen der Computational Intelligence <button type="button"> Titel ändern</button></h2>
 				<section class="grid-container-article">
@@ -228,7 +181,7 @@
 						<p class = "item2">
 							Diese Ausgabe wird von Beiträgen zum Thema der Grenzen der Computational Intelligence dominiert.
 							Begleiten Sie uns auf einer Reise zu den Grenzen des Machbaren.
-							Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung1/Zeitung%201.txt">hier</a> herunter 
+							Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung1/Zeitung%201.txt">hier</a> herunter
 							<button type="button">Beschreibung ändern</button>
 						</p>
 					</div>
@@ -251,7 +204,7 @@
 							<summary>
 								Der Durchbruch im Verständnis der temporalen Logik
 								<button type="button"> Titel ändern</button>
-								<br> 
+								<br>
 							</summary>
 							<p>
 								Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüssel
@@ -268,9 +221,9 @@
 								<br>
 							</summary>
 							<p>
-								In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte 
+								In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
 								Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
-								neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare 
+								neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
 								perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
 								<button type="button">Beschreibung ändern</button>
 							</p>

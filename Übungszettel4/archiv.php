@@ -9,7 +9,7 @@
         <link href = "ressources/css/footer.css" rel ="stylesheet">
 
         <meta charset="utf-8">
-        
+
         <!--Scripts for using bootstrap-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -22,49 +22,9 @@
     </head>
 
     <body>
-    <div class="login">
-        <ul>
-            <li>
-                <a href="*.html"> Anmelden</a>
-            </li>
-            <li>
-              <a href="registration.html"> Registrieren</a>
-            </li>
-        </ul>
-    </div>
-    <header>
-        <img class = "titelbild" src = "ressources/startseite/neural-network.jpg" alt = "Titelbild">
-    </header>
 
-    <div class="nav_main">
-        <ul>
-          <li>
-              <a href="startseite.html">
-                  Startseite
-              </a>
-          </li>
-            <li>
-                <a href="about.html">
-                    Über uns
-                </a>
-            </li>
-            <li>
-                <a href="archiv.html">
-                    Archiv
-                </a>
-            </li>
-            <li>
-                <a href="autor.html">
-                    Profil
-                </a>
-            </li>
-            <div class="search">
-                <form action="/action_page.php">
-                    <input type="text" placeholder="Suche im Archiv nach.." name="search">
-                </form>
-            </div>
-        </ul>
-    </div>
+      <?php include ("ressources/snippets/head.php") ;?>
+      
         <main>
             <h1>
                 Archiv
@@ -74,7 +34,7 @@
                     Willkommen im Archiv. Hier gibt es die gesammelten Ausgaben der letzten drei Jahre. Sie sind nach Jahren sortiert.<br>
                     Nehmen Sie sich Zeit und stöbern Sie nach Herzenslust die folgende Sammlung durch.
                     Wir bieten Ihnen alles künstlichen Immunsystemen bis zu KPL-Bäumen...<br>
-                    IN KÜNSTLICHEN IMMUNSYSTEMEN also begleiten Sie uns auf eine fantastische Reise bis an die Grenzen dieses 
+                    IN KÜNSTLICHEN IMMUNSYSTEMEN also begleiten Sie uns auf eine fantastische Reise bis an die Grenzen dieses
                     Archivs und darüber hinaus, also viel Glück und genießen Sie dieses Abendteuer.<br><br>
                     Ihre Redaktion
                 </p>

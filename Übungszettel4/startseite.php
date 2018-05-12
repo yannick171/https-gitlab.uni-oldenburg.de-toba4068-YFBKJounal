@@ -17,48 +17,7 @@
 <body>
 
   <!-- Header -->
-  <div class="login">
-    <ul>
-      <div class="defaultstyle">
-      <li>
-        <a href="*.html"> Anmelden</a>
-      </li>
-      <li>
-        <a href="registration.html"> Registrieren</a>
-      </li>
-    </ul>
-  </div>
-  </div>
-  <header>
-    <img class="titelbild" src="ressources/startseite/banner.jpg" alt="Titelbild">
-  </header>
-
-  <div class="nav_main">
-    <ul>
-      <div class="defaultstyle">
-      <li>
-        <a href="startseite.html">
-                  Startseite
-              </a>
-      </li>
-      <li>
-        <a href="about.html">
-                    Über uns
-                </a>
-      </li>
-      <li>
-        <a href="archiv.html">
-                    Archiv
-                </a>
-      </li>
-      <li>
-        <a href="autor.html">
-                    Profil
-                </a>
-      </li>
-      </div>
-    </ul>
-  </div>
+  <?php include ("ressources/snippets/head.php") ;?>
 
   <main class="defaultstyle">
     <div class="wrapper">
@@ -86,7 +45,7 @@
       <!-- footer -->
 
       <div class="box-4">
-        <h2>Aktuelle Ausgabe</h3>
+        <h2>Ausgabe</h3>
                           <div id="example2">
                           <h4>1. Neue Erkenntnisse im Bereich der Fuzzy-Logik</h4>
 
@@ -114,7 +73,6 @@
                             </div>
     </div>
 
-    <div class="box-5">
         <footer>
         <address>
         Hier steht so footer-typisches Zeug und so..
@@ -126,8 +84,6 @@
       Hier steht so footer-typisches Zeug und so..
       </address>
         </footer>
-    </div>
-
 
 </div>
 </main>

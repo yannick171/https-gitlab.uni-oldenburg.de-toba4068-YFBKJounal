@@ -6,9 +6,9 @@
 		<link href = "ressources/css/article.css" rel= "stylesheet">
         <link href = "ressources/css/footer.css" rel = "stylesheet">
 		<link rel = "stylesheet" type="text/css" href = "ressources/ueberunsseite/ueber.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">  
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
         <meta charset="utf-8">
-        
+
         <!--Scripts for using bootstrap-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -18,52 +18,7 @@
 </head>
 <body>
 
-	<div class="login">
-        <ul>
-            <li>
-                <a href="*.html"> Anmelden</a>
-            </li>
-            <li>
-              <a href="registration.html"> Registrieren</a>
-            </li>
-        </ul>
-    </div>
-		
-	<header>
-		<img class = "titelbild" src = "ressources/startseite/neural-network.jpg" alt = "Titelbild">
-    </header>
-
-
-	
-		<div class="nav_main">
-			<ul>
-			<li>
-				<a href="startseite.html">
-					Startseite
-				</a>
-			</li>
-				<li>
-					<a href="about.html">
-						Über uns
-					</a>
-				</li>
-				<li>
-					<a href="archiv.html">
-						Archiv
-					</a>
-				</li>
-				<li>
-					<a href="autor.html">
-						Profil
-					</a>
-				</li>
-				<div class="search">
-					<form action="/action_page.php">
-						<input type="text" placeholder="Suche im Archiv nach.." name="search">
-					</form>
-				</div>
-			</ul>
-		</div>
+	  <?php include ("ressources/snippets/head.php") ;?>
 
     <main>
         <h1>
@@ -75,7 +30,7 @@
             Jeder Wissenschaftler bekommt bei uns eine Möglichkeit seine Forschung zu publizieren.<br>
             Hier eine Liste wichtiger Informationen :
         </p>
-        
+
         <b>Personen</b>
             <ul>
                 <li><a href ="ressources/ueberunsseite/Kontakt.txt">Kontakt</a></li>
@@ -87,7 +42,7 @@
                 <li><a href = "ressources/ueberunsseite/Richtlinien.txt">Richtlinien</a></li>
             </ul>
     </main>
-    
+
         <footer>
             <address>
                 Hier steht so footer-typisches Zeug und so..
@@ -99,6 +54,6 @@
                 Hier steht so footer-typisches Zeug und so..
             </address>
         </footer>
-    
+
     </body>
 </html>

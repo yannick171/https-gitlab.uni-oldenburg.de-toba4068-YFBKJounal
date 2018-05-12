@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-    <head> 
+    <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="ressources/autorseite/Mystyle.css"/>
         <link rel="stylesheet" href="ressources/css/nav.css"/>
          <link rel="stylesheet" href="ressources/css/article.css"/>
          <link rel="stylesheet" href="ressources/css/footer.css"/>
-          
+
         <meta http-equiv="Cache-control" content="no-cache">
-        
+
         <!--Scripts for using bootstrap-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -17,49 +17,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
    </head>
-  <body>  
-       <div class="login">
-           <ul>
-               <li>
-                <a href="*.html"> Abmelden</a>  
-               </li>
-           </ul>
-       </div>        
-        <header>
-			<img class = "titelbild" src = "ressources/startseite/neural-network.jpg" alt = "Titelbild">
-	
-		</header>
-       <div class="nav_main">
-         <! header>
-        <ul>
-          <li>
-              <a href="startseite.html">
-                  Startseite
-              </a>
-          </li>
-            <li>
-                <a href="about.html">
-                    Über uns
-                </a>
-            </li>
-            <li>
-                <a href="archiv.html">
-                    Archiv
-                </a>
-            </li>
-            <li>
-                <a href="autor.html">
-                    Profil
-                </a>
-            </li>
-                         <div class="search">    
-                            <form action= "/action_page.php">
-                               <input type="text" placeholder="Suche im Archiv nach.." name="search">
-                            </form>
-                        </div>
-                   </ul>
-              </div><br>
- 
+  <body>
+
+         <?php include ("ressources/snippets/head.php") ;?>
+         
             <main>
                 <article>
                     <ul>
@@ -74,17 +35,17 @@
                           <p class ="item2">
                                         Name:<br>
                                           Yannick Watat <br><br>
-                                        Email:<br>       
+                                        Email:<br>
                                            yannick.watat.sunou@uni-oldenburg.de <br><br>
-            
+
                                         Titel:<br>
                                             noch nicht<br><br>
                           </p>
                     </div>
              <div class="item-down-article">
-                       <ul>  
+                       <ul>
                           <a>veröffentliche Beiträge </a>
-                        
+
                         </ul>
                     <ul>
                   <table id="listartikel">
@@ -111,7 +72,7 @@
 								angenommen
 							</a>
                         </td>
-						
+
 					</tr>
                       <tr>
 						<td>
@@ -124,7 +85,7 @@
                         </td>
                         <td><a>hauptvogel Ann</a></td>
                         <td><a>angenommen</a></td>
-						
+
 					</tr>
                         <tr>
 						   <td>
@@ -145,11 +106,11 @@
 								in Bearbeitung
 							</a>
                         </td>
-						
+
 					    </tr>
                     </table>
                         </ul>
-                 <ul>        
+                 <ul>
                     <summary><b>Neuer Beitrag einreichen</b></summary><br>
                 <label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Titel:
                    <input name="name" value=":" type="text" size="31" maxlength="33"><br>
@@ -159,7 +120,7 @@
                    <input name="name" value="" type="text" size="31" maxlength="33"><br><br>
                  </label>
                     <br>
-                     
+
                      <label>Datei hinzufügen:
                          <form action="/actions_page.php" >
                           <input list ="liste" type="file" name="img" multiple><br>
@@ -182,7 +143,7 @@
                             <input type="checkbox" name="opt[]"
                             value="parken"> Die Autor/innen stimmen den Bestimmungen dieser Copyright-Regelungen zu, die für diesen Beitrag im Falle einer Veröffentlichung Anwendung finden. (Kommentare für die Redaktion können weiter unten angefügt werden.)<br><br>
                         </p>
-                        
+
                         <p>
                         Erklärung zum Schutz persönlicher Daten in dieser Zeitschrift
                             <br><br><br>
@@ -198,7 +159,7 @@
                        </section>
                 </article>
              </main><br><br>
-    
+
    <br> <br>
        <div class="box-5">
      <footer>
@@ -207,5 +168,5 @@
            </footer>
            </div>
     </body>
-    
+
 </html>
