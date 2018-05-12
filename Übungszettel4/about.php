@@ -2,15 +2,12 @@
 <html lang = "de">
     <head>
         <title>About us</title>
- 		<link href = "ressources/css/nav.css" rel = "stylesheet">
+        <?php include("ressources/snippets/globalsources.php") ?>
+
 		<link href = "ressources/css/article.css" rel= "stylesheet">
-        <link href = "ressources/css/footer.css" rel = "stylesheet">
 		<link rel = "stylesheet" type="text/css" href = "ressources/ueberunsseite/ueber.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
-        <meta charset="utf-8">
 
         <!--Scripts for using bootstrap-->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -20,7 +17,7 @@
 
 	  <?php include ("ressources/snippets/head.php") ;?>
 
-    <main>
+    <main class="defaultstyle">
         <h1>
             Über uns
         </h1>

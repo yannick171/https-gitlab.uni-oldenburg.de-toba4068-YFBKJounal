@@ -1,18 +1,5 @@
 /*general Stuff*/
-* 
-{
-    box-sizing: border-box;
-}
-body
-{
-    background-color: azure;
-    font-family: 'Open Sans', sans-serif;
-}
-main
-{
-    margin-left: 20%;
-    margin-right: 40%;
-}
+
 #formInput
 {
     width: 100%;
@@ -31,11 +18,4 @@ h2
 Label
 {
     font-size: 150%;
-}
-.titelbild
-{
-	padding: 0;
-	margin: 0;
-	height: 100%;
-	width: 100%;
 }

@@ -1,8 +1,3 @@
-/*general Stuff*/
-*
-{
-    box-sizing: border-box;
-}
 /*grid layout*/
 .grid-container
 {
@@ -14,7 +9,7 @@
     background: rgb(210,210,220);
     display: grid;
     grid-template-columns: 2fr 1fr;
-    
+
 }
 #headingParagraph
 {
@@ -28,26 +23,7 @@
     height: 300px;
     width: 400px;
 }
-.titelbild
-{
-	padding: 0;
-	margin: 0;
-	height: 100%;
-	width: 100%;
-}
 
-/*body style*/
-body
-{
-
-    background-color: azure;
-    font-family: 'Open Sans', sans-serif;
-}
-main
-{
-    margin-left: 6%;
-    margin-right: 6%;
-}
 /*heading style*/
 h1
 {

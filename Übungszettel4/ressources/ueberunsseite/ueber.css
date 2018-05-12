@@ -1,8 +1,4 @@
-/*general Stuff*/
-* 
-{
-    box-sizing: border-box;
-}
+
 /*grid layout*/
 .grid-container
 {
@@ -10,31 +6,10 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.titelbild
-{
-	padding: 0;
-	margin: 0;
-	height: 100%;
-	width: 100%;
-}
-
 .profilpic
 {
 	height: 255px;
 	width: 255px;
-}
-
-/*body style*/
-body 
-{
-    
-    background-color: azure;
-    font-family: 'Open Sans', sans-serif;
-}
-main
-{
-    margin-left: 6%;
-    margin-right: 6%;
 }
 /*heading style*/
 h1
@@ -61,7 +36,7 @@ h2
     {
         grid-column: 1 / span 1;
         grid-row: 3;
-        
+
     }
     .grid-container-article
     {
@@ -70,7 +45,7 @@ h2
 }
 @media only screen and (max-width: 800px)
 {
-    img 
+    img
     {
         display: block;
         margin-left: auto;

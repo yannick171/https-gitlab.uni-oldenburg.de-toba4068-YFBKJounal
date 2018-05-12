@@ -2,15 +2,9 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="ressources/css/nav.css">
-  <link rel="stylesheet" type="text/css" href="ressources/startseite/grid.css">
-  <link rel="stylesheet" type="text/css" href="ressources/startseite/home.css">
-  <link rel="stylesheet" type="text/css" href="ressources/css/footer.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
-  <meta charset="utf-8">
 
-  <!--Scripts for using bootstrap-->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="ressources/startseite/grid.css">
+  <?php include("ressources/snippets/globalsources.php") ?>
 
 </head>
 
@@ -30,12 +24,6 @@
         eure Beiträge gehör.
 
       </div>
-      <!-- Intro -->
-
-      <!-- Sidebar 1-->
-
-
-      <!-- content -->
 
 <div class="box-3">
   <h2>Die Grenzen der Computational Intelligence</h2>
@@ -73,6 +61,8 @@
                             </div>
     </div>
 
+  </div>
+  </main>
         <footer>
         <address>
         Hier steht so footer-typisches Zeug und so..
@@ -85,7 +75,5 @@
       </address>
         </footer>
 
-</div>
-</main>
     </body>
 </html>

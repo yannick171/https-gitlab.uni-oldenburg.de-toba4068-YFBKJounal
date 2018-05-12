@@ -1,34 +1,5 @@
-body
-{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-
-}
-main
-{
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
-
 .search ,.border1 li {
     float: right
-}
-
-footer {
-  margin-top: 15px;
-  border-style:solid;
-  border-color: #000000;
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
-}
-.titelbild
-{
-	padding: 0;
-	margin: 0;
-	height: 100%;
-	width: 100%;
 }
 
 .profilpic
@@ -53,7 +24,7 @@ footer {
     {
         grid-column: 1 / span 1;
         grid-row: 3;
-        
+
     }
     .grid-container-article
     {
@@ -62,7 +33,7 @@ footer {
 }
 @media only screen and (max-width: 800px)
 {
-    img 
+    img
     {
         display: block;
         margin-left: auto;

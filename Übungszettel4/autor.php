@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <?php include("ressources/snippets/globalsources.php") ?>
+
         <link rel="stylesheet" href="ressources/autorseite/Mystyle.css"/>
-        <link rel="stylesheet" href="ressources/css/nav.css"/>
          <link rel="stylesheet" href="ressources/css/article.css"/>
-         <link rel="stylesheet" href="ressources/css/footer.css"/>
-
-        <meta http-equiv="Cache-control" content="no-cache">
-
-        <!--Scripts for using bootstrap-->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -20,8 +14,8 @@
   <body>
 
          <?php include ("ressources/snippets/head.php") ;?>
-         
-            <main>
+
+            <main class="defaultstyle">
                 <article>
                     <ul>
                        <h1> Autor Profil</h1>

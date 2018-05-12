@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html lang = "de">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href = "ressources/css/nav.css" rel = "stylesheet">
+        <?php include("ressources/snippets/globalsources.php") ?>
         <link rel = "stylesheet" type="text/css" href = "ressources/archivseite/archiv_style_sheet.css">
         <link href = "ressources/css/article.css" rel= "stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
-        <link href = "ressources/css/footer.css" rel ="stylesheet">
-
-        <meta charset="utf-8">
-
-        <!--Scripts for using bootstrap-->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -24,8 +17,8 @@
     <body>
 
       <?php include ("ressources/snippets/head.php") ;?>
-      
-        <main>
+
+        <main class="defaultstyle">
             <h1>
                 Archiv
             </h1>
