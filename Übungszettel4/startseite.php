@@ -13,7 +13,8 @@
   <!-- Header -->
   <?php include ("ressources/snippets/head.php") ;?>
 
-  <main id="maincontent" class="defaultstyle">
+<div class="hintergrundbild">
+  <main class="defaultstyle">
     <div class="wrapper">
 
       <div class="box-1">
@@ -63,6 +64,7 @@
 
   </div>
   </main>
+</div>
         <footer>
         <address>
         Hier steht so footer-typisches Zeug und so..

@@ -3,6 +3,17 @@
     box-sizing: border-box;
 }
 
+.hintergrundbild{
+  background: url("../images/hintergrund.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% auto;
+}
+
+main{
+    background-color: white;
+}
+
 .defaultstyle {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.2em;
