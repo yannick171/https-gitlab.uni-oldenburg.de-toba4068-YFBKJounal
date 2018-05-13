@@ -1,6 +1,6 @@
 
-  <div class="login">
-      <ul>
+<!--  <div class="login">
+      <ul class="defaultstyle">
         <div class="defaultstyle">
         <li>
           <a data-toggle="modal" data-target="#exampleModalCenter"> Anmelden</a>
@@ -11,6 +11,7 @@
       </ul>
     </div>
     </div>
+-->
     <header>
       <img id="titelbild" src="ressources/images/banner.jpg" alt="Titelbild">
     </header>
@@ -38,8 +39,7 @@
         </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
-            <button type="button" class="btn btn-primary">Einloggen</button>
+            <button style="width:100%;" type="button" class="btn btn-primary">Einloggen</button>
           </div>
         </div>
       </div>
@@ -80,8 +80,8 @@
 </div>
 </nav>
 -->
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<!-- navbar-dark bg-primary -->
+<nav style="background: #1a75ff; color: white; font-size:1.2em;" class="navbar navbar-expand-lg">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -100,10 +100,18 @@
       <li class="nav-item">
         <a class="nav-link" href="about.php">Über uns</a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="registration.php"> Registrieren</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" href="#" data-target="#exampleModalCenter"> Anmelden</a>
+      </li>
+
+      <form class="form-inline my-2 my-lg-0">
+        <button style="background: #1a75ff; color: white;" class="btn my-2 my-sm-0" type="submit"><i class="material-icons">search</i></button>
+      </form>
+
     </ul>
   </div>
-
-  <form class="form-inline my-2 my-lg-0">
-    <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="material-icons">search</i></button>
-  </form>
 </nav>

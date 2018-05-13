@@ -7,11 +7,13 @@
   background: url("../images/hintergrund.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 100% auto;
+  background-size: 100% 100%;
 }
 
 main{
-    background-color: white;
+  background-color: white;
+  box-shadow: 0px -10px 2px 8px rgba(0,0,0,0.3);
+
 }
 
 .defaultstyle {
@@ -22,6 +24,10 @@ main{
   margin: 0 auto;
 }
 
+.navstyle{
+  color: white !important;
+  font-size: 2em !important;
+}
 #titelbild {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -74,7 +80,6 @@ main{
 }
 
 footer {
-  margin-top: 15px;
   border-style:solid;
   border-color: #000000;
   border-left: none;

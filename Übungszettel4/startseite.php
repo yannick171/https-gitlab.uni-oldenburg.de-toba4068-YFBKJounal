@@ -14,6 +14,7 @@
   <?php include ("ressources/snippets/head.php") ;?>
 
 <div class="hintergrundbild">
+
   <main class="defaultstyle">
     <div class="wrapper">
 
@@ -64,6 +65,7 @@
 
   </div>
   </main>
+
 </div>
         <footer>
         <address>
