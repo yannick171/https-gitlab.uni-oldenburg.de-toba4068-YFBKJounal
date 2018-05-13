@@ -1,21 +1,5 @@
-/*general Stuff*/
-
-#formInput
+#box
 {
-    width: 100%;
-    height: 50px;
-    font-size: 110%;
-}
-.roundCorner
-{
-    border-radius: 1px;
-    border-bottom-color: darkslategrey;
-}
-h2
-{
-    font-size: 300%;
-}
-Label
-{
-    font-size: 150%;
+    padding-right: 20%;
+    padding-left: 20%;
 }

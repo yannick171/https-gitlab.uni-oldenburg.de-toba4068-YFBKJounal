@@ -19,9 +19,7 @@ main{
 .defaultstyle {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.2em;
-  width: 100%;
   max-width: 1600px;
-  margin: 0 auto;
 }
 
 .navstyle{
@@ -41,10 +39,7 @@ main{
   background: linear-gradient(to top right, #0076ff, darkblue);
 }
 
-.login ul{
-  background: linear-gradient(to top right, #0076ff, darkblue);
-}
-.login ul ,.nav_main ul {
+.nav_main ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -54,29 +49,32 @@ main{
     top: 0;
 }
 
-.searchbutton, .login li {
+.searchbutton{
     float: right;
 
 }
 
 .nav_main li {
     float: left;
+    
 }
 
-.login li a, .nav_main li a, .nav_main button {
+.nav_main li a, .nav_main button {
     display: block;
     color: white;
     text-align: center;
-    padding: 11px 13px;
+    /*padding: 11px 13px;*/
+    
     text-decoration: none;
 }
 
-.login li a:hover, .nav_main li a:hover {
+.nav_main li a:hover {
     background-color: #192183;
 }
 
-.login li a:hover, .nav_main .active {
+.nav_main .active {
     background-color: #192183;
+    padding-left: 10%;
 }
 
 footer {

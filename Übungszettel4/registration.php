@@ -2,56 +2,42 @@
 <html>
     <head>
         <title>Registration</title>
-        <?php include("ressources/snippets/globalsources.php") ?>
-
+        <?php include("ressources/snippets/globalsources.php");?>
         <link rel = "stylesheet" type="text/css" href = "ressources/registrierungsseite/registrierung_style_sheet.css">
     </head>
     <body>
-
-          <?php include ("ressources/snippets/head.php") ;?>
-
+        <?php include ("ressources/snippets/head.php");?>
         <main class="defaultstyle">
-            <h2>Registration</h2>
-            <form>
-                <p>
-                    <label><b>Andrede:</b><br>
-                        <select id = "formInput" name="andrede" size="1">
-                            <option value="herr" selected>Herr</option>
-                            <option value="frau">Frau</option>
-                        </select>
-                    </label>
-                </p>
-                <p>
-                    <label><b>Name:</b>
-                        <input id = "formInput" name="name" type="text" size="30" maxlength="30">
-                    </label>
-                </p>
-                <p>
-                    <label><b>Vorname:</b>
-                        <input id = "formInput" name="vorname" type="text" size="30" maxlength="30">
-                    </label>
-                </p>
-
-                <p>
-                    <label><b>E-Mail:</b>
-                        <input id = "formInput" name="email" type="email" size="30" maxlength="30">
-                    </label>
-                </p>
-
-                <p>
-                    <label><b>Setze Passwort</b>
-                        <input id = "formInput" name="pw" type="password" size="30" maxlength="30">
-                    </label>
-                </p>
-                <p>
-                    <label><b>Passwort wiederholen</b>
-                        <input id = "formInput" name="pwwdh" type="password" size="30" maxlength="30">
-                    </label>
-                </p>
-                <br>
-                <input id = "formInput" class = "roundCorner" type="submit" value="Anmelden">
-            </form>
-
+            <div class ="container">
+                <h2>Registration</h2>
+                <form action="/action_page.php">
+                    <div class="form-group">
+                        <label for="Name">Name:</label>
+                        <input type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="Vorname">Vorname:</label>
+                        <input type="text" class="form-control" placeholder="Vorname">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password wiederholen:</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="Retype password" name="pswd">
+                    </div>
+                    <p>
+                    </p>
+                    <button type="submit" class="btn btn-success">
+                        Registrieren
+                    </button>
+                </form>
+            </div>
         </main>
         <footer>
             <address>
