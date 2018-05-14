@@ -6,7 +6,7 @@
               </button>
             </li>
           <li class="nav-item">
-            <button style="background:transparent; color:white;" type = "button" class= "btn" data-toggle= "modal" data-target= "#exampleModalCenter" id ="bigfont">
+            <button style="background:transparent; color:white;" type = "button" class= "btn" data-toggle= "modal" data-target= "#loginModal" id ="bigfont">
                 <i class="material-icons">perm_identity</i> Anmelden
             </button>
           </li>
@@ -40,7 +40,7 @@
         <ul class="navbar-nav ml-md-auto">
             <li class="nav-item">
               <form class="form-inline my-2 my-sm-0" >
-                  <button style="background: transparent; color: white; float:right;" class="btn my-2 my-sm-0" type="submit" aria-expanded="false" ><i class="material-icons">search</i></button>
+                  <button style="background: transparent; color: white; float:right;" class="btn my-2 my-sm-0" data-toggle= "modal" data-target= "#searchModal" type="button" aria-expanded="false"><i class="material-icons">search</i></button>
               </form>
             </li>
 
@@ -49,11 +49,11 @@
 </nav>
 
 <!-- Beispiel Modal aus https://getbootstrap.com/docs/4.0/components/modal/#tooltips-and-popovers -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Anmeldung</h5>
+                <h5 class="modal-title" id="loginModallLongTitle">Anmeldung</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</sp1an>
                     </button>
@@ -78,6 +78,19 @@
                 <button style="width:100%;" type="button" class="btn btn-primary">
                     Einloggen
                 </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="searchModalLongTitle">Suche im Archiv nach..</h6>
+            </div>
+            <div class="modal-body">
+              <input class="form-control mr-sm-2" type="search" placeholder="..." aria-label="Search">
             </div>
         </div>
     </div>
