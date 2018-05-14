@@ -77,13 +77,6 @@ main{
     padding-left: 10%;
 }
 
-footer {
-  border-style:solid;
-  border-color: #000000;
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
-}
 
 
 @media only screen and (max-width: 768px) {

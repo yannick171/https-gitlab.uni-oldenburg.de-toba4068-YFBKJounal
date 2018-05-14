@@ -18,7 +18,7 @@
 </header>
 
 
-<nav style="background: #1a75ff; color: white; font-size:1.2em;" class="navbar navbar-expand-lg">
+<nav style="background: #1a75ff; color: white; font-size:1.2em;" class="navbar navbar-expand-lg sticky-top">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <i style="color:white;" class="material-icons">reorder</i>
   </button>
