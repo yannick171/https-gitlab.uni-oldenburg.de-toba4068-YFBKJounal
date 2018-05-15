@@ -348,17 +348,7 @@
                     </article>
                 </div>
             </main>
-            <footer>
-                <address>
-                    Hier steht so footer-typisches Zeug und so..
-                    Hier steht so footer-typisches Zeug und so..
-                    Hier steht so footer-typisches Zeug und so..
-                    Hier steht so footer-typisches Zeug und so..
-                    Hier steht so footer-typisches Zeug und so..
-                    Hier steht so footer-typisches Zeug und so..
-                    Hier steht so footer-typisches Zeug und so..
-                </address>
-            </footer>
+    <?php include ("ressources/snippets/footer.php") ;?>
+    <?php include ("ressources/snippets/loadjavascript.php") ;?>
         </body>
-        <?php include ("ressources/snippets/loadjavascript.php") ;?>
 </html>

@@ -17,28 +17,27 @@
     <img id="titelbild" src="ressources/images/banner.jpg" alt="Titelbild">
 </header>
 
-
 <nav style="background: #1a75ff; color: white; font-size:1.2em;" class="navbar navbar-expand-lg sticky-top">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <i style="color:white;" class="material-icons">reorder</i>
   </button>
     <div class="collapse navbar-collapse defaultstyle" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul style="" class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="startseite.php">Startseite<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li style="" class="nav-item">
                 <a class="nav-link" href="archiv.php">Archiv</a>
             </li>
-            <li class="nav-item">
+            <li style="" class="nav-item">
                 <a class="nav-link" href="autor.php">Profil</a>
             </li>
-            <li class="nav-item">
+            <li  style="" class="nav-item">
                 <a class="nav-link" href="about.php">Über uns</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-md-auto">
-            <li class="nav-item">
+            <li style="" class="nav-item">
               <form class="form-inline my-2 my-sm-0" >
                   <button style="background: transparent; color: white; float:right;" class="btn my-2 my-sm-0" data-toggle= "modal" data-target= "#searchModal" type="button" aria-expanded="false"><i class="material-icons">search</i></button>
               </form>

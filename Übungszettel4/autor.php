@@ -150,13 +150,7 @@
                 </article>
              </main><br><br>
 
-   <br> <br>
-       <div class="box-5">
-     <footer>
-    <address>copyright etc
-    </address>
-           </footer>
-           </div>
-    </body>
+    <?php include ("ressources/snippets/footer.php") ;?>
     <?php include ("ressources/snippets/loadjavascript.php") ;?>
+    </body>
 </html>

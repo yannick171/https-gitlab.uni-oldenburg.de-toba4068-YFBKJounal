@@ -34,8 +34,8 @@
   Diese Ausgabe wird von Beiträgen zum Thema der Grenzen der Computational Intelligence dominiert. Begleiten Sie uns auf einer Reise zu den Grenzen des Machbaren. Laden Sie sich die Ausgabe <a href="ressources/archivseite/Zeitung1/Zeitung%201.txt">hier</a>  herunter.
 </div>
 -->
-      <div class="box-4">
-        <h2>Aktuelle Ausgabe</h2>
+<div class="box-4">
+<h2>Aktuelle Ausgabe</h2>
 <h3>Do Voles Select Dense Vegetation for Movement Pathways at the Microhabitat Level?</h3>
 
 <h6>Biological Sciences</h6>
@@ -46,7 +46,7 @@ in the immediate area.  Using a black light, I followed the trails left by powde
 completely covered; there was a significant difference between on and off the trail when the path was completely
 open.  These results indicate that voles are selectively avoiding bare areas, while not choosing among dense patches
 at a fine microhabitat scale.
-          <div id="accordion">
+<div id="accordion">
   <div class="card">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
@@ -99,7 +99,7 @@ at a fine microhabitat scale.
     </div>
   </div>
 </div>
-    </div>
+</div>
 
   </div>
   </main>
