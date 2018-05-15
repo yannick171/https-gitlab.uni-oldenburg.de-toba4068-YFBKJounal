@@ -1,8 +1,9 @@
-img{
+.introimg{
   display: block;
   margin:0 auto;
   width:100%;
   height: 100%;
+  border-radius: 14px 14px 14px 14px;
 }
 
 [class*="box-"]{
@@ -31,9 +32,7 @@ img{
     grid-auto-rows: minmax(200px,auto);
     grid-template-areas:
     "box1    box1    box2    box2"
-    " preview preview preview preview"
-    "article article article article"
-    "footer  footer  footer  footer";
+    "article article article article";
 }
 
 @media only screen and (max-width: 768px) {
@@ -54,7 +53,6 @@ img{
    width: 90%;
    height: 70%;
  }
-}
 
  @media only screen and (min-width: 769px) {
   /* For desktor: */

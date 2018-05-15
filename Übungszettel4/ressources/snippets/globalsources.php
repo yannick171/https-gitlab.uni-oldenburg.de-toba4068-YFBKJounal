@@ -5,6 +5,7 @@
 
 <link rel="stylesheet" type="text/css" href="ressources/css/defaultstyle.css">
 <link rel= "stylesheet" href="ressources/css/login.css">
+<link rel= "stylesheet" href="ressources/css/footer-distributed-with-search.css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 <meta charset="utf-8">
 
