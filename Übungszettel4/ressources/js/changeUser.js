@@ -7,11 +7,11 @@ function changeUserLabel()
 {
     if(document.getElementById("autorCheck").checked)
     {
-        document.getElementById("Profil").innerHTML = '<a class="nav-link" href="autor.php">Administration</a>';
+        document.getElementById("Profil").innerHTML = '<a class="nav-link" href="autor.php">meine Beiträge</a>';
     }
     else
     {
-        document.getElementById("Profil").innerHTML = '<a class="nav-link" href="redakteur.php">meine Beiträge</a>';
+        document.getElementById("Profil").innerHTML = '<a class="nav-link" href="redakteur.php">Administration</a>';
     }
 };
 

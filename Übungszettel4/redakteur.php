@@ -161,67 +161,119 @@
                 </section>
             </article>
 
-			<article>
-				<h2>Nächste Ausgabe:   Die Grenzen der Computational Intelligence <button type="button"> Titel ändern</button></h2>
-				<section class="grid-container-article">
-					<div>
-						<img src = "ressources/archivseite/TitelSeite.jpg" alt = "Titelseite des Magazins">
-						<button type="button">Bild ändern</button>
-					</div>
-					<div>
-						<p class = "item2">
-							Diese Ausgabe wird von Beiträgen zum Thema der Grenzen der Computational Intelligence dominiert.
-							Begleiten Sie uns auf einer Reise zu den Grenzen des Machbaren.
-							Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung1/Zeitung%201.txt">hier</a> herunter
-							<button type="button">Beschreibung ändern</button>
-						</p>
-					</div>
-					<div class="item-down-article">
-						<h3>Inhalt</h3>
-						<details>
-							<summary>
-								Neue Erkenntnisse im Bereich der Fuzzy-Logik
-								<button type="button"> Titel ändern</button>
-								<br>
-							</summary>
-							<p>
-								Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
-								und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen. Welche dies genau sind,
-								können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.
-								<button type="button">Beschreibung ändern</button>
-							</p>
-						</details>
-						<details>
-							<summary>
-								Der Durchbruch im Verständnis der temporalen Logik
-								<button type="button"> Titel ändern</button>
-								<br>
-							</summary>
-							<p>
-								Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüssel
-								unserer Forschung ist die Annahme, dass das Wichtigste bei dieser Diziplin das Tempo ist.Wie genau
-								das Tempo maßgeblich für das Verstehen der temporalen Logik ist,
-								können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.
-								<button type="button">Beschreibung ändern</button>
-							</p>
-						</details>
-						<details>
-							<summary>
-								Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki
-								<button type="button"> Titel ändern</button>
-								<br>
-							</summary>
-							<p>
-								In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
-								Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
-								neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
-								perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
-								<button type="button">Beschreibung ändern</button>
-							</p>
-						</details>
-					</div>
-				</section>
-			</article>
+			<div class = "nextMagazine">
+                <h2></h2>
+				<h2>
+                    Nächste Ausgabe
+                </h2>
+                <div class = "parentContainer">
+                
+                    <div class = "containerElement">
+                        <div class = "containerChild">
+                            <h3>
+                                Titel der Ausgabe
+                            </h3>
+                            <p>
+                                Neuronale Netze unter Vollauslastung
+                            </p>
+                            <div class = "centerButton">
+                                <button type="button">
+                                    Title ändern
+                                </button>
+                            </div>
+                        </div>
+                        <div class = "containerChild">
+                            <h3>
+                                Titelbild der Ausgabe
+                            </h3>
+                            <img src = "ressources/archivseite/TitelSeite.jpg" alt = "Titelseite des Magazins" class = "centerImage">
+                            <div class = "centerButton">
+                                <button type="button">Bild ändern</button>
+                            </div>
+                        </div>
+                        <div class = "containerChild">
+                            <h3>
+                                Einleitungstext der Ausgabe
+                            </h3>
+                            <p>
+                                Diese Ausgabe wird von Beiträgen zum Thema der Grenzen der Computational Intelligence dominiert.
+                                Begleiten Sie uns auf einer Reise zu den Grenzen des Machbaren.
+                                Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung1/Zeitung%201.txt">hier</a> herunter
+                            </p>
+                            <div class = "centerButton">
+                                <button type="button">
+                                    Beschreibung ändern
+                                </button>
+                            </div>
+                            
+                       </div>
+                    </div>
+                    <div class  = "containerElement">
+                        <h3>
+                            Inhalt
+                        </h3>
+                        <ul id = "articleList" class = "list-group">
+                            <li ckass = "list-group-item">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            1. Wie wir der Wahrheit immer näher kommen
+                                        </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" da>
+                                        <div class="card-body">
+                                            In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
+                                            Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
+                                            neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
+                                            perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li ckass = "list-group-item">
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                2. Bedenken der Arbeiter im Hinblick auf fortschreitende Automatisierung
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div class="card-body">
+                                            In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
+                                            Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
+                                            neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
+                                            perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li ckass = "list-group-item">
+                                <div class="card">
+                                    <div class="card-header" id="headingThree">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                3. Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                        <div class="card-body">
+                                            In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
+                                            Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
+                                            neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
+                                            perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>    
 		</main>
 		<footer>
             <address>
