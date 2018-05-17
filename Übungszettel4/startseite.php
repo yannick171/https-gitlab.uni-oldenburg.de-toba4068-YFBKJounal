@@ -105,9 +105,10 @@ at a fine microhabitat scale.
   </main>
 </div>
 
-
         <?php include ("ressources/snippets/footer.php") ;?>
 
         <?php include ("ressources/snippets/loadjavascript.php") ;?>
+    
     </body>
+    
 </html>
