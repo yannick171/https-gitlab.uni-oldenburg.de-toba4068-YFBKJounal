@@ -25,6 +25,32 @@
   grid-area: footer;
 }
 
+.randomArticle1{
+  grid-area: art1;
+}
+
+.randomArticle2{
+  grid-area: art2;
+}
+
+.randomArticle3{
+  grid-area: art3;
+}
+
+[class*="randomArticle"]{
+  background-color: white;
+  margin: 0 auto;
+  width: 25%;
+}
+
+.row{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+  ". art1 art2 art3 .";
+  
+}
+
 .wrapper{
     display: grid;
     grid-gap: 5%;
