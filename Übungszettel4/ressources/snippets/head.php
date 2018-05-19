@@ -29,8 +29,13 @@
             <li style="" class="nav-item">
                 <a class="nav-link" href="archiv.php">Archiv</a>
             </li>
+<<<<<<< HEAD
             <li style="" class="nav-item">
                 <a class="nav-link" href="autor.php">Profil</a>
+=======
+            <li class="nav-item" id = "Profil">
+                <a class="nav-link" href="autor.php"></a>
+>>>>>>> e232144bcec8c7e8f753572cac1d1def4a8aca30
             </li>
             <li  style="" class="nav-item">
                 <a class="nav-link" href="about.php">Über uns</a>
@@ -71,10 +76,14 @@
                         </label>
                         <input type="password" class="form-control" id="pwd">
                     </div>
+                    <div class = "form-check">
+                        <input type = "checkbox" class = "form-check-input" id = "autorCheck">
+                        <label class = "form-check-label">Als Autor anmelden</label>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button style="width:100%;" type="button" class="btn btn-primary">
+                <button style="width:100%;" type="button" class="btn btn-primary" id = "loginButton">
                     Einloggen
                 </button>
             </div>
@@ -94,3 +103,4 @@
         </div>
     </div>
 </div>
+

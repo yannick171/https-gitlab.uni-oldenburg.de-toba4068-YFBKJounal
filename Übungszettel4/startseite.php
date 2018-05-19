@@ -127,6 +127,7 @@
       files[i] = temp;
     }
 
+<<<<<<< HEAD
     function slider(){
       counter = (counter+3) % files.length;
 
@@ -137,4 +138,12 @@
   </script>
 
 </body>
+=======
+        <?php include ("ressources/snippets/footer.php") ;?>
+
+        <?php include ("ressources/snippets/loadjavascript.php") ;?>
+    
+    </body>
+    
+>>>>>>> e232144bcec8c7e8f753572cac1d1def4a8aca30
 </html>
