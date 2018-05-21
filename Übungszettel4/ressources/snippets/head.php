@@ -29,16 +29,12 @@
             <li style="" class="nav-item">
                 <a class="nav-link" href="archiv.php">Archiv</a>
             </li>
-<<<<<<< HEAD
-            <li style="" class="nav-item">
-                <a class="nav-link" href="autor.php">Profil</a>
-=======
-            <li class="nav-item" id = "Profil">
-                <a class="nav-link" href="autor.php"></a>
->>>>>>> e232144bcec8c7e8f753572cac1d1def4a8aca30
-            </li>
             <li  style="" class="nav-item">
                 <a class="nav-link" href="about.php">Über uns</a>
+            </li>
+            <li class="nav-item" id = "Profil">
+                <a class="nav-link" href="autor.php"></a>
+
             </li>
         </ul>
         <ul class="navbar-nav ml-md-auto">
@@ -47,7 +43,6 @@
                   <button style="background: transparent; color: white; float:right;" class="btn my-2 my-sm-0" data-toggle= "modal" data-target= "#searchModal" type="button" aria-expanded="false"><i class="material-icons">search</i></button>
               </form>
             </li>
-
         </ul>
     </div>
 </nav>
@@ -59,7 +54,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="loginModallLongTitle">Anmeldung</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</sp1an>
+                        <span aria-hidden="true">&times;</span>
                     </button>
             </div>
             <div class="modal-body">

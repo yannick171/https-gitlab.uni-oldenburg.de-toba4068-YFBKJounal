@@ -60,112 +60,140 @@
 
 			<h1>Arbeitsbereich</h1>
 
-            <article>
-                <section class="grid-container-article">
-                    <div class="item-down-article">
-
-						<h2>Zu prüfen:</h2>
-
-						<table>
-							<tr>
-								<th>Artikel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-								<th>Autor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-								<th>Datum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-								<th>Prüfen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							</tr>
-							<tr>
-								<td>
-									<a href = "ressources/archivseite/Zeitung%202.txt">
-										Google entwickelt Schach KI
-									</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								</td>
-								<td>Friedrich Petersen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td>19.03.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td>
-									<form>
-										<select multiple>
-											<option value="todo">ToDo</option>
-											<option value="yes">Akzeptiert</option>
-											<option value="no">Abgelehnt</option>
-										</select>
-									</form>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<a href = "ressources/archivseite/Zeitung%202.txt">
-										Neue Netze
-									</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								</td>
-								<td>Gertrud Wallacher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td>22.01.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td>
-									<form>
-										<select multiple>
-											<option value="todo">ToDo</option>
-											<option value="yes">Akzeptiert</option>
-											<option value="no">Abgelehnt</option>
-										</select>
-									</form>
-								</td>
-							</tr>
-						</table>
-
-						<br><br><br>
-
-						<h2>Geprüfte Artikel:</h2>
-
-						<table>
-							<tr>
-								<th>Artikel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-								<th>Autor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-								<th>Datum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-								<th>Hinzufügen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							</tr>
-							<tr>
-								<td>
-									<a href = "ressources/archivseite/Zeitung%202.txt">
-										Der Zusammenhang aus Größe und Effektivität
-									</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								</td>
-								<td>Friedrich Petersen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td>19.03.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td>
-									<form>
-										<select multiple>
-											<option value="todo">ToDo</option>
-											<option value="yes">Zur nächsten Ausgabe</option>
-										</select>
-									</form>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<a href = "ressources/archivseite/Zeitung%202.txt">
-										Wege im Netz
-									</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								</td>
-								<td>Gertrud Wallacher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td>22.01.2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td>
-									<form>
-										<select multiple>
-											<option value="todo">ToDo</option>
-											<option value="yes">Zur nächsten Ausgabe</option>
-										</select>
-									</form>
-								</td>
-							</tr>
-						</table>
-                    </div>
-                </section>
-            </article>
-
+            <div class = "parentContainer">
+                <div class = "containerElement">
+                    <h2 id = "zuPrüfen" class = workingArea>
+                        zu prüfen
+                    </h2>
+                    <ul id = "todoArticles" class = "list-group">
+                        <li class = "list-group-item">
+                            <div class="card margin">
+                                <div class="card-header">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            Künstliche Intelligenz generiert Zeitungsartikel
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" da>
+                                    <div class="card-body">
+                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
+                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
+                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
+                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class = "list-group-item">
+                            <div class="card margin">
+                                <div class="card-header" id="headingFive">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                            Reflektion der aktuellen Forschungsergebnisse im Bereich der Automation
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                    <div class="card-body">
+                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
+                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
+                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
+                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class = "list-group-item">
+                            <div class="card margin">
+                                <div class="card-header" id="headingSix">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                            KI lernt von selbst das Gehen
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                                    <div class="card-body">
+                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
+                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
+                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
+                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class = "containerElement">
+                    <h2 id = "geprüft" class = "workingArea">
+                        geprüft
+                    </h2>
+                    <ul id = "acceptedArticles" class = "list-group">
+                        <li class = "list-group-item">
+                            <div class="card margin">
+                                <div class="card-header">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                            Neue Erkenntnisse im Bereich künstlicher Immunsystem
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" da>
+                                    <div class="card-body">
+                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
+                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
+                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
+                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class = "list-group-item">
+                            <div class="card margin">
+                                <div class="card-header" id="headingEight">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                            Industrie 4.0 aus den Kinderschuhen entwachsen
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
+                                    <div class="card-body">
+                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
+                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
+                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
+                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class = "list-group-item">
+                            <div class="card margin">
+                                <div class="card-header" id="headingNine">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                            Verstehen der Semantik menschlicher Sprache mithilfe von künstlichen, neuronalen Netzen
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
+                                    <div class="card-body">
+                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
+                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
+                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
+                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <h1>
+                Nächste Ausgabe
+            </h1>
 			<div class = "nextMagazine">
-                <h2></h2>
-				<h2>
-                    Nächste Ausgabe
-                </h2>
                 <div class = "parentContainer">
                 
                     <div class = "containerElement">
@@ -178,7 +206,7 @@
                             </p>
                             <div class = "centerButton">
                                 <button type="button">
-                                    Title ändern
+                                    Titel ändern
                                 </button>
                             </div>
                         </div>
@@ -213,8 +241,8 @@
                             Inhalt
                         </h3>
                         <ul id = "articleList" class = "list-group">
-                            <li ckass = "list-group-item">
-                                <div class="card">
+                            <li class = "list-group-item">
+                                <div class="card margin">
                                     <div class="card-header">
                                         <h5 class="mb-0">
                                         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -232,8 +260,8 @@
                                     </div>
                                 </div>
                             </li>
-                            <li ckass = "list-group-item">
-                                <div class="card">
+                            <li class = "list-group-item">
+                                <div class="card margin">
                                     <div class="card-header" id="headingTwo">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -251,8 +279,8 @@
                                     </div>
                                 </div>
                             </li>
-                            <li ckass = "list-group-item">
-                                <div class="card">
+                            <li class = "list-group-item">
+                                <div class="card margin">
                                     <div class="card-header" id="headingThree">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
