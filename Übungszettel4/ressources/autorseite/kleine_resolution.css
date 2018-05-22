@@ -26,16 +26,22 @@ main
   background: url("Ma_ligne1.jpeg") repeat-x bottom;
   justify-content: space-between;
   align-items: flex-end;
+	
 }
 #Mysection
 { 
     margin-bottom: 20px;
-	flex-wrap: wrap;
 	
 }
 
+#section1
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content:space-between;
+}
 aside
-{   display: flex;
+{ 
 	flex: 1;
 	
 }
@@ -80,7 +86,6 @@ article .asideitem1
 }
 article
 {  
-	display: flex;
 	flex: 2.9;
 	
 }
