@@ -2,8 +2,11 @@
 <html>
     <head>
         <?php include("ressources/snippets/globalsources.php") ?>
+		<meta charset="utf-8">
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="ressources/autorseite/Mystyle.css"/>
         <link rel="stylesheet" media="screen and (max-width: 768px)" href="ressources/autorseite/kleine_resolution.css" />
+		 <meta http-equiv="Cache-control" content="no-cache">
 
    </head>
   <body>
