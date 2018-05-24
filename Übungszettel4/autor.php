@@ -291,6 +291,7 @@
 				
             </h1>
 			<script>
+				
 			</script>    
 		</main>
         <?php include ("ressources/snippets/footer.php") ;?>
