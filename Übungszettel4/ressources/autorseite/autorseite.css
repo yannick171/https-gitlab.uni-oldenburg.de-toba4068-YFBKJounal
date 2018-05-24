@@ -87,6 +87,19 @@ li
     list-style-type: none;
 }
 
+.einreichen{
+	display: flex;
+	margin-right: 25px;
+	bottom: 10px;
+}
+aside{
+	margin-right: 25px;
+	flex: 1.2;
+}
+article{
+	flex: 2.7;
+
+}
 .Haupttitel1
 {
   display: flex;
