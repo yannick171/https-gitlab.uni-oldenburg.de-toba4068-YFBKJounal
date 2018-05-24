@@ -286,10 +286,64 @@
                     </ul>
                 </div>
             </div>
-            <h1>
-				 Beitrag einreichen: 
+            <div>
+	      <h1>Beitrag einreichen:</h1>  
 				
-            </h1>
+            </div>
+			<div class="einreichen">
+				<aside>
+				<label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Titel:
+                   <input name="name" value=":" type="text" size="31" maxlength="33"><br>
+                </label>
+                        <br>
+                 <label> Autor/in:
+                   <input name="name" value="" type="text" size="31" maxlength="33"><br><br>
+                 </label>
+                    <br>
+
+                     <label>Datei hinzufügen:
+                         <form action="/actions_page.php" >
+                          <input list ="liste" type="file" name="img" multiple><br>
+                         </form>
+                     </label>
+					<script>
+					function MyFunction(){
+						var y =document.createElement("INPUT");
+						y.setAttribute("type","file");
+						document.body.appendChild(y);
+						
+					}
+					</script>
+					<button onclick="MyFunction()"> Weitere Documente</button>
+				</aside>
+                <article>
+                        <p><strong>Checklist für Beiträge</strong> <br><br>
+                            <input type="checkbox" name="opt[]"
+                            value="parken"> Der Beitrag ist bisher unveröffentlicht und wurde auch keiner anderen Zeitschrift vorgelegt.<br><br>
+                            <input type="checkbox" name="opt[]"
+                            value="parken"> Der Text folgt den stilistischen und bibliografischen Vorgaben, die in den jeweiligen <a href="Rubrikenrichtlinien" > Rubrikenrichtlinien</a> zu fin­den sind.<br><br>
+                           <input type="checkbox" name="opt[]"
+                            value="parken"> Der oder die Autor_in versichert, die allgemein gültigen Standards wissenschaftlicher Arbeit berücksichtigt und sämtliche genutzte Bilder, Grafiken und Texte Dritter kenntlich gemacht zu haben machen.
+                        </p>
+                      <footer class="lign">&nbsp; </footer>
+                        <p><strong>Copyright-Vermerk </strong><br><br>
+                           Autor_innen, die in dieser Zeitschrift publizieren möchten, stimmen den folgenden Bedingungen zu:<br>
+                            <input type="checkbox" name="opt[]"
+                            value="parken"> Die Autor/innen stimmen den Bestimmungen dieser Copyright-Regelungen zu, die für diesen Beitrag im Falle einer Veröffentlichung Anwendung finden. (Kommentare für die Redaktion können weiter unten angefügt werden.)<br><br>
+                        </p>
+
+                        <p>
+                        Erklärung zum Schutz persönlicher Daten in dieser Zeitschrift
+                            <br><br><br>
+                        Namen und E-Mail-Adressen, die in diesem Onlineangebot eingegeben werden (bspw. bei der Registrierung von Nutzern), werden ausschließlich zu den angegebenen Zwecken genutzt und nicht an Dritte weitergegeben.
+                        Namen der Autor_innen werden mit den Artikeln veröffentlicht.
+                        </p>
+                        <footer class="lign">&nbsp; </footer>
+                          <form action="/actions_page.php" >
+                             <input type="submit">
+                           </form>
+				</article>
+			</div>
 			<script>
 				
 			</script>    
