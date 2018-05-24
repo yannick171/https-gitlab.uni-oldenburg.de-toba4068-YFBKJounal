@@ -287,15 +287,10 @@
                 </div>
             </div>
             <h1>
-                
-			
 				 Beitrag einreichen: 
 				
             </h1>
 			<script>
-			
-			
-			
 			</script>    
 		</main>
         <?php include ("ressources/snippets/footer.php") ;?>
