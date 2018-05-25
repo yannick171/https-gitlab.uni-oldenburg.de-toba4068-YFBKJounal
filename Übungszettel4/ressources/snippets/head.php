@@ -1,3 +1,16 @@
+<!-- Start Cookie Plugin -->
+<script type="text/javascript">
+  window.cookieconsent_options = {
+  message: 'Diese Website nutzt Cookies, um bestmögliche Funktionalität bieten zu können.',
+  dismiss: 'Ok, verstanden',
+  learnMore: 'Mehr Infos',
+  link: 'https://website-tutor.com/datenschutz',
+  theme: 'dark-top'
+ };
+</script>
+<script type="text/javascript" src="//s3.amazonaws.com/valao-cloud/cookie-hinweis/script-v2.js"></script>
+<!-- Ende Cookie Plugin -->
+
 <div class="login">
         <ul>
             <li class="nav-item">
