@@ -51,24 +51,22 @@
 				}
 			}, 1000);
 		</script>
-		
-		<div id="countdown">
-			<div id="cdhead">
-				Countdown bis zur nächsten Ausgabe
-			</div>
-			<div id="cdtimelabels">
-				<li>Wochen</li>
-				<li>Tage</li>
-				<li>Stunden</li>
-				<li>Minuten</li>
-			</div>
-			<div id="cdtime">
-				<span id="cdw">5</span>
-				<span id="cdd">3</span>
-				<span id="cdm">17</span>
-				<span id="cds">50</span>
-			</div>
-		</div>
+
+         <div class = "jumbotron">
+             <div id="countdown">
+                 <div id="cdhead">
+                     Countdown wie lange noch Artikel für die Ausgabe angenommen werden :
+                 </div>
+                 <div id="cdtime">
+                     <ul>
+                         <li><span id="cdw">5</span> Wochen</li>
+                         <li><span id="cdd"> 3</span> Tage</li>
+                         <li><span id="cdm">17</span> Stunden</li>
+                         <li><span id="cds">50</span> Minuten</li>
+                     </ul>
+                 </div>
+             </div>
+         </div>
 		
 		
 		<!--<main class="defaultstyle">
@@ -314,6 +312,9 @@
                                             perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
                                         </div>
                                     </div>
+                                    <div class = "centerButton">
+                                        <button type = "button" class = "btn btn-danger">Artikel löschen</button>
+                                    </div>
                                 </div>
                             </li>
                             <li class = "list-group-item">
@@ -333,6 +334,9 @@
                                             perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
                                         </div>
                                     </div>
+                                    <div class = "centerButton">
+                                        <button type = "button" class = "btn btn-danger">Artikel löschen</button>
+                                    </div>
                                 </div>
                             </li>
                             <li class = "list-group-item">
@@ -351,6 +355,9 @@
                                             neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
                                             perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
                                         </div>
+                                    </div>
+                                    <div class = "centerButton">
+                                        <button type = "button" class = "btn btn-danger">Artikel löschen</button>
                                     </div>
                                 </div>
                             </li>
