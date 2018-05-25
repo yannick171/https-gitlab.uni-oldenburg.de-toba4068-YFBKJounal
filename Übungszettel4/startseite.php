@@ -88,6 +88,7 @@
                     In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
                     Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
                     neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
+
                     perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
                   </div>
                 </div>
@@ -95,7 +96,7 @@
             </div>
           </div>
         </div>
-      </div>
+</div>
 
       <div class="row" id="artikel">
         <button type = "button" id ="leftArrow">
@@ -213,7 +214,6 @@
               },fadeSpeed);
       });
     })
-
   </script>
 </body>
 </html>
