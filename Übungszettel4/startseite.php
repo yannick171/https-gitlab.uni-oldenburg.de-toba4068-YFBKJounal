@@ -95,7 +95,7 @@
             </div>
           </div>
         </div>
-      </div>
+</div>
 
       <div class="row" id="artikel">
         <button type = "button" id ="leftArrow">
