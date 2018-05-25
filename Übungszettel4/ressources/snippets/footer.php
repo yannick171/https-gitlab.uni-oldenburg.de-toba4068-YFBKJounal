@@ -1,3 +1,5 @@
+<!-- QUelle https://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates -->
+
 <footer class="footer-distributed">
 
   <div class="footer-left">

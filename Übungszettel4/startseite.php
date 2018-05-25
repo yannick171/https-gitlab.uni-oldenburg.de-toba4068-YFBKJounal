@@ -4,6 +4,7 @@
 <head>
 
   <link rel="stylesheet" type="text/css" href="ressources/startseite/grid.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
   <?php include("ressources/snippets/globalsources.php") ?>
 
@@ -98,17 +99,23 @@
       </div>
 
       <div class="row" id="artikel">
-        <div onload="slider()" src="/ressources/archiv/artikel/artikel1.txt" class="randomArticle1" id="randomArticleSlot1">
-
+        <button type = "button" id ="leftArrow">
+            <i class="material-icons randomButton">keyboard_arrow_left</i>
+        </button>
+        <div class="randomArticleSlot-1" >
+          <p id="randomArticle-1"> </p>
         </div>
-        <div src=""; class="randomArticle2" id="randomArticleSlot2">
-          test2
+        <div class="randomArticleSlot-2" >
+          <p id="randomArticle-2" > </p>
         </div>
-        <div class="randomArticle3" id="randomArticleSlot3">
-          test3
+        <div class="randomArticleSlot-3" >
+          <p id="randomArticle-3" > </p>
         </div>
+        <button type = "button"  id ="rightArrow">
+            <i class="material-icons randomButton">keyboard_arrow_right</i>
+        </button>
+      </div>
   </main>
-</div>
 </div>
 
   <?php include ("ressources/snippets/footer.php") ;?>
@@ -116,6 +123,7 @@
   <?php include ("ressources/snippets/loadjavascript.php") ;?>
 
   <script>
+<<<<<<< HEAD
     var folder = "/ressources/archiv/artikel/"
     var files = [folder + "artikel1.txt",folder + "artikel2.txt",folder + "artikel3.txt",folder + "artikel4.txt", folder + "artikel5.txt",folder + "artikel6.txt",folder + "artikel7.txt",folder + "artikel8.txt"];
     var counter = 0;
@@ -136,6 +144,100 @@
         $("#randomArticle"+i).load(files[counter-i]);
       }
     }
+=======
+    $(document).ready(function() {
+      var path = "ressources/archiv/artikel/";
+      var files = [path+"artikel1.txt",path + "artikel2.txt",path + "artikel3.txt",path + "artikel4.txt",path + "artikel5.txt"];
+      //var files = [path+"img1.jpeg",path + "img2.jpeg",path + "img3.png",path + "img4.jpeg",path + "img5.png"];
+
+      for (var i = 0; i < files.length; i++) {
+        var temp = files[i];
+        var permutation = Math.floor((Math.random() * files.length));
+        files[i] = files[permutation];
+        files[permutation] = temp;
+      }
+
+      $("#randomArticle-1").load(files[0]);
+      $("#randomArticle-2").load(files[1]);
+      $("#randomArticle-3").load(files[2]);
+
+      var relativePosition = 0;
+      var range = 3;
+      var fadeSpeed = 350;
+
+      $(window).resize(function() {
+        if ($(window).width() < 768) {
+           range = 2;
+        }
+        else if($(window).width() < 384){
+           range = 1;
+        }
+        else{
+         range = 3;
+        }
+      })
+      $("#rightArrow").click(function() {
+              relativePosition = (relativePosition + range + files.length) % files.length;
+              $("#randomArticle-1").fadeOut( fadeSpeed );
+
+              setTimeout(function(){
+                $("#randomArticle-1").load(files[relativePosition]);
+                $("#randomArticle-1").fadeIn( fadeSpeed );
+              },fadeSpeed);
+
+              setTimeout(function(){
+                $("#randomArticle-2").fadeOut( fadeSpeed );
+
+                setTimeout(function(){
+                  $("#randomArticle-2").load(files[(relativePosition+1) % files.length]);
+                  $("#randomArticle-2").fadeIn( fadeSpeed );
+                },fadeSpeed);
+
+              },200);
+
+              setTimeout(function(){
+                $("#randomArticle-3").fadeOut( fadeSpeed );
+
+                setTimeout(function(){
+                  $("#randomArticle-3").load(files[(relativePosition+2) % files.length]);
+                  $("#randomArticle-3").fadeIn( fadeSpeed );
+                },fadeSpeed);
+
+              },fadeSpeed);
+      });
+
+      $("#leftArrow").click(function() {
+              relativePosition = (relativePosition - range + files.length) % files.length;
+              $("#randomArticle-3").fadeOut( fadeSpeed );
+
+              setTimeout(function(){
+                $("#randomArticle-3").load(files[(relativePosition+2) % files.length]);
+                $("#randomArticle-3").fadeIn( fadeSpeed );
+              },fadeSpeed);
+
+              setTimeout(function(){
+                $("#randomArticle-2").fadeOut( fadeSpeed );
+
+                setTimeout(function(){
+                  $("#randomArticle-2").load(files[(relativePosition+1) % files.length]);
+                  $("#randomArticle-2").fadeIn( fadeSpeed );
+                },fadeSpeed);
+
+              },200);
+
+              setTimeout(function(){
+                $("#randomArticle-1").fadeOut( fadeSpeed );
+
+                setTimeout(function(){
+                  $("#randomArticle-1").load(files[(relativePosition)]);
+                  $("#randomArticle-1").fadeIn( fadeSpeed );
+                },fadeSpeed);
+
+              },fadeSpeed);
+      });
+    })
+
+>>>>>>> 4a119ed30d9e6776297af926870bb53d960eceb1
   </script>
 </body>
 </html>
