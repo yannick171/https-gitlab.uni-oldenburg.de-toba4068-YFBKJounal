@@ -47,7 +47,7 @@
 			}, 1000);
 		</script>
 		  
-		<main class="defaultstyle">
+		<!--<main class="defaultstyle">
 			<h1>Redakteur Profil</h1>
             <article>
                 <section class="grid-container-article">
@@ -87,8 +87,9 @@
 						<button type="button">Ändern</button>
 					</div>
                 </section>
-            </article>
-
+            </article>-->
+            <h1>
+                Redakteur Profil</h1>
 			<h1>Arbeitsbereich</h1>
 
             <div class = "parentContainer">
@@ -227,17 +228,16 @@
 			
 			<div class = "nextMagazine">
                 <div class = "parentContainer">
-                
                     <div class = "containerElement">
                         <div class = "containerChild">
                             <h3>
                                 Titel der Ausgabe
                             </h3>
-                            <p>
+                            <p id = "nextMagazineTitle">
                                 Neuronale Netze unter Vollauslastung
                             </p>
                             <div class = "centerButton">
-                                <button type="button">
+                                <button type="button" data-toggle = "modal" data-target = "#modalTitle">
                                     Titel ändern
                                 </button>
                             </div>
@@ -248,7 +248,7 @@
                             </h3>
                             <img src = "ressources/archivseite/TitelSeite.jpg" alt = "Titelseite des Magazins" class = "centerImage">
                             <div class = "centerButton">
-                                <button type="button">Bild ändern</button>
+                                <button type="button" data-toggle = "modal" data-target = "#modalImage">Bild ändern</button>
                             </div>
                         </div>
                         <div class = "containerChild">
@@ -261,7 +261,7 @@
                                 Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung1/Zeitung%201.txt">hier</a> herunter
                             </p>
                             <div class = "centerButton">
-                                <button type="button">
+                                <button type="button" data-toggle = "modal" data-target = "#modalDescription">
                                     Beschreibung ändern
                                 </button>
                             </div>
@@ -333,9 +333,63 @@
                         </ul>
                     </div>
                 </div>
-            </div>    
+            </div>
+            <!-- Here are the Modals-->
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalTitle" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p>Geben Sie den neuen Titel ein : </p>
+                            <input class="form-control mr-sm-2" type="text" placeholder="..." aria-label="text">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-default" data-dismiss="modal">Anwenden</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalImage" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p>Geben Sie die neue URL des Bildes an : </p>
+                            <input class="form-control mr-sm-2" type="text" placeholder="..." aria-label="text">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-default" data-dismiss="modal">Anwenden</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalDescription" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p>Geben Sie eine neue Beschreibung an : </p>
+                            <div class="form-group">
+                                <label for="discription">neue Beschreibung : </label>
+                                <textarea class="form-control" rows="5" id="comment"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-default" data-dismiss="modal">Anwenden</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 		</main>
         <?php include ("ressources/snippets/footer.php") ;?>
         <?php include ("ressources/snippets/loadjavascript.php") ;?>
+        <?php include ("ressources/snippets/loadjavascriptRedakteur.php");?>
     </body>
 </html>

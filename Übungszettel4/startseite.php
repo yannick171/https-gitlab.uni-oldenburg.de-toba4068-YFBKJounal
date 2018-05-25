@@ -88,6 +88,7 @@
                     In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
                     Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
                     neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
+
                     perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
                   </div>
                 </div>
@@ -122,6 +123,28 @@
   <?php include ("ressources/snippets/loadjavascript.php") ;?>
 
   <script>
+<<<<<<< HEAD
+    var folder = "/ressources/archiv/artikel/"
+    var files = [folder + "artikel1.txt",folder + "artikel2.txt",folder + "artikel3.txt",folder + "artikel4.txt", folder + "artikel5.txt",folder + "artikel6.txt",folder + "artikel7.txt",folder + "artikel8.txt"];
+    var counter = 0;
+
+    //Permutation der Dateien um "Zufälligkeit" zu erzeugen
+    for(var i=0; i < files.length; i++){
+      var randomIndex = Math.floor(Math.random()*(files.length-1));
+      var temp = files[randomIndex];
+      files[randomIndex] = files[i];
+      files[i] = temp;
+    }
+
+
+    function slider(){
+      counter = (counter+3) % files.length;
+
+      for(var i= 1; i < 4; i++){
+        $("#randomArticle"+i).load(files[counter-i]);
+      }
+    }
+=======
     $(document).ready(function() {
       var path = "ressources/archiv/artikel/";
       var files = [path+"artikel1.txt",path + "artikel2.txt",path + "artikel3.txt",path + "artikel4.txt",path + "artikel5.txt"];
@@ -214,6 +237,7 @@
       });
     })
 
+>>>>>>> 4a119ed30d9e6776297af926870bb53d960eceb1
   </script>
 </body>
 </html>
