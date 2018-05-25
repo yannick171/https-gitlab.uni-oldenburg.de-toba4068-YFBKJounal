@@ -87,18 +87,34 @@ li
     list-style-type: none;
 }
 
+.outerContainer 
+{
+	background-color: rgb(230,230,230);
+}
+.einreichenContainer
+{
+	margin-left: 6%;
+	margin-right: 6%;
+	
+	
+}
 .einreichen{
-	display: flex;
-	margin-right: 25px;
+	/*display: flex;*/
 	bottom: 10px;
 }
-aside{
-	margin-right: 25px;
+.aside1{
+	
+	margin-left: 5px;
+	margin-right: 10px;
 	flex: 1.2;
 }
-article{
+.aside2{
+	background-color: white;
 	flex: 2.7;
 
+}
+.einreichenButton{
+	text-align: center;
 }
 .Haupttitel1
 {
