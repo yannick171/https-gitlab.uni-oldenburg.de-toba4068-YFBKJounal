@@ -33,6 +33,10 @@
 }
 [class*="randomArticleSlot"] > p{
   font-size: 1.5em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
 }
 
 .box-1{

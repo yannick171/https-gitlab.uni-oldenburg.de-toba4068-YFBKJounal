@@ -147,7 +147,7 @@
         if ($(window).width() < 768) {
            range = 2;
         }
-        else if($(window).width() < 384){
+        else if($(window).width() < 600){
            range = 1;
         }
         else{
@@ -213,6 +213,7 @@
 
               },fadeSpeed);
       });
+
     })
   </script>
 </body>
