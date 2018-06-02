@@ -1,0 +1,41 @@
+{
+  "article1":{
+    "owner" : "user1",
+    "title" : "Wie benutze ich php? - 1",
+    "authors": "Kirill",
+    "uploadDate" : "01.04.2018",
+    "status" : "0"
+  },
+
+  "article2":{
+    "owner" : "user1",
+    "title" : "Wie benutze ich php? - 2",
+    "authors": "KirillBenny",
+    "uploadDate" : "02.04.2018",
+    "status" : "1"
+  },
+
+  "article3":{
+    "owner" : "user1",
+    "title" : "Wie benutze ich php? - 3",
+    "authors": "KirillBennyFenno",
+    "uploadDate" : "03.04.2018",
+    "status" : "2"
+  },
+
+  "article4":{
+    "owner" : "user1",
+    "title" : "Wie benutze ich php? - 4",
+    "authors": "KirillBennyFennoYannik",
+    "uploadDate" : "04.04.2018",
+    "status" : "3"
+  },
+
+  "article5":{
+    "owner" : "user2",
+    "title" : "Wie benutze ich php? - 5",
+    "authors": "BennyFennoYannik",
+    "uploadDate" : "04.04.2018",
+    "status" : "3"
+  }
+}

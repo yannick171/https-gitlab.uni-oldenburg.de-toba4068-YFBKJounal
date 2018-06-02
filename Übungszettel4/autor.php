@@ -2,14 +2,7 @@
 <html>
     <head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script>
-       $(document).ready(function(){
-    $("button").click(function(){
-        $("form").toggle();
-    });
-    });
-</script>
-        <title>
+    <title>
 			Meine Beiträge - Evolve
 		</title>
         <?php include("ressources/snippets/globalsources.php") ?>
@@ -17,147 +10,195 @@
         <link rel = "stylesheet" type="text/css" href = "ressources/autorseite/autorseite.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 	<!--	<link href = "ressources/css/article.css" rel= "stylesheet"> -->
-		<link href = "ressources/css/countdown.css" rel = "stylesheet">
+	<!--	<link href = "ressources/css/countdown.css" rel = "stylesheet">-->
 	</head>
 
 	<body>
 
 		 <?php include ("ressources/snippets/head.php") ;?>
-<!--
-		<script>
-			// Set the date we're counting down to
-			var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
 
-			// Update the count down every 1 second
-			var x = setInterval(function() {
-
-				// Get todays date and time
-				var now = new Date().getTime();
-
-				// Find the distance between now an the count down date
-				var distance = countDownDate - now;
-
-				// Time calculations for days, hours, minutes and seconds
-				var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
-				distance -= weeks * (1000 * 60 * 60 * 24 * 7);
-				var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-				distance -= days * (1000 * 60 * 60 * 24);
-				var hours = Math.floor(distance / (1000 * 60 * 60));
-				distance -= hours * (1000 * 60 * 60);
-				var minutes = Math.floor(distance / (1000 * 60));
-
-				// Output the result in an element with id="demo"
-				document.getElementById("cdw").innerHTML = weeks;
-				document.getElementById("cdd").innerHTML = days;
-				document.getElementById("cdm").innerHTML = hours;
-				document.getElementById("cds").innerHTML = minutes;
-
-				// If the count down is over, write some text
-				if (distance < 0) {
-					clearInterval(x);
-					document.getElementById("demo").innerHTML = "EXPIRED";
-				}
-			}, 1000);
-		</script>
-
-         <div class = "jumbotron">
-             <div id="countdown">
-                 <div id="cdhead">
-                     Countdown wie lange noch Artikel für die Ausgabe angenommen werden :
-                 </div>
-                 <div id="cdtime">
-                     <ul>
-                         <li><span id="cdw">5</span> Wochen</li>
-                         <li><span id="cdd"> 3</span> Tage</li>
-                         <li><span id="cdm">17</span> Stunden</li>
-                         <li><span id="cds">50</span> Minuten</li>
-                     </ul>
-                 </div>
-             </div>
-         </div>
--->
 <div class="hintergrundbild" >
+	<main class="defaultstyle">
+    <div class="wrapper">
+      <?php
+        $string = file_get_contents("ressources/json/user.json");
+        $user = json_decode($string, true);
 
-		<main class="defaultstyle">
+        echo '<div class="autorInfobox">';
+        echo "<strong>Name: </strong>" . $user[user1]["nachname"] . '<br><br>';
+        echo "<strong>Vorname: </strong>" . $user[user1]["vorname"] . "<br><br>" ;
+        echo "<strong>E-Mail: </strong>" . $user[user1]["email"] . "<br><br>" ;
+        echo '</div>';
 
-			<div class="einreichenButton">
-				<button type = "button"  class = "btn btn-primary" data-toggle= "modal" data-target= "#einreichenModal" id ="bigfont">
-					Beitrag einreichen:
-				</button><br>
-			</div>
-			<div class = "outerContainer">
-			<div class = "einreichenContainer">
-			<div class="defaultstyle">
-                <form class="einreichen">
-				<!--	<aside class="aside1">-->
-                    <div class="form-group">
-                    <label for="name" class="col-form-label">
-                        Titel:
-                    </label>
-                    <input type="name" class="form-control" id="TitelName">
-                    </div>
-                    <div class="form-group">
-                        <label for="name" class="col-form-label">
-                            Autor/in:
-                        </label>
-                        <input type="name" class="form-control" id="AutorName" style="align-text:center;">
-                    </div>
-					<div class="form-group">
-                    <label for="name" class="col-form-label">
-                        Datei hinzufügen:
-					</label>
-                    <input  list="liste" type="file" name="pdf" class="form-control" id="PdfName">
-                    </div>
-					<!--</aside>-->
+        echo '<div class="autorIntrobox">';
+        echo $user[user1]["infoText"] . "<br><br>" ;
+        echo '</div>';
+      ?>
+      <div class="uploadArea">
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="startUpload">Neuen Artikel einreichen</button>
+      <div>
+          <form class="uploadAreaInvisible" id="uploadArea">
+            <div class="form-group">
+              <label for="uploadFile">Artikel hochloaden:</label>
+              <input type="file" class="form-control-file" id="uploadFile">
+            </div>
+            <div class="form-group">
+              <label for="articleTitle">Titel:</label>
+              <textarea class="form-control" id="articleTitle" rows="1"></textarea>
+            </div>
+            <div id="autorInput">
+              <label>Autor(en)</label>
+                <div class="form-row">
+                </div>
+            </div>
+              <div class="form-group">
+                <label for="abstract">Kurze Inhaltsangabe:</label>
+                <textarea class="form-control" id="abstract" rows="10"></textarea>
+              </div>
+              <button class="btn-primary" id="artikelEinreichen" >Einreichen</button>
+          </form>
+      </div>
+      <div class="articleInformation-1">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-warning">
+                <th scope="col">#</th>
+                <th scope="col">In Bearbeitung</th>
+                <th scope="col">
+                  Autor(en)
+                </th>
+                <th scope="col">Eingereicht am</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                $string = file_get_contents("ressources/json/article.json");
+                $articleInfos = json_decode($string,true);
 
-					<!--<aside class="aside2">-->
-					<label for="name" class="col-form-label">
-                        <p><strong>Checklist für Beiträge</strong>
-					</label>
-                    <div class = "form-check">
-						<input type = "checkbox" class = "form-check-input" id = "autorCheck" name="opt[]"
-                            value="">
-                        <label class = "form-check-label">Der Beitrag ist bisher unveröffentlicht und wurde auch keiner anderen Zeitschrift vorgelegt.</label>
-                    </div>
-					<div class = "form-check">
-						<input type = "checkbox" class = "form-check-input" id = "autorCheck" name="opt[]"
-                            value="">
-                        <label class = "form-check-label">Der Text folgt den stilistischen und bibliografischen Vorgaben, die in den jeweiligen <a href="Rubrikenrichtlinien" > Rubrikenrichtlinien</a> zu fin­den sind.</label>
-                    </div>
-				    <div class = "form-check">
-						<input type = "checkbox" class = "form-check-input" id = "autorCheck" name="opt[]"
-                            value="">
-                        <label class = "form-check-label">Der oder die Autor_in versichert, die allgemein gültigen Standards wissenschaftlicher Arbeit berücksichtigt und sämtliche genutzte Bilder, Grafiken und Texte Dritter kenntlich gemacht zu haben machen.</label>
-                    </div>
-					<label for="name" class="col-form-label">
-                        <p><strong>Copyright-Vermerk</strong>
-					</label>
-					<div class = "form-check">
-						<input type = "checkbox" class = "form-check-input" id = "autorCheck" name="opt[]"
-                            value="">
-                        <label class = "form-check-label">Die Autor/innen stimmen den Bestimmungen dieser Copyright-Regelungen zu, die für diesen Beitrag im Falle einer Veröffentlichung Anwendung finden. (Kommentare für die Redaktion können weiter unten angefügt werden.)</label>
-                    </div>
-					<label for="name" class="col-form-label">
-                        <p><strong>Erklärung zum Schutz persönlicher Daten in dieser Zeitschrift</strong>
-					</label>
-                      <p>
-                        Namen und E-Mail-Adressen, die in diesem Onlineangebot eingegeben werden (bspw. bei der Registrierung von Nutzern), werden ausschließlich zu den angegebenen Zwecken genutzt und nicht an Dritte weitergegeben.
-                        Namen der Autor_innen werden mit den Artikeln veröffentlicht.
-                        </p>
-					   <div action="/actions_page.php" style = "text-align = right;">
-                             <button class = "btn btn-primary" type="submit">
-								 Artikel einreichen
-						   </button>
-                           </div>
-						<!--</aside>-->
+                $counterWaiting = 1;
+                foreach ($articleInfos as $key) {
+                  if ($key["owner"] != "user1" || $key["status"] != "0") {
+                    continue;
+                  };
+                  echo '<tr><th scope="row">'.$counterWaiting++. '</th>';
+                  echo '<td>'.$key["title"]. '</td>';
+                  echo '<td>'.$key["authors"]. '</td>';
+                  echo '<td>'.$key["uploadDate"]. '</td>';
+                  echo "</tr>";
+                };
+              ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-                </form>
-				</div>
-				</div>
-				</div>
-		</main>
-  </div>
+      <div class="articleInformation-2">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-success">
+                <th scope="col">#</th>
+                <th scope="col">Angenommene Artikel</th>
+                <th scope="col">
+                  Autor(en)
+                </th>
+                <th scope="col">Eingereicht am</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                $string = file_get_contents("ressources/json/article.json");
+                $articleInfos = json_decode($string,true);
+
+                $counterAccepted = 1;
+                foreach ($articleInfos as $key) {
+                  if ($key["owner"] != "user1" || $key["status"] != "1") {
+                    continue;
+                  };
+                  echo '<tr><th scope="row">'.$counterAccepted++. '</th>';
+                  echo '<td>'.$key["title"]. '</td>';
+                  echo '<td>'.$key["authors"]. '</td>';
+                  echo '<td>'.$key["uploadDate"]. '</td>';
+                  echo "</tr>";
+                };
+              ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="articleInformation-3">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-danger">
+                <th scope="col">#</th>
+                <th scope="col">Abgelehnte Artikel</th>
+                <th scope="col">
+                  Autor(en)
+                </th>
+                <th scope="col">Eingereicht am</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                $string = file_get_contents("ressources/json/article.json");
+                $articleInfos = json_decode($string,true);
+
+                $counterAbgelehnt = 1;
+                foreach ($articleInfos as $key) {
+                  if ($key["owner"] != "user1" || $key["status"] != "2") {
+                    continue;
+                  };
+                  echo '<tr><th scope="row">'.$counterAbgelehnt++. '</th>';
+                  echo '<td>'.$key["title"]. '</td>';
+                  echo '<td>'.$key["authors"]. '</td>';
+                  echo '<td>'.$key["uploadDate"]. '</td>';
+                  echo "</tr>";
+                };
+              ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div>
+    </div>
+	</main>
+</div>
         <?php include ("ressources/snippets/footer.php") ;?>
         <?php include ("ressources/snippets/loadjavascript.php") ;?>
+
+        <script>
+
+          $(document).ready(function(){
+            var autorCounter = 0;
+            var newFirstNameId, newLastNameId, newAutor;
+
+            var updateAutor=function(){
+              $("#autorInput").append(newAutor);
+              autorCounter++;
+              newFirstNameId = "vorname-" + autorCounter.toString();
+              newLastNameId ="nachname-" +autorCounter.toString();
+              newAutor = $('<div class="form-row"></div').html('<div class="col-md-4 mb-3"><input type="text" class="form-control" id="vorname-'+ autorCounter.toString() + '"  placeholder="Vorname"></div>'
+                          + '<div class="col-md-4 mb-3"><input type="text" class="form-control" id="nachname-'+ autorCounter.toString() + '"  placeholder="Nachname"></div>');
+              $("#autorInput").append(newAutor);
+            }
+
+            updateAutor();
+
+            $("#autorInput").on("change", "input", function(){
+              if ($("#"+newFirstNameId).val() && $("#"+newLastNameId).val()) {
+                $("#"+newLastNameId +",#"+newFirstNameId).unbind("change");
+                updateAutor();
+              }
+            });
+
+            $("#startUpload").click(function(){
+                $("#uploadArea").toggle();
+            });
+          });
+        </script>
     </body>
 </html>
