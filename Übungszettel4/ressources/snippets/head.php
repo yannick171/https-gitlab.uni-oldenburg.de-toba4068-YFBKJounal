@@ -1,3 +1,27 @@
+<?php
+  $email = $passwort ="";
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $passwort = $_POST["pw"];
+
+    $string = file_get_contents("../json/user.json");
+    $user = json_decode($string, true);
+
+    foreach ($user as $key) {
+      if($key["email"] != $email){
+        continue;
+      }else {
+        if($key["passwort"]!= $passwort){
+          echo "falsches pw";
+          break;
+        }
+         echo "<meta http-equiv='refresh' content='0'>";
+      }
+    }
+  }
+?>
+
 <!-- Start Cookie Plugin -->
 <script type="text/javascript">
   window.cookieconsent_options = {
@@ -66,35 +90,31 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="loginModallLongTitle">Anmeldung</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
             </div>
             <div class="modal-body">
-                <form method="post">
-                    <div class="form-group">
-                    <label for="email" class="col-form-label">
-                        E-Mail:
-                    </label>
-                    <input type="email" class="form-control" id="usr">
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="col-form-label">
-                            Passwort:
-                        </label>
-                        <input type="password" class="form-control" id="pwd">
-                    </div>
-                    <div class = "form-check">
-                        <input type = "checkbox" class = "form-check-input" id = "autorCheck">
-                        <label class = "form-check-label">Als Autor anmelden</label>
-                    </div>
-                </form>
+              <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                <div class="form-group">
+                  <label for="email" class="col-form-label">
+                      E-Mail:
+                  </label>
+                  <input type="email" class="form-control" id="usr" name="email">
+                </div>
+                <div class="form-group">
+                  <label for="password" class="col-form-label">
+                      Passwort:
+                  </label>
+                  <input type="password" class="form-control" id="pwd" name="pw">
+                </div>
             </div>
             <div class="modal-footer">
-                <button style="width:100%;" type="button" class="btn btn-primary" id = "loginButton">
-                    Einloggen
-                </button>
+              <button style="width:100%;" type="submit" class="btn btn-primary" id = "loginButton">
+                  Einloggen
+              </button>
             </div>
+          </form>
         </div>
     </div>
 </div>
