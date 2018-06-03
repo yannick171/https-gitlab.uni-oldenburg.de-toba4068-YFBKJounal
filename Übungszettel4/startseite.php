@@ -1,3 +1,7 @@
+<?php
+  include("ressources/snippets/session.php")
+ ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -214,6 +218,12 @@
               },fadeSpeed);
       });
 
+      $("#logout-Button,#login-Button").on("click", function(){
+        <?php $_SESSION["logout"] = "logout";
+          echo htmlspecialchars($_SERVER["PHP_SELF"]);
+          echo "test";
+        ?>
+      });
     })
   </script>
 </body>

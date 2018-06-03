@@ -1,3 +1,34 @@
+<?php
+  $email = $passwort ="";
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $passwort = $_POST["pw"];
+
+    $string = file_get_contents("ressources/json/user.json");
+    $user = json_decode($string, true);
+    foreach ($user as $key) {
+      if($key["email"] != $email){
+        continue;
+      }else {
+        if($key["passwort"]!= $passwort){
+          echo "falsches pw";
+          break;
+        }
+        $_SESSION["email"] = $email;
+        $_SESSION["nachname"] = $key["nachname"];
+        $_SESSION["vorname"] = $key["vorname"];
+        $_SESSION["infoText"] = $key["infoText"];
+
+        echo $_SESSION["email"];
+        echo $_SESSION["nachname"];
+        echo $_SESSION["vorname"];
+        echo $_SESSION["infoText"];
+      }
+    }
+  }
+?>
+
 <!-- Start Cookie Plugin -->
 <script type="text/javascript">
   window.cookieconsent_options = {
@@ -18,11 +49,17 @@
                 <i class="material-icons">exit_to_app</i>  Registrieren
               </button>
             </li>
-          <li class="nav-item">
-            <button style="background:transparent; color:white;" type = "button" class= "btn" data-toggle= "modal" data-target= "#loginModal" id ="bigfont">
-                <i class="material-icons">perm_identity</i> Anmelden
-            </button>
-          </li>
+            <li class="nav-item" id ="logout-Button" >
+              <form method="post" action="startseite.php">
+                <button style="background:transparent; color:white;" type = "button" class= "btn" name="logout">
+                  <i class="material-icons">perm_identity</i> Abmelden
+                </button>
+              </form>
+            </li>
+            <li id="login-button">
+              <button style="background:transparent; color:white;" type = "button" class= "btn" data-toggle= "modal" data-target= "#login-modal" id ="bigfont">
+                <i class="material-icons">perm_identity</i> Anmelden</button>
+            </li>
         </ul>
 </div>
 
@@ -51,50 +88,46 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-md-auto">
-            <li style="" class="nav-item">
-              <form class="form-inline my-2 my-sm-0" >
-                  <button style="background: transparent; color: white; float:right;" class="btn my-2 my-sm-0" data-toggle= "modal" data-target= "#searchModal" type="button" aria-expanded="false"><i class="material-icons">search</i></button>
+            <li class="nav-item">
+              <form style="display: block !important" class="form-inline my-2 my-sm-0" >
+                  <button style=" background: transparent; color: white; float:right;" class="btn my-2 my-sm-0" data-toggle= "modal" data-target= "#searchModal" type="button" aria-expanded="false"><i class="material-icons">search</i></button>
               </form>
             </li>
         </ul>
     </div>
 </nav>
 
-<!-- Beispiel Modal aus https://getbootstrap.com/docs/4.0/components/modal/#tooltips-and-popovers -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
+<!-- Beispiel Modal aus https://getbootstrap.com/docs/4.0/components/modal/#tooltips-and-popovers-->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="loginModallLongTitle">Anmeldung</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                    <label for="email" class="col-form-label">
-                        E-Mail:
-                    </label>
-                    <input type="email" class="form-control" id="usr">
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="col-form-label">
-                            Passwort:
-                        </label>
-                        <input type="password" class="form-control" id="pwd">
-                    </div>
-                    <div class = "form-check">
-                        <input type = "checkbox" class = "form-check-input" id = "autorCheck">
-                        <label class = "form-check-label">Als Autor anmelden</label>
-                    </div>
-                </form>
+              <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                <div class="form-group">
+                  <label for="email" class="col-form-label">
+                      E-Mail:
+                  </label>
+                  <input type="email" class="form-control" id="usr" name="email">
+                </div>
+                <div class="form-group">
+                  <label for="password" class="col-form-label">
+                      Passwort:
+                  </label>
+                  <input type="password" class="form-control" id="pwd" name="pw">
+                </div>
             </div>
             <div class="modal-footer">
-                <button style="width:100%;" type="button" class="btn btn-primary" id = "loginButton">
-                    Einloggen
-                </button>
+              <button style="width:100%;" type="submit" class="btn btn-primary" id = "loginButton">
+                  Einloggen
+              </button>
             </div>
+          </form>
         </div>
     </div>
 </div>
@@ -111,4 +144,3 @@
         </div>
     </div>
 </div>
-
