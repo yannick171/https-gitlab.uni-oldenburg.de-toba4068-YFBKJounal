@@ -3,7 +3,7 @@
  ?>
 
 <?php
-  print_r($_POST);
+
   $message = $error = '';
 
   if ( isset($_POST["titlename"]) && isset($_POST["abstract"]) ) {
@@ -12,17 +12,16 @@
     $append = array(
       "owner" => $_SESSION["email"],
       "abstract" => $_POST["abstract"],
-      "title" => $_POST["titelname"],
+      "title" => $_POST["titlename"],
       "authors"=> $_POST["autorvorname-1"] . " " . $_POST["autornachname-1"],
       "uploadDate" => "",
       "status" => "0"
     );
-    echo "bin ich hier drinne <br />";
+
     array_push($articles, $append);
-    print_r($articles);
-    json_encode($articles);
-      file_put_contents($articles, $append);
-      echo "geklappt";
+    $newFile = json_encode($articles);
+
+    file_put_contents("ressources/json/article.json", $newFile);
   }
  ?>
 <!DOCTYPE html>
