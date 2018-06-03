@@ -5,9 +5,8 @@
     $email = $_POST["email"];
     $passwort = $_POST["pw"];
 
-    $string = file_get_contents("../json/user.json");
+    $string = file_get_contents("ressources/json/user.json");
     $user = json_decode($string, true);
-
     foreach ($user as $key) {
       if($key["email"] != $email){
         continue;
@@ -16,7 +15,15 @@
           echo "falsches pw";
           break;
         }
-         echo "<meta http-equiv='refresh' content='0'>";
+        $_SESSION["email"] = $email;
+        $_SESSION["nachname"] = $key["nachname"];
+        $_SESSION["vorname"] = $key["vorname"];
+        $_SESSION["infoText"] = $key["infoText"];
+
+        echo $_SESSION["email"];
+        echo $_SESSION["nachname"];
+        echo $_SESSION["vorname"];
+        echo $_SESSION["infoText"];
       }
     }
   }
@@ -42,11 +49,17 @@
                 <i class="material-icons">exit_to_app</i>  Registrieren
               </button>
             </li>
-          <li class="nav-item">
-            <button style="background:transparent; color:white;" type = "button" class= "btn" data-toggle= "modal" data-target= "#login-modal" id ="bigfont">
-                <i class="material-icons">perm_identity</i> Anmelden
-            </button>
-          </li>
+            <li class="nav-item" id ="logout-Button" >
+              <form method="post" action="startseite.php">
+                <button style="background:transparent; color:white;" type = "button" class= "btn" name="logout">
+                  <i class="material-icons">perm_identity</i> Abmelden
+                </button>
+              </form>
+            </li>
+            <li id="login-button">
+              <button style="background:transparent; color:white;" type = "button" class= "btn" data-toggle= "modal" data-target= "#login-modal" id ="bigfont">
+                <i class="material-icons">perm_identity</i> Anmelden</button>
+            </li>
         </ul>
 </div>
 

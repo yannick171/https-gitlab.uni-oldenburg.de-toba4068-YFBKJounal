@@ -1,5 +1,5 @@
-{
-    "user1": {
+[
+    {
       "email" : "kirill.antropov@gmx.net",
       "passwort": "spell12345",
       "vorname": "Kirill",
@@ -8,7 +8,7 @@
       "infoText": "Schwerpunkt: Stochastische und statistische Anwendungen in der Versicherungsmathematik"
     },
 
-    "user2": {
+    {
       "email" : "benny@kp.net",
       "passwort": "coolio1234",
       "vorname": "benny",
@@ -17,7 +17,7 @@
       "infoText": "Schwerpunkt: Smoke weed ery day"
     },
 
-    "user3": {
+    {
       "email" : "fenno@gmx.net",
       "passwort": "coolio123",
       "vorname": "Fenno",
@@ -26,7 +26,7 @@
       "infoText": "Schwerpunkt: Spiele programmieren und so"
     },
 
-    "user4": {
+    {
       "email" : "yannik@gmx.net",
       "passwort": "coolio12",
       "vorname": "Yannik",
@@ -34,4 +34,4 @@
       "regDate": "01.01.0000",
       "infoText": "Schwerpunkt: Wie manage ich meinen Partylifestyle mit dem Unialltag?"
     }
-}
+]

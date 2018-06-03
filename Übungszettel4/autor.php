@@ -1,3 +1,30 @@
+<?php
+  include("ressources/snippets/session.php")
+ ?>
+
+<?php
+  print_r($_POST);
+  $message = $error = '';
+
+  if ( isset($_POST["titlename"]) && isset($_POST["abstract"]) ) {
+    $string = file_get_contents("ressources/json/article.json");
+    $articles = json_decode($string,true);
+    $append = array(
+      "owner" => $_SESSION["email"],
+      "abstract" => $_POST["abstract"],
+      "title" => $_POST["titelname"],
+      "authors"=> $_POST["autorvorname-1"] . " " . $_POST["autornachname-1"],
+      "uploadDate" => "",
+      "status" => "0"
+    );
+    echo "bin ich hier drinne <br />";
+    array_push($articles, $append);
+    print_r($articles);
+    json_encode($articles);
+      file_put_contents($articles, $append);
+      echo "geklappt";
+  }
+ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,35 +52,34 @@
         $user = json_decode($string, true);
 
         echo '<div class="autorInfobox">';
-        echo "<strong>Name: </strong>" . $user[user1]["nachname"] . '<br><br>';
-        echo "<strong>Vorname: </strong>" . $user[user1]["vorname"] . "<br><br>" ;
-        echo "<strong>E-Mail: </strong>" . $user[user1]["email"] . "<br><br>" ;
+        echo "<strong>Name: </strong>" . $_SESSION["nachname"] . '<br><br>';
+        echo "<strong>Vorname: </strong>" . $_SESSION["vorname"] . "<br><br>" ;
+        echo "<strong>E-Mail: </strong>" . $_SESSION["email"] . "<br><br>" ;
         echo '</div>';
 
         echo '<div class="autorIntrobox">';
-        echo $user[user1]["infoText"] . "<br><br>" ;
+        echo $_SESSION["infoText"] . "<br><br>" ;
         echo '</div>';
       ?>
       <div class="uploadArea">
         <button type="button" class="btn btn-primary btn-lg btn-block" id="startUpload">Neuen Artikel einreichen</button>
       <div>
-          <form class="uploadAreaInvisible" id="uploadArea">
+          <form method="post" action="" class="uploadAreaInvisible" id="uploadArea">
             <div class="form-group">
               <label for="uploadFile">Artikel hochloaden:</label>
-              <input type="file" class="form-control-file" id="uploadFile">
+              <input type="file" class="form-control-file" id="uploadFile" name="file">
             </div>
             <div class="form-group">
               <label for="articleTitle">Titel:</label>
-              <textarea class="form-control" id="articleTitle" rows="1"></textarea>
+              <textarea class="form-control" id="articleTitle" rows="1" name="titlename" required></textarea>
             </div>
             <div id="autorInput">
               <label>Autor(en)</label>
-                <div class="form-row">
-                </div>
+
             </div>
               <div class="form-group">
                 <label for="abstract">Kurze Inhaltsangabe:</label>
-                <textarea class="form-control" id="abstract" rows="10"></textarea>
+                <textarea class="form-control" id="abstract" rows="10" name="abstract"></textarea>
               </div>
               <button class="btn-primary" id="artikelEinreichen" >Einreichen</button>
           </form>
@@ -78,7 +104,7 @@
 
                 $counterWaiting = 1;
                 foreach ($articleInfos as $key) {
-                  if ($key["owner"] != "user1" || $key["status"] != "0") {
+                  if ($key["owner"] != $_SESSION["email"] || $key["status"] != "0") {
                     continue;
                   };
                   echo '<tr><th scope="row">'.$counterWaiting++. '</th>';
@@ -113,7 +139,7 @@
 
                 $counterAccepted = 1;
                 foreach ($articleInfos as $key) {
-                  if ($key["owner"] != "user1" || $key["status"] != "1") {
+                  if ($key["owner"] != $_SESSION["email"] || $key["status"] != "1") {
                     continue;
                   };
                   echo '<tr><th scope="row">'.$counterAccepted++. '</th>';
@@ -148,7 +174,7 @@
 
                 $counterAbgelehnt = 1;
                 foreach ($articleInfos as $key) {
-                  if ($key["owner"] != "user1" || $key["status"] != "2") {
+                  if ($key["owner"] != $_SESSION["email"] || $key["status"] != "2") {
                     continue;
                   };
                   echo '<tr><th scope="row">'.$counterAbgelehnt++. '</th>';
@@ -181,8 +207,8 @@
               autorCounter++;
               newFirstNameId = "vorname-" + autorCounter.toString();
               newLastNameId ="nachname-" +autorCounter.toString();
-              newAutor = $('<div class="form-row"></div').html('<div class="col-md-4 mb-3"><input type="text" class="form-control" id="vorname-'+ autorCounter.toString() + '"  placeholder="Vorname"></div>'
-                          + '<div class="col-md-4 mb-3"><input type="text" class="form-control" id="nachname-'+ autorCounter.toString() + '"  placeholder="Nachname"></div>');
+              newAutor = $('<div class="form-row"></div').html('<div class="col-md-4 mb-3"><input name="autor'+newFirstNameId+'" type="text" class="form-control" id="vorname-'+ autorCounter.toString() + '"  placeholder="Vorname"></div>'
+                          + '<div class="col-md-4 mb-3"><input name="autor'+newLastNameId+'" type="text" class="form-control" id="nachname-'+ autorCounter.toString() + '"  placeholder="Nachname"></div>');
               $("#autorInput").append(newAutor);
             }
 
