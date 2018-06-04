@@ -19,11 +19,7 @@
         $_SESSION["nachname"] = $key["nachname"];
         $_SESSION["vorname"] = $key["vorname"];
         $_SESSION["infoText"] = $key["infoText"];
-
-        echo $_SESSION["email"];
-        echo $_SESSION["nachname"];
-        echo $_SESSION["vorname"];
-        echo $_SESSION["infoText"];
+        $_SESSION["loggedIn"] = "true";
       }
     }
   }
@@ -49,17 +45,18 @@
                 <i class="material-icons">exit_to_app</i>  Registrieren
               </button>
             </li>
-            <li class="nav-item" id ="logout-Button" >
-              <form method="post" action="startseite.php">
-                <button style="background:transparent; color:white;" type = "button" class= "btn" name="logout">
-                  <i class="material-icons">perm_identity</i> Abmelden
-                </button>
-              </form>
-            </li>
-            <li id="login-button">
-              <button style="background:transparent; color:white;" type = "button" class= "btn" data-toggle= "modal" data-target= "#login-modal" id ="bigfont">
-                <i class="material-icons">perm_identity</i> Anmelden</button>
-            </li>
+            <?php
+            if (isset($_SESSION["loggedIn"])){
+              echo '<li class="nav-item" id ="logout-Button" >';
+              echo '<a href="ressources/snippets/logout.php" style="color:white;" >';
+              echo '<i class="material-icons">perm_identity</i> Abmelden</a></li>';
+              echo 'Willkommen '. $_SESSION["vorname"] ." " . $_SESSION["nachname"];
+            }else{
+            echo '<li id="login-button">';
+            echo '<button style="background:transparent; color:white;" type = "button" class= "btn" data-toggle= "modal" data-target= "#login-modal" id ="bigfont">';
+            echo '<i class="material-icons">perm_identity</i> Anmelden</button>';
+            }
+            ?>
         </ul>
 </div>
 
@@ -82,10 +79,7 @@
             <li  style="" class="nav-item">
                 <a class="nav-link" href="about.php">Über uns</a>
             </li>
-            <li class="nav-item" id = "Profil">
-                <a class="nav-link" href="autor.php"></a>
-
-            </li>
+            <?php if (isset($_SESSION["loggedIn"])) {echo '<li class="nav-item" id = "Profil"><a class="nav-link" href="autor.php">Meine Beiträge</a></li>'; }?>
         </ul>
         <ul class="navbar-nav ml-md-auto">
             <li class="nav-item">

@@ -1,3 +1,7 @@
+<?php
+  include("ressources/snippets/session.php");
+ ?>
+
 <!DOCTYPE html>
 <html lang = "de">
     <head>

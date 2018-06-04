@@ -1,3 +1,7 @@
+<?php
+  include("ressources/snippets/session.php");
+ ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,16 +23,16 @@
 		<script>
 			// Set the date we're counting down to
 			var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
-	
+
 			// Update the count down every 1 second
 			var x = setInterval(function() {
-	
+
 				// Get todays date and time
 				var now = new Date().getTime();
-				
+
 				// Find the distance between now an the count down date
 				var distance = countDownDate - now;
-				
+
 				// Time calculations for days, hours, minutes and seconds
 				var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
 				distance -= weeks * (1000 * 60 * 60 * 24 * 7);
@@ -37,14 +41,14 @@
 				var hours = Math.floor(distance / (1000 * 60 * 60));
 				distance -= hours * (1000 * 60 * 60);
 				var minutes = Math.floor(distance / (1000 * 60));
-				
+
 				// Output the result in an element with id="demo"
 				document.getElementById("cdw").innerHTML = weeks;
 				document.getElementById("cdd").innerHTML = days;
 				document.getElementById("cdm").innerHTML = hours;
 				document.getElementById("cds").innerHTML = minutes;
-				
-				// If the count down is over, write some text 
+
+				// If the count down is over, write some text
 				if (distance < 0) {
 					clearInterval(x);
 					document.getElementById("demo").innerHTML = "EXPIRED";
@@ -67,8 +71,8 @@
                  </div>
              </div>
          </div>
-		
-		
+
+
 		<!--<main class="defaultstyle">
 			<h1>Redakteur Profil</h1>
             <article>
@@ -245,9 +249,9 @@
                 </div>
             </div>
             <h1>
-                Nächste Ausgabe: 
+                Nächste Ausgabe:
             </h1>
-						
+
 			<div class = "nextMagazine">
                 <div class = "parentContainer">
                     <div class = "containerElement">
@@ -287,7 +291,7 @@
                                     Beschreibung ändern
                                 </button>
                             </div>
-                            
+
                        </div>
                     </div>
                     <div class  = "containerElement">

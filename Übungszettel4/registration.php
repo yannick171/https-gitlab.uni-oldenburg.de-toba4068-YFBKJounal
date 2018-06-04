@@ -1,3 +1,7 @@
+<?php
+  include("ressources/snippets/session.php");
+ ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,7 +38,7 @@
                     </div>
                     <p id = "error">
                     </p>
-                    
+
                 </form>
 				<button onclick="validateForm()">Registrieren</button>
             </div>

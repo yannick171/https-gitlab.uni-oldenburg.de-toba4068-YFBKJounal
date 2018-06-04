@@ -1,5 +1,5 @@
 <?php
-  include("ressources/snippets/session.php")
+  include("ressources/snippets/session.php");
  ?>
 
 <?php
@@ -7,6 +7,7 @@
   $message = $error = '';
 
   if ( isset($_POST["titlename"]) && isset($_POST["abstract"]) ) {
+    echo "komme ich hier rein, ";
     $string = file_get_contents("ressources/json/article.json");
     $articles = json_decode($string,true);
     $append = array(
@@ -21,7 +22,12 @@
     array_push($articles, $append);
     $newFile = json_encode($articles);
 
-    file_put_contents("ressources/json/article.json", $newFile);
+    if (!is_writeable("ressources/json/article.json")) {
+      echo "nicht writeable, ";
+    }
+    if(file_put_contents("ressources/json/article.json", $newFile)){echo "erfolgreich hochgeladen";}else {
+      echo "nicht hochgeladen";
+    };
   }
  ?>
 <!DOCTYPE html>
@@ -46,20 +52,21 @@
 <div class="hintergrundbild" >
 	<main class="defaultstyle">
     <div class="wrapper">
-      <?php
-        $string = file_get_contents("ressources/json/user.json");
-        $user = json_decode($string, true);
+        <?php
+          $string = file_get_contents("ressources/json/user.json");
+          $user = json_decode($string, true);
 
-        echo '<div class="autorInfobox">';
-        echo "<strong>Name: </strong>" . $_SESSION["nachname"] . '<br><br>';
-        echo "<strong>Vorname: </strong>" . $_SESSION["vorname"] . "<br><br>" ;
-        echo "<strong>E-Mail: </strong>" . $_SESSION["email"] . "<br><br>" ;
-        echo '</div>';
+          echo '<div class="autorInfobox autorInformationStyle">';
+          echo "<strong>Name: </strong>" . $_SESSION["nachname"] . '<br><br>';
+          echo "<strong>Vorname: </strong>" . $_SESSION["vorname"] . "<br><br>" ;
+          echo "<strong>E-Mail: </strong>" . $_SESSION["email"] . "<br><br>" ;
+          echo '</div>';
 
-        echo '<div class="autorIntrobox">';
-        echo $_SESSION["infoText"] . "<br><br>" ;
-        echo '</div>';
-      ?>
+          echo '<div class="autorIntrobox autorInformationStyle">';
+          echo $_SESSION["infoText"] . "<br><br>" ;
+          echo '</div>';
+        ?>
+      </div>
       <div class="uploadArea">
         <button type="button" class="btn btn-primary btn-lg btn-block" id="startUpload">Neuen Artikel einreichen</button>
       <div>
@@ -76,11 +83,12 @@
               <label>Autor(en)</label>
 
             </div>
-              <div class="form-group">
-                <label for="abstract">Kurze Inhaltsangabe:</label>
-                <textarea class="form-control" id="abstract" rows="10" name="abstract"></textarea>
-              </div>
-              <button class="btn-primary" id="artikelEinreichen" >Einreichen</button>
+            <button type="button" class="btn btn-info" id="newAutorButton">weiteren Autor hinzufügen</button>
+            <div class="form-group">
+              <label for="abstract">Kurze Inhaltsangabe:</label>
+              <textarea class="form-control" id="abstract" rows="10" name="abstract"></textarea>
+            </div>
+            <button class="btn-primary" id="artikelEinreichen" >Einreichen</button>
           </form>
       </div>
       <div class="articleInformation-1">
@@ -191,7 +199,6 @@
     <div>
     </div>
 	</main>
-</div>
         <?php include ("ressources/snippets/footer.php") ;?>
         <?php include ("ressources/snippets/loadjavascript.php") ;?>
 
@@ -202,23 +209,25 @@
             var newFirstNameId, newLastNameId, newAutor;
 
             var updateAutor=function(){
-              $("#autorInput").append(newAutor);
               autorCounter++;
               newFirstNameId = "vorname-" + autorCounter.toString();
               newLastNameId ="nachname-" +autorCounter.toString();
-              newAutor = $('<div class="form-row"></div').html('<div class="col-md-4 mb-3"><input name="autor'+newFirstNameId+'" type="text" class="form-control" id="vorname-'+ autorCounter.toString() + '"  placeholder="Vorname"></div>'
+              newAutor = $('<div class="form-row"></div>').html('<div class="form-row" id="autor-'+autorCounter.toString()+'"></div>').html('<button style="" id="removeButton-' + autorCounter.toString() + '" style="background:transparent;" type = "button" class= "btn " name="logout"><i class="material-icons">clear</i></button><div class="col-md-4 mb-3"><input name="autor'+newFirstNameId+'" type="text" class="form-control" id="vorname-'+ autorCounter.toString() + '"  placeholder="Vorname"></div>'
                           + '<div class="col-md-4 mb-3"><input name="autor'+newLastNameId+'" type="text" class="form-control" id="nachname-'+ autorCounter.toString() + '"  placeholder="Nachname"></div>');
               $("#autorInput").append(newAutor);
-            }
 
+            }
             updateAutor();
 
-            $("#autorInput").on("change", "input", function(){
-              if ($("#"+newFirstNameId).val() && $("#"+newLastNameId).val()) {
-                $("#"+newLastNameId +",#"+newFirstNameId).unbind("change");
-                updateAutor();
-              }
+            $("#autorInput").on("click","button", function(){
+              $(this).parent().remove();
             });
+
+            $("#newAutorButton").on("click", function(){
+              updateAutor();
+            });
+
+
 
             $("#startUpload").click(function(){
                 $("#uploadArea").toggle();
