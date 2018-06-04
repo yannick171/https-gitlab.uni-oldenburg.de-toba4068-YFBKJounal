@@ -8,7 +8,7 @@
 
   if ( isset($_POST["titlename"]) && isset($_POST["abstract"]) ) {
     echo "komme ich hier rein, ";
-    $string = file_get_contents("ressources/json/article.json");
+    $string = file_get_contents("ressources/json/articles.json");
     $articles = json_decode($string,true);
     $append = array(
       "owner" => $_SESSION["email"],
@@ -22,10 +22,10 @@
     array_push($articles, $append);
     $newFile = json_encode($articles);
 
-    if (!is_writeable("ressources/json/article.json")) {
+    if (!is_writeable("ressources/json/articles.json")) {
       echo "nicht writeable, ";
     }
-    if(file_put_contents("ressources/json/article.json", $newFile)){echo "erfolgreich hochgeladen";}else {
+    if(file_put_contents("ressources/json/articles.json", $newFile)){echo "erfolgreich hochgeladen";}else {
       echo "nicht hochgeladen";
     };
   }
@@ -106,7 +106,7 @@
             </thead>
             <tbody>
               <?php
-                $string = file_get_contents("ressources/json/article.json");
+                $string = file_get_contents("ressources/json/articles.json");
                 $articleInfos = json_decode($string,true);
 
                 $counterWaiting = 1;
@@ -141,7 +141,7 @@
             </thead>
             <tbody>
               <?php
-                $string = file_get_contents("ressources/json/article.json");
+                $string = file_get_contents("ressources/json/articles.json");
                 $articleInfos = json_decode($string,true);
 
                 $counterAccepted = 1;
@@ -176,7 +176,7 @@
             </thead>
             <tbody>
               <?php
-                $string = file_get_contents("ressources/json/article.json");
+                $string = file_get_contents("ressources/json/articles.json");
                 $articleInfos = json_decode($string,true);
 
                 $counterAbgelehnt = 1;
