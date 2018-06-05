@@ -38,11 +38,43 @@
 				if(isset($_GET['search']))
 				{
 					echo '
-					
 					<h2>
-						Suchergibnix:
+						Suchergibnix für '.$_GET['search'].':
 					</h2>
 					';
+					
+					//Alle Artikel holen und anzeigen
+					$string = file_get_contents("ressources/json/article.json");
+					$articles = json_decode($string,true);
+					$results = array();
+					foreach($articles as $key)
+					{
+						$meinString = $key["title"];
+						$findMich   = $_GET['search'];
+						$pos = strpos($meinString, $findMich);
+
+						if ($pos === false) 
+						{
+						}
+						else 
+						{
+							array_push($results, $key);
+						}
+					}
+					
+					if(count($results) > 0)
+					{
+						echo '<ul>';
+						foreach($results as $key)
+						{
+							echo '<li>'.$key["title"].'</li>';
+						}
+						echo '</ul>';
+					}
+					else
+					{
+						echo 'Keine Suchergebnisse zu '.$_GET['search'].' gefunden!';
+					}
 				}
 				else
 				{
