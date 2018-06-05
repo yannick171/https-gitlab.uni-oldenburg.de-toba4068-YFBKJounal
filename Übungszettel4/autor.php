@@ -16,31 +16,10 @@ $articles = json_decode($string,true);
       if(file_put_contents("ressources/json/article.json", $updatedArticles)){}else {
         echo "nicht hochgeladen";
       };
+      header("autor.php");
     }else {
       continue;
     }
-  }
-
-  if ( isset($_POST["titlename"]) && isset($_POST["abstract"]) ) {
-    $append = array(
-      "owner" => $_SESSION["email"],
-      "abstract" => $_POST["abstract"],
-      "title" => $_POST["titlename"],
-      "authors"=> $_POST["autorvorname-1"] . " " . $_POST["autornachname-1"],
-      "uploadDate" => date("r"),
-      "status" => "0"
-    );
-
-    $_POST["titlename"] ="";
-    array_push($articles, $append);
-    $newFile = json_encode($articles);
-
-    if (!is_writeable("ressources/json/article.json")) {
-      echo "nicht writeable, ";
-    }
-    if(file_put_contents("ressources/json/article.json", $newFile)){}else {
-      echo "nicht hochgeladen";
-    };
   }
  ?>
 <!DOCTYPE html>
@@ -83,7 +62,7 @@ $articles = json_decode($string,true);
       <div class="uploadArea">
         <button type="button" class="btn btn-primary btn-lg btn-block" id="startUpload">Neuen Artikel einreichen</button>
       <div>
-          <form method="post" action="" class="uploadAreaInvisible" id="uploadArea">
+          <form method="post" action="ressources/snippets/uploadFile.php" class="uploadAreaInvisible" id="uploadArea">
             <div class="form-group">
               <label for="uploadFile">Artikel hochloaden:</label>
               <input type="file" class="form-control-file" id="uploadFile" name="file">
@@ -227,13 +206,12 @@ $articles = json_decode($string,true);
               autorCounter++;
               newFirstNameId = "vorname-" + autorCounter.toString();
               newLastNameId ="nachname-" +autorCounter.toString();
-              newAutor = $('<div class="form-row"></div>').html('<div class="form-row" id="autor-'+autorCounter.toString()+'"></div>').html('<button style="" id="removeButton-' + autorCounter.toString() + '" style="background:transparent;" type = "button" class= "btn " name="logout"><i class="material-icons">clear</i></button><div class="col-md-4 mb-3"><input name="autor'+newFirstNameId+'" type="text" class="form-control" id="vorname-'+ autorCounter.toString() + '"  placeholder="Vorname"></div>'
+              newAutor = $('<div class="form-row"></div>').html('<div class="form-row" id="autor-'+autorCounter.toString()+'"></div>').html('<button style="" id="removeButton-' + autorCounter.toString() + '" style="background-color:transparent;" type = "button" class= "btn " name="logout"><i class="material-icons">clear</i></button><div class="col-md-4 mb-3"><input name="autor'+newFirstNameId+'" type="text" class="form-control" id="vorname-'+ autorCounter.toString() + '"  placeholder="Vorname"></div>'
                           + '<div class="col-md-4 mb-3"><input name="autor'+newLastNameId+'" type="text" class="form-control" id="nachname-'+ autorCounter.toString() + '"  placeholder="Nachname"></div>');
               $("#autorInput").append(newAutor);
 
             }
             updateAutor();
-
 
             $("#autorInput").on("click","button", function(){
               $(this).parent().remove();
@@ -242,8 +220,6 @@ $articles = json_decode($string,true);
             $("#newAutorButton").on("click", function(){
               updateAutor();
             });
-
-
 
             $("#startUpload").click(function(){
                 $("#uploadArea").toggle();

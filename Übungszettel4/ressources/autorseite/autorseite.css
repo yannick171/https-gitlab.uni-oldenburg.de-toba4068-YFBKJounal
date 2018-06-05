@@ -2,6 +2,15 @@
   display: none;
 }
 
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
 .autorInfobox{
   grid-area: box-1;
   padding-left: 5%;

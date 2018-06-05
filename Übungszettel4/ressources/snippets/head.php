@@ -14,8 +14,8 @@
         continue;
       }else {
         if($key["passwort"]!= $passwort){
+          echo "falsches pw";
           break;
-
         }
         $_SESSION["email"] = $email;
         $_SESSION["nachname"] = $key["nachname"];
@@ -27,7 +27,7 @@
   }
 ?>
 
-<!-- Start Cookie Plugin --
+<!-- Start Cookie Plugin -->
 <script type="text/javascript">
   window.cookieconsent_options = {
   message: 'Diese Website nutzt Cookies, um bestmögliche Funktionalität bieten zu können.',
