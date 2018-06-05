@@ -2,18 +2,20 @@
   $email = $passwort ="";
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //print_r($_SESSION);
     $email = $_POST["email"];
     $passwort = $_POST["pw"];
 
     $string = file_get_contents("ressources/json/user.json");
     $user = json_decode($string, true);
+
     foreach ($user as $key) {
       if($key["email"] != $email){
         continue;
       }else {
         if($key["passwort"]!= $passwort){
-          echo "falsches pw";
           break;
+
         }
         $_SESSION["email"] = $email;
         $_SESSION["nachname"] = $key["nachname"];
@@ -25,7 +27,7 @@
   }
 ?>
 
-<!-- Start Cookie Plugin -->
+<!-- Start Cookie Plugin --
 <script type="text/javascript">
   window.cookieconsent_options = {
   message: 'Diese Website nutzt Cookies, um bestmögliche Funktionalität bieten zu können.',

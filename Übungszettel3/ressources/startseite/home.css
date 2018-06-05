@@ -1,0 +1,18 @@
+body
+{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+
+}
+.titelbild
+{
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+/*general Stuff*/
+* 
+{
+    box-sizing: border-box;
+}

@@ -7,25 +7,25 @@
   $message = $error = '';
 
   if ( isset($_POST["titlename"]) && isset($_POST["abstract"]) ) {
-    echo "komme ich hier rein, ";
-    $string = file_get_contents("ressources/json/articles.json");
+    $string = file_get_contents("ressources/json/article.json");
     $articles = json_decode($string,true);
     $append = array(
       "owner" => $_SESSION["email"],
       "abstract" => $_POST["abstract"],
       "title" => $_POST["titlename"],
       "authors"=> $_POST["autorvorname-1"] . " " . $_POST["autornachname-1"],
-      "uploadDate" => "",
+      "uploadDate" => date("r"),
       "status" => "0"
     );
 
+    $_POST["titlename"] ="";
     array_push($articles, $append);
     $newFile = json_encode($articles);
 
-    if (!is_writeable("ressources/json/articles.json")) {
+    if (!is_writeable("ressources/json/article.json")) {
       echo "nicht writeable, ";
     }
-    if(file_put_contents("ressources/json/articles.json", $newFile)){echo "erfolgreich hochgeladen";}else {
+    if(file_put_contents("ressources/json/article.json", $newFile)){}else {
       echo "nicht hochgeladen";
     };
   }
@@ -91,7 +91,7 @@
             <button class="btn-primary" id="artikelEinreichen" >Einreichen</button>
           </form>
       </div>
-      <div class="articleInformation-1">
+      <div class="articleInformation-1" id="uploads">
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
@@ -106,15 +106,15 @@
             </thead>
             <tbody>
               <?php
-                $string = file_get_contents("ressources/json/articles.json");
+                $string = file_get_contents("ressources/json/article.json");
                 $articleInfos = json_decode($string,true);
 
-                $counterWaiting = 1;
+                $counterWaiting = 0;
                 foreach ($articleInfos as $key) {
                   if ($key["owner"] != $_SESSION["email"] || $key["status"] != "0") {
                     continue;
                   };
-                  echo '<tr><th scope="row">'.$counterWaiting++. '</th>';
+                  echo '<tr><th scope="row"><button id="'.$counterWaiting++.'"><i class="material-icons">clear</i></button></th>';
                   echo '<td>'.$key["title"]. '</td>';
                   echo '<td>'.$key["authors"]. '</td>';
                   echo '<td>'.$key["uploadDate"]. '</td>';
@@ -141,7 +141,7 @@
             </thead>
             <tbody>
               <?php
-                $string = file_get_contents("ressources/json/articles.json");
+                $string = file_get_contents("ressources/json/article.json");
                 $articleInfos = json_decode($string,true);
 
                 $counterAccepted = 1;
@@ -176,7 +176,7 @@
             </thead>
             <tbody>
               <?php
-                $string = file_get_contents("ressources/json/articles.json");
+                $string = file_get_contents("ressources/json/article.json");
                 $articleInfos = json_decode($string,true);
 
                 $counterAbgelehnt = 1;
@@ -219,6 +219,7 @@
             }
             updateAutor();
 
+            
             $("#autorInput").on("click","button", function(){
               $(this).parent().remove();
             });
