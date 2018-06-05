@@ -3,12 +3,25 @@
  ?>
 
 <?php
+$string = file_get_contents("ressources/json/article.json");
+$articles = json_decode($string,true);
 
   $message = $error = '';
 
+  foreach ($_POST as $name => $value) {
+    if ($value=="Löschen") {
+      unset($articles[substr($name,-1)]);
+      $articleValues = array_values($articles);
+      $updatedArticles = json_encode($articleValues);
+      if(file_put_contents("ressources/json/article.json", $updatedArticles)){}else {
+        echo "nicht hochgeladen";
+      };
+    }else {
+      continue;
+    }
+  }
+
   if ( isset($_POST["titlename"]) && isset($_POST["abstract"]) ) {
-    $string = file_get_contents("ressources/json/article.json");
-    $articles = json_decode($string,true);
     $append = array(
       "owner" => $_SESSION["email"],
       "abstract" => $_POST["abstract"],
@@ -112,9 +125,10 @@
                 $counterWaiting = 0;
                 foreach ($articleInfos as $key) {
                   if ($key["owner"] != $_SESSION["email"] || $key["status"] != "0") {
+                    $counterWaiting++;
                     continue;
                   };
-                  echo '<tr><th scope="row"><button id="'.$counterWaiting++.'"><i class="material-icons">clear</i></button></th>';
+                  echo '<form action="" method="post"><tr><th scope="row"><input value="Löschen" type="submit" name="removeArticleButton-'.$counterWaiting++.'" id="'.$counterWaiting.'"></form></th>';
                   echo '<td>'.$key["title"]. '</td>';
                   echo '<td>'.$key["authors"]. '</td>';
                   echo '<td>'.$key["uploadDate"]. '</td>';
@@ -208,6 +222,7 @@
             var autorCounter = 0;
             var newFirstNameId, newLastNameId, newAutor;
 
+
             var updateAutor=function(){
               autorCounter++;
               newFirstNameId = "vorname-" + autorCounter.toString();
@@ -219,7 +234,7 @@
             }
             updateAutor();
 
-            
+
             $("#autorInput").on("click","button", function(){
               $(this).parent().remove();
             });
