@@ -135,8 +135,11 @@
                 <h6 class="modal-title" id="searchModalLongTitle">Suche im Archiv nach..</h6>
             </div>
             <div class="modal-body">
-              <input class="form-control mr-sm-2" type="search" placeholder="..." aria-label="Search">
-            </div>
+			  <form method="get" action="archiv.php" name="search">
+                <input class="form-control mr-sm-2" name="search" type="search" placeholder="...">
+                <i class="fa fa-search"></i>
+              </form>
+			</div>
         </div>
     </div>
 </div>
