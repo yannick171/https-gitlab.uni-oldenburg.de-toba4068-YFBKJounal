@@ -24,7 +24,7 @@
 
   <div class="footer-right">
 
-    <form method="get" action="#">
+    <form method="get" action="archiv.php">
       <input placeholder="Search our website" name="search" />
       <i class="fa fa-search"></i>
     </form>
