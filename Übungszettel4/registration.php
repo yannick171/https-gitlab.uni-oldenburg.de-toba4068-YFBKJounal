@@ -10,12 +10,45 @@
         <link rel = "stylesheet" type="text/css" href = "ressources/registrierungsseite/registrierung_style_sheet.css">
     </head>
     <body>
-		<script src = "ressources/js/formvalid.js"></script>
         <?php include ("ressources/snippets/head.php");?>
+
+		<?php
+			if(isset($_POST["email"]))
+			{
+				$string = file_get_contents("ressources/json/user.json");
+				$articles = json_decode($string);
+				$newUser = array
+				(
+					"email" => $_POST["email"],
+					"passwort" => $_POST["pswd"],
+					"vorname" => $_POST["firstname"],
+					"nachname" => $_POST["lastname"],
+					"regDate" => date("d.m.Y"),
+					"infoText" => "Leer"
+				);
+				
+				array_push($articles, $newUser);
+				$string = json_encode($articles, JSON_PRETTY_PRINT);
+				file_put_contents("ressources/json/user.json", $string);
+				
+				echo'
+		<main class="defaultstyle">
+            <div class ="container">
+                <h2>Registration</h2>
+				<br>
+				Du bist nun registriert!
+			</div>
+		</main>
+				';
+			}
+			else
+			{
+				echo'
+		<script src = "ressources/js/formvalid.js"></script>
         <main class="defaultstyle">
             <div class ="container">
                 <h2>Registration</h2>
-                <form action="/action_page.php" id="registerform">
+                <form action="registration.php" id="registerform" method="post">
                     <div class="form-group">
                         <label for="Name">Name:</label>
                         <input type="text" class="form-control" id="fname" placeholder="Vorname" name="firstname">
@@ -42,7 +75,11 @@
                 </form>
 				<button onclick="validateForm()">Registrieren</button>
             </div>
-        </main>
+        </main>';
+			}
+		?>
+
+		
         <?php include ("ressources/snippets/footer.php") ;?>
         <?php include ("ressources/snippets/loadjavascript.php") ;?>
     </body>

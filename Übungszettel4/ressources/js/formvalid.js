@@ -26,8 +26,6 @@ function validateForm()
 		else
 		{
 			document.getElementById("registerform").submit()
-			
-			window.open("autor.php","_self")
 		}
 	}
 }
