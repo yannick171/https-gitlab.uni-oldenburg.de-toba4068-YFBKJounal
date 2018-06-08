@@ -3,19 +3,27 @@
 
   $string = file_get_contents("../json/article.json");
   $articles = json_decode($string,true);
+    //print_r($_POST);
 
     if ( isset($_POST["titlename"]) && isset($_POST["abstract"]) ) {
-      $append = array(
+      $counter = -1;
+      $authors ="";
+        while((++$counter) <= $_POST["authorCounter"]){
+            if (!isset($_POST["autorvorname-". ($counter)])){continue;};
+            $authors = $authors . $_POST["autorvorname-". ($counter)] . " " . $_POST["autornachname-". ($counter)] . ", ";
+        }
+
+      $append = [
         "owner" => $_SESSION["email"],
         "abstract" => $_POST["abstract"],
         "title" => $_POST["titlename"],
-        "authors"=> $_POST["autorvorname-1"] . " " . $_POST["autornachname-1"],
         "uploadDate" => date("r"),
+        "authors"=> substr($authors,0, (strlen($auhors)-2)),
         "status" => "0"
-      );
+      ];
 
       array_push($articles, $append);
-      $newFile = json_encode($articles);
+      $newFile = json_encode($articles,JSON_PRETTY_PRINT);
 
       if (!is_writeable("../json/article.json")) {
         echo "nicht writeable, ";

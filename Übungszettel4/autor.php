@@ -2,26 +2,6 @@
   include("ressources/snippets/session.php");
  ?>
 
-<?php
-$string = file_get_contents("ressources/json/article.json");
-$articles = json_decode($string,true);
-
-  $message = $error = '';
-
-  foreach ($_POST as $name => $value) {
-    if ($value=="Löschen") {
-      unset($articles[substr($name,-1)]);
-      $articleValues = array_values($articles);
-      $updatedArticles = json_encode($articleValues);
-      if(file_put_contents("ressources/json/article.json", $updatedArticles)){}else {
-        echo "nicht hochgeladen";
-      };
-      header("autor.php");
-    }else {
-      continue;
-    }
-  }
- ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -64,7 +44,7 @@ $articles = json_decode($string,true);
       <div>
           <form method="post" action="ressources/snippets/uploadFile.php" class="uploadAreaInvisible" id="uploadArea">
             <div class="form-group">
-              <label for="uploadFile">Artikel hochloaden:</label>
+              <label for="uploadFile">Artikel hochladen:</label>
               <input type="file" class="form-control-file" id="uploadFile" name="file">
             </div>
             <div class="form-group">
@@ -73,7 +53,7 @@ $articles = json_decode($string,true);
             </div>
             <div id="autorInput">
               <label>Autor(en)</label>
-
+                <input hidden name="authorCounter" value="0" id="anzahlAutoren">
             </div>
             <button type="button" class="btn btn-info" id="newAutorButton">weiteren Autor hinzufügen</button>
             <div class="form-group">
@@ -107,7 +87,7 @@ $articles = json_decode($string,true);
                     $counterWaiting++;
                     continue;
                   };
-                  echo '<form action="" method="post"><tr><th scope="row"><input value="Löschen" type="submit" name="removeArticleButton-'.$counterWaiting++.'" id="'.$counterWaiting.'"></form></th>';
+                  echo '<form action="ressources/snippets/withdrawArticle.php" method="post"><tr><th scope="row"><input value="Zurückziehen" type="submit" name="removeArticleButton-'.$counterWaiting++.'" id="'.$counterWaiting.'"></form></th>';
                   echo '<td>'.$key["title"]. '</td>';
                   echo '<td>'.$key["authors"]. '</td>';
                   echo '<td>'.$key["uploadDate"]. '</td>';
@@ -195,36 +175,6 @@ $articles = json_decode($string,true);
         <?php include ("ressources/snippets/footer.php") ;?>
         <?php include ("ressources/snippets/loadjavascript.php") ;?>
 
-        <script>
-
-          $(document).ready(function(){
-            var autorCounter = 0;
-            var newFirstNameId, newLastNameId, newAutor;
-
-
-            var updateAutor=function(){
-              autorCounter++;
-              newFirstNameId = "vorname-" + autorCounter.toString();
-              newLastNameId ="nachname-" +autorCounter.toString();
-              newAutor = $('<div class="form-row"></div>').html('<div class="form-row" id="autor-'+autorCounter.toString()+'"></div>').html('<button style="" id="removeButton-' + autorCounter.toString() + '" style="background-color:transparent;" type = "button" class= "btn " name="logout"><i class="material-icons">clear</i></button><div class="col-md-4 mb-3"><input name="autor'+newFirstNameId+'" type="text" class="form-control" id="vorname-'+ autorCounter.toString() + '"  placeholder="Vorname"></div>'
-                          + '<div class="col-md-4 mb-3"><input name="autor'+newLastNameId+'" type="text" class="form-control" id="nachname-'+ autorCounter.toString() + '"  placeholder="Nachname"></div>');
-              $("#autorInput").append(newAutor);
-
-            }
-            updateAutor();
-
-            $("#autorInput").on("click","button", function(){
-              $(this).parent().remove();
-            });
-
-            $("#newAutorButton").on("click", function(){
-              updateAutor();
-            });
-
-            $("#startUpload").click(function(){
-                $("#uploadArea").toggle();
-            });
-          });
-        </script>
+         <script src = "ressources/js/authorActionhandler.js"></script>
     </body>
 </html>
