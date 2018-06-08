@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14d278b8-4cf4-4fdb-a613-d125ff148997" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Übungszettel4/ressources/js/authorActionhandler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Übungszettel4/ressources/snippets/withdrawArticle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Übungszettel4/autor.php" beforeDir="false" afterPath="$PROJECT_DIR$/Übungszettel4/autor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Übungszettel4/ressources/json/article.json" beforeDir="false" afterPath="$PROJECT_DIR$/Übungszettel4/ressources/json/article.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Übungszettel4/ressources/snippets/uploadFile.php" beforeDir="false" afterPath="$PROJECT_DIR$/Übungszettel4/ressources/snippets/uploadFile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Übungszettel4/ressources/json/user.json" beforeDir="false" afterPath="$PROJECT_DIR$/Übungszettel4/ressources/json/user.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,7 +13,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="authorActionhandler.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="authorActionhandler.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Übungszettel4/ressources/js/authorActionhandler.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
@@ -27,6 +21,15 @@
               <folding>
                 <element signature="n#style#1;n#button#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Übungszettel4/ressources/json/user.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="750">
+              <caret line="50" column="19" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -69,11 +72,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Übungszettel4/ressources/json/user.json" />
         <option value="$PROJECT_DIR$/Übungszettel4/ressources/snippets/uploadFile.php" />
         <option value="$PROJECT_DIR$/Übungszettel4/ressources/snippets/withdrawArticle.php" />
         <option value="$PROJECT_DIR$/Übungszettel4/ressources/js/authorActionhandler.js" />
         <option value="$PROJECT_DIR$/Übungszettel4/autor.php" />
+        <option value="$PROJECT_DIR$/Übungszettel4/ressources/json/user.json" />
       </list>
     </option>
   </component>
@@ -192,7 +195,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7010000" />
+    <option name="totallyTimeSpent" value="7361000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="27" width="1845" height="1053" extended-state="6" />
@@ -276,13 +279,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Übungszettel4/ressources/json/user.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Übungszettel4/ressources/registrierungsseite/registrierung_style_sheet.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -353,6 +349,13 @@
           <folding>
             <element signature="n#style#1;n#button#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Übungszettel4/ressources/json/user.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="50" column="19" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
         </state>
       </provider>
     </entry>
