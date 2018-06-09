@@ -11,16 +11,68 @@ button {
     outline:none;
 }
 
-.autorInfobox{
-  grid-area: box-1;
+.trennlinie{
+  height: 3px;
+  background: linear-gradient(to right, #ffffff,#f2f2f2,#cccccc,#999999,#595959,#1a1a1a,#595959,#999999,#cccccc,#f2f2f2,#ffffff); 
+  padding: none;
+  margin:none;
+  border:0;
+}
+
+#autorProfilBearbeiten{
+  display: none;
+}
+.changeProfileButton{
+  height: 50px;
+  line-height: 50px;
+  grid-area: changeButton;
+  display: block;
+  font-size: x-large;
+  font-weight: bolder;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  background: linear-gradient(to right, rgb(153, 153, 153, 0.5), rgb(153, 153, 153, 8), rgb(153, 153, 153, 0.5) );
+  -webkit-box-shadow: inset 0px 0px 16px -1px rgba(0,0,0,0.77);
+  -moz-box-shadow: inset 0px 0px 16px -1px rgba(0,0,0,0.77);
+  box-shadow: inset 0px 0px 16px -1px rgba(0,0,0,0.77),
+               0px 0px 16px -2px rgba(0,0,0,0.77);
+}
+
+.zustimmen{
+  padding-left:10%;
+  float: left;
+}
+
+.verwerfen{
+  padding-right: 10%;
+  float:right;
+}
+.changeProfileButton:hover{
+  background-color: white;
+}
+
+.changeProfileButton > a{
+  cursor: pointer;
+}
+
+.metadata{
+  grid-area: metadata;
+  text-align: right;
   padding-left: 5%;
-  padding-top: 5%;
+  padding-top: 20px;
+}
+
+.autorInfobox{
+  text-align: left;
+  grid-area: box-1;
+  padding-top: 20px;
 }
 
 .autorIntrobox{
   grid-area: box-2;
   padding-right: 5%;
-  padding-top: 5%;
+  padding-top: 20px;
 }
 
 [class*="articleInformation-"]{
@@ -50,18 +102,26 @@ button {
   padding-top: 10px;
 }
 
-.wrapper{
-  border-radius: 0px 0px 7px 7px;
-  -moz-border-radius: 0px 0px 7px 7px;
-  -webkit-border-radius: 0px 0px 7px 7px;
-  border: 2px groove #000000;
-  display: grid;
-  grid-gap: 5%;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-rows: minmax(200px,auto);
+.autorInformationWrapper{
+  display:grid;
+  grid-gap: 2px;
+  grid-template-columns: 1fr 2fr;
   grid-template-areas:
-  "box-1 box-2";
-  background-color: #D5B60D;
+}
+
+input{
+  display: inline-block;
+}
+.wrapper{
+  display: grid;
+  grid-gap: 20px;
+  background: linear-gradient(40deg,#f2f2f2, #cccccc, #f2f2f2 );
+  grid-template-columns:0.3fr 0.7fr 2fr;
+  /*grid-auto-rows: minmax(200px,auto);*/
+  grid-template-areas:
+  "changeButton changeButton changeButton"
+  "metadata box-1 box-2";
+
 }
 /*
 .wrapper{

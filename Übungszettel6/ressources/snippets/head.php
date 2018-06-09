@@ -1,31 +1,3 @@
-<?php
-  $email = $passwort ="";
-
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //print_r($_SESSION);
-    $email = $_POST["email"];
-    $passwort = $_POST["pw"];
-
-    $string = file_get_contents("ressources/json/user.json");
-    $user = json_decode($string, true);
-
-    foreach ($user as $key) {
-      if($key["email"] != $email){
-        continue;
-      }else {
-        if($key["passwort"]!= $passwort){
-          echo "falsches pw";
-          break;
-        }
-        $_SESSION["email"] = $email;
-        $_SESSION["nachname"] = $key["nachname"];
-        $_SESSION["vorname"] = $key["vorname"];
-        $_SESSION["infoText"] = $key["infoText"];
-        $_SESSION["loggedIn"] = "true";
-      }
-    }
-  }
-?>
 
 <!-- Start Cookie Plugin -->
 <script type="text/javascript">
@@ -104,7 +76,7 @@
                   </button>
             </div>
             <div class="modal-body">
-              <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+              <form action="ressources/snippets/loginvalidation.php" method="post">
                 <div class="form-group">
                   <label for="email" class="col-form-label">
                       E-Mail:

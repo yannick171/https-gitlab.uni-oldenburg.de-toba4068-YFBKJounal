@@ -23,22 +23,13 @@
 
 <div class="hintergrundbild" >
 	<main class="defaultstyle">
-    <div class="wrapper">
-        <?php
-          $string = file_get_contents("ressources/json/user.json");
-          $user = json_decode($string, true);
+    <div class="trennlinie" ></div>
 
-          echo '<div class="autorInfobox autorInformationStyle">';
-          echo "<strong>Name: </strong>" . $_SESSION["nachname"] . '<br><br>';
-          echo "<strong>Vorname: </strong>" . $_SESSION["vorname"] . "<br><br>" ;
-          echo "<strong>E-Mail: </strong>" . $_SESSION["email"] . "<br><br>" ;
-          echo '</div>';
+    <!--- Profil  --->
+      <?php include ("ressources/snippets/profile.php"); ?>
+      <script src = "ressources/js/changeProfile.js"></script>
 
-          echo '<div class="autorIntrobox autorInformationStyle">';
-          echo $_SESSION["infoText"] . "<br><br>" ;
-          echo '</div>';
-        ?>
-      </div>
+    <div class="trennlinie"></div>
       <div class="uploadArea">
         <button type="button" class="btn btn-primary btn-lg btn-block" id="startUpload">Neuen Artikel einreichen</button>
       <div>

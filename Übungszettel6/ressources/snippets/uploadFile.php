@@ -25,6 +25,8 @@
       array_push($articles, $append);
       $newFile = json_encode($articles,JSON_PRETTY_PRINT);
 
+      //print_r($newFile);
+
       if (!is_writeable("../json/article.json")) {
         echo "nicht writeable, ";
       }

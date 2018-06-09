@@ -5,7 +5,7 @@
         "vorname": "Kirill",
         "nachname": "Antropov",
         "regDate": "31.05.2018",
-        "infoText": "Schwerpunkt: Stochastische und statistische Anwendungen in der Versicherungsmathematik"
+        "infoText": "Schwerpunkt: Stochastische und statistische Anwendungen in der Versicherungsmathematik Stochastische und statistische Anwendungen in der Versicherungsmathematik Stochastische und statistische Anwendungen in der Versicherungsmathematik Stochastische und statistische Anwendungen in der Versicherungsmathematik"
     },
     {
         "email": "benny@kp.net",
@@ -53,6 +53,14 @@
         "vorname": "Kiri",
         "nachname": "Antr",
         "regDate": "08.06.2018",
+        "infoText": "Leer"
+    },
+    {
+        "email": "kirill.antropov@gmx.net",
+        "passwort": null,
+        "vorname": null,
+        "nachname": null,
+        "regDate": "09.06.2018",
         "infoText": "Leer"
     }
 ]
