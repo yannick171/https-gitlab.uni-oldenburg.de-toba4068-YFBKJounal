@@ -13,14 +13,16 @@ button {
 
 .autorInfobox{
   grid-area: box-1;
-  padding-left: 5%;
-  padding-top: 5%;
+  padding: 3%;
+  float: left;
+  padding-bottom: none;
 }
 
 .autorIntrobox{
   grid-area: box-2;
-  padding-right: 5%;
-  padding-top: 5%;
+  padding:3%;
+  padding-left: none;
+  padding-bottom: none;
 }
 
 [class*="articleInformation-"]{
@@ -50,7 +52,11 @@ button {
   padding-top: 10px;
 }
 
+
 .wrapper{
+  
+}
+/*.wrapper{
   border-radius: 0px 0px 7px 7px;
   -moz-border-radius: 0px 0px 7px 7px;
   -webkit-border-radius: 0px 0px 7px 7px;
@@ -62,7 +68,7 @@ button {
   grid-template-areas:
   "box-1 box-2";
   background-color: #D5B60D;
-}
+}*/
 /*
 .wrapper{
   display: grid;

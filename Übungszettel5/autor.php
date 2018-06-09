@@ -5,16 +5,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <title>
 			Meine Beiträge - Evolve
 		</title>
+
         <?php include("ressources/snippets/globalsources.php") ?>
 
-        <link rel = "stylesheet" type="text/css" href = "ressources/autorseite/autorseite.css">
+
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
-	<!--	<link href = "ressources/css/article.css" rel= "stylesheet"> -->
-	<!--	<link href = "ressources/css/countdown.css" rel = "stylesheet">-->
+	     	<link href = "ressources/css/article.css" rel= "stylesheet"> -->
+	     	<link href = "ressources/css/countdown.css" rel = "stylesheet">-->
+
+  <!-- Damit ich (Kirill) im Zug ohne Internet arbeiten kann kommentiere ich die CDN's aus --
+        <link rel="stylesheet" type="text/css" href="ressources/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="ressources/css/defaultstyle.css">
+        <link rel= "stylesheet" href="ressources/css/login.css">
+        <link rel= "stylesheet" href="ressources/css/footer-distributed-with-search.css">
+        <link rel = "stylesheet" type="text/css" href = "ressources/autorseite/autorseite.css">-->
+        
 	</head>
 
 	<body>
@@ -24,6 +33,7 @@
 <div class="hintergrundbild" >
 	<main class="defaultstyle">
     <div class="wrapper">
+      <p> buttonplatzhalter um metainformmationen zu verwalten</p>
         <?php
           $string = file_get_contents("ressources/json/user.json");
           $user = json_decode($string, true);
@@ -172,9 +182,11 @@
     <div>
     </div>
 	</main>
-        <?php include ("ressources/snippets/footer.php") ;?>
-        <?php include ("ressources/snippets/loadjavascript.php") ;?>
 
-         <script src = "ressources/js/authorActionhandler.js"></script>
+
+        <?php include ("ressources/snippets/footer.php") ;?>
+        <?php //include ("ressources/snippets/loadjavascript.php") ;?>
+
+         <!--<script src = "ressources/js/authorActionhandler.js"></script>
     </body>
 </html>
