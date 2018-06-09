@@ -1,0 +1,133 @@
+.introimg{
+  display: block;
+  margin:0 auto;
+  width:100%;
+  height: auto;
+  border-radius: 14px 14px 14px 14px;
+}
+
+.randomButton{
+  background-color: none;
+  font-size: 60px !important;
+}
+[class*="box-"]{
+  padding: 5%;
+}
+
+[class*="randomArticleSlot"]{
+  border-radius:          10px 10px 10px 10px;
+  -moz-border-radius:     10px 10px 10px 10px;
+  -webkit-border-radius:  10px 10px 10px 10px;
+  border: 0px solid #000000;
+  border-color: #ff0000 !important;
+  -webkit-transition:opacity 500ms ease-out;
+  -moz-transition:opacity 500ms ease-out;
+  -o-transition:opacity 500ms ease-out;
+  transition:opacity 1000ms ease-out;
+  width: 25%;
+  max-width: 400px;
+  min-width: 300px;
+  height: 300px;
+  background-color: white;
+  margin: 0 auto;
+}
+[class*="randomArticleSlot"] > p{
+  font-size: 1.5em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+}
+
+.box-1{
+  grid-area: box1;
+}
+.box-2{
+  grid-area: box2;
+}
+.box-3{
+  grid-area: preview;
+}
+.box-4{
+  grid-area: article;
+}
+.box-5{
+  grid-area: footer;
+}
+
+.randomArticleSlot-1{
+  grid-area: art1;
+}
+
+.randomArticleSlot-2{
+  grid-area: art2;
+}
+
+.randomArticleSlot-3{
+  grid-area: art3;
+}
+
+.row{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+  ". art1 art2 art3 .";
+  background-color: rgba(0, 0, 0, 0.3);
+
+}
+
+.wrapper{
+    display: grid;
+    grid-gap: 5%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: minmax(200px,auto);
+    grid-template-areas:
+    "box1    box1    box2    box2"
+    "article article article article";
+}
+
+
+@media only screen and (max-width: 768px) {
+
+ .wrapper{
+   margin:0;
+   grid-template-columns: auto;
+   grid-auto-rows: minmax(200px,auto);
+   grid-template-areas:
+   "box1"
+   "box2"
+   "preview"
+   "article"
+ }
+ .randomArticleSlot-3{
+   display: none;
+ }
+
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper{
+    margin:0;
+    grid-template-columns: auto;
+    grid-auto-rows: minmax(200px,auto);
+    grid-template-areas:
+    "box1"
+    "box2"
+    "preview"
+    "article"
+    "footer";
+  }
+  .randomArticleSlot-3{
+    display: none;
+  }
+  .randomArticleSlot-2{
+    display: none;
+  }
+}
+
+ img{
+   width: 90%;
+   height: 70%;
+ }
