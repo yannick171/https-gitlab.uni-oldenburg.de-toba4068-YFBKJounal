@@ -1,0 +1,66 @@
+[
+    {
+        "email": "kirill.antropov@gmx.net",
+        "passwort": "spell12345",
+        "vorname": "Kirill",
+        "nachname": "Antropov",
+        "regDate": "31.05.2018",
+        "infoText": "Schwerpunkt: Stochastische und statistische Anwendungen in der Versicherungsmathematik Stochastische und statistische Anwendungen in der Versicherungsmathematik Stochastische und statistische Anwendungen in der Versicherungsmathematik Stochastische und statistische Anwendungen in der Versicherungsmathematik"
+    },
+    {
+        "email": "benny@kp.net",
+        "passwort": "coolio1234",
+        "vorname": "benny",
+        "nachname": "bennysnachname",
+        "regDate": "03.04.2017",
+        "infoText": "Schwerpunkt: Smoke weed ery day"
+    },
+    {
+        "email": "fenno@gmx.net",
+        "passwort": "coolio123",
+        "vorname": "Fenno",
+        "nachname": "Fennosnachname",
+        "regDate": "31.05.2015",
+        "infoText": "Schwerpunkt: Spiele programmieren und so"
+    },
+    {
+        "email": "yannik@gmx.net",
+        "passwort": "coolio12",
+        "vorname": "Yannik",
+        "nachname": "Yanniksnachname",
+        "regDate": "01.01.0000",
+        "infoText": "Schwerpunkt: Wie manage ich meinen Partylifestyle mit dem Unialltag?"
+    },
+    {
+        "email": "fenno.boomgaarden@t-online.de",
+        "passwort": "fdsafdsa",
+        "vorname": "Fenno",
+        "nachname": "Boomgaarden",
+        "regDate": "05.06.2018",
+        "infoText": "Leer"
+    },
+    {
+        "email": "fdsafsda",
+        "passwort": "fdsafdsa",
+        "vorname": "fdsafsa",
+        "nachname": "fdsafsda",
+        "regDate": "05.06.2018",
+        "infoText": "Leer"
+    },
+    {
+        "email": "a@gmx.net",
+        "passwort": "spell12345",
+        "vorname": "Kiri",
+        "nachname": "Antr",
+        "regDate": "08.06.2018",
+        "infoText": "Leer"
+    },
+    {
+        "email": "kirill.antropov@gmx.net",
+        "passwort": null,
+        "vorname": null,
+        "nachname": null,
+        "regDate": "09.06.2018",
+        "infoText": "Leer"
+    }
+]
