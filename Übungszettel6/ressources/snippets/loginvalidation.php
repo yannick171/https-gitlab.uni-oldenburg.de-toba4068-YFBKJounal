@@ -4,11 +4,11 @@
   $email = $passwort ="";
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //print_r($_SESSION);
+
     $email = $_POST["email"];
     $passwort = $_POST["pw"];
 
-    $string = file_get_contents("ressources/json/user.json");
+    $string = file_get_contents("../json/user.json");
     $user = json_decode($string, true);
 
     foreach ($user as $key) {
@@ -26,7 +26,6 @@
       }
     }
   }
-
   header("Location: ../../startseite.php");
   exit();
 ?>
