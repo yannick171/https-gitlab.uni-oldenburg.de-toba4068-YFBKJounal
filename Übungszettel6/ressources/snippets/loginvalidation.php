@@ -1,8 +1,26 @@
 <?php
   session_start();
 
-  $email = $passwort ="";
+  $email = $_POST["email"];
 
+  $db = new PDO('sqlite:../SQLData/user.db');
+
+  $result = $db -> query("SELECT password FROM user WHERE email='$email'");
+  $row = $result->fetch(PDO::FETCH_ASSOC);
+  print_r($row);
+  if($result == $_POST["pw"]){
+      $_SESSION["email"] = $email;
+      $_SESSION["nachname"] = $key["nachname"];
+      $_SESSION["vorname"] = $key["vorname"];
+      $_SESSION["infoText"] = $key["infoText"];
+      $_SESSION["loggedIn"] = "true";
+  }
+
+  $db = NULL;
+
+  /*header("Location: ../../startseite.php");
+  exit();
+  /*
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = $_POST["email"];
