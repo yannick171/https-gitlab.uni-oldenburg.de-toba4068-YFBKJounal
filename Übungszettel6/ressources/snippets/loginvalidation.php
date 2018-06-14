@@ -1,23 +1,29 @@
 <?php
-  session_start();
+    session_start();
 
-  $email = $_POST["email"];
+    $email = $_POST["email"];
 
-  $db = new PDO('sqlite:../SQLData/user.db');
+    $db = new PDO('sqlite:../SQLData/user.db');
 
-  $result = $db -> query("SELECT password FROM user WHERE email='$email'");
-  $row = $result->fetch(PDO::FETCH_ASSOC);
-  print_r($row);
-  if($result == $_POST["pw"]){
+    $result = $db -> query("SELECT email, firstName, lastName, password, infoText, id FROM user WHERE email='$email'");
+    //print_r($result);
+    $entry = $result->fetch(PDO::FETCH_ASSOC);
+    if($entry["password"] == $_POST["pw"]){
       $_SESSION["email"] = $email;
-      $_SESSION["nachname"] = $key["nachname"];
-      $_SESSION["vorname"] = $key["vorname"];
-      $_SESSION["infoText"] = $key["infoText"];
+      $_SESSION["nachname"] = $entry["firstName"];
+      $_SESSION["vorname"] = $entry["lastName"];
+      $_SESSION["infoText"] = $entry["infoText"];
+      $_SESSION["userId"] = $entry["id"];
       $_SESSION["loggedIn"] = "true";
-  }
+      //echo "alles korrekt";
+    }
 
-  $db = NULL;
+    $db = NULL;
 
+    header("Location: ../../startseite.php");
+    exit();
+
+  //print_r($_SERVER['DOCUMENT_ROOT']);
   /*header("Location: ../../startseite.php");
   exit();
   /*
@@ -43,7 +49,7 @@
         $_SESSION["loggedIn"] = "true";
       }
     }
-  }
-  header("Location: ../../startseite.php");
-  exit();
+  }*/
+ // header("Location: ../../startseite.php");
+  //exit();
 ?>

@@ -69,20 +69,17 @@
             </thead>
             <tbody>
               <?php
-                $string = file_get_contents("ressources/json/article.json");
-                $articleInfos = json_decode($string,true);
-
+              require "ressources/snippets/loadarticles.php";
+              $result = showArticles(0,$_SESSION["userId"]);
                 $counterWaiting = 0;
-                foreach ($articleInfos as $key) {
-                  if ($key["owner"] != $_SESSION["email"] || $key["status"] != "0") {
-                    $counterWaiting++;
-                    continue;
-                  };
-                  echo '<form action="ressources/snippets/withdrawArticle.php" method="post"><tr><th scope="row"><input value="Zurückziehen" type="submit" name="removeArticleButton-'.$counterWaiting++.'" id="'.$counterWaiting.'"></form></th>';
-                  echo '<td>'.$key["title"]. '</td>';
-                  echo '<td>'.$key["authors"]. '</td>';
-                  echo '<td>'.$key["uploadDate"]. '</td>';
-                  echo "</tr>";
+                foreach ($result as $row) {
+                    //print_r($row);
+                    echo '<form action="ressources/snippets/withdrawArticle.php" method="post"><tr><th scope="row"><input value="Zurückziehen" type="submit" name="' . $row["id"] . '"></form></th>';
+                    echo '<td>'.$row["title"]. '</td>';
+                    echo '<td>'.$row["author"]. '</td>';
+                    echo '<td>'.$row["uploadDate"]. '</td>';
+                    echo "</tr>";
+                    ++$counterWaiting;
                 };
               ?>
             </tbody>
@@ -105,20 +102,18 @@
             </thead>
             <tbody>
               <?php
-                $string = file_get_contents("ressources/json/article.json");
-                $articleInfos = json_decode($string,true);
+                  $counterAccepted = 1;
 
-                $counterAccepted = 1;
-                foreach ($articleInfos as $key) {
-                  if ($key["owner"] != $_SESSION["email"] || $key["status"] != "1") {
-                    continue;
+                  $result = showArticles(1,$_SESSION["userId"]);
+                  foreach ($result as $row) {
+                      //print_r($row);
+                      echo '<tr><th scope="row"><input value="Zurückziehen" type="submit" name="removeArticleButton-'.$counterAccepted.'" id="'.$counterAccepted.'"></th>';
+                      echo '<td>'.$row["title"]. '</td>';
+                      echo '<td>'.$row["author"]. '</td>';
+                      echo '<td>'.$row["uploadDate"]. '</td>';
+                      echo "</tr>";
+                      ++$counterAccepted;
                   };
-                  echo '<tr><th scope="row">'.$counterAccepted++. '</th>';
-                  echo '<td>'.$key["title"]. '</td>';
-                  echo '<td>'.$key["authors"]. '</td>';
-                  echo '<td>'.$key["uploadDate"]. '</td>';
-                  echo "</tr>";
-                };
               ?>
             </tbody>
           </table>
@@ -140,20 +135,18 @@
             </thead>
             <tbody>
               <?php
-                $string = file_get_contents("ressources/json/article.json");
-                $articleInfos = json_decode($string,true);
+              $counterAbgelehnt = 1;
 
-                $counterAbgelehnt = 1;
-                foreach ($articleInfos as $key) {
-                  if ($key["owner"] != $_SESSION["email"] || $key["status"] != "2") {
-                    continue;
-                  };
-                  echo '<tr><th scope="row">'.$counterAbgelehnt++. '</th>';
-                  echo '<td>'.$key["title"]. '</td>';
-                  echo '<td>'.$key["authors"]. '</td>';
-                  echo '<td>'.$key["uploadDate"]. '</td>';
+              $result = showArticles(1,$_SESSION["userId"]);
+              foreach ($result as $row) {
+                  //print_r($row);
+                  echo '<tr><th scope="row"><input value="Zurückziehen" type="submit" name="removeArticleButton-'.$counterAbgelehnt.'" id="'.$counterAbgelehnt.'"></th>';
+                  echo '<td>'.$row["title"]. '</td>';
+                  echo '<td>'.$row["author"]. '</td>';
+                  echo '<td>'.$row["uploadDate"]. '</td>';
                   echo "</tr>";
-                };
+                  ++$counterAbgelehnt;
+              };
               ?>
             </tbody>
           </table>

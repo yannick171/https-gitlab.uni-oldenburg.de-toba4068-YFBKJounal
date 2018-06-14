@@ -15,7 +15,7 @@ if (!$userDb ->query($sql)) {
                     infoText TEXT
                     )");
 
-    $userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText) VALUES ('test@text.test','TestVorname', 'TestNachname', 'test', 'Ich bin ein Testprofil')");
+    $userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText) VALUES ('test@test.test','TestVorname', 'TestNachname', 'test', 'Ich bin ein Testprofil')");
 
 }
 

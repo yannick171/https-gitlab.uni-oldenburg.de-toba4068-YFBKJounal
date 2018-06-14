@@ -17,7 +17,7 @@ if (!$articlesDb ->query($sql)) {
                 )");
 
     $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Ich bin ein Titel', 'Ich bin Autoren', 0)");
-
+    $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine weitere Inhaltsangabe', 'Ich bin ein weiterer Titel', 'Ich bin weitere Autoren', 0)");
 }
 
 /* Damit ihr die Daten mal anschauen könnt einfach einkommentieren
