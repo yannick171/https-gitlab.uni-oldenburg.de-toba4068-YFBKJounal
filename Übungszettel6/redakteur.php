@@ -20,7 +20,11 @@ include("ressources/snippets/session.php");
 <body>
 
 <?php include("ressources/snippets/head.php"); ?>
-<script>
+<?php
+include("ressources/SQLData/initArticledb.php");
+?>
+
+<!--script>
     // Set the date we're counting down to
     var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
 
@@ -54,24 +58,7 @@ include("ressources/snippets/session.php");
             document.getElementById("demo").innerHTML = "EXPIRED";
         }
     }, 1000);
-</script>
-
-<div class="jumbotron">
-    <div id="countdown">
-        <div id="cdhead">
-            Countdown wie lange noch Artikel für die Ausgabe angenommen werden :
-        </div>
-        <div id="cdtime">
-            <ul>
-                <li><span id="cdw">5</span> Wochen</li>
-                <li><span id="cdd"> 3</span> Tage</li>
-                <li><span id="cdm">17</span> Stunden</li>
-                <li><span id="cds">50</span> Minuten</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
+</script-->
 <main class="defaultstyle">
     <h1>Redakteur Profil</h1>
     <article>
@@ -119,27 +106,30 @@ include("ressources/snippets/session.php");
         Redakteur Profil</h1>
 
     <?php
-    $content = file_get_contents("ressources/json/article.json");
-    $articles = json_decode($content, true);
+    $articlesDb = new PDO('sqlite:articles.db');
     $toProof = array();
     $proofed = array();
     $nextMagazine = array();
 
-    foreach ($articles as $article) {
-        if (strcmp($article["status"], "0") == 0) {
+    $result = $articlesDb->query('SELECT * FROM article');
+
+    foreach ($result as $article) {
+        if (strcmp($article["statusOfArticle"], "0") == 0) {
             array_push($toProof, $article);
         }
-        if (strcmp($article["status"], "1") == 0) {
+        if (strcmp($article["statusOfArticle"], "1") == 0) {
             array_push($proofed, $article);
         }
-        if (strcmp($article["status"], "0") == 0) {
+        if (strcmp($article["statusOfArticle"], "2") == 0) {
             array_push($nextMagazine, $article);
         }
     }
     ?>
     <h1>Arbeitsbereich</h1>
 
+
     <div class="parentContainer">
+
         <div class="containerElement">
             <h2 id="zuPrüfen" class=workingArea>
                 zu prüfen
@@ -163,39 +153,86 @@ include("ressources/snippets/session.php");
                         . '</div>'
                         . '</div>'
                         . '</div>'
+                        . '<input type="hidden" name="id" value="'. $proof["id"] . '">'
                         . '</li>';
                 }
                 ?>
             </ul>
         </div>
-        <div class="containerElement">
-            <h2 id="geprüft" class="workingArea">
-                geprüft
-            </h2>
-            <ul id="acceptedArticles" class="list-group">
-                <?php
-                foreach ($proofed as $proof) {
-                    $id = uniqid();
-                    echo '<li class = "list-group-item">'
-                        . '<div class="card margin">'
-                        . '<div class="card-header">'
-                        . '<h5 class="mb-0">'
-                        . '<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#' . $id . '" aria-expanded="false" aria-controls="' . $id . '">'
-                        . $proof["title"]
-                        . '</h5>'
-                        . '</div>'
-                        . '<div id="' . $id . '" class="collapse" aria-labelledby="headingFour">'
-                        . '<div class="card-body">'
-                        . $proof["abstract"]
-                        . '</div>'
-                        . '</div>'
-                        . '</div>'
-                        . '</li>';
-                }
-                ?>
-            </ul>
-        </div>
+        <form method="get" action= <?php $_SERVER["PHP_SELF"] ?>>
+            <div class="containerElement">
+                <h2 id="geprüft" class="workingArea">
+                    geprüft
+                </h2>
+                <ul id="acceptedArticles" class="list-group">
+                    <?php
+                    foreach ($proofed as $proof) {
+                        $id = uniqid();
+                        echo '<li class = "list-group-item">'
+                            . '<div class="card margin">'
+                            . '<div class="card-header">'
+                            . '<h5 class="mb-0">'
+                            . '<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#' . $id . '" aria-expanded="false" aria-controls="' . $id . '">'
+                            . $proof["title"]
+                            . '</h5>'
+                            . '</div>'
+                            . '<div id="' . $id . '" class="collapse" aria-labelledby="headingFour">'
+                            . '<div class="card-body">'
+                            . $proof["abstract"]
+                            . '</div>'
+                            . '</div>'
+                            . '</div>'
+                            . '<input type="hidden" name="id" value="'. $proof["id"] . '">'
+                            . '</li>';
+                    }
+                    ?>
+                </ul>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Speichern</button>
+        </form>
     </div>
+    <?php // so muss man das Ding aufspalten, weil php Probleme hat, wenn der String mit einem Delimiter anfängt
+    if(isset($_GET['id'])){
+        $url = $_SERVER['QUERY_STRING'];
+        $idsWitoutAnd = str_replace("&", "", $url);
+        $idsWithSpace = str_replace("id=", " ", $idsWitoutAnd);
+        $split = str_split($idsWithSpace);
+        global $repaired;
+        $length = count($split);
+        for($i = 1; $i <$length; $i++)
+        {
+            $repaired = $repaired . $split[$i];
+        }
+        $idParts = preg_split("/[\s,]+/", $repaired);
+
+        foreach($idParts as $entry)
+        {
+
+            $sql = "UPDATE article SET statusOfArticle = 1 WHERE id = " . $entry;
+            $articlesDb->exec($sql);
+        }
+        /*$getAllElements = $articlesDb->query("SELECT * FROM article");
+        while ($zeile = $getAllElements->fetch()){
+            $isInList = 0;
+            for($i = 0; $i < count($idParts); $i++) {
+                if($zeile["id"] == $idParts[$i])
+                {
+                    $isInList = 1;
+                }
+            }
+            if($isInList == 0)
+            {
+                $deleteZeile = "DELETE FROM article WHERE id = ". $zeile["id"];
+                $articlesDb->exec($deleteZeile);
+            }
+        }
+        /*parse_str($_GET['id'], $ids);
+        echo $ids[0];
+        echo $ids['id'][1];
+        echo $_GET['id'];*/
+    }
+    ?>
+
     <h1>
         Nächste Ausgabe:
     </h1>

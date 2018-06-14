@@ -1,5 +1,6 @@
 <?php
 
+global $articlesDb;
 $articlesDb = new PDO('sqlite:articles.db');
 
 $sql = "SELECT * from article";
@@ -16,10 +17,17 @@ if (!$articlesDb ->query($sql)) {
                     magazine integer 
                 )");
 
-    $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Ich bin ein Titel', 'Ich bin Autoren', 0)");
+    $articlesDb->exec("DElETE FROM article");
 
+    $articlesDb->exec("INSERT IedNTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Erster Artikel', 'Ich bin Autoren', 0)");
+
+    $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Zweiter Artikel', 'Ich bin Autoren', 0)");
+
+    $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Dritter Artikel', 'Ich bin Autoren', 1)");
+    $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Vierter Artikel', 'Ich bin Autoren', 1)");
+    $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Fünfter Artikel', 'Ich bin Autoren', 2)");
+    $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Sechster Artikel', 'Ich bin Autoren', 2)");
 }
-
 /* Damit ihr die Daten mal anschauen könnt einfach einkommentieren
 
 print "<tr><td>Id</td><td>owner</td><td>abstract</td><td>title</td></tr>";
@@ -37,5 +45,5 @@ print "</table>";
 // close the database connection
 $articlesDb = NULL;
 
+
 ?>
-/
