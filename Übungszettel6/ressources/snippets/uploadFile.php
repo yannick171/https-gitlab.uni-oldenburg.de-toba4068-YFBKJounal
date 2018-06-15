@@ -1,38 +1,43 @@
 <?php
-  session_start();
+    session_start();
 
-  $string = file_get_contents("../json/article.json");
-  $articles = json_decode($string,true);
-    //print_r($_POST);
+    if ( isset($_POST["titlename"]) && isset($_POST["abstract"]) ){
 
-    if ( isset($_POST["titlename"]) && isset($_POST["abstract"]) ) {
-      $counter = -1;
-      $authors ="";
+        $id = $_SESSION['userId'];
+        $abstract = $_POST['abstract'];
+        $title = $_POST['titlename'];
+
+        echo $id,$abstract,$title,$authors;
+        $db = new PDO('sqlite:../SQLData/articles.db');
+        $stmt = $db->prepare("INSERT INTO article (owner, abstract, title, author,statusOfArticle, uploadDate) VALUES (:owner,:abstract,:title,:author,:status,:uploadDate)");
+        $stmt->bindParam(":owner",$userid);
+        $stmt->bindParam(":abstract",$abstract);
+        $stmt->bindParam(":title",$title);
+        $stmt->bindParam(":author",$authors);
+        $stmt->bindParam(":uploadDate", $date);
+        $stmt->bindParam(":status", $status);
+
+
+        $counter = -1;
+        $authors ="";
         while((++$counter) <= $_POST["authorCounter"]){
             if (!isset($_POST["autorvorname-". ($counter)])){continue;};
             $authors = $authors . $_POST["autorvorname-". ($counter)] . " " . $_POST["autornachname-". ($counter)] . ", ";
         }
 
-      $append = [
-        "owner" => $_SESSION["email"],
-        "abstract" => $_POST["abstract"],
-        "title" => $_POST["titlename"],
-        "uploadDate" => date("r"),
-        "authors"=> substr($authors,0, (strlen($auhors)-2)),
-        "status" => "0"
-      ];
+        $authors = substr($authors,0,-2);
+        $userid = $_SESSION['userId'];
+        $abstract = $_POST['abstract'];
+        $title = $_POST['titlename'];
+        $date = "heute";
+        $status = 0;
 
-      array_push($articles, $append);
-      $newFile = json_encode($articles,JSON_PRETTY_PRINT);
+        $stmt -> execute();
 
-      //print_r($newFile);
-
-      if (!is_writeable("../json/article.json")) {
-        echo "nicht writeable, ";
-      }
-      if(file_put_contents("../json/article.json", $newFile)){}else {
-        echo "nicht hochgeladen";
-      };
+        $db = NULL;
     }
+    
     header("Location: ../../autor.php");
+    exit();
+
  ?>

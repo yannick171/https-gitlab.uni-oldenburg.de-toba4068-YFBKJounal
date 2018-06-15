@@ -15,11 +15,11 @@ if (!$userDb ->query($sql)) {
                     infoText TEXT
                     )");
 
-    $userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText) VALUES ('test@text.test','TestVorname', 'TestNachname', 'test', 'Ich bin ein Testprofil')");
+    $userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText) VALUES ('test@test.test','TestVorname', 'TestNachname', 'test', 'Ich bin ein Testprofil')");
 
 }
 
-    /* Damit ihr die Daten mal anschauen könnt einfach einkommentieren 
+    /* Damit ihr die Daten mal anschauen könnt einfach einkommentieren*/
 
     print "<tr><td>Id</td><td>Vorname</td><td>nachName</td><td>Beschreibung</td></tr>";
     $result = $userDb->query('SELECT * FROM user');
