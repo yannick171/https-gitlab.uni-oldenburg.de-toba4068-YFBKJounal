@@ -13,33 +13,73 @@
         <?php include ("ressources/snippets/head.php");?>
 
 		<?php
+			$userDb = new PDO('sqlite:ressources\SQLData\user.db');
+			
+			$emailerr = False;
+			
 			if(isset($_POST["email"]))
 			{
-				$string = file_get_contents("ressources/json/user.json");
-				$articles = json_decode($string);
-				$newUser = array
-				(
-					"email" => $_POST["email"],
-					"passwort" => $_POST["pswd"],
-					"vorname" => $_POST["firstname"],
-					"nachname" => $_POST["lastname"],
-					"regDate" => date("d.m.Y"),
-					"infoText" => "Leer"
-				);
+				$sql = "SELECT email FROM user";
 				
-				array_push($articles, $newUser);
-				$string = json_encode($articles, JSON_PRETTY_PRINT);
-				file_put_contents("ressources/json/user.json", $string);
+			    $result = $userDb->query($sql);
+				if ($result) 
+				{
+					foreach($result as $row)
+					{
+						if(strcmp($row['email'], $_POST["email"]) == 0)
+						{
+							//Muh! Es gibt die email schon!
+							$emailerr = True;
+						}
+					}
+				}				
+			}
+		
+			if(isset($_POST["email"]) && !$emailerr)
+			{
 				
+				$sql = "SELECT * FROM user";
+				
+			    if (!$userDb ->query($sql)) {
+					$userDb->exec("CREATE TABLE user (
+									id integer PRIMARY KEY AUTOINCREMENT,
+									email VARCHAR(100),
+									password VARCHAR(100),
+									firstName VARCHAR(20),
+									lastName VARCHAR(20),
+									regDate VARCHAR(20),
+									infoText TEXT
+									)");
+				
+					$userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText) VALUES ('test@test.test','TestVorname', 'TestNachname', 'test', 'Ich bin ein Testprofil')");
+				}
+				
+				
+				$userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText, regDate) VALUES ('" . $_POST["email"] . "','" . $_POST["firstname"] . "', '" . $_POST["lastname"] . "', '" . $_POST["pswd"] . "', '---', '" . date("d.m.Y") . "')");
+
 				echo'
-		<main class="defaultstyle">
-            <div class ="container">
-                <h2>Registration</h2>
-				<br>
-				Du bist nun registriert!
-			</div>
-		</main>
-				';
+				<main class="defaultstyle">
+				<div class ="container">
+					<h2>Registration</h2>
+					<br>
+					Du bist nun registriert!';
+				echo'</div>';
+				print "<tr><td>Id</td><td>Vorname</td><td>nachName</td><td>Beschreibung</td></tr>";
+				$result = $userDb->query('SELECT * FROM user');
+				foreach($result as $row)
+				{
+					print "<tr><td>".$row['id']."</td>";
+					print "<td>".$row['email']."</td>";
+					print "<td>".$row['firstName']."</td>";
+					print "<td>".$row['lastName']."</td>";
+					print "<td>".$row['infoText']."</tr>";
+				}
+				print "</table>";
+				/**/
+				// close the database connection
+				$userDb = NULL;
+	
+				echo'</main>';
 			}
 			else
 			{
@@ -69,7 +109,12 @@
                         <label for="pwdcnf">Passwort wiederholen:</label>
                         <input type="password" class="form-control" id="pwdcnf" placeholder="Retype password" name="pswdcnf">
                     </div>
-                    <p id = "error">
+                    <p id = "error" style="color:red">';
+					if($emailerr)
+					{
+						echo 'Die Angegebene Email existiert bereits!';
+					}
+					echo'
                     </p>
 
                 </form>

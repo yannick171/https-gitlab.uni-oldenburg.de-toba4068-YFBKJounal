@@ -13,7 +13,19 @@ function validateForm()
 	}
 	else
 	{
-		if(document.getElementById("pwd2").value.length < 6)
+		boolean emmailerr = true;
+		
+		if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById("email").value))
+		{
+			emmailerr = false;
+		}
+ 
+		if(emailerr)
+		{
+			document.getElementById("error").innerHTML = "Bitte eine echte Email eingeben!";
+			document.getElementById("error").style="color:red;";
+		}
+		else if(document.getElementById("pwd2").value.length < 6)
 		{
 			document.getElementById("error").innerHTML = "Das Passwort muss mindestens 6 Zeichen lang sein!";
 			document.getElementById("error").style="color:red;";
