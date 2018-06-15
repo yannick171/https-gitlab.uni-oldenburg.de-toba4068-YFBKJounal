@@ -2,9 +2,16 @@
 
 function showArticles($status = "%", $owner = "%")
 {
-    $db = new PDO('sqlite:ressources/SQLData/articles.db');
-    $result = ($db->query("SELECT id, title, author, uploadDate FROM article WHERE statusOfArticle like $status and owner like $owner"));
-    return ($result->fetchAll(PDO::FETCH_ASSOC));
+    try {
+        $db = new PDO('sqlite:ressources/SQLData/articles.db');
+        $db->beginTransaction();
+        $result = ($db->query("SELECT id, title, author, uploadDate FROM article WHERE statusOfArticle like $status and owner like $owner"));
+        $db->rollBack();
+        return ($result->fetchAll(PDO::FETCH_ASSOC));
+    }catch (Exception $e){
+        $db ->rollBack();
+        echo "An error has occurred";
+    }
 }
 
 ?>
