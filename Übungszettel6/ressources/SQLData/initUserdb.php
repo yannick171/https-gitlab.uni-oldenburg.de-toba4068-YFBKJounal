@@ -19,7 +19,7 @@ if (!$userDb ->query($sql)) {
 
 }
 
-    /* Damit ihr die Daten mal anschauen könnt einfach einkommentieren
+    /* Damit ihr die Daten mal anschauen könnt einfach einkommentieren*/
 
     print "<tr><td>Id</td><td>Vorname</td><td>nachName</td><td>Beschreibung</td></tr>";
     $result = $userDb->query('SELECT * FROM user');

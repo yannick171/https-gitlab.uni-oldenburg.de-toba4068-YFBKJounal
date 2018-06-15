@@ -1,11 +1,12 @@
 <?php
 
-$articlesDb = new PDO('sqlite:articles.db');
+global $MagazineDb;
+$MagazineDb = new PDO('sqlite:articles.db');
 
 $sql = "SELECT * from article";
 
-if (!$articlesDb ->query($sql)) {
-    $articlesDb->exec("CREATE TABLE article (
+if (!$MagazineDb ->query($sql)) {
+    $MagazineDb->exec("CREATE TABLE article (
                     id integer PRIMARY KEY AUTOINCREMENT,
                     owner integer,
                     abstract TEXT,
@@ -16,10 +17,16 @@ if (!$articlesDb ->query($sql)) {
                     magazine integer 
                 )");
 
-    $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Ich bin ein Titel', 'Ich bin Autoren', 0)");
-    $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine weitere Inhaltsangabe', 'Ich bin ein weiterer Titel', 'Ich bin weitere Autoren', 0)");
-}
 
+    $MagazineDb->exec("DElETE FROM article");
+
+    $MagazineDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Erster Artikel', 'Ich bin Autoren', 0)");
+    $MagazineDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Zweiter Artikel', 'Ich bin Autoren', 0)");
+    $MagazineDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Dritter Artikel', 'Ich bin Autoren', 1)");
+    $MagazineDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Vierter Artikel', 'Ich bin Autoren', 1)");
+    $MagazineDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Fünfter Artikel', 'Ich bin Autoren', 2)");
+    $MagazineDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Sechster Artikel', 'Ich bin Autoren', 2)");
+}
 /* Damit ihr die Daten mal anschauen könnt einfach einkommentieren
 
 print "<tr><td>Id</td><td>owner</td><td>abstract</td><td>title</td></tr>";
@@ -35,7 +42,7 @@ foreach($result as $row)
 print "</table>";
 /**/
 // close the database connection
-$articlesDb = NULL;
+$MagazineDb = NULL;
+
 
 ?>
-/

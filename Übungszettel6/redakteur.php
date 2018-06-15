@@ -1,4 +1,77 @@
 <?php
+$articlesDb = new PDO('sqlite:articles.db');
+$toProof = array();
+$proofed = array();
+$nextMagazine = array();
+
+$result = $articlesDb->query('SELECT * FROM article');
+
+foreach ($result as $article) {
+    if (strcmp($article["statusOfArticle"], "0") == 0) {
+        array_push($toProof, $article);
+    }
+    if (strcmp($article["statusOfArticle"], "1") == 0) {
+        array_push($proofed, $article);
+    }
+    if (strcmp($article["statusOfArticle"], "2") == 0) {
+        array_push($nextMagazine, $article);
+    }
+}
+
+// so muss man das Ding aufspalten, weil php Probleme hat, wenn der String mit einem Delimiter anfängt
+if(isset($_GET["id"])) {
+    $url = $_SERVER['QUERY_STRING'];
+    $idsWitoutAnd = str_replace("&", "", $url);
+    $idsWithSpace = str_replace("id=", " ", $idsWitoutAnd);
+    $split = str_split($idsWithSpace);
+    global $repaired;
+    $length = count($split);
+    for ($i = 1; $i < $length; $i++) {
+        $repaired = $repaired . $split[$i];
+    }
+    $idParts = preg_split("/[\s,]+/", $repaired);
+}
+if (isset($_GET['id']) && isset($_GET['proofed'])) {
+    foreach ($idParts as $entry) {
+
+        $sql = "UPDATE article SET statusOfArticle = 1 WHERE id = " . $entry;
+        $articlesDb->exec($sql);
+        /*header("Refresh: ". $_SERVER['PHP_SELF']);*/
+        header("location: redakteur.php");
+    }
+}
+if (isset($_GET['id']) && isset($_GET['toProof'])) {
+    foreach ($idParts as $entry) {
+        $sql = "UPDATE article SET statusOfArticle = 0 WHERE id = " . $entry;
+        $articlesDb->exec($sql);
+        //header("Refresh: ". $_SERVER['PHP_SELF']);
+        header("location: redakteur.php");
+    }
+}
+
+
+/*$getAllElements = $articlesDb->query("SELECT * FROM article");
+while ($zeile = $getAllElements->fetch()){
+    $isInList = 0;
+    for($i = 0; $i < count($idParts); $i++) {
+        if($zeile["id"] == $idParts[$i])
+        {
+            $isInList = 1;
+        }
+    }
+    if($isInList == 0)
+    {
+        $deleteZeile = "DELETE FROM article WHERE id = ". $zeile["id"];
+        $articlesDb->exec($deleteZeile);
+    }
+}
+/*parse_str($_GET['id'], $ids);
+echo $ids[0];
+echo $ids['id'][1];
+echo $_GET['id'];*/
+
+?>
+<?php
 include("ressources/snippets/session.php");
 ?>
 
@@ -9,6 +82,8 @@ include("ressources/snippets/session.php");
         Redakteur Profil - Evolve
     </title>
     <?php include("ressources/snippets/globalsources.php") ?>
+    <?php include ("ressources/SQLData/initMagazine.php"); ?>
+    <!--?php include("ressources/redakteurseite/php/updateAccepted.php");?-->
 
     <link rel="stylesheet" type="text/css" href="ressources/redakteurseite/redakteur.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
@@ -20,7 +95,11 @@ include("ressources/snippets/session.php");
 <body>
 
 <?php include("ressources/snippets/head.php"); ?>
-<script>
+<?php
+include("ressources/SQLData/initArticledb.php");
+?>
+
+<!--script>
     // Set the date we're counting down to
     var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
 
@@ -54,24 +133,7 @@ include("ressources/snippets/session.php");
             document.getElementById("demo").innerHTML = "EXPIRED";
         }
     }, 1000);
-</script>
-
-<div class="jumbotron">
-    <div id="countdown">
-        <div id="cdhead">
-            Countdown wie lange noch Artikel für die Ausgabe angenommen werden :
-        </div>
-        <div id="cdtime">
-            <ul>
-                <li><span id="cdw">5</span> Wochen</li>
-                <li><span id="cdd"> 3</span> Tage</li>
-                <li><span id="cdm">17</span> Stunden</li>
-                <li><span id="cds">50</span> Minuten</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
+</script-->
 <main class="defaultstyle">
     <h1>Redakteur Profil</h1>
     <article>
@@ -119,86 +181,96 @@ include("ressources/snippets/session.php");
         Redakteur Profil</h1>
 
     <?php
-    $content = file_get_contents("ressources/json/article.json");
-    $articles = json_decode($content, true);
-    $toProof = array();
-    $proofed = array();
-    $nextMagazine = array();
 
-    foreach ($articles as $article) {
-        if (strcmp($article["status"], "0") == 0) {
-            array_push($toProof, $article);
-        }
-        if (strcmp($article["status"], "1") == 0) {
-            array_push($proofed, $article);
-        }
-        if (strcmp($article["status"], "0") == 0) {
-            array_push($nextMagazine, $article);
-        }
-    }
     ?>
     <h1>Arbeitsbereich</h1>
 
-    <div class="parentContainer">
-        <div class="containerElement">
-            <h2 id="zuPrüfen" class=workingArea>
-                zu prüfen
-            </h2>
-            <ul id="todoArticles" class="list-group">
 
-                <?php
-                foreach ($toProof as $proof) {
-                    $id = uniqid();
-                    echo '<li class = "list-group-item">'
-                        . '<div class="card margin">'
-                        . '<div class="card-header">'
-                        . '<h5 class="mb-0">'
-                        . '<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#' . $id . '" aria-expanded="false" aria-controls="' . $id . '">'
-                        . $proof["title"]
-                        . '</h5>'
-                        . '</div>'
-                        . '<div id="' . $id . '" class="collapse" aria-labelledby="headingFour">'
-                        . '<div class="card-body">'
-                        . $proof["abstract"]
-                        . '</div>'
-                        . '</div>'
-                        . '</div>'
-                        . '</li>';
-                }
-                ?>
-            </ul>
-        </div>
-        <div class="containerElement">
-            <h2 id="geprüft" class="workingArea">
-                geprüft
-            </h2>
-            <ul id="acceptedArticles" class="list-group">
-                <?php
-                foreach ($proofed as $proof) {
-                    $id = uniqid();
-                    echo '<li class = "list-group-item">'
-                        . '<div class="card margin">'
-                        . '<div class="card-header">'
-                        . '<h5 class="mb-0">'
-                        . '<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#' . $id . '" aria-expanded="false" aria-controls="' . $id . '">'
-                        . $proof["title"]
-                        . '</h5>'
-                        . '</div>'
-                        . '<div id="' . $id . '" class="collapse" aria-labelledby="headingFour">'
-                        . '<div class="card-body">'
-                        . $proof["abstract"]
-                        . '</div>'
-                        . '</div>'
-                        . '</div>'
-                        . '</li>';
-                }
-                ?>
-            </ul>
-        </div>
+    <div class="parentContainer">
+        <form method="get" action= <?php $_SERVER['PHP_SELF'] ?>>
+            <div class="containerElement">
+                <h2 id="zuPrüfen" class=workingArea>
+                    zu prüfen
+                </h2>
+                <input type="hidden" name="toProof" value="proof">
+                <ul id="todoArticles" class="list-group">
+
+                    <?php
+                    foreach ($toProof as $proof) {
+                        $id = uniqid();
+                        echo '<li class = "list-group-item">'
+                            . '<div class="card margin">'
+                            . '<div class="card-header">'
+                            . '<h5 class="mb-0">'
+                            . '<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#' . $id . '" aria-expanded="false" aria-controls="' . $id . '">'
+                            . $proof["title"]
+                            . '</h5>'
+                            . '</div>'
+                            . '<div id="' . $id . '" class="collapse" aria-labelledby="headingFour">'
+                            . '<div class="card-body">'
+                            . $proof["abstract"]
+                            . '</div>'
+                            . '</div>'
+                            . '</div>'
+                            . '<input type="hidden" name="id" value="' . $proof["id"] . '">'
+                            . '</li>';
+                    }
+                    ?>
+                </ul>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Speichern</button>
+        </form>
+        <form method="get" action= <?php $_SERVER['PHP_SELF'] ?>>
+            <div class="containerElement">
+                <h2 id="geprüft" class="workingArea">
+                    geprüft
+                </h2>
+                <input type="hidden" name="proofed" value="proof">
+                <ul id="acceptedArticles" class="list-group">
+                    <?php
+                    foreach ($proofed as $proof) {
+                        $id = uniqid();
+                        echo '<li class = "list-group-item">'
+                            . '<div class="card margin">'
+                            . '<div class="card-header">'
+                            . '<h5 class="mb-0">'
+                            . '<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#' . $id . '" aria-expanded="false" aria-controls="' . $id . '">'
+                            . $proof["title"]
+                            . '</h5>'
+                            . '</div>'
+                            . '<div id="' . $id . '" class="collapse" aria-labelledby="headingFour">'
+                            . '<div class="card-body">'
+                            . $proof["abstract"]
+                            . '</div>'
+                            . '</div>'
+                            . '</div>'
+                            . '<input type="hidden" name="id" value="' . $proof["id"] . '">'
+                            . '</li>';
+                    }
+                    ?>
+                </ul>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Speichern</button>
+        </form>
     </div>
+
+
     <h1>
         Nächste Ausgabe:
     </h1>
+    <?php
+    $MagazineDb = new PDO('sqlite:magazines.db');
+    $resultMagazine = $MagazineDb->query('SELECT * FROM Magazine');
+    $newestMagazine = $resultMagazine->fetch();
+    //echo fetchAll($resultMagazine);
+    while ($magazine = $resultMagazine->fetch()) {
+        if (($magazine["id"] > $newestMagazine["id"]) || is_null($newestMagazine)) {
+            $newestMagazine = $magazine;
+        }
+    }
+
+    ?>
+
 
     <div class="nextMagazine">
         <div class="parentContainer">
@@ -208,7 +280,7 @@ include("ressources/snippets/session.php");
                         Titel der Ausgabe
                     </h3>
                     <p id="nextMagazineTitle">
-                        Neuronale Netze unter Vollauslastung
+                        <?php echo $newestMagazine["title"];?>
                     </p>
                     <div class="centerButton">
                         <button type="button" data-toggle="modal" data-target="#modalTitle">
@@ -230,10 +302,7 @@ include("ressources/snippets/session.php");
                         Einleitungstext der Ausgabe
                     </h3>
                     <p>
-                        Diese Ausgabe wird von Beiträgen zum Thema der Grenzen der Computational Intelligence dominiert.
-                        Begleiten Sie uns auf einer Reise zu den Grenzen des Machbaren.
-                        Laden Sie sich die Ausgabe <a href="ressources/archivseite/Zeitung1/Zeitung%201.txt">hier</a>
-                        herunter
+                        <?php echo $newestMagazine["description"];?>
                     </p>
                     <div class="centerButton">
                         <button type="button" data-toggle="modal" data-target="#modalDescription">
@@ -325,6 +394,7 @@ include("ressources/snippets/session.php");
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-default" data-dismiss="modal">Anwenden</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
