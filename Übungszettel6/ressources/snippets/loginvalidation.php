@@ -5,6 +5,7 @@
 
     $db = new PDO('sqlite:../SQLData/user.db');
 
+    $db ->beginTransaction();
     $result = $db -> query("SELECT email, firstName, lastName, password, infoText, id FROM user WHERE email='$email'");
     //print_r($result);
     $entry = $result->fetch(PDO::FETCH_ASSOC);
@@ -17,7 +18,7 @@
       $_SESSION["loggedIn"] = "true";
       //echo "alles korrekt";
     }
-
+    $db ->rollBack();
     $db = NULL;
 
     header("Location: ../../startseite.php");

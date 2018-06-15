@@ -9,8 +9,6 @@
         <strong>E-Mail: </strong>
       </div>
         <?php
-          $string = file_get_contents("ressources/json/user.json");
-          $user = json_decode($string, true);
 
           echo '<div class="autorInfobox autorInformationStyle">';
           echo $_SESSION["nachname"] . '<br><br>';
@@ -36,8 +34,8 @@
 
         </div>
         <div class="autorInfobox autorInformationStyle">
-          <strong>Name: </strong> <input class="form-control" type="text" name="nachname" value="<?php echo $_SESSION["vorname"]; ?>"><br><br>
-          <strong>Vorname: </strong><input class="form-control" type="text" name="vorname" value="<?php echo $_SESSION["nachname"]; ?>"><br><br>
+          <strong>Name: </strong> <input class="form-control" type="text" name="nachname" value="<?php echo $_SESSION["nachname"]; ?>"><br><br>
+          <strong>Vorname: </strong><input class="form-control" type="text" name="vorname" value="<?php echo $_SESSION["vorname"]; ?>"><br><br>
           <strong>E-Mail: </strong><input class="form-control" type="email" name="email" value="<?php echo $_SESSION["email"]; ?>"><br><br>
         </div>
         <div class="<div class="autorIntrobox autorInformationStyle">
@@ -47,3 +45,4 @@
     </div>
     </form>    
         <!-- Profil bearbeiten ende -->
+
