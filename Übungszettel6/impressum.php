@@ -6,7 +6,7 @@
 <html>
 
 <head>
-
+  <link rel="stylesheet" type="text/css" href="ressources/css/impressum.css">
   <link rel="stylesheet" type="text/css" href="ressources/startseite/grid.css">
 
   <?php include("ressources/snippets/globalsources.php") ?>
@@ -20,8 +20,8 @@
 
 <div class="hintergrundbild">
   <div class="defaultstyle">
-    <main class="">
-      <div class='impressum'><h1 style="margin-top:0;">Impressum</h1><p>Angaben gemäß § 5 TMG</p><p>Max Muster <br>
+    <main id="impressum">
+      <div id='itemImpressum'><h1 style="margin-top:0;">Impressum</h1><p>Angaben gemäß § 5 TMG</p><p>Max Muster <br>
         Musterweg<br>
         12345 Musterstadt <br>
         </p><p> <strong>Vertreten durch: </strong><br>
@@ -29,7 +29,7 @@
         </p><p><strong>Kontakt:</strong> <br>
         Telefon: 01234-789456<br>
         Fax: 1234-56789<br>
-        E-Mail: <a href='mailto:max@muster.de'>max@muster.de</a></br></p><p><strong>Umsatzsteuer-ID: </strong> <br>
+        E-Mail: <a href='mailto:max@muster.de'>max@muster.de</a><br></p><p><strong>Umsatzsteuer-ID: </strong> <br>
         Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz: Musterustid.<br><br>
         <strong>Wirtschafts-ID: </strong><br>
         Musterwirtschaftsid<br>
@@ -45,7 +45,7 @@
         Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich. <br>
         Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.<br>
         </p><br>
-        Website Impressum von <a href="http://www.impressum-generator.de">impressum-generator.de</a>
+        <p>Website Impressum von <a href="http://www.impressum-generator.de">impressum-generator.de</a><br><br></p>
       </div>
     </main>
   </div>

@@ -6,6 +6,7 @@
 <html>
 
 <head>
+  <link rel="stylesheet" type="text/css" href="ressources/css/Datenschutzerklaerung.css">
 
   <link rel="stylesheet" type="text/css" href="ressources/startseite/grid.css">
 
@@ -20,7 +21,9 @@
 
 <div class="hintergrundbild">
   <div class="defaultstyle">
-    <main class="">
+    <main id="Datenschutz" >
+
+		<div id="itemDatenschutz">
       <p><strong><big>Datenschutzerklärung</big></strong></p>
       <p><strong>Allgemeiner Hinweis und Pflichtinformationen</strong></p>
       <p><strong>Benennung der verantwortlichen Stelle</strong></p>
@@ -95,7 +98,8 @@
       	mit anderen von Ihnen gespeicherten Daten zusammenführen.</p>
       <p>Die Speicherung von AdSense-Cookies erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir als Websitebetreiber haben ein berechtigtes Interesse an der Analyse des Nutzerverhaltens, um unser Webangebot und unsere Werbung zu optimieren.</p>
       <p style="margin-bottom:0;">Mit einem modernen Webbrowser können Sie das Setzen von Cookies überwachen, einschränken und unterbinden. Die Deaktivierung von Cookies kann eine eingeschränkte Funktionalität unserer Website zur Folge haben. Durch die Nutzung unserer Website erklären
-      	Sie sich mit der Bearbeitung der über Sie erhobenen Daten durch Google in der zuvor beschriebenen Art und Weise sowie dem zuvor benannten Zweck einverstanden.</p>
+      	Sie sich mit der Bearbeitung der über Sie erhobenen Daten durch Google in der zuvor beschriebenen Art und Weise sowie dem zuvor benannten Zweck einverstanden.</p><br><br>
+		</div>
     </main>
   </div>
 </div>

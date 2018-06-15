@@ -1,0 +1,33 @@
+
+#Datenschutz
+{
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0px 4px 4px #1c1a19;
+}
+#itemDatenschutz
+{
+	position:relative;
+    bottom: 0;
+    border-radius: 0px 0px 5px 5px;
+    padding-top: 45px;
+    padding-left: 45px;
+    background-color:rgb(210,210,220);
+    color: white;
+}
+#itemDatenschutz p{
+	
+	font-size: 1em;
+	color: black;
+}
+#itemDatenschutz strong{
+	
+	font-size: 1.6em;
+	color:#1c1a19;
+	
+}
+#itemDatenschutz ul li{
+	
+	color: blue;
+}
+
