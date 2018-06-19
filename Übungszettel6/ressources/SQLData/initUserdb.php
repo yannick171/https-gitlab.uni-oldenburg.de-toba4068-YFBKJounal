@@ -35,6 +35,5 @@ if (!$userDb ->query($sql)) {
     /**/
     // close the database connection
     $userDb = NULL;
-
   ?>
 /
