@@ -1,3 +1,4 @@
+<!--PHP Script for sorting Articles in the Lists and save modified Lists -->
 <?php
 $articlesDb = new PDO('sqlite:articles.db');
 $toProof = array();
@@ -19,7 +20,7 @@ foreach ($result as $article) {
 }
 
 // so muss man das Ding aufspalten, weil php Probleme hat, wenn der String mit einem Delimiter anfängt
-if(isset($_GET["id"])) {
+if (isset($_GET["id"])) {
     $url = $_SERVER['QUERY_STRING'];
     $idsWitoutAnd = str_replace("&", "", $url);
     $idsWithSpace = str_replace("id=", " ", $idsWitoutAnd);
@@ -71,8 +72,56 @@ echo $ids['id'][1];
 echo $_GET['id'];*/
 
 ?>
+<!-- PHP Script fir getting the newest Magazine-->
 <?php
-include("ressources/snippets/session.php");
+$MagazineDb = new PDO('sqlite:magazines.db');
+$resultMagazine = $MagazineDb->query('SELECT * FROM Magazine');
+global $newestMagazine;
+$newestMagazine = $resultMagazine->fetch();
+//echo fetchAll($resultMagazine);
+while ($magazine = $resultMagazine->fetch()) {
+    if (($magazine["id"] > $newestMagazine["id"]) || is_null($newestMagazine)) {
+        $newestMagazine = $magazine;
+    }
+}
+
+?>
+<!-- PHP-Script for changing Data in newest Magazine-->
+<!-- PHP Script for changing the Despription for the next Magazine-->
+<?php
+
+if (isset($_POST["newDescription"])) {
+    $description = $_POST['newDescription'];
+    $newMagazineId = $newestMagazine["id"];
+    $MagazineDb = new PDO('sqlite:magazines.db');
+    $updateDescription = "UPDATE Magazine SET description = '$description' WHERE id = '$newMagazineId'";
+    $ergebnis = $MagazineDb->exec($updateDescription);
+    header("location: redakteur.php");
+}
+?>
+<!-- PHP Script for changing the Title of the next Magazine-->
+<?php
+if (isset($_POST['newTitle']))
+{
+    $title = $_POST['newTitle'];
+    $newMagazineId = $newestMagazine["id"];
+    $MagazineDb = new PDO('sqlite:magazines.db');
+    $updateTitle = "UPDATE Magazine SET title = '$title' WHERE id = '$newMagazineId'";
+    $ergebnis1 = $MagazineDb->exec($updateTitle);
+    header("location: redakteur.php");
+}
+?>
+<!-- PHP Script for changing the Url of the Title on Coverpage of the next Magazine-->
+<?php
+if (isset($_POST['bildUrl']))
+{
+    $bildUrl = $_POST['bildUrl'];
+    $newMagazineId = $newestMagazine["id"];
+    $MagazineDb = new PDO('sqlite:magazines.db');
+    $updateTitle = "UPDATE Magazine SET title = '$title' WHERE id = '$newMagazineId'";
+    $ergebnis1 = $MagazineDb->exec($updateTitle);
+    header("location: redakteur.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +131,7 @@ include("ressources/snippets/session.php");
         Redakteur Profil - Evolve
     </title>
     <?php include("ressources/snippets/globalsources.php") ?>
-    <?php include ("ressources/SQLData/initMagazine.php"); ?>
+    <?php include("ressources/SQLData/initMagazine.php"); ?>
     <!--?php include("ressources/redakteurseite/php/updateAccepted.php");?-->
 
     <link rel="stylesheet" type="text/css" href="ressources/redakteurseite/redakteur.css">
@@ -93,12 +142,6 @@ include("ressources/snippets/session.php");
 </head>
 
 <body>
-
-<?php include("ressources/snippets/head.php"); ?>
-<?php
-include("ressources/SQLData/initArticledb.php");
-?>
-
 <!--script>
     // Set the date we're counting down to
     var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
@@ -134,6 +177,11 @@ include("ressources/SQLData/initArticledb.php");
         }
     }, 1000);
 </script-->
+<?php include("ressources/snippets/session.php"); ?>
+<?php include("ressources/snippets/head.php"); ?>
+<?php include("ressources/SQLData/initArticledb.php"); ?>
+
+
 <main class="defaultstyle">
     <h1>Redakteur Profil</h1>
     <article>
@@ -258,19 +306,6 @@ include("ressources/SQLData/initArticledb.php");
     <h1>
         Nächste Ausgabe:
     </h1>
-    <?php
-    $MagazineDb = new PDO('sqlite:magazines.db');
-    $resultMagazine = $MagazineDb->query('SELECT * FROM Magazine');
-    $newestMagazine = $resultMagazine->fetch();
-    //echo fetchAll($resultMagazine);
-    while ($magazine = $resultMagazine->fetch()) {
-        if (($magazine["id"] > $newestMagazine["id"]) || is_null($newestMagazine)) {
-            $newestMagazine = $magazine;
-        }
-    }
-
-    ?>
-
 
     <div class="nextMagazine">
         <div class="parentContainer">
@@ -280,7 +315,7 @@ include("ressources/SQLData/initArticledb.php");
                         Titel der Ausgabe
                     </h3>
                     <p id="nextMagazineTitle">
-                        <?php echo $newestMagazine["title"];?>
+                        <?php echo $newestMagazine["title"]; ?>
                     </p>
                     <div class="centerButton">
                         <button type="button" data-toggle="modal" data-target="#modalTitle">
@@ -302,7 +337,7 @@ include("ressources/SQLData/initArticledb.php");
                         Einleitungstext der Ausgabe
                     </h3>
                     <p>
-                        <?php echo $newestMagazine["description"];?>
+                        <?php echo $newestMagazine["description"]; ?>
                     </p>
                     <div class="centerButton">
                         <button type="button" data-toggle="modal" data-target="#modalDescription">
@@ -352,13 +387,15 @@ include("ressources/SQLData/initArticledb.php");
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
-                <div class="modal-body">
-                    <p>Geben Sie den neuen Titel ein : </p>
-                    <input class="form-control mr-sm-2" type="text" placeholder="..." aria-label="text">
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-default" data-dismiss="modal">Anwenden</button>
-                </div>
+                <form method="post" action= <?php $_SERVER['PHP_SELF'] ?>>
+                    <div class="modal-body">
+                        <p>Geben Sie den neuen Titel ein : </p>
+                        <input name = "newTitle" class="form-control mr-sm-2" type="text" placeholder="..." aria-label="text">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default">Anwenden</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -368,36 +405,41 @@ include("ressources/SQLData/initArticledb.php");
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
-                <div class="modal-body">
-                    <p>Geben Sie die neue URL des Bildes an : </p>
-                    <input class="form-control mr-sm-2" type="text" placeholder="..." aria-label="text">
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-default" data-dismiss="modal">Anwenden</button>
-                </div>
+                <form method="post" action= <?php $_SERVER['PHP_SELF'] ?>>
+                    <div class="modal-body">
+                        <p>Geben Sie die neue URL des Bildes an : </p>
+                        <input name = "bildUrl" class="form-control mr-sm-2" type="text" placeholder="..." aria-label="text">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default">Anwenden</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+    <!--PHP for action on change path of picture-->
 
     <!-- Modal -->
     <div class="modal fade" id="modalDescription" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
-                <div class="modal-body">
-                    <p>Geben Sie eine neue Beschreibung an : </p>
-                    <div class="form-group">
-                        <label for="discription">neue Beschreibung : </label>
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                <form method="post" action= <?php $_SERVER['PHP_SELF'] ?>>
+                    <div class="modal-body">
+                        <p>Geben Sie eine neue Beschreibung an : </p>
+                        <div class="form-group">
+                            <label for="discription">neue Beschreibung : </label>
+                            <textarea class="form-control" rows="5" id="comment" name="newDescription"></textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-default" data-dismiss="modal">Anwenden</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default">Anwenden</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
+
 
 </main>
 <?php include("ressources/snippets/footer.php"); ?>
