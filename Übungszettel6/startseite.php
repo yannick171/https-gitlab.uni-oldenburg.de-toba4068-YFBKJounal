@@ -32,6 +32,7 @@
             eure Beiträge gehör.  Hier findet ihr eine Plattform zur veröffentlichung eurer Artikel, egal ob Fuzzylogik, künstliche neurale Netze, Evolutionäre Algorithmen oder andere Themen aus der KI. Helft uns dabei das Interesse an der KI weiter zu erhalten. Hier finden alle
             eure Beiträge gehör.
           </div>
+			
           <div class="box-4">
             <h2>Aktuelle Ausgabe</h2>
             <h3>Do Voles Select Dense Vegetation for Movement Pathways at the Microhabitat Level?</h3>
@@ -49,16 +50,43 @@
                 <div class="card-header" id="headingOne">
                   <h5 class="mb-0">
                     <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                      1. Neue Erkenntnisse im Bereich der Fuzzy-Logik
-                    </button>
+			 		   <?php
+				        // Datenbankconnextion
+							$bdd = new PDO('sqlite:articles.db');
+				         // Abfrage der 3 letzten Artikel
+				       $sql = $bdd->query('SELECT title, abstract FROM article ORDER BY ID DESC LIMIT 0, 3');
+						
+						for($count=0;$count<3;$count++){
+						 $article[$count]=$Daten = $sql->fetch(); 
+						}
+						 echo '1 .'. $article[0]['title'];
+						?>
+						
+                       <br> </button>
                   </h5>
                 </div>
 
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                   <div class="card-body">
-                    Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
-                    und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen. Welche dies genau sind,
-                    können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.
+					  <!1. neue Kenntnisse im Bereich der Fuzzy-Logik>
+					  <?php
+					  
+					     // Datenbankconnextion
+							$bdd = new PDO('sqlite:articles.db');
+				         // Abfrage der 3 letzten Artikel
+				       $sql = $bdd->query('SELECT title, abstract FROM article ORDER BY ID DESC LIMIT 0, 3');
+						
+						for($count=0;$count<3;$count++){
+						 $article[$count]=$Daten = $sql->fetch(); 
+						}
+					  echo $article[0]['abstract']; 
+					  echo'Welche dies genau sind,
+                    können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.';
+					  ?>
+					  <!Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
+                    und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen.Welche dies genau sind,
+                    können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.> 
+					  
                   </div>
                 </div>
               </div>
@@ -66,41 +94,91 @@
                 <div class="card-header" id="headingTwo">
                   <h5 class="mb-0">
                     <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      2. Der Durchbruch im Verständnis der temporalen Logik
-                    </button>
+                      <!2. Der Durchbruch im Verständnis der temporalen Logik>
+						 <?php
+						// Datenbankconnextion
+							$bdd = new PDO('sqlite:articles.db');
+				         // Abfrage der 3 letzten Artikel
+				       $sql = $bdd->query('SELECT title, abstract FROM article ORDER BY ID DESC LIMIT 0, 3');
+						for($count=0;$count<3;$count++){
+						 $article[$count]=$Daten = $sql->fetch(); 
+						}
+					     echo '2. '. $article[1]['title']; 
+						?>
+						
+                   <br> </button>
                   </h5>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                  <div class="card-body">
-                    Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüsssel
+                  <div class="card-body">';
+					  <?php
+					  	// Datenbankconnextion
+							$bdd = new PDO('sqlite:articles.db');
+				         // Abfrage der 3 letzten Artikel
+				       $sql = $bdd->query('SELECT title, abstract FROM article ORDER BY ID DESC LIMIT 0, 3');
+						
+						for($count=0;$count<3;$count++){
+						 $article[$count]=$Daten = $sql->fetch(); 
+						}
+					  echo $article[1]['abstract'];
+					  echo 'können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.';
+					  ?>
+                    <!Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüsssel
                           unserer Forschung ist die Annahme, dass das Wichtigste bei dieser Diziplin das Tempo ist.Wie genau
-                          das Tempo maßgeblich für das Verstehen der temporalen Logik ist,
-                          können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.
-                  </div>
+                          das Tempo maßgeblich für das Verstehen der temporalen Logik ist,>
+                          
+                </div>
                 </div>
               </div>
               <div class="card">
                 <div class="card-header" id="headingThree">
                   <h5 class="mb-0">
                     <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      3. Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki
-                    </button>
+                     <! Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki>
+						<?php
+						// Datenbankconnextion
+							$bdd = new PDO('sqlite:articles.db');
+				         // Abfrage der 3 letzten Artikel
+				       $sql = $bdd->query('SELECT title, abstract FROM article ORDER BY ID DESC LIMIT 0, 3');
+						
+						for($count=0;$count<3;$count++){
+						 $article[$count]=$Daten = $sql->fetch(); 
+						}
+					     echo '3. '. $article[2]['title']; 
+						?>
+					
+                    <br></button>
                   </h5>
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                   <div class="card-body">
-                    In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
+					  <?php
+					 // Datenbankconnextion
+							$bdd = new PDO('sqlite:articles.db');
+				         // Abfrage der 3 letzten Artikel
+				       $sql = $bdd->query('SELECT title, abstract FROM article ORDER BY ID DESC LIMIT 0, 3');
+						
+						for($count=0;$count<3;$count++){
+						 $article[$count]=$Daten = $sql->fetch(); 
+						}
+					  echo $article[2]['abstract'];
+					  echo'Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>';
+					  ?>
+                   <! In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
                     Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
                     neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
 
-                    perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
-                  </div>
+                    perfekt.>
+                  </div>  
                 </div>
               </div>
+				
             </div>
+			  
           </div>
+			
         </div>
-</div>
+
 
       <div class="row" id="artikel">
         <button type = "button" id ="leftArrow">
@@ -120,6 +198,7 @@
         </button>
       </div>
   </main>
+</div>
 </div>
 
   <?php include ("ressources/snippets/footer.php") ;?>
