@@ -7,24 +7,33 @@
             $id = $_SESSION["userId"];
 
             $db->beginTransaction();
-            isset($_POST["email"]) ? $_SESSION["email"] = $_POST["email"] : "";
-            isset($_POST["vorname"]) ? $_SESSION["vorname"] = $_POST["vorname"] : "";
-            isset($_POST["nachname"]) ? $_SESSION["nachname"] = $_POST["nachname"] : "";
-            isset($_POST["infoText"]) ? $_SESSION["infoText"] = $_POST["infoText"] : "";
-
-            $stmt = $db->prepare("UPDATE user SET email=:newEmail, lastName =:newLastname, firstName =:newFirstname, infoText =:newInfotext WHERE id='$id'");
-
-            $stmt->bindValue(":newEmail", $_SESSION["email"], PDO::PARAM_STR);
-            $stmt->bindValue(":newLastname", $_SESSION["nachname"], PDO::PARAM_STR);
-            $stmt->bindValue(":newFirstname", $_SESSION["vorname"], PDO::PARAM_STR);
-            $stmt->bindValue(":newInfotext", $_SESSION["infoText"], PDO::PARAM_STR);
 
 
-            $stmt->execute();
-            $db->commit();
+            $doesEmailExist = $db -> prepare( "SELECT email FROM user WHERE email =:newEmail and id !='$id' ");
+            $doesEmailExist->bindValue(":newEmail", $_POST["email"], PDO::PARAM_STR);
 
-            $result = $_SESSION;
-            echo json_encode($result);
+            $doesEmailExist ->execute();
+            $fetch = $doesEmailExist->fetch(PDO::FETCH_ASSOC);
+            if (is_array($fetch)){
+                echo "emailExists";
+                $db->rollBack();
+            }else{
+                $stmt = $db->prepare("UPDATE user SET email=:newEmail, lastName =:newLastname, firstName =:newFirstname, infoText =:newInfotext WHERE id='$id'");
+                $stmt->bindValue(":newEmail", $_POST["email"], PDO::PARAM_STR);
+                $stmt->bindValue(":newLastname", $_POST["nachname"], PDO::PARAM_STR);
+                $stmt->bindValue(":newFirstname", $_POST["vorname"], PDO::PARAM_STR);
+                $stmt->bindValue(":newInfotext", $_POST["infoText"], PDO::PARAM_STR);
+                $stmt->execute();
+                $db->commit();
+
+                $_SESSION["email"] = $_POST["email"];
+                $_SESSION["vorname"] = $_POST["vorname"];
+                $_SESSION["nachname"] = $_POST["nachname"];
+                $_SESSION["infoText"] = $_POST["infoText"];
+
+                $result = $_POST;
+                echo json_encode($result);
+            }
 
         } catch (Exception $e){
             $db->rollBack();

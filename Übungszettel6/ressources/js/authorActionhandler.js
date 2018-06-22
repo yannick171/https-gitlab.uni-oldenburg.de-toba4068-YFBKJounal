@@ -75,13 +75,17 @@ $(document).ready(function(){
                 },
             dataType: "JSON",
             success: function(data){
-                $("#autorbox").html(data.nachname + '<br><br>' +
-                                    data.vorname + '<br><br>' +
-                                    data.email  +   '<br><br>');
-                $("#autorinfobox").html(data.infoText + '<br><br>');
-                $("#autorProfil").css("display","grid");
-                $("#autorProfilBearbeiten").css("display", "none");
-            }
+                    $("#autorbox").html(data.nachname + '<br><br>' +
+                        data.vorname + '<br><br>' +
+                        data.email + '<br><br>');
+                    $("#autorinfobox").html(data.infoText + '<br><br>');
+                    $("#autorProfil").css("display", "grid");
+                    $("#autorProfilBearbeiten").css("display", "none");
+
+                },
+            error: function (xhr) {
+                    $("#emailInput").val(temp_email);
+                }
         });
     });
 })

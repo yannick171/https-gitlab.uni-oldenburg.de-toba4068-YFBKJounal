@@ -13,7 +13,7 @@
         <?php include ("ressources/snippets/head.php");?>
 
 		<?php
-			$userDb = new PDO('sqlite:ressources\SQLData\user.db');
+			$userDb = new PDO('sqlite:ressources/SQLData/user.db');
 			
 			$emailerr = False;
 			

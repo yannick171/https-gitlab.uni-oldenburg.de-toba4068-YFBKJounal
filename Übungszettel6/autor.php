@@ -106,7 +106,7 @@
                   $result = showArticles(1,$_SESSION["userId"]);
                   foreach ($result as $row) {
                       //print_r($row);
-                      echo '<tr><th scope="row"><input value="Zurückziehen" type="submit" name="removeArticleButton-'.$counterAccepted.'" id="'.$counterAccepted.'"></th>';
+                      echo '<tr><th></th>';
                       echo '<td>'.$row["title"]. '</td>';
                       echo '<td>'.$row["author"]. '</td>';
                       echo '<td>'.$row["uploadDate"]. '</td>';
@@ -139,7 +139,7 @@
               $result = showArticles(1,$_SESSION["userId"]);
               foreach ($result as $row) {
                   //print_r($row);
-                  echo '<tr><th scope="row"><input value="Zurückziehen" type="submit" name="removeArticleButton-'.$counterAbgelehnt.'" id="'.$counterAbgelehnt.'"></th>';
+                  echo '<tr><th></th>';
                   echo '<td>'.$row["title"]. '</td>';
                   echo '<td>'.$row["author"]. '</td>';
                   echo '<td>'.$row["uploadDate"]. '</td>';
