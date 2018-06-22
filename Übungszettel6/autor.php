@@ -27,7 +27,6 @@
 
     <!--- Profil  --->
       <?php include ("ressources/snippets/profile.php"); ?>
-      <script src = "ressources/js/changeProfile.js"></script>
 
     <div class="trennlinie"></div>
       <div class="uploadArea">
@@ -160,5 +159,6 @@
         <?php include ("ressources/snippets/loadjavascript.php") ;?>
 
          <script src = "ressources/js/authorActionhandler.js"></script>
+
     </body>
 </html>

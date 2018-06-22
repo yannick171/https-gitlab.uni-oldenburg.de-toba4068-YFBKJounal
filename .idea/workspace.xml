@@ -3,10 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="14d278b8-4cf4-4fdb-a613-d125ff148997" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Übungszettel6/ressources/SQLData/articles.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Übungszettel6/ressources/SQLData/initUserdb.php" beforeDir="false" afterPath="$PROJECT_DIR$/Übungszettel6/ressources/SQLData/initUserdb.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Übungszettel6/ressources/SQLData/user.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Übungszettel6/ressources/snippets/withdrawArticle.php" beforeDir="false" afterPath="$PROJECT_DIR$/Übungszettel6/ressources/snippets/withdrawArticle.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Übungszettel6/autor.php" beforeDir="false" afterPath="$PROJECT_DIR$/Übungszettel6/autor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Übungszettel6/ressources/SQLData/articles.db" beforeDir="false" afterPath="$PROJECT_DIR$/Übungszettel6/ressources/SQLData/articles.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Übungszettel6/ressources/SQLData/user.db" beforeDir="false" afterPath="$PROJECT_DIR$/Übungszettel6/ressources/SQLData/user.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Übungszettel6/ressources/js/authorActionhandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/Übungszettel6/ressources/js/authorActionhandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Übungszettel6/ressources/js/changeProfile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Übungszettel6/ressources/snippets/changeProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/Übungszettel6/ressources/snippets/changeProfile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Übungszettel6/ressources/snippets/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/Übungszettel6/ressources/snippets/profile.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,34 +20,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="initUserdb.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/SQLData/initUserdb.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="30" lean-forward="true" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="loginvalidation.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/loginvalidation.php">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
+              <caret column="5" selection-start-column="5" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="autor.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Übungszettel6/autor.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/profile.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="authorActionhandler.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/js/authorActionhandler.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="64" column="39" selection-start-line="64" selection-start-column="39" selection-end-line="65" selection-end-column="39" />
+              <folding>
+                <element signature="n#style#1;n#button#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="changeProfile.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/changeProfile.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="autor.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Übungszettel6/autor.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="64" column="23" lean-forward="true" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
+            <state relative-caret-position="375">
+              <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -52,17 +71,8 @@
       <file leaf-file-name="withdrawArticle.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/withdrawArticle.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loadarticles.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/loadarticles.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="180">
+              <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -70,8 +80,8 @@
       <file leaf-file-name="uploadFile.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/uploadFile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+            <state relative-caret-position="540">
+              <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -88,6 +98,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>sub</find>
+      <find>change</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -102,9 +113,14 @@
         <option value="$PROJECT_DIR$/Übungszettel4/autor.php" />
         <option value="$PROJECT_DIR$/Übungszettel4/ressources/json/user.json" />
         <option value="$PROJECT_DIR$/Übungszettel4/ressources/js/changeprofile.js" />
-        <option value="$PROJECT_DIR$/Übungszettel6/ressources/js/changeProfile.js" />
         <option value="$PROJECT_DIR$/Übungszettel6/ressources/snippets/withdrawArticle.php" />
         <option value="$PROJECT_DIR$/Übungszettel6/ressources/SQLData/initUserdb.php" />
+        <option value="$PROJECT_DIR$/Übungszettel6/ressources/js/changeProfile.js" />
+        <option value="$PROJECT_DIR$/Übungszettel6/ressources/js/loadProfile.js" />
+        <option value="$PROJECT_DIR$/Übungszettel6/autor.php" />
+        <option value="$PROJECT_DIR$/Übungszettel6/ressources/snippets/changeProfile.php" />
+        <option value="$PROJECT_DIR$/Übungszettel6/ressources/snippets/profile.php" />
+        <option value="$PROJECT_DIR$/Übungszettel6/ressources/js/authorActionhandler.js" />
       </list>
     </option>
   </component>
@@ -117,11 +133,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="75" />
-    <option name="y" value="27" />
-    <option name="width" value="923" />
-    <option name="height" value="1053" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="960" />
+    <option name="y" value="28" />
+    <option name="width" value="960" />
+    <option name="height" value="1052" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -131,6 +147,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -148,6 +165,20 @@
               <item name="YFBKJounal" type="462c0819:PsiDirectoryNode" />
               <item name="Übungszettel6" type="462c0819:PsiDirectoryNode" />
               <item name="ressources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YFBKJounal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YFBKJounal" type="462c0819:PsiDirectoryNode" />
+              <item name="Übungszettel6" type="462c0819:PsiDirectoryNode" />
+              <item name="ressources" type="462c0819:PsiDirectoryNode" />
+              <item name="autorseite" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YFBKJounal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YFBKJounal" type="462c0819:PsiDirectoryNode" />
+              <item name="Übungszettel6" type="462c0819:PsiDirectoryNode" />
+              <item name="ressources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="YFBKJounal" type="b2602c69:ProjectViewProjectNode" />
@@ -174,7 +205,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -211,46 +241,36 @@
       <workItem from="1528447287951" duration="40000" />
       <workItem from="1528549737085" duration="131000" />
       <workItem from="1528549988664" duration="3267000" />
+      <workItem from="1529658754435" duration="12488000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15111000" />
+    <option name="totallyTimeSpent" value="27599000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1052" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18958333" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17708333" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.24261603" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.09704641" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1897019" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Favorites" order="2" side_tool="true" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,24 +280,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Übungszettel4/ressources/registrierungsseite/registrierung_style_sheet.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Übungszettel4/ressources/json/article.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-181" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Übungszettel4/ressources/snippets/logout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Übungszettel4/about.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Übungszettel4/impressum.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-91">
@@ -468,13 +470,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Übungszettel4/ressources/js/changeprofile.js" />
-    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/js/changeProfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Übungszettel4/ressources/js/authorActionhandler.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -491,33 +486,6 @@
     <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/SQLData/initArticledb.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/profile.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Übungszettel6/autor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="64" column="23" lean-forward="true" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/loginvalidation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/changeProfile.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/uploadFile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="41" lean-forward="true" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/loadarticles.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -525,17 +493,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/withdrawArticle.php">
+    <entry file="file://$PROJECT_DIR$/Übungszettel6/startseite.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        <state relative-caret-position="2571">
+          <caret line="220" column="11" lean-forward="true" selection-start-line="128" selection-start-column="2" selection-end-line="220" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/SQLData/initUserdb.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" column="30" lean-forward="true" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/loginvalidation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/withdrawArticle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/autorseite/autorseite.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-846">
+          <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/js/changeProfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="4" selection-start-column="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/js/loadProfile.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Übungszettel6/autor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/uploadFile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/snippets/changeProfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Übungszettel6/ressources/js/authorActionhandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="64" column="39" selection-start-line="64" selection-start-column="39" selection-end-line="65" selection-end-column="39" />
+          <folding>
+            <element signature="n#style#1;n#button#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
