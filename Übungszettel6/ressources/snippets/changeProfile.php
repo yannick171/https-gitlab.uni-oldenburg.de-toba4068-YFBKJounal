@@ -22,11 +22,12 @@
 
             $stmt->execute();
             $db->commit();
-            $stmt = NULL;
+
+            $result = $_SESSION;
+            echo json_encode($result);
+
         } catch (Exception $e){
             $db->rollBack();
             echo "An error has occurred";
         }
-        header("Location: ../../autor.php");
-        exit();
     }
