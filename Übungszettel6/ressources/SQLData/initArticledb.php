@@ -24,7 +24,7 @@ if (!$MagazineDb ->query($sql)) {
     $MagazineDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Zweiter Artikel', 'Ich bin Autoren', 0)");
     $MagazineDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Dritter Artikel', 'Ich bin Autoren', 1)");
     $MagazineDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Vierter Artikel', 'Ich bin Autoren', 1)");
-    $MagazineDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Fünfter Artikel', 'Ich bin Autoren', 2)");
+    $MagazineDb->exec("INSERT INTO articles (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Fünfter Artikel', 'Ich bin Autoren', 2)");
     $MagazineDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle) VALUES (1,'Ich bin eine Inhaltsangabe', 'Sechster Artikel', 'Ich bin Autoren', 2)");
 }
 /* Damit ihr die Daten mal anschauen könnt einfach einkommentieren
