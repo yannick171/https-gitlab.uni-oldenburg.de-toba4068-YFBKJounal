@@ -1,26 +1,31 @@
 <?php
     session_start();
 
-    $email = $_POST["email"];
+    try {
+        $db = new PDO('sqlite:../SQLData/user.db');
 
-    $db = new PDO('sqlite:../SQLData/user.db');
+        $db->beginTransaction();
+        $stmt = $db->prepare("SELECT email, firstName, lastName, password, infoText, id FROM user WHERE email=:inputEmail ");
+        $stmt->bindValue(":inputEmail", $_POST["email"], PDO::PARAM_STR);
+        $stmt ->execute();
 
-    $db ->beginTransaction();
-    $result = $db -> query("SELECT email, firstName, lastName, password, infoText, id FROM user WHERE email='$email'");
-    //print_r($result);
-    $entry = $result->fetch(PDO::FETCH_ASSOC);
-    if($entry["password"] == $_POST["pw"]){
-      $_SESSION["email"] = $email;
-      $_SESSION["nachname"] = $entry["firstName"];
-      $_SESSION["vorname"] = $entry["lastName"];
-      $_SESSION["infoText"] = $entry["infoText"];
-      $_SESSION["userId"] = $entry["id"];
-      $_SESSION["loggedIn"] = "true";
-      //echo "alles korrekt";
+        $entry = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($entry["password"] == $_POST["pw"]) {
+            $_SESSION["email"] = $_POST["email"];
+            $_SESSION["nachname"] = $entry["firstName"];
+            $_SESSION["vorname"] = $entry["lastName"];
+            $_SESSION["infoText"] = $entry["infoText"];
+            $_SESSION["userId"] = $entry["id"];
+            $_SESSION["loggedIn"] = "true";
+            //echo "alles korrekt";
+        }
+        $db->rollBack();
+        $db = NULL;
+
+    }catch(Exception $ex){
+        $db->rollBack();
     }
-    $db ->rollBack();
-    $db = NULL;
-
     header("Location: ../../startseite.php");
     exit();
 
