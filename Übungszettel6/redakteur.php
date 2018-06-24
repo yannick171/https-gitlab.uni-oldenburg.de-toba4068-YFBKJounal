@@ -1,6 +1,9 @@
+<?php include("ressources/snippets/session.php"); ?>
+<?php include("ressources/SQLData/initArticledb.php"); ?>
+<?php include("ressources/SQLData/initMagazine.php"); ?>
 <!--PHP Script for sorting Articles in the Lists and save modified Lists -->
 <?php
-$articlesDb = new PDO('sqlite:articles.db');
+$articlesDb = new PDO('sqlite:ressources/SQLData/articles.db');
 $toProof = array();
 $proofed = array();
 $nextMagazine = array();
@@ -18,63 +21,11 @@ foreach ($result as $article) {
         array_push($nextMagazine, $article);
     }
 }
-
-// so muss man das Ding aufspalten, weil php Probleme hat, wenn der String mit einem Delimiter anfängt
-if (isset($_GET["id"])) {
-    $url = $_SERVER['QUERY_STRING'];
-    $idsWitoutAnd = str_replace("&", "", $url);
-    $idsWithSpace = str_replace("id=", " ", $idsWitoutAnd);
-    $split = str_split($idsWithSpace);
-    global $repaired;
-    $length = count($split);
-    for ($i = 1; $i < $length; $i++) {
-        $repaired = $repaired . $split[$i];
-    }
-    $idParts = preg_split("/[\s,]+/", $repaired);
-}
-if (isset($_GET['id']) && isset($_GET['proofed'])) {
-    foreach ($idParts as $entry) {
-
-        $sql = "UPDATE article SET statusOfArticle = 1 WHERE id = " . $entry;
-        $articlesDb->exec($sql);
-        /*header("Refresh: ". $_SERVER['PHP_SELF']);*/
-        header("location: redakteur.php");
-    }
-}
-if (isset($_GET['id']) && isset($_GET['toProof'])) {
-    foreach ($idParts as $entry) {
-        $sql = "UPDATE article SET statusOfArticle = 0 WHERE id = " . $entry;
-        $articlesDb->exec($sql);
-        //header("Refresh: ". $_SERVER['PHP_SELF']);
-        header("location: redakteur.php");
-    }
-}
-
-
-/*$getAllElements = $articlesDb->query("SELECT * FROM article");
-while ($zeile = $getAllElements->fetch()){
-    $isInList = 0;
-    for($i = 0; $i < count($idParts); $i++) {
-        if($zeile["id"] == $idParts[$i])
-        {
-            $isInList = 1;
-        }
-    }
-    if($isInList == 0)
-    {
-        $deleteZeile = "DELETE FROM article WHERE id = ". $zeile["id"];
-        $articlesDb->exec($deleteZeile);
-    }
-}
-/*parse_str($_GET['id'], $ids);
-echo $ids[0];
-echo $ids['id'][1];
-echo $_GET['id'];*/
-
 ?>
-<!-- PHP Script fir getting the newest Magazine-->
+
+<!-- PHP Script for getting the newest Magazine-->
 <?php
-$MagazineDb = new PDO('sqlite:magazines.db');
+$MagazineDb = new PDO('sqlite:ressources/SQLData/magazines.db');
 $resultMagazine = $MagazineDb->query('SELECT * FROM Magazine');
 global $newestMagazine;
 $newestMagazine = $resultMagazine->fetch();
@@ -86,14 +37,13 @@ while ($magazine = $resultMagazine->fetch()) {
 }
 
 ?>
-<!-- PHP-Script for changing Data in newest Magazine-->
 <!-- PHP Script for changing the Despription for the next Magazine-->
 <?php
 
 if (isset($_POST["newDescription"])) {
     $description = $_POST['newDescription'];
     $newMagazineId = $newestMagazine["id"];
-    $MagazineDb = new PDO('sqlite:magazines.db');
+    $MagazineDb = new PDO('sqlite:ressources/SQLData/magazines.db');
     $updateDescription = "UPDATE Magazine SET description = '$description' WHERE id = '$newMagazineId'";
     $ergebnis = $MagazineDb->exec($updateDescription);
     header("location: redakteur.php");
@@ -101,11 +51,10 @@ if (isset($_POST["newDescription"])) {
 ?>
 <!-- PHP Script for changing the Title of the next Magazine-->
 <?php
-if (isset($_POST['newTitle']))
-{
+if (isset($_POST['newTitle'])) {
     $title = $_POST['newTitle'];
     $newMagazineId = $newestMagazine["id"];
-    $MagazineDb = new PDO('sqlite:magazines.db');
+    $MagazineDb = new PDO('sqlite:ressources/SQLData/magazines.db');
     $updateTitle = "UPDATE Magazine SET title = '$title' WHERE id = '$newMagazineId'";
     $ergebnis1 = $MagazineDb->exec($updateTitle);
     header("location: redakteur.php");
@@ -113,11 +62,10 @@ if (isset($_POST['newTitle']))
 ?>
 <!-- PHP Script for changing the Url of the Title on Coverpage of the next Magazine-->
 <?php
-if (isset($_POST['bildUrl']))
-{
+if (isset($_POST['bildUrl'])) {
     $bildUrl = $_POST['bildUrl'];
     $newMagazineId = $newestMagazine["id"];
-    $MagazineDb = new PDO('sqlite:magazines.db');
+    $MagazineDb = new PDO('sqlite:ressources/SQLData/magazines.db');
     $updateTitle = "UPDATE Magazine SET title = '$title' WHERE id = '$newMagazineId'";
     $ergebnis1 = $MagazineDb->exec($updateTitle);
     header("location: redakteur.php");
@@ -131,7 +79,7 @@ if (isset($_POST['bildUrl']))
         Redakteur Profil - Evolve
     </title>
     <?php include("ressources/snippets/globalsources.php") ?>
-    <?php include("ressources/SQLData/initMagazine.php"); ?>
+
     <!--?php include("ressources/redakteurseite/php/updateAccepted.php");?-->
 
     <link rel="stylesheet" type="text/css" href="ressources/redakteurseite/redakteur.css">
@@ -142,44 +90,9 @@ if (isset($_POST['bildUrl']))
 </head>
 
 <body>
-<!--script>
-    // Set the date we're counting down to
-    var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
 
-    // Update the count down every 1 second
-    var x = setInterval(function () {
-
-        // Get todays date and time
-        var now = new Date().getTime();
-
-        // Find the distance between now an the count down date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
-        distance -= weeks * (1000 * 60 * 60 * 24 * 7);
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        distance -= days * (1000 * 60 * 60 * 24);
-        var hours = Math.floor(distance / (1000 * 60 * 60));
-        distance -= hours * (1000 * 60 * 60);
-        var minutes = Math.floor(distance / (1000 * 60));
-
-        // Output the result in an element with id="demo"
-        document.getElementById("cdw").innerHTML = weeks;
-        document.getElementById("cdd").innerHTML = days;
-        document.getElementById("cdm").innerHTML = hours;
-        document.getElementById("cds").innerHTML = minutes;
-
-        // If the count down is over, write some text
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
-        }
-    }, 1000);
-</script-->
-<?php include("ressources/snippets/session.php"); ?>
 <?php include("ressources/snippets/head.php"); ?>
-<?php include("ressources/SQLData/initArticledb.php"); ?>
+
 
 
 <main class="defaultstyle">
@@ -226,21 +139,19 @@ if (isset($_POST['bildUrl']))
         </section>
     </article>
     <h1>
-        Redakteur Profil</h1>
+        Redakteur Profil
+    </h1>
 
-    <?php
-
-    ?>
     <h1>Arbeitsbereich</h1>
 
 
-    <div class="parentContainer">
-        <form method="get" action= <?php $_SERVER['PHP_SELF'] ?>>
+    <form id="toProofList">
+        <div class="parentContainer">
+
             <div class="containerElement">
                 <h2 id="zuPrüfen" class=workingArea>
                     zu prüfen
                 </h2>
-                <input type="hidden" name="toProof" value="proof">
                 <ul id="todoArticles" class="list-group">
 
                     <?php
@@ -266,14 +177,13 @@ if (isset($_POST['bildUrl']))
                     ?>
                 </ul>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Speichern</button>
-        </form>
-        <form method="get" action= <?php $_SERVER['PHP_SELF'] ?>>
+
+            <input type = "hidden" name = "seperator" value="a">
             <div class="containerElement">
                 <h2 id="geprüft" class="workingArea">
                     geprüft
                 </h2>
-                <input type="hidden" name="proofed" value="proof">
+                <p id="testDerId"></p>
                 <ul id="acceptedArticles" class="list-group">
                     <?php
                     foreach ($proofed as $proof) {
@@ -290,6 +200,7 @@ if (isset($_POST['bildUrl']))
                             . '<div class="card-body">'
                             . $proof["abstract"]
                             . '</div>'
+                            . '<button onclick="addArticle('.$proof["id"].')" class="btn btn-success btn-block">Artikel zur nächsten Ausgabe hinzufügen</button>'
                             . '</div>'
                             . '</div>'
                             . '<input type="hidden" name="id" value="' . $proof["id"] . '">'
@@ -298,147 +209,150 @@ if (isset($_POST['bildUrl']))
                     ?>
                 </ul>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Speichern</button>
-        </form>
-    </div>
-
-
-    <h1>
-        Nächste Ausgabe:
-    </h1>
-
-    <div class="nextMagazine">
-        <div class="parentContainer">
-            <div class="containerElement">
-                <div class="containerChild">
-                    <h3>
-                        Titel der Ausgabe
-                    </h3>
-                    <p id="nextMagazineTitle">
-                        <?php echo $newestMagazine["title"]; ?>
-                    </p>
-                    <div class="centerButton">
-                        <button type="button" data-toggle="modal" data-target="#modalTitle">
-                            Titel ändern
-                        </button>
-                    </div>
-                </div>
-                <div class="containerChild">
-                    <h3>
-                        Titelbild der Ausgabe
-                    </h3>
-                    <img src="ressources/archivseite/TitelSeite.jpg" alt="Titelseite des Magazins" class="centerImage">
-                    <div class="centerButton">
-                        <button type="button" data-toggle="modal" data-target="#modalImage">Bild ändern</button>
-                    </div>
-                </div>
-                <div class="containerChild">
-                    <h3>
-                        Einleitungstext der Ausgabe
-                    </h3>
-                    <p>
-                        <?php echo $newestMagazine["description"]; ?>
-                    </p>
-                    <div class="centerButton">
-                        <button type="button" data-toggle="modal" data-target="#modalDescription">
-                            Beschreibung ändern
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-            <div class="containerElement">
-                <h3>
-                    Inhalt
-                </h3>
-                <ul id="articleList" class="list-group">
-                    <?php
-                    foreach ($nextMagazine as $next) {
-                        $id = uniqid();
-                        echo '<li class = "list-group-item">'
-                            . '<div class="card margin">'
-                            . '<div class="card-header">'
-                            . '<h5 class="mb-0">'
-                            . '<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#' . $id . '" aria-expanded="false" aria-controls="' . $id . '">'
-                            . $next["title"]
-                            . '</h5>'
-                            . '</div>'
-                            . '<div id="' . $id . '" class="collapse" aria-labelledby="headingFour">'
-                            . '<div class="card-body">'
-                            . $next["abstract"]
-                            . '</div>'
-                            . '</div>'
-                            . '</div>'
-                            . '<div class="centerButton">'
-                            . '<button type="button" class="btn btn-danger">Artikel löschen</button>'
-                            . '</div>'
-                            . '</li>';
-
-                    }
-                    ?>
-                </ul>
-            </div>
         </div>
-    </div>
-    <!-- Here are the Modals-->
+        <button type="submit" class="btn btn-primary btn-block">Speichern</button>
+    </form>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modalTitle" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <form method="post" action= <?php $_SERVER['PHP_SELF'] ?>>
-                    <div class="modal-body">
-                        <p>Geben Sie den neuen Titel ein : </p>
-                        <input name = "newTitle" class="form-control mr-sm-2" type="text" placeholder="..." aria-label="text">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-default">Anwenden</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modalImage" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <form method="post" action= <?php $_SERVER['PHP_SELF'] ?>>
-                    <div class="modal-body">
-                        <p>Geben Sie die neue URL des Bildes an : </p>
-                        <input name = "bildUrl" class="form-control mr-sm-2" type="text" placeholder="..." aria-label="text">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-default">Anwenden</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!--PHP for action on change path of picture-->
+        <h1>
+            Nächste Ausgabe:
+        </h1>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modalDescription" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <form method="post" action= <?php $_SERVER['PHP_SELF'] ?>>
-                    <div class="modal-body">
-                        <p>Geben Sie eine neue Beschreibung an : </p>
-                        <div class="form-group">
-                            <label for="discription">neue Beschreibung : </label>
-                            <textarea class="form-control" rows="5" id="comment" name="newDescription"></textarea>
+        <div class="nextMagazine">
+            <div class="parentContainer">
+                <div class="containerElement">
+                    <div class="containerChild">
+                        <h3>
+                            Titel der Ausgabe
+                        </h3>
+                        <p id="nextMagazineTitle">
+                            <?php echo $newestMagazine["title"]; ?>
+                        </p>
+                        <div class="centerButton">
+                            <button type="button" data-toggle="modal" data-target="#modalTitle">
+                                Titel ändern
+                            </button>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-default">Anwenden</button>
+                    <div class="containerChild">
+                        <h3>
+                            Titelbild der Ausgabe
+                        </h3>
+                        <img src="ressources/archivseite/TitelSeite.jpg" alt="Titelseite des Magazins"
+                             class="centerImage">
+                        <div class="centerButton">
+                            <button type="button" data-toggle="modal" data-target="#modalImage">Bild ändern</button>
+                        </div>
                     </div>
-                </form>
+                    <div class="containerChild">
+                        <h3>
+                            Einleitungstext der Ausgabe
+                        </h3>
+                        <p>
+                            <?php echo $newestMagazine["description"]; ?>
+                        </p>
+                        <div class="centerButton">
+                            <button type="button" data-toggle="modal" data-target="#modalDescription">
+                                Beschreibung ändern
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="containerElement">
+                    <h3>
+                        Inhalt
+                    </h3>
+                    <ul id="articleList" class="list-group">
+                        <?php
+                        foreach ($nextMagazine as $next) {
+                            $id = uniqid();
+                            echo '<li class = "list-group-item">'
+                                . '<div class="card margin">'
+                                . '<div class="card-header">'
+                                . '<h5 class="mb-0">'
+                                . '<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#' . $id . '" aria-expanded="false" aria-controls="' . $id . '">'
+                                . $next["title"]
+                                . '</h5>'
+                                . '</div>'
+                                . '<div id="' . $id . '" class="collapse" aria-labelledby="headingFour">'
+                                . '<div class="card-body">'
+                                . $next["abstract"]
+                                . '</div>'
+                                //. '<div class="centerButton">'
+                                //. '<button type="button" class="btn btn-danger btn-block">Artikel in Geprüft zurücklegen</button>'
+                                //. '</div>'
+                                . '</div>'
+                                . '</div>'
+                                . '</li>';
+
+                        }
+                        ?>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
+        <!-- Here are the Modals-->
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalTitle" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <form method="post" action= <?php $_SERVER['PHP_SELF'] ?>>
+                        <div class="modal-body">
+                            <p>Geben Sie den neuen Titel ein : </p>
+                            <input name="newTitle" class="form-control mr-sm-2" type="text" placeholder="..."
+                                   aria-label="text">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-default">Anwenden</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalImage" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <form method="post" action= <?php $_SERVER['PHP_SELF'] ?>>
+                        <div class="modal-body">
+                            <p>Geben Sie die neue URL des Bildes an : </p>
+                            <input name="bildUrl" class="form-control mr-sm-2" type="text" placeholder="..."
+                                   aria-label="text">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-default">Anwenden</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--PHP for action on change path of picture-->
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalDescription" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <form method="post" action= <?php $_SERVER['PHP_SELF'] ?>>
+                        <div class="modal-body">
+                            <p>Geben Sie eine neue Beschreibung an : </p>
+                            <div class="form-group">
+                                <label for="discription">neue Beschreibung : </label>
+                                <textarea class="form-control" rows="5" id="comment" name="newDescription"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-default">Anwenden</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 
 </main>
