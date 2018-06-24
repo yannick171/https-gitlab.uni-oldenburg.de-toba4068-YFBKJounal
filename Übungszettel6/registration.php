@@ -84,7 +84,7 @@
 			else
 			{
 				echo'
-		<script src = "ressources/js/formvalid.js"></script>
+		
         <main class="defaultstyle">
             <div class ="container">
                 <h2>Registration</h2>
@@ -127,5 +127,6 @@
 		
         <?php include ("ressources/snippets/footer.php") ;?>
         <?php include ("ressources/snippets/loadjavascript.php") ;?>
+        <script src = "ressources/js/formvalid.js"></script>
     </body>
 </html>

@@ -13,14 +13,14 @@ function validateForm()
 	}
 	else
 	{
-		var emailerr = 1;
+		var emailerr = true;
 		
 		if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById("email").value))
 		{
-			emailerr = 0;
+			emailerr = false;
 		}
  
-		if(emailerr == 1)
+		if(emailerr == true)
 		{
 			document.getElementById("error").innerHTML = "Bitte eine echte Email eingeben!";
 			document.getElementById("error").style="color:red;";
