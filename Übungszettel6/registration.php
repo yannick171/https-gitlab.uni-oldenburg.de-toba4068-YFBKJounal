@@ -32,7 +32,7 @@
 							$emailerr = True;
 						}
 					}
-				}				
+				}
 			}
 		
 			if(isset($_POST["email"]) && !$emailerr)
@@ -54,28 +54,32 @@
 					$userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText) VALUES ('test@test.test','TestVorname', 'TestNachname', 'test', 'Ich bin ein Testprofil')");
 				}
 				
+				try
+				{
+					$userDb->beginTransaction();
+					$sql = "INSERT INTO user (email, firstName, lastName, password, infoText, regDate) VALUES (:paramEmail, :paramFName, :paramLName, :paramPswd, '---', '" . date("d.m.Y") . "')";
+					$stmt = $userDb->prepare($sql);
+					$stmt->bindParam(":paramEmail", $_POST["email"]);
+					$stmt->bindParam(":paramFName", $_POST["firstname"]);
+					$stmt->bindParam(":paramLName", $_POST["lastname"]);
+					$stmt->bindParam(":paramPswd" , $_POST["pswd"]);
+					$stmt->execute();
+					$userDb->commit();
+				} 
+				catch (Exception $ex)
+				{
+					$articlesDb->rollBack();
+					echo "Error: " . $ex;
+				}
 				
-				$userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText, regDate) VALUES ('" . $_POST["email"] . "','" . $_POST["firstname"] . "', '" . $_POST["lastname"] . "', '" . $_POST["pswd"] . "', '---', '" . date("d.m.Y") . "')");
-
 				echo'
 				<main class="defaultstyle">
 				<div class ="container">
 					<h2>Registration</h2>
 					<br>
-					Du bist nun registriert!';
-				echo'</div>';
-				print "<tr><td>Id</td><td>Vorname</td><td>nachName</td><td>Beschreibung</td></tr>";
-				$result = $userDb->query('SELECT * FROM user');
-				foreach($result as $row)
-				{
-					print "<tr><td>".$row['id']."</td>";
-					print "<td>".$row['email']."</td>";
-					print "<td>".$row['firstName']."</td>";
-					print "<td>".$row['lastName']."</td>";
-					print "<td>".$row['infoText']."</tr>";
-				}
-				print "</table>";
-				/**/
+					Du bist nun registriert! 
+				</div>';
+				
 				// close the database connection
 				$userDb = NULL;
 	
