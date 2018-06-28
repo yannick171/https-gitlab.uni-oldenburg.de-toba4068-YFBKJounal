@@ -1,20 +1,20 @@
 <?php
 
-global $articlesDb;
-$articlesDb = new PDO('sqlite:ressources/SQLData/magazines.db');
+global $magazinesDb;
+$magazinesDb = new PDO('sqlite:ressources/SQLData/magazines.db');
 
 $sql = "SELECT * from Magazine";
 
-if (!$articlesDb->query($sql)) {
-    $articlesDb->exec("CREATE TABLE Magazine(
+if (!$magazinesDb->query($sql)) {
+    $magazinesDb->exec("CREATE TABLE Magazine(
                                 id integer PRIMARY KEY AUTOINCREMENT,
                                 description TEXT ,
                                 title TEXT
                                 )");
 
 
-    $articlesDb->exec("DElETE FROM article");
-    $articlesDb->exec(("INSERT INTO Magazine (description, title) 
+    $magazinesDb->exec("DElETE FROM article");
+    $magazinesDb->exec(("INSERT INTO Magazine (description, title) 
     VALUES ('Das ist eine Beschreibung', 'Das ist ein Titel')"));
 }
 
