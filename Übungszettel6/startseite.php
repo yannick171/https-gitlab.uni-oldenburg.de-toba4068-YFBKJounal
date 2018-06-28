@@ -52,7 +52,7 @@
                     <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
 			 		   <?php
 				        // Datenbankconnextion
-							$bdd = new PDO('sqlite:articles.db');
+							$bdd = new PDO('sqlite:ressources/SQLData/articles.db');
 				         // Abfrage der 3 letzten Artikel
 				       $sql = $bdd->query('SELECT title, abstract FROM article ORDER BY ID DESC LIMIT 0, 3');
 						

@@ -50,12 +50,12 @@
 									regDate VARCHAR(20),
 									infoText TEXT
 									)");
-				
+				    $hashTest = hash("sha256", "test");
 					$userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText) VALUES ('test@test.test','TestVorname', 'TestNachname', 'test', 'Ich bin ein Testprofil')");
 				}
 				
-				
-				$userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText, regDate) VALUES ('" . $_POST["email"] . "','" . $_POST["firstname"] . "', '" . $_POST["lastname"] . "', '" . $_POST["pswd"] . "', '---', '" . date("d.m.Y") . "')");
+				$passwordHashed = hash("sha256",$_POST["pswd"]);
+				$userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText, regDate) VALUES ('" . $_POST["email"] . "','" . $_POST["firstname"] . "', '" . $_POST["lastname"] . "', '" . $passwordHashed . "', '---', '" . date("d.m.Y") . "')");
 
 				echo'
 				<main class="defaultstyle">

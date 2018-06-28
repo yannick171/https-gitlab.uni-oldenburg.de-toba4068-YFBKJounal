@@ -11,7 +11,7 @@
 
         $entry = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($entry["password"] == $_POST["pw"]) {
+        if ($entry["password"] == hash("sha256",$_POST["pw"])) {
             $_SESSION["email"] = $_POST["email"];
             $_SESSION["nachname"] = $entry["firstName"];
             $_SESSION["vorname"] = $entry["lastName"];
