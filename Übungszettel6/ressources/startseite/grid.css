@@ -7,9 +7,31 @@
 }
 
 .randomButton{
-  background-color: none;
+
   font-size: 60px !important;
 }
+.gridContainer
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+.child
+{
+    padding-right: 4%;
+    background-color: #f2f2f2;
+}
+
+@media only screen and (max-width: 1200px)
+{
+    .gridContainer
+    {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
 [class*="box-"]{
   padding: 5%;
 }
