@@ -11,7 +11,9 @@ include("ressources/snippets/session.php");
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <?php include("ressources/snippets/article.php"); ?>
     <?php include("ressources/snippets/globalsources.php") ?>
-
+        <title>
+            Evolve Startseite
+        </title>
 </head>
 
 <body>

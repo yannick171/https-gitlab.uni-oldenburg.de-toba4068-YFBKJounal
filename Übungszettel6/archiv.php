@@ -7,7 +7,10 @@
     <head>
         <?php include("ressources/snippets/globalsources.php") ?>
         <link rel = "stylesheet" type="text/css" href = "ressources/archivseite/archiv_style_sheet.css">
-        <link href = "ressources/css/article.css" rel= "stylesheet">
+            <link rel="stylesheet" type="text/css" href="ressources/startseite/grid.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <?php include("ressources/snippets/article.php"); ?>
+    <?php include("ressources/snippets/globalsources.php") ?>
         <title>
             Archiv
         </title>
@@ -17,13 +20,13 @@
 
       <?php include ("ressources/snippets/head.php") ;?>
 
-        <main class="defaultstyle">
+        <main class="">
             <h1>
                 Archiv
             </h1>
             <div class = "headingGrid">
                 <p id = "headingParagraph">
-                    Willkommen im Archiv. Hier gibt es die gesammelten Ausgaben der letzten drei Jahre. Sie sind nach Jahren sortiert.<br>
+                    Willkommen im Archiv. Hier gibt es die gesammelten Ausgaben der letzten drei Jahre.<br>
                     Nehmen Sie sich Zeit und stöbern Sie nach Herzenslust die folgende Sammlung durch.
                     Wir bieten Ihnen alles künstlichen Immunsystemen bis zu KPL-Bäumen...<br>
                     IN KÜNSTLICHEN IMMUNSYSTEMEN also begleiten Sie uns auf eine fantastische Reise bis an die Grenzen dieses
@@ -38,684 +41,80 @@
 				if(isset($_GET['search']))
 				{
 					echo '
-					<h2>
-						Suchergibnix für '.$_GET['search'].':
-					</h2>
+					<br>
+					<form method="get" action="archiv.php">
+						<h2>
+						Suchergebnisse für &nbsp;&nbsp;&nbsp;<input placeholder="Suchen" name="search" value="'.$_GET['search'].'" /><i class="fa fa-search"></i></h2>
+						<br>
+					</form>
+
 					';
 					
 					//Alle Artikel holen und anzeigen
-					$string = file_get_contents("ressources/json/article.json");
-					$articles = json_decode($string,true);
-					$results = array();
-					foreach($articles as $key)
-					{
-						$meinString = $key["title"];
-						$findMich   = $_GET['search'];
-						$pos = strpos($meinString, $findMich);
+					
+					// Datenbankconnextion
+                    $articlesConnection = new PDO('sqlite:ressources/SQLData/articles.db');
+                    $magazinesConnection = new PDO('sqlite:ressources/SQLData/magazines.db');
+					
+                    
+                    $allArticles = $articlesConnection->query('SELECT * FROM article');
+					
+					$noresult = true;
 
+                    while ($article = $allArticles->fetch())
+                    {
+						$pos = strpos($article["title"], $_GET['search']);
+						
 						if ($pos === false) 
 						{
 						}
-						else 
+						else
 						{
-							array_push($results, $key);
+							$noresult = false;
+							printArticle(htmlspecialchars($article["title"]), htmlspecialchars($article["abstract"]), htmlspecialchars($article["id"]), htmlspecialchars(
+							$article["author"]), htmlspecialchars($article["pdfPath"]));
 						}
 					}
 					
-					if(count($results) > 0)
+					if($noresult)
 					{
-						echo '<ul>';
-						foreach($results as $key)
-						{
-							echo '<li>'.$key["title"].'</li>';
-						}
-						echo '</ul>';
-					}
-					else
-					{
-						echo 'Keine Suchergebnisse zu '.$_GET['search'].' gefunden!';
+						echo 'Keine Treffer.<br><br><br><br><br><br><br><br><br><br>';
 					}
 				}
 				else
 				{
-					echo '            
-			<h2>
-                2018
-            </h2>
-                <div class = "grid-container">
-                    <article>
-                        Die Grenzen der Computational Intelligence
-                        <section class="grid-container-article">
-                            <div>
-                                <img src = "ressources/archivseite/TitelSeite.jpg" alt = "Titelseite des Magazins">
-                            </div>
-                            <div>
-                                <p class = "item2">
-                                    Diese Ausgabe wird von Beiträgen zum Thema der Grenzen der Computational Intelligence dominiert.
-                                    Begleiten Sie uns auf einer Reise zu den Grenzen des Machbaren.
-                                    Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung1/Zeitung%201.txt">hier</a> herunter
-                                </p>
-                            </div>
-                            <div class="item-down-article">
-                                <h3>Inhalt</h3>
-                                <details>
-                                    <summary>
-                                        Neue Erkenntnisse im Bereich der Fuzzy-Logik<br>
-                                    </summary>
-                                    <p>
-                                        Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
-                                        und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen. Welche dies genau sind,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Der Durchbruch im Verständnis der temporalen Logik<br>
-                                    </summary>
-                                    <p>
-                                        Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüssel
-                                        unserer Forschung ist die Annahme, dass das Wichtigste bei dieser Diziplin das Tempo ist.Wie genau
-                                        das Tempo maßgeblich für das Verstehen der temporalen Logik ist,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki<br>
-                                    </summary>
-                                    <p>
-                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
-                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
-                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
-                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
-                                    </p>
-                                </details>
-                            </div>
-                        </section>
-                    </article>
-
-                    <article>
-                        Der Weg des Computers zur Kreativität
-                        <section class="grid-container-article">
-                            <div>
-                                <img src = "ressources/archivseite/TitelSeite2.jpg" alt = "Titelseite des Magazins">
-                            </div>
-                            <div class = "item2">
-                                <p>
-                                    Diesen Monat beschäftigen wir uns mit der Königsdiziplin des Menschen.<br>
-                                    Wie können wir der Krativität mit Maschinen nahekommen? Diese und andere Fragen werden in dieser Ausgabe geklärt.
-                                    Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung%202.txt">hier</a> herunter
-                                </p>
-                            </div>
-                            <div class="item-down-article">
-                                <h3>Inhalt</h3>
-                                <details>
-                                    <summary>
-                                        Neue Erkenntnisse im Bereich der Fuzzy-Logik<br>
-                                    </summary>
-                                    <p>
-                                        Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
-                                        und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen. Welche dies genau sind,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Der Durchbruch im Verständnis der temporalen Logik<br>
-                                    </summary>
-                                    <p>
-                                        Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüssel
-                                        unserer Forschung ist die Annahme, dass das Wichtigste bei dieser Diziplin das Tempo ist.Wie genau
-                                        das Tempo maßgeblich für das Verstehen der temporalen Logik ist,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki<br>
-                                    </summary>
-                                    <p>
-                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
-                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
-                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
-                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
-                                    </p>
-                                </details>
-                            </div>
-                        </section>
-                    </article>
-                </div>
-
-            <h2>
-                2017
-            </h2>
-                <div class = "grid-container">
-                    <article>
-                        Die Grenzen der Computational Intelligence
-                        <section class="grid-container-article">
-                            <div>
-                                <img src = "ressources/archivseite/Titelseite3.jpg" alt = "Titelseite des Magazins">
-                            </div>
-                            <div class = "item2">
-                                <p>
-                                    Diese Ausgabe wird von Beiträgen zum Thema der Grenzen der Computational Intelligence dominiert.
-                                    Begleiten Sie uns auf einer Reise zu den Grenzen des Machbaren.
-                                    Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung1/Zeitung%201.txt">hier</a> herunter
-                                </p>
-                            </div>
-                            <div class="item-down-article">
-                                <h3>Inhalt</h3>
-                                <details>
-                                    <summary>
-                                        Neue Erkenntnisse im Bereich der Fuzzy-Logik<br>
-                                    </summary>
-                                    <p>
-                                        Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
-                                        und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen. Welche dies genau sind,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Der Durchbruch im Verständnis der temporalen Logik<br>
-                                    </summary>
-                                    <p>
-                                        Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüssel
-                                        unserer Forschung ist die Annahme, dass das Wichtigste bei dieser Diziplin das Tempo ist.Wie genau
-                                        das Tempo maßgeblich für das Verstehen der temporalen Logik ist,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki<br>
-                                    </summary>
-                                    <p>
-                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
-                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
-                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
-                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
-                                    </p>
-                                </details>
-                            </div>
-                        </section>
-                    </article>
-
-                    <article>
-                        Der Weg des Computers zur Kreativität
-                        <section class="grid-container-article">
-                            <div>
-                                <img src = "ressources/archivseite/TitelSeite4.jpg" alt = "Titelseite des Magazins">
-                            </div>
-                            <div class = "item2">
-                                <p>
-                                    Diesen Monat beschäftigen wir uns mit der Königsdiziplin des Menschen.<br>
-                                    Wie können wir der Krativität mit Maschinen nahekommen? Diese und andere Fragen werden in dieser Ausgabe geklärt.
-                                    Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung%202.txt">hier</a> herunter
-                                </p>
-                            </div>
-                            <div class="item-down-article">
-                                <h3>Inhalt</h3>
-                                <details>
-                                    <summary>
-                                        Neue Erkenntnisse im Bereich der Fuzzy-Logik<br>
-                                    </summary>
-                                    <p>
-                                        Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
-                                        und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen. Welche dies genau sind,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Der Durchbruch im Verständnis der temporalen Logik<br>
-                                    </summary>
-                                    <p>
-                                        Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüssel
-                                        unserer Forschung ist die Annahme, dass das Wichtigste bei dieser Diziplin das Tempo ist.Wie genau
-                                        das Tempo maßgeblich für das Verstehen der temporalen Logik ist,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki<br>
-                                    </summary>
-                                    <p>
-                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
-                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
-                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
-                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
-                                    </p>
-                                </details>
-                            </div>
-                        </section>
-                    </article>
-                </div>
-            <h2>
-                2016
-            </h2>
-                <div class = "grid-container">
-                    <article>
-                        Der Weg des Computers zur Kreativität
-                        <section class="grid-container-article">
-                            <div>
-                                <img src = "ressources/archivseite/TitelSeite5.jpg" alt = "Titelseite des Magazins">
-                            </div>
-                            <div class = "item2">
-                                <p>
-                                    Diesen Monat beschäftigen wir uns mit der Königsdiziplin des Menschen.<br>
-                                    Wie können wir der Krativität mit Maschinen nahekommen? Diese und andere Fragen werden in dieser Ausgabe geklärt.
-                                    Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung%202.txt">hier</a> herunter
-                                </p>
-                            </div>
-                            <div class="item-down-article">
-                                <h3>Inhalt</h3>
-                                <details>
-                                    <summary>
-                                        Neue Erkenntnisse im Bereich der Fuzzy-Logik<br>
-                                    </summary>
-                                    <p>
-                                        Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
-                                        und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen. Welche dies genau sind,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Der Durchbruch im Verständnis der temporalen Logik<br>
-                                    </summary>
-                                    <p>
-                                        Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüssel
-                                        unserer Forschung ist die Annahme, dass das Wichtigste bei dieser Diziplin das Tempo ist.Wie genau
-                                        das Tempo maßgeblich für das Verstehen der temporalen Logik ist,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki<br>
-                                    </summary>
-                                    <p>
-                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
-                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
-                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
-                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
-                                    </p>
-                                </details>
-                            </div>
-                        </section>
-                    </article>
-
-                    <article>
-                        Der Weg des Computers zur Kreativität
-                        <section class="grid-container-article">
-                            <div>
-                                <img src = "ressources/archivseite/TitelSeite6.jpg" alt = "Titelseite des Magazins">
-                            </div>
-                            <div class = "item2">
-                                <p>
-                                    Diesen Monat beschäftigen wir uns mit der Königsdiziplin des Menschen.<br>
-                                    Wie können wir der Krativität mit Maschinen nahekommen? Diese und andere Fragen werden in dieser Ausgabe geklärt.
-                                    Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung%202.txt">hier</a> herunter
-                                </p>
-                            </div>
-                            <div class="item-down-article">
-                                <h3>Inhalt</h3>
-                                <details>
-                                    <summary>
-                                        Neue Erkenntnisse im Bereich der Fuzzy-Logik<br>
-                                    </summary>
-                                    <p>
-                                        Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
-                                        und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen. Welche dies genau sind,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Der Durchbruch im Verständnis der temporalen Logik<br>
-                                    </summary>
-                                    <p>
-                                        Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüssel
-                                        unserer Forschung ist die Annahme, dass das Wichtigste bei dieser Diziplin das Tempo ist.Wie genau
-                                        das Tempo maßgeblich für das Verstehen der temporalen Logik ist,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki<br>
-                                    </summary>
-                                    <p>
-                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
-                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
-                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
-                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
-                                    </p>
-                                </details>
-                            </div>
-                        </section>
-                    </article>
-                </div>            <h2>
-                2018
-            </h2>
-                <div class = "grid-container">
-                    <article>
-                        Die Grenzen der Computational Intelligence
-                        <section class="grid-container-article">
-                            <div>
-                                <img src = "ressources/archivseite/TitelSeite.jpg" alt = "Titelseite des Magazins">
-                            </div>
-                            <div>
-                                <p class = "item2">
-                                    Diese Ausgabe wird von Beiträgen zum Thema der Grenzen der Computational Intelligence dominiert.
-                                    Begleiten Sie uns auf einer Reise zu den Grenzen des Machbaren.
-                                    Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung1/Zeitung%201.txt">hier</a> herunter
-                                </p>
-                            </div>
-                            <div class="item-down-article">
-                                <h3>Inhalt</h3>
-                                <details>
-                                    <summary>
-                                        Neue Erkenntnisse im Bereich der Fuzzy-Logik<br>
-                                    </summary>
-                                    <p>
-                                        Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
-                                        und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen. Welche dies genau sind,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Der Durchbruch im Verständnis der temporalen Logik<br>
-                                    </summary>
-                                    <p>
-                                        Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüssel
-                                        unserer Forschung ist die Annahme, dass das Wichtigste bei dieser Diziplin das Tempo ist.Wie genau
-                                        das Tempo maßgeblich für das Verstehen der temporalen Logik ist,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki<br>
-                                    </summary>
-                                    <p>
-                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
-                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
-                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
-                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
-                                    </p>
-                                </details>
-                            </div>
-                        </section>
-                    </article>
-
-                    <article>
-                        Der Weg des Computers zur Kreativität
-                        <section class="grid-container-article">
-                            <div>
-                                <img src = "ressources/archivseite/TitelSeite2.jpg" alt = "Titelseite des Magazins">
-                            </div>
-                            <div class = "item2">
-                                <p>
-                                    Diesen Monat beschäftigen wir uns mit der Königsdiziplin des Menschen.<br>
-                                    Wie können wir der Krativität mit Maschinen nahekommen? Diese und andere Fragen werden in dieser Ausgabe geklärt.
-                                    Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung%202.txt">hier</a> herunter
-                                </p>
-                            </div>
-                            <div class="item-down-article">
-                                <h3>Inhalt</h3>
-                                <details>
-                                    <summary>
-                                        Neue Erkenntnisse im Bereich der Fuzzy-Logik<br>
-                                    </summary>
-                                    <p>
-                                        Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
-                                        und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen. Welche dies genau sind,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Der Durchbruch im Verständnis der temporalen Logik<br>
-                                    </summary>
-                                    <p>
-                                        Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüssel
-                                        unserer Forschung ist die Annahme, dass das Wichtigste bei dieser Diziplin das Tempo ist.Wie genau
-                                        das Tempo maßgeblich für das Verstehen der temporalen Logik ist,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki<br>
-                                    </summary>
-                                    <p>
-                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
-                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
-                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
-                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
-                                    </p>
-                                </details>
-                            </div>
-                        </section>
-                    </article>
-                </div>
-
-            <h2>
-                2017
-            </h2>
-                <div class = "grid-container">
-                    <article>
-                        Die Grenzen der Computational Intelligence
-                        <section class="grid-container-article">
-                            <div>
-                                <img src = "ressources/archivseite/Titelseite3.jpg" alt = "Titelseite des Magazins">
-                            </div>
-                            <div class = "item2">
-                                <p>
-                                    Diese Ausgabe wird von Beiträgen zum Thema der Grenzen der Computational Intelligence dominiert.
-                                    Begleiten Sie uns auf einer Reise zu den Grenzen des Machbaren.
-                                    Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung1/Zeitung%201.txt">hier</a> herunter
-                                </p>
-                            </div>
-                            <div class="item-down-article">
-                                <h3>Inhalt</h3>
-                                <details>
-                                    <summary>
-                                        Neue Erkenntnisse im Bereich der Fuzzy-Logik<br>
-                                    </summary>
-                                    <p>
-                                        Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
-                                        und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen. Welche dies genau sind,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Der Durchbruch im Verständnis der temporalen Logik<br>
-                                    </summary>
-                                    <p>
-                                        Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüssel
-                                        unserer Forschung ist die Annahme, dass das Wichtigste bei dieser Diziplin das Tempo ist.Wie genau
-                                        das Tempo maßgeblich für das Verstehen der temporalen Logik ist,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki<br>
-                                    </summary>
-                                    <p>
-                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
-                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
-                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
-                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
-                                    </p>
-                                </details>
-                            </div>
-                        </section>
-                    </article>
-
-                    <article>
-                        Der Weg des Computers zur Kreativität
-                        <section class="grid-container-article">
-                            <div>
-                                <img src = "ressources/archivseite/TitelSeite4.jpg" alt = "Titelseite des Magazins">
-                            </div>
-                            <div class = "item2">
-                                <p>
-                                    Diesen Monat beschäftigen wir uns mit der Königsdiziplin des Menschen.<br>
-                                    Wie können wir der Krativität mit Maschinen nahekommen? Diese und andere Fragen werden in dieser Ausgabe geklärt.
-                                    Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung%202.txt">hier</a> herunter
-                                </p>
-                            </div>
-                            <div class="item-down-article">
-                                <h3>Inhalt</h3>
-                                <details>
-                                    <summary>
-                                        Neue Erkenntnisse im Bereich der Fuzzy-Logik<br>
-                                    </summary>
-                                    <p>
-                                        Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
-                                        und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen. Welche dies genau sind,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Der Durchbruch im Verständnis der temporalen Logik<br>
-                                    </summary>
-                                    <p>
-                                        Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüssel
-                                        unserer Forschung ist die Annahme, dass das Wichtigste bei dieser Diziplin das Tempo ist.Wie genau
-                                        das Tempo maßgeblich für das Verstehen der temporalen Logik ist,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki<br>
-                                    </summary>
-                                    <p>
-                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
-                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
-                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
-                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
-                                    </p>
-                                </details>
-                            </div>
-                        </section>
-                    </article>
-                </div>
-            <h2>
-                2016
-            </h2>
-                <div class = "grid-container">
-                    <article>
-                        Der Weg des Computers zur Kreativität
-                        <section class="grid-container-article">
-                            <div>
-                                <img src = "ressources/archivseite/TitelSeite5.jpg" alt = "Titelseite des Magazins">
-                            </div>
-                            <div class = "item2">
-                                <p>
-                                    Diesen Monat beschäftigen wir uns mit der Königsdiziplin des Menschen.<br>
-                                    Wie können wir der Krativität mit Maschinen nahekommen? Diese und andere Fragen werden in dieser Ausgabe geklärt.
-                                    Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung%202.txt">hier</a> herunter
-                                </p>
-                            </div>
-                            <div class="item-down-article">
-                                <h3>Inhalt</h3>
-                                <details>
-                                    <summary>
-                                        Neue Erkenntnisse im Bereich der Fuzzy-Logik<br>
-                                    </summary>
-                                    <p>
-                                        Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
-                                        und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen. Welche dies genau sind,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Der Durchbruch im Verständnis der temporalen Logik<br>
-                                    </summary>
-                                    <p>
-                                        Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüssel
-                                        unserer Forschung ist die Annahme, dass das Wichtigste bei dieser Diziplin das Tempo ist.Wie genau
-                                        das Tempo maßgeblich für das Verstehen der temporalen Logik ist,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki<br>
-                                    </summary>
-                                    <p>
-                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
-                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
-                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
-                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
-                                    </p>
-                                </details>
-                            </div>
-                        </section>
-                    </article>
-
-                    <article>
-                        Der Weg des Computers zur Kreativität
-                        <section class="grid-container-article">
-                            <div>
-                                <img src = "ressources/archivseite/TitelSeite6.jpg" alt = "Titelseite des Magazins">
-                            </div>
-                            <div class = "item2">
-                                <p>
-                                    Diesen Monat beschäftigen wir uns mit der Königsdiziplin des Menschen.<br>
-                                    Wie können wir der Krativität mit Maschinen nahekommen? Diese und andere Fragen werden in dieser Ausgabe geklärt.
-                                    Laden Sie sich die Ausgabe <a href = "ressources/archivseite/Zeitung%202.txt">hier</a> herunter
-                                </p>
-                            </div>
-                            <div class="item-down-article">
-                                <h3>Inhalt</h3>
-                                <details>
-                                    <summary>
-                                        Neue Erkenntnisse im Bereich der Fuzzy-Logik<br>
-                                    </summary>
-                                    <p>
-                                        Aufgrund langer und intensiver Forschung konnten ich, der großartige Huan Lee,
-                                        und mein Team neue Erkenntnisse im Bereich der Fuzzy-Logik gewinnen. Welche dies genau sind,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/Fuzzy-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Der Durchbruch im Verständnis der temporalen Logik<br>
-                                    </summary>
-                                    <p>
-                                        Dieses Paper widmet sich der Frage nach dem Verständnis der temporalen Logik. Der Schlüssel
-                                        unserer Forschung ist die Annahme, dass das Wichtigste bei dieser Diziplin das Tempo ist.Wie genau
-                                        das Tempo maßgeblich für das Verstehen der temporalen Logik ist,
-                                        können Sie in <a href="ressources/archivseite/Zeitung1/temporale-Logik.txt">folgendem Artikel </a>lesen.
-                                    </p>
-                                </details>
-                                <details>
-                                    <summary>
-                                        Neuer Durchbruch im Bereich der neuronalen Netze nutzenden Ki<br>
-                                    </summary>
-                                    <p>
-                                        In diesem Paper geht es darum, wie Forscher Edward Schneitzel mit seinen Mitarbeitern des renormierten Instituts Berkely für angewandte
-                                        Neurolinguistik es geschafft hat einer KI das Dichten wie Shakespeare innnerhalb weniger Stunden anzutrainieren. Es wurde dafür eine
-                                        neue Technik namens Randolinguisierung angewandt, bei der zufällig Wörterketten produziert werden. Das Ergebnis imitiert Shakespeare
-                                        perfekt. Lesen Sie den vollständigen Artikel <a href="ressources/archivseite/Zeitung1/ki.txt">hier.</a>
-                                    </p>
-                                </details>
-                            </div>
-                        </section>
-                    </article>
-                </div>';
+					echo'
+					<div class="box-4">
+                    <h2>Aktuelle Ausgaben</h2>
+					<br>
+					';
+                    // Datenbankconnextion
+                    $articlesConnection = new PDO('sqlite:ressources/SQLData/articles.db');
+                    $magazinesConnection = new PDO('sqlite:ressources/SQLData/magazines.db');
+                    
+					// Abfrage der 3 letzten Artikel
+                    $sql = $magazinesConnection->query('SELECT * FROM Magazine');
+                    if($sql == false)
+                    {
+                        echo "asdfasdf";
+                    }
+					
+                    $magazines = $sql->fetchAll();
+					
+					$i = 10;
+					
+					for ($i = 0; $i < count($magazines) && $i < 3; $i++)
+					{
+						echo'<h3>' . htmlspecialchars($magazines[$i]["title"]) . '</h3>';
+						echo'<h5> Inhalt </h5>' . htmlspecialchars($magazines[$i]["description"]) . '<br><br>';
+						$articlesOfMagazine = $articlesConnection->query('SELECT * FROM article where magazine = ' . $magazines[$i]["id"]);
+						
+						while ($article = $articlesOfMagazine->fetch())
+						{
+							printArticle(htmlspecialchars($article["title"]), htmlspecialchars($article["abstract"]), htmlspecialchars($article["id"]), htmlspecialchars($article["author"]), htmlspecialchars($article["pdfPath"]));
+						}
+						echo '<br><br><br>';
+					}
 				}
 			
 			?>
