@@ -32,10 +32,10 @@
       <div class="uploadArea">
         <button type="button" class="btn btn-primary btn-lg btn-block" id="startUpload">Neuen Artikel einreichen</button>
       <div>
-          <form method="post" action="ressources/snippets/uploadFile.php" class="uploadAreaInvisible" id="uploadArea">
+          <form method="post" action="ressources/snippets/uploadFile.php" enctype="multipart/form-data" class="uploadAreaInvisible" id="uploadArea">
             <div class="form-group">
               <label for="uploadFile">Artikel hochladen:</label>
-              <input type="file" class="form-control-file" id="uploadFile" name="file">
+              <input type="file" class="form-control-file" id="uploadFile" name="uploadFile">
             </div>
             <div class="form-group">
               <label for="articleTitle">Titel:</label>
@@ -52,6 +52,7 @@
             </div>
             <button class="btn-primary" id="artikelEinreichen" >Einreichen</button>
           </form>
+
       </div>
       <div class="articleInformation-1" id="uploads">
         <div class="table-responsive">
