@@ -50,11 +50,11 @@
 									regDate VARCHAR(20),
 									infoText TEXT
 									)");
-				    $hashTest = hash("sha256", "test");
+				    $hashTest = password_hash('test', PASSWORD_DEFAULT);
 					$userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText) VALUES ('test@test.test','TestVorname', 'TestNachname', 'test', 'Ich bin ein Testprofil')");
 				}
 				
-				$passwordHashed = hash("sha256",$_POST["pswd"]);
+				$passwordHashed = password_hash($_POST['pswd'], PASSWORD_DEFAULT);
 				$userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText, regDate) VALUES ('" . $_POST["email"] . "','" . $_POST["firstname"] . "', '" . $_POST["lastname"] . "', '" . $passwordHashed . "', '---', '" . date("d.m.Y") . "')");
 
 				echo'
