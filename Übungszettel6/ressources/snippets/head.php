@@ -107,9 +107,10 @@
                 <h6 class="modal-title" id="searchModalLongTitle">Suche im Archiv nach..</h6>
             </div>
             <div class="modal-body">
-			  <form method="get" action="archiv.php" name="search">
+			  <form method="get" action="archiv.php">
                 <input class="form-control mr-sm-2" name="search" type="search" placeholder="...">
-                <i class="fa fa-search"></i>
+
+                  <a href="#" onclick="$(this).closest('form').submit()"> Bestätigen </a>
               </form>
 			</div>
         </div>

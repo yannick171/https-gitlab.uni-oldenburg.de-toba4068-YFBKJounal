@@ -33,13 +33,44 @@
                     Archivs und darüber hinaus, also viel Glück und genießen Sie dieses Abendteuer.<br><br>
                     Ihre Redaktion
                 </p>
-                <img src = "ressources/archivseite/buch.jpg" alt = "Buch zur Aufhüschung" class = "headingImage">
+                <img src = "../ressources/archivseite/buch.jpg" alt = "Buch zur Aufhüschung" class = "headingImage">
             </div>
 
-			<?php 
-			
-				if(isset($_GET['search']))
+			<?php
+
+				if(isset($_GET))
 				{
+                    $url = 'http://localhost/YFBKJounal/Übungszettel6/ressources/snippets/search_server.php';
+                    $searchflag = false;
+                    if (isset($_GET['search'])){
+                        if(!$searchflag){
+                            $searchflag = true;
+                            $url = $url . '?search=' . urlencode($_GET['search']);
+                        }else{
+                            $url = $url . '&search=' . urlencode($_GET['search']);
+                        }
+                    }
+
+                    if (isset($_GET['author']) && $_GET['author'] != ''){
+                        if(!$searchflag){
+                            $searchflag = true;
+                            $url = $url . '?author=' .urlencode($_GET['author']);
+                        }else{
+                            $url = $url . '&author=' .urlencode($_GET['author']);
+                        }
+                    }
+                    if (isset($_GET['uploadDate'])){
+                        if(!$searchflag) {
+                            $searchflag = true;
+                            $url = $url . '?uploadDate=' .urlencode($_GET['uploadDate']);
+                        }else {
+                            $url = $url . '&uploadDate=' .urlencode($_GET['uploadDate']);
+                        }
+                    }
+
+                    $antwort = file_get_contents($url);
+                    $content = json_decode($antwort,true)[0];
+
 					echo '
 					<br>
 					<form method="get" action="archiv.php">
@@ -49,37 +80,15 @@
 					</form>
 
 					';
-					
-					//Alle Artikel holen und anzeigen
-					
-					// Datenbankconnextion
-                    $articlesConnection = new PDO('sqlite:ressources/SQLData/articles.db');
-                    $magazinesConnection = new PDO('sqlite:ressources/SQLData/magazines.db');
-					
-                    
-                    $allArticles = $articlesConnection->query('SELECT * FROM article');
-					
-					$noresult = true;
 
-                    while ($article = $allArticles->fetch())
-                    {
-						$pos = strpos($article["title"], $_GET['search']);
-						
-						if ($pos === false) 
-						{
-						}
-						else
-						{
-							$noresult = false;
-							printArticle(htmlspecialchars($article["title"]), htmlspecialchars($article["abstract"]), htmlspecialchars($article["id"]), htmlspecialchars(
-							$article["author"]), htmlspecialchars($article["pdfPath"]));
-						}
-					}
-					
-					if($noresult)
-					{
-						echo 'Keine Treffer.<br><br><br><br><br><br><br><br><br><br>';
-					}
+					if (is_array($content)){
+                        foreach ($content as $article) {
+                            printArticle(htmlspecialchars($article["title"]), htmlspecialchars($article["abstract"]), htmlspecialchars($article["id"]), htmlspecialchars(
+                                $article["author"]), htmlspecialchars($article["pdfPath"]));
+					    }
+                    }else{
+                        echo 'Keine Treffer.<br><br><br><br><br><br><br><br><br><br>';
+                    }
 				}
 				else
 				{
