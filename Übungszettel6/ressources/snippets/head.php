@@ -1,3 +1,5 @@
+<!-- google Captcha -->
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
 <!-- Start Cookie Plugin -->
 <script type="text/javascript">
@@ -66,6 +68,7 @@
 </nav>
 
 <!-- Beispiel Modal aus https://getbootstrap.com/docs/4.0/components/modal/#tooltips-and-popovers-->
+<!-- loginmodal -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
@@ -90,10 +93,9 @@
                   <input type="password" class="form-control" id="pwd" name="pw">
                 </div>
             </div>
+                <div class="g-recaptcha" data-sitekey="6Ldb3mEUAAAAAM1xksEH_K2uy4EvTwMgvrCd2LoK"></div>
             <div class="modal-footer">
-              <button style="width:100%;" type="submit" class="btn btn-primary" id = "loginButton">
-                  Einloggen
-              </button>
+              <input type="submit" id="loginButton">
             </div>
           </form>
         </div>

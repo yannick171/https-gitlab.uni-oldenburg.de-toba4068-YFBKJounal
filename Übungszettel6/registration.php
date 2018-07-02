@@ -116,7 +116,7 @@
 					}
 					echo'
                     </p>
-
+                    <div class="g-recaptcha" data-sitekey="6Ldb3mEUAAAAAM1xksEH_K2uy4EvTwMgvrCd2LoK"></div>
                 </form>
 				<button onclick="validateForm()">Registrieren</button>
             </div>
