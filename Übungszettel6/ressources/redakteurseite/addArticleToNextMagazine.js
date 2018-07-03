@@ -1,4 +1,4 @@
-function addArticle(id) {
+function addArticleToMagazine(id) {
 
     $.ajax({
         type: 'POST',
