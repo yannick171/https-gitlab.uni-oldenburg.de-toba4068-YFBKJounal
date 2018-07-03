@@ -110,9 +110,35 @@
             </div>
             <div class="modal-body">
 			  <form method="get" action="archiv.php">
-                <input class="form-control mr-sm-2" name="search" type="search" placeholder="...">
-
-                  <a href="#" onclick="$(this).closest('form').submit()"> Bestätigen </a>
+                    <table width="100%">
+                        <tr>
+                            <td>
+                                <b>Titel:</b>
+                            </td>
+                            <td >
+                                <input class="form-control mr-sm-2" name="search" type="search" placeholder="...">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Autor:</b>
+                            </td>
+                            <td>
+                                <input class="form-control mr-sm-2" name="author" type="text" placeholder="...">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Erscheinungsjahr:</b>
+                            </td>
+                            <td>
+                                <input class="form-control mr-sm-2" name="uploadDate" type="text" placeholder="...">
+                            </td>
+                        </tr>
+                    </table>
+                  <div class="modal-footer">
+                      <a href="#" onclick="$(this).closest('form').submit()"> Bestätigen </a>
+                  </div>
               </form>
 			</div>
         </div>
