@@ -1,6 +1,8 @@
 <?php include("ressources/snippets/session.php"); ?>
-<?php include("ressources/SQLData/initArticledb.php"); ?>
-<?php include("ressources/SQLData/initMagazine.php"); ?>
+<!--?php include("ressources/SQLData/initArticledb.php"); ?-->
+<!--?php include("ressources/SQLData/initMagazine.php"); ?-->
+
+<?php include("initDatabase.php"); ?>
 <!--PHP Script for sorting Articles in the Lists and save modified Lists -->
 <?php
 $articlesDb = new PDO('sqlite:ressources/SQLData/articles.db');
@@ -169,6 +171,7 @@ if (isset($_POST['bildUrl'])) {
                             . '<div class="card-body">'
                             . $proof["abstract"]
                             . '</div>'
+                            . '<button onclick="addArticleToProofed('.$proof["id"].')" class="btn btn-success btn-block">Artikel als geprüft markieren</button>'
                             . '</div>'
                             . '</div>'
                             . '<input type="hidden" name="id" value="' . $proof["id"] . '">'
@@ -200,7 +203,7 @@ if (isset($_POST['bildUrl'])) {
                             . '<div class="card-body">'
                             . $proof["abstract"]
                             . '</div>'
-                            . '<button onclick="addArticle('.$proof["id"].')" class="btn btn-success btn-block">Artikel zur nächsten Ausgabe hinzufügen</button>'
+                            . '<button onclick="addArticleToMagazine('.$proof["id"].')" class="btn btn-success btn-block">Artikel zur nächsten Ausgabe hinzufügen</button>'
                             . '</div>'
                             . '</div>'
                             . '<input type="hidden" name="id" value="' . $proof["id"] . '">'
@@ -279,11 +282,10 @@ if (isset($_POST['bildUrl'])) {
                                 . '<div class="card-body">'
                                 . $next["abstract"]
                                 . '</div>'
-                                //. '<div class="centerButton">'
-                                //. '<button type="button" class="btn btn-danger btn-block">Artikel in Geprüft zurücklegen</button>'
-                                //. '</div>'
+                                . '<button onclick="addArticleToProofedFromNextMagazine('.$next["id"].')" class="btn btn-danger btn-block">Artikel nach geprüft zurücklegen</button>'
                                 . '</div>'
                                 . '</div>'
+                                . '<input type="hidden" name="id" value="' . $next["id"] . '">'
                                 . '</li>';
 
                         }
