@@ -65,7 +65,7 @@ if (!$articlesDb->query($sql)) {
 
             $content = $artikel . ' ter Artikel von User mit Id:'.$user;
             $obj_pdf->writeHTML($content);
-            $obj_pdf->Output(__DIR__ . '/pdfsOfArticles/artikel%'. $artikelCounter.'.pdf', 'F');
+            $obj_pdf->Output(__DIR__ . '/ressources/archiv/artikel/artikel%'. $artikelCounter.'.pdf', 'F');
 
             $date = date("d.m.Y, H:i:s");
             $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle, magazine, pdfPath,uploadDate) 

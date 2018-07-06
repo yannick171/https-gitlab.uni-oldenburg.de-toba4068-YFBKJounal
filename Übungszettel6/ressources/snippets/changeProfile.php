@@ -26,10 +26,10 @@
                 $stmt->execute();
                 $db->commit();
 
-                $_SESSION["email"] = $_POST["email"];
-                $_SESSION["vorname"] = $_POST["vorname"];
-                $_SESSION["nachname"] = $_POST["nachname"];
-                $_SESSION["infoText"] = $_POST["infoText"];
+                $_SESSION["email"] = htmlspecialchars($_POST["email"]);
+                $_SESSION["vorname"] = htmlspecialchars($_POST["vorname"]);
+                $_SESSION["nachname"] = htmlspecialchars($_POST["nachname"]);
+                $_SESSION["infoText"] = htmlspecialchars($_POST["infoText"]);
 
                 $result = $_POST;
                 echo json_encode($result);

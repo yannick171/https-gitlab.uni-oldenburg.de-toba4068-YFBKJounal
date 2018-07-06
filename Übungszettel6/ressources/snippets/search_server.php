@@ -12,15 +12,15 @@ function search($p){
 
     while ($article = $allArticles->fetch())
     {
-        if(isset($Suchparameter['search']) && !empty($Suchparameter['search']) && !($pos = strpos($article["title"], $Suchparameter['search']))){
+        if(isset($Suchparameter['search']) && !empty($Suchparameter['search']) && !(strpos($article["title"], $Suchparameter['search']))){
             continue;
         }
 
-        if (isset($Suchparameter['author']) && !empty($Suchparameter['author'])&& !($pos = strpos($article["author"], $Suchparameter['author']))){
+        if (isset($Suchparameter['author']) && !empty($Suchparameter['author'])&& !(strpos($article["author"], $Suchparameter['author']))){
             continue;
         }
 
-        if (isset($Suchparameter['uploadDate']) && !empty($Suchparameter['uploadDate']) && !($pos = strpos($article["uploadDate"], $Suchparameter['uploadDate']))){
+        if (isset($Suchparameter['uploadDate']) && !empty($Suchparameter['uploadDate']) && !(strpos($article["uploadDate"], $Suchparameter['uploadDate']))){
             continue;
         }
 

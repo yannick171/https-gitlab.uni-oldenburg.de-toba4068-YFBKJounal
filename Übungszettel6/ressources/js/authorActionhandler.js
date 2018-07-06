@@ -56,36 +56,41 @@ $(document).ready(function(){
         $("#uploadArea").toggle();
     });
 
-    $("#authorProfil").submit(function (event) {
+    $("#toSubmit").submit(function (event) {
 
         event.preventDefault();
 
-        var infoText = $("#infotextInput").val();
-        var email = $("#emailInput").val();
-        var nachname = $("#nachnameInput").val();
-        var vorname = $("#vornameInput").val();
-        $.ajax({
-            type: "POST",
-            url : "ressources/snippets/changeProfile.php",
-            data: {
-                email: email,
-                nachname: nachname,
-                infoText: infoText,
-                vorname: vorname
+        if(validateForm()) {
+            var infoText = $("#infotextInput").val();
+            var email = $("#email").val();
+            var nachname = $("#nachnameInput").val();
+            var vorname = $("#vornameInput").val();
+            $.ajax({
+                type: "POST",
+                async: true,
+                url: "ressources/snippets/changeProfile.php",
+                data: {
+                    email: email,
+                    nachname: nachname,
+                    infoText: infoText,
+                    vorname: vorname
                 },
-            dataType: "JSON",
-            success: function(data){
+                dataType: "JSON",
+                success: function (data) {
                     $("#autorbox").html(data.nachname + '<br><br>' +
                         data.vorname + '<br><br>' +
                         data.email + '<br><br>');
                     $("#autorinfobox").html(data.infoText + '<br><br>');
-                    $("#autorProfil").css("display", "grid");
-                    $("#autorProfilBearbeiten").css("display", "none");
-
+                    //$("#autorProfil").css("display", "grid");
+                    //$("#autorProfilBearbeiten").css("display", "none");
+                    $("error").html("Erfolgreich!");
+                    $("error").css( "color", "green" );
                 },
-            error: function (xhr) {
+                error: function (xhr) {
+                    $("error").html("Nicht erfolgreich!")
                     $("#emailInput").val(temp_email);
                 }
+            });
+        }
         });
-    });
 })
