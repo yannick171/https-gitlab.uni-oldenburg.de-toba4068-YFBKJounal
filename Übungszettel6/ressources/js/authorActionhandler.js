@@ -7,7 +7,12 @@ $(document).ready(function(){
     var temp_email;
     var temp_nachname;
     var temp_vorname;
-    $("#autorProfil").on("click", "a", function () {
+
+    $("#changePasswordButton").on("click", function () {
+        $("#autorProfil").css("display","none");
+    });
+
+    $("#autorProfilButton").on("click", function () {
         temp_infoText = $("#infotextInput").val();
         temp_email = $("#emailInput").val();
         temp_nachname = $("#nachnameInput").val();
@@ -17,7 +22,7 @@ $(document).ready(function(){
         $("#autorProfilBearbeiten").css("display", "grid");
     });
 
-    $("#autorProfilBearbeiten").on("click", "a", function () {
+    $("#autorProfilBearbeiten").on("click", "button", function () {
         $("#autorProfil").css("display","grid");
         $("#autorProfilBearbeiten").css("display", "none");
     });

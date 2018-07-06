@@ -45,11 +45,11 @@ function validateForm(caller)
             }
             else {
                 document.getElementById("error").innerHTML = "";
-                document.getElementById("toSubmit").submit();
                 return true;
             }
         }else{
             document.getElementById("error").innerHTML = "Erfolgreich";
+            document.getElementById("error").style="color:green;";
             return true;
 		}
 	}

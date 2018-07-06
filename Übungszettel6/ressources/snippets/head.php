@@ -79,28 +79,60 @@
                   </button>
             </div>
             <div class="modal-body">
-              <form action="ressources/snippets/loginvalidation.php" method="post">
+              <form onsubmit="validateLogin()">
                 <div class="form-group">
                   <label for="email" class="col-form-label">
                       E-Mail:
                   </label>
-                  <input type="email" class="form-control" id="usr" name="email">
+                  <input type="email" class="form-control" id="usr" name="loginemail">
                 </div>
                 <div class="form-group">
                   <label for="password" class="col-form-label">
                       Passwort:
                   </label>
-                  <input type="password" class="form-control" id="pwd" name="pw">
+                  <input type="password" class="form-control" id="pwd" name="loginpw">
                 </div>
             </div>
                 <div class="g-recaptcha" data-sitekey="6Ldb3mEUAAAAAM1xksEH_K2uy4EvTwMgvrCd2LoK"></div>
             <div class="modal-footer">
+                <div id="loginmessage"></div>
               <input type="submit" id="loginButton">
             </div>
           </form>
         </div>
     </div>
 </div>
+
+<script>
+    //Skript zur login validierung
+
+    var box = document.getElementById("loginmessage");
+
+
+    function validateLogin() {
+        event.preventDefault();
+
+        var pwelement = document.getElementById("pwd");
+        var loginelement = document.getElementById("usr");
+        var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.open("POST", "ressources/snippets/loginvalidation.php",true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send("context=login&email="+loginelement.value+ "&pw=" + pwelement.value);
+
+        xmlhttp.onreadystatechange = function () {
+            if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                var response = xmlhttp.responseText;
+                if (response == 0){
+                    box.innerHTML = "Falsche Daten";
+                }
+                if (response == 1){
+                    location.reload();
+                }
+            }
+        }
+    }
+</script>
 
 <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">

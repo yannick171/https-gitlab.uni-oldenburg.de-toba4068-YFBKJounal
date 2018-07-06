@@ -118,7 +118,7 @@
                     </p>
                     <div class="g-recaptcha" data-sitekey="6Ldb3mEUAAAAAM1xksEH_K2uy4EvTwMgvrCd2LoK"></div>
                 </form>
-				<button onclick="validateForm()">Registrieren</button>
+				<button onclick="validation()">Registrieren</button>
             </div>
         </main>';
 			}
@@ -128,5 +128,12 @@
         <?php include ("ressources/snippets/footer.php") ;?>
         <?php include ("ressources/snippets/loadjavascript.php") ;?>
         <script src = "ressources/js/formvalid.js"></script>
+        <script>
+            function validation() {
+                if(validateForm()){
+                    document.getElementById("toSubmit").submit();
+                }
+            }
+        </script>
     </body>
 </html>
