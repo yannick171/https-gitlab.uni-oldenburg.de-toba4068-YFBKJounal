@@ -31,7 +31,6 @@ $MagazineDb = new PDO('sqlite:ressources/SQLData/magazines.db');
 $resultMagazine = $MagazineDb->query('SELECT * FROM Magazine');
 global $newestMagazine;
 $newestMagazine = $resultMagazine->fetch();
-//echo fetchAll($resultMagazine);
 while ($magazine = $resultMagazine->fetch()) {
     if (($magazine["id"] > $newestMagazine["id"]) || is_null($newestMagazine)) {
         $newestMagazine = $magazine;
@@ -213,7 +212,7 @@ if (isset($_POST['bildUrl'])) {
                 </ul>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Speichern</button>
+
     </form>
 
 
@@ -294,6 +293,7 @@ if (isset($_POST['bildUrl'])) {
                 </div>
             </div>
         </div>
+        <button type="submit" onclick="publish()" class="btn btn-primary btn-block">Ausgabe veröffentlichen</button>
         <!-- Here are the Modals-->
 
         <!-- Modal -->
