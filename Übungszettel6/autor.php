@@ -162,6 +162,6 @@
         <?php include ("ressources/snippets/loadjavascript.php") ;?>
 
          <script src = "ressources/js/authorActionhandler.js"></script>
-
+        <script src="ressources/js/formvalid.js"></script>
     </body>
 </html>
