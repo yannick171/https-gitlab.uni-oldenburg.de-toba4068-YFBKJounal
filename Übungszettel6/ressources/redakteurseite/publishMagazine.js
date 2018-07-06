@@ -1,8 +1,8 @@
 function publish() {
+    $("#articleList").empty();
     $.ajax({
-        url: "ressources/redakteurseite/publishMagazine.php?placeHolder=0",
-        success: function () {
-            document.getElementById("testDerId").innerHTML = "asdfasdf";
-        }
+        url: "ressources/redakteurseite/publishMagazine.php?placeHolder=0"
     });
+
+
 }
