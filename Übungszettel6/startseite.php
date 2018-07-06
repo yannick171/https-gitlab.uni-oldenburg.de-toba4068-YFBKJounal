@@ -53,14 +53,14 @@ include("ressources/snippets/session.php");
                     $sql = $magazinesConnection->query('SELECT max(id) FROM Magazine');
                     $highestMagazineId = $sql->fetch();
 
-                    $newestMagazine = $magazinesConnection->query('SELECT * FROM Magazine where id ='. $highestMagazineId["max(id)"])->fetch();
+                    /*$newestMagazine = $magazinesConnection->query('SELECT * FROM Magazine where id ='. $highestMagazineId["max(id)"])->fetch();
 
                     $articlesOfMagazine = $articlesConnection->query('SELECT * FROM article where magazine = ' . $highestMagazineId["max(id)"]);
 
-                    if (!$articlesOfMagazine->fetch()) {
+                    if (!$articlesOfMagazine->fetch()) {*/
                         $articlesOfMagazine = $articlesConnection->query('SELECT * FROM article where magazine = ' . --$highestMagazineId["max(id)"]);
                         $newestMagazine = $magazinesConnection->query('SELECT * FROM Magazine where id ='. $highestMagazineId["max(id)"])->fetch();
-                    }
+                    //}
                     ?>
                     <h2>Aktuelle Ausgabe</h2><br>
 
