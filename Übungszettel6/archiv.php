@@ -41,6 +41,7 @@
 				if(isset($_GET))
 				{
                     $url = 'http://localhost/YFBKJounal/Übungszettel6/ressources/snippets/search_server.php';
+
                     $searchflag = false;
                     if (isset($_GET['search'])){
                         if(!$searchflag){

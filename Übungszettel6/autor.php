@@ -50,7 +50,9 @@
               <label for="abstract">Kurze Inhaltsangabe:</label>
               <textarea class="form-control" id="abstract" rows="10" name="abstract"></textarea>
             </div>
-            <button class="btn-primary" id="artikelEinreichen" >Einreichen</button>
+              <input type="checkbox" name="zustimmung" value="true" required/>
+              <a href="datenschutz.php">Datenschutzerklärung zustimmen.</a><br><br>
+            <input type="submit" value="Einreichen" id="artikelEinreichen" ></input>
           </form>
 
       </div>
