@@ -93,15 +93,9 @@
             }
         }else{
             try {
-                $db->beginTransaction();
-                $doesEmailExist = $db -> prepare( "SELECT email FROM user WHERE email =:newEmail and id !='$id' ");
-                $doesEmailExist->bindValue(":newEmail", $_SESSION["email"], PDO::PARAM_STR);
-                $doesEmailExist ->execute();
-                $fetch = $doesEmailExist->fetch(PDO::FETCH_ASSOC);
 
-                if (is_array($fetch)){
-                    echo "emailExists";
-                    $db->rollBack();
+                if (checkEmail($db)){
+                    return "Email existiert bereits";
                 }else{
                     $stmt = $db->prepare("UPDATE user SET email=:newEmail, lastName =:newLastname, firstName =:newFirstname, infoText =:newInfotext WHERE id='$id'");
                     $stmt->bindValue(":newEmail", $_POST["email"], PDO::PARAM_STR);
@@ -116,13 +110,33 @@
                     $_SESSION["nachname"] = htmlspecialchars($_POST["nachname"]);
                     $_SESSION["infoText"] = htmlspecialchars($_POST["infoText"]);
 
-                    $result = $_POST;
-                    return json_encode($result);
+                    //$result = $_POST;
+                    return 1;
                 }
             }catch (Exception $e){
                 $db->rollBack();
                 echo $e->getMessage();
+                return "Es ist ein Fehler unterlaufen";
             }
+        }
+    }
+
+    //Falls email bereits existiert, dann gibt die Funktion true zurück
+    function checkEmail($db){
+        $id = $_SESSION["userId"];
+
+        $db->beginTransaction();
+        $doesEmailExist = $db -> prepare( "SELECT email FROM user WHERE email =:newEmail and id !='$id' ");
+        $doesEmailExist->bindValue(":newEmail", $_POST["email"], PDO::PARAM_STR);
+        $doesEmailExist ->execute();
+        $fetch = $doesEmailExist->fetch(PDO::FETCH_ASSOC);
+
+        if (is_array($fetch)) {
+            return 1;
+            $db->rollBack();
+        }else{
+            return 0;
+            $db->rollBack();
         }
     }
 
@@ -150,7 +164,7 @@
 
         }elseif ($_POST['context'] == 'changeProfile'){
 
-            echo changeProfile($db);
+            echo changeProfile($db,0);
 
         }elseif ($_POST['context'] == 'changePw'){
             if (checkPassword($db)){

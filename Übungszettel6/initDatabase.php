@@ -20,7 +20,7 @@ if (!$userDb->query($sql)) {
                     infoText TEXT
                     )");
 
-    for ($i=0; $i<$anzahlBenutzer;$i++){
+    for ($i=1; $i<=$anzahlBenutzer;$i++){
         $newpw = password_hash("testtest$i", PASSWORD_DEFAULT);
         $userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText) VALUES ('test$i@test.de','TestVorname$i', 'TestNachname$i', '$newpw' , 'Ich bin ein Testprofil Nr. $i')");
     }

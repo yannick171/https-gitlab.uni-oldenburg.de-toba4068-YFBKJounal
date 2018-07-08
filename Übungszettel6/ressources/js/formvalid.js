@@ -48,7 +48,7 @@ function validateForm(caller)
                 return true;
             }
         }else{
-            document.getElementById("error").innerHTML = "Erfolgreich";
+            //document.getElementById("error").innerHTML = "Erfolgreich";
             document.getElementById("error").style="color:green;";
             return true;
 		}

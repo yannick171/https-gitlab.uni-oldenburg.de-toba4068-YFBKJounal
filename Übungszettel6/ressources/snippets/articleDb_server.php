@@ -29,21 +29,26 @@ function showArticles($status = -1, $owner = "%")
     try {
         $db->beginTransaction();
 
+
         if ($status == -1){
 
-            $result = ($db->query("SELECT id, title, author, uploadDate FROM article WHERE owner like $owner"));
+            $stmt = $db->prepare("SELECT id, title, author, uploadDate FROM article WHERE owner=:owner");
+            $stmt -> bindParam(":owner",$owner);
+            $stmt->execute();
 
         }else{
 
-            $result = ($db->query("SELECT id, title, author, uploadDate FROM article WHERE statusOfArticle like $status and owner like $owner"));
-
+            $stmt = ($db->prepare("SELECT id, title, author, uploadDate FROM article WHERE statusOfArticle like :status and owner=:owner"));
+            $stmt -> bindParam(":owner",$owner);
+            $stmt -> bindParam(":status",$status);
+            $stmt->execute();
         }
 
-        $articles = $result->fetchAll(PDO::FETCH_ASSOC);
+        $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $db->rollBack();
 
-        if (empty($result)){
+        if (empty($articles)){
             echo "false";
             return false;
         }else {

@@ -1,5 +1,6 @@
 <?php
   include("ressources/snippets/session.php");
+  //print_r($_SESSION);
  ?>
 
 <!DOCTYPE html>
@@ -36,7 +37,7 @@
               <input type="hidden" name="context" value="upload">
             <div class="form-group">
               <label for="uploadFile">Artikel hochladen:</label>
-              <input type="file" class="form-control-file" id="uploadFile" name="uploadFile">
+              <input type="file" class="form-control-file" id="uploadFile" name="uploadFile" required>
             </div>
             <div class="form-group">
               <label for="articleTitle">Titel:</label>

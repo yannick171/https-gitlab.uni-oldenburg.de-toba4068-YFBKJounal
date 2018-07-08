@@ -1,8 +1,8 @@
 <!--- Profil -->
     <div class="wrapper" id="autorProfil">
       <div class='changeProfileButton'>
-        <button id="autorProfilButton">Profil bearbeiten</button>
-          <button id="changePasswordButton">Passwort ändern</button>
+        <button id="autorProfilButton" class="zustimmen">Profil bearbeiten</button>
+          <button id="changePasswordButton" class="verwerfen">Passwort ändern</button>
       </div>
       <div class="metadata">
         <strong>Name: </strong><br><br>
@@ -27,7 +27,7 @@
 <form id="toSubmitPw" method="post">
     <div class="wrapper" id="autorChangepw">
         <div class='changeProfileButton'>
-            <button onclick="" id="savePw" class="zustimmen">Profil bearbeiten</button>
+            <button type="submit" id="savePw" class="zustimmen">Bestätigen</button>
             <button class="verwerfen">Zurück</button>
         </div>
         <div class="autorIntrobox">
@@ -57,11 +57,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td></td><td><button type="submit" >Ändern</button></td>
+                    <td colspan="2" id="errorChangePw" style="color: red"></td>
                 </tr>
             </table>
         </div>
-        <div id="errorChangePw">Test</div>
     </div>
 </form>
       <!-- Profil bearbeiten -->
@@ -70,7 +69,7 @@
         <div class="changeProfileButton">
           <!--a href="#" onclick="$(this).closest('form').submit()" class="zustimmen"> Bestätigen </a-->
             <!--a href="#" onclick="validateForm()" class="zustimmen"> Bestätigen </a -->
-            <button onclick="$(this).closest('form').submit()">Bestätigen</button>
+            <button type="submit" >Bestätigen</button>
           <button class="verwerfen"> Verwerfen </button>
         </div>
         <div class="metadata">

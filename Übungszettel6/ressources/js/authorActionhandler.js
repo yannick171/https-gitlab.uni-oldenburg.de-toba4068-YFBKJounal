@@ -23,7 +23,7 @@ $(document).ready(function(){
         $("#autorProfilBearbeiten").css("display", "grid");
     });
 
-    $("#autorProfilBearbeiten").on("click", "button", function () {
+    $("#autorProfilBearbeiten").on("click", ".zustimmen", function () {
         $("#autorProfil").css("display","grid");
         $("#autorProfilBearbeiten").css("display", "none");
     });
@@ -41,8 +41,8 @@ $(document).ready(function(){
     updateAutor = function () {
         newFirstNameId = "vorname-" + counter.toString();
         newLastNameId = "nachname-" + counter.toString();
-        newAutor = $('<div class="form-row"></div>').html('<div class="form-row" id="autor-' + counter.toString() + '"></div>').html('<button style="" id="removeButton-' + counter.toString() + '" style="background-color:transparent;" type = "button" class= "btn " name="logout"><i class="material-icons">clear</i></button><div class="col-md-4 mb-3"><input value="testAutorvorname-' + counter.toString() + '" name="autor' + newFirstNameId + '" type="text" class="form-control" id="vorname-' + counter.toString() + '"  placeholder="Vorname"></div>'
-            + '<div class="col-md-4 mb-3"><input value="testAutorNachname-' + counter.toString() + '" name="autor' + newLastNameId + '" type="text" class="form-control" id="nachname-' + counter.toString() + '"  placeholder="Nachname"></div>');
+        newAutor = $('<div class="form-row"></div>').html('<div class="form-row" id="autor-' + counter.toString() + '"></div>').html('<button style="" id="removeButton-' + counter.toString() + '" style="background-color:transparent;" type = "button" class= "btn " name="logout"><i class="material-icons">clear</i></button><div class="col-md-4 mb-3"><input required value="testAutorvorname-' + counter.toString() + '" name="autor' + newFirstNameId + '" type="text" class="form-control" id="vorname-' + counter.toString() + '"  placeholder="Vorname"></div>'
+            + '<div class="col-md-4 mb-3"><input required value="testAutorNachname-' + counter.toString() + '" name="autor' + newLastNameId + '" type="text" class="form-control" id="nachname-' + counter.toString() + '"  placeholder="Nachname"></div>');
         $("#autorInput").append(newAutor);
         $("#anzahlAutoren").val(counter);
         counter++;
@@ -74,11 +74,8 @@ $(document).ready(function(){
         var newPw1 = $("#newpw1").val();
         var newPw2 = $("#newpw2").val();
 
-        //$("#errorChangePw").html(newPw1);
-
         if (sicherheit(newPw1)){
             if(comparePasswords(newPw1,newPw2)){
-                $("#errorChangePw").html("Passwörter stimmen überein");
                 $.ajax({
                     type: "POST",
                     async: true,
@@ -93,6 +90,7 @@ $(document).ready(function(){
                         $("#errorChangePw").html(data);
                         if (data == 1) {
                             location.reload();
+                            $("#errorChangePw").css("color","green");
                             alert("Passwort erfolgreich geändert.")
                         } else {
                             $("error").html("Altes Passwort ist nicht richtig.");
@@ -120,6 +118,7 @@ $(document).ready(function(){
             var email = $("#email").val();
             var nachname = $("#nachnameInput").val();
             var vorname = $("#vornameInput").val();
+
             $.ajax({
                 type: "POST",
                 async: true,
@@ -131,22 +130,22 @@ $(document).ready(function(){
                     vorname: vorname,
                     context: "changeProfile"
                 },
-                dataType: "JSON",
+                dataType: "html",
                 success: function (data) {
-                    $("#autorbox").html(data.nachname + '<br><br>' +
-                        data.vorname + '<br><br>' +
-                        data.email + '<br><br>');
-                    $("#autorinfobox").html(data.infoText + '<br><br>');
-                    //$("#autorProfil").css("display", "grid");
-                    //$("#autorProfilBearbeiten").css("display", "none");
-                    $("error").html("Erfolgreich!");
-                    $("error").css( "color", "green" );
+
+                    if (data == 1){
+                        $("#error").html("Änderung gespeichert!");
+                    } else {
+                        $("#error").css("color","red");
+                        $("#error").html(data);
+                    }
+
                 },
                 error: function (xhr) {
-                    $("error").html("Nicht erfolgreich!")
+                    $("#error").html("Nicht erfolgreich!")
                     $("#emailInput").val(temp_email);
                 }
             });
         }
         });
-})
+});
