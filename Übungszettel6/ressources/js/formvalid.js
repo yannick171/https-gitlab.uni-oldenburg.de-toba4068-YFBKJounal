@@ -35,11 +35,11 @@ function validateForm(caller)
 		}
 
 		if (document.getElementById("pwd2") != null) {
-            if (document.getElementById("pwd2").value.length < 6) {
+            if (!sicherheit(document.getElementById("pwd2").value) ) {
                 document.getElementById("error").innerHTML = "Das Passwort muss mindestens 6 Zeichen lang sein!";
                 document.getElementById("error").style = "color:red;";
             }
-            else if (document.getElementById("pwd2").value != document.getElementById("pwdcnf").value) {
+            else if (!comparePasswords(document.getElementById("pwd2").value , document.getElementById("pwdcnf").value)) {
                 document.getElementById("error").innerHTML = "Die Passwörter stimmen nicht überein!";
                 document.getElementById("error").style = "color:red;";
             }
@@ -53,4 +53,14 @@ function validateForm(caller)
             return true;
 		}
 	}
+}
+
+//liefert true, wenn das Password "sicher" ist
+function sicherheit(pw) {
+    return (pw.length >= 6);
+}
+
+//liefert true wenn beide Parameter gleich sind
+function comparePasswords(pw1 , pw2) {
+    return (pw1 == pw2);
 }

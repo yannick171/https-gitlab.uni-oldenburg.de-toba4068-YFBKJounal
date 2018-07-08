@@ -32,7 +32,8 @@
       <div class="uploadArea">
         <button type="button" class="btn btn-primary btn-lg btn-block" id="startUpload">Neuen Artikel einreichen</button>
       <div>
-          <form method="post" action="ressources/snippets/uploadFile.php" enctype="multipart/form-data" class="uploadAreaInvisible" id="uploadArea">
+          <form method="post" action="ressources/snippets/articleDb_server.php" enctype="multipart/form-data" class="uploadAreaInvisible" id="uploadArea">
+              <input type="hidden" name="context" value="upload">
             <div class="form-group">
               <label for="uploadFile">Artikel hochladen:</label>
               <input type="file" class="form-control-file" id="uploadFile" name="uploadFile">
@@ -71,16 +72,21 @@
             </thead>
             <tbody>
               <?php
-              require "ressources/snippets/loadarticles.php";
-              $result = showArticles(0,$_SESSION["userId"]);
+
+              require "ressources/snippets/articleDb_server.php";
+              $result = showArticles(0 , $_SESSION["userId"]);
                 $counterWaiting = 0;
                 foreach ($result as $row) {
-                    //print_r($row);
-                    echo '<form action="ressources/snippets/withdrawArticle.php" method="post"><tr><th scope="row"><input value="Zurückziehen" type="submit" name="' . $row["id"] . '"></form></th>';
+                    echo '<form action="ressources/snippets/articleDb_server.php" method="post">';
+                    echo '<input type="hidden" value="withdraw" name="context">';
+                    echo '<input value="' . $row["id"] . '" type="hidden" name="target" >';
+                    echo '<tr><td scope="row">';
+                    echo '<button onclick="this.submit()">Zurückziehen</button></td>';
+                    echo '</form>';
                     echo '<td>'.$row["title"]. '</td>';
                     echo '<td>'.$row["author"]. '</td>';
                     echo '<td>'.$row["uploadDate"]. '</td>';
-                    echo "</tr>";
+                    echo '</tr>';
                     ++$counterWaiting;
                 };
               ?>
@@ -104,9 +110,8 @@
             </thead>
             <tbody>
               <?php
-                  $counterAccepted = 1;
 
-                  $result = showArticles(1,$_SESSION["userId"]);
+                  $result = showArticles(1, $_SESSION["userId"]);
                   foreach ($result as $row) {
                       //print_r($row);
                       echo '<tr><th></th>';
@@ -114,7 +119,6 @@
                       echo '<td>'.$row["author"]. '</td>';
                       echo '<td>'.$row["uploadDate"]. '</td>';
                       echo "</tr>";
-                      ++$counterAccepted;
                   };
               ?>
             </tbody>
@@ -137,9 +141,8 @@
             </thead>
             <tbody>
               <?php
-              $counterAbgelehnt = 1;
 
-              $result = showArticles(1,$_SESSION["userId"]);
+              $result = showArticles(1 , $_SESSION["userId"]);
               foreach ($result as $row) {
                   //print_r($row);
                   echo '<tr><th></th>';
@@ -147,7 +150,6 @@
                   echo '<td>'.$row["author"]. '</td>';
                   echo '<td>'.$row["uploadDate"]. '</td>';
                   echo "</tr>";
-                  ++$counterAbgelehnt;
               };
               ?>
             </tbody>

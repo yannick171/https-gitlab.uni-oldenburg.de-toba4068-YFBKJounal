@@ -116,7 +116,7 @@
         var loginelement = document.getElementById("usr");
         var xmlhttp = new XMLHttpRequest();
 
-        xmlhttp.open("POST", "ressources/snippets/loginvalidation.php",true);
+        xmlhttp.open("POST", "ressources/snippets/userDb_server.php",true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send("context=login&email="+loginelement.value+ "&pw=" + pwelement.value);
 

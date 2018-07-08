@@ -19,7 +19,7 @@ button {
   border:0;
 }
 
-#autorProfilBearbeiten{
+#autorProfilBearbeiten, #autorChangepw{
   display: none;
 }
 .changeProfileButton{
@@ -52,7 +52,7 @@ button {
   background-color: white;
 }
 
-.changeProfileButton > a{
+.changeProfileButton > button{
   cursor: pointer;
 }
 

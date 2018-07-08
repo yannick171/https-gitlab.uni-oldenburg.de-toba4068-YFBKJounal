@@ -10,6 +10,7 @@ $(document).ready(function(){
 
     $("#changePasswordButton").on("click", function () {
         $("#autorProfil").css("display","none");
+        $("#autorChangepw").css("display","grid");
     });
 
     $("#autorProfilButton").on("click", function () {
@@ -61,6 +62,55 @@ $(document).ready(function(){
         $("#uploadArea").toggle();
     });
 
+    $("#autorChangepw").on("click", ".verwerfen", function () {
+        $("#autorChangepw").css("display", "none");
+        $("#autorProfil").css("display","grid");
+    });
+
+    $("#toSubmitPw").submit(function (event) {
+        event.preventDefault();
+
+        var oldPw = $("#oldpw").val();
+        var newPw1 = $("#newpw1").val();
+        var newPw2 = $("#newpw2").val();
+
+        //$("#errorChangePw").html(newPw1);
+
+        if (sicherheit(newPw1)){
+            if(comparePasswords(newPw1,newPw2)){
+                $("#errorChangePw").html("Passwörter stimmen überein");
+                $.ajax({
+                    type: "POST",
+                    async: true,
+                    url: "ressources/snippets/userDb_server.php",
+                    data: {
+                        pw: oldPw,
+                        newpassword: newPw1, //email abschicken
+                        context: "changePw"
+                    },
+                    dataType: "html",
+                    success: function (data) {
+                        $("#errorChangePw").html(data);
+                        if (data == 1) {
+                            location.reload();
+                            alert("Passwort erfolgreich geändert.")
+                        } else {
+                            $("error").html("Altes Passwort ist nicht richtig.");
+                        }
+                    },
+                    error: function (xhr) {
+                        $("error").html("Nicht erfolgreich!");
+                        $("#emailInput").val(temp_email);
+                    }
+                });
+            }else{
+                $("#errorChangePw").html("Die Passwörter stimmen nicht überein.");
+            }
+        }else {
+            $("#errorChangePw").html("Bitte ein längeres Password eingeben.");
+        }
+
+});
     $("#toSubmit").submit(function (event) {
 
         event.preventDefault();
@@ -73,12 +123,13 @@ $(document).ready(function(){
             $.ajax({
                 type: "POST",
                 async: true,
-                url: "ressources/snippets/changeProfile.php",
+                url: "ressources/snippets/userDb_server.php",
                 data: {
                     email: email,
                     nachname: nachname,
                     infoText: infoText,
-                    vorname: vorname
+                    vorname: vorname,
+                    context: "changeProfile"
                 },
                 dataType: "JSON",
                 success: function (data) {

@@ -24,16 +24,20 @@
       </div>
       <!--- Profil ende -->
 
-    <div class="wrapper">
+<form id="toSubmitPw" method="post">
+    <div class="wrapper" id="autorChangepw">
+        <div class='changeProfileButton'>
+            <button onclick="" id="savePw" class="zustimmen">Profil bearbeiten</button>
+            <button class="verwerfen">Zurück</button>
+        </div>
         <div class="autorIntrobox">
-            <form id="toSubmitPw">
             <table>
                 <tr>
                     <td>
                         <b>Altes Passwort:</b>
                     </td>
                     <td>
-                        <input type="password" name="oldpw">
+                        <input type="password" name="oldpw" id="oldpw">
                     </td>
                 </tr>
                 <tr>
@@ -41,7 +45,7 @@
                         <b>Neues Passwort:</b>
                     </td>
                     <td>
-                        <input type="password" name="newpw">
+                        <input type="password" name="newpw1" id="newpw1">
                     </td>
                 </tr>
                 <tr>
@@ -49,16 +53,17 @@
                         <b>Neues Passwort wiederholen:</b>
                     </td>
                     <td>
-                        <input type="password" name="newpw">
+                        <input type="password" name="newpw2" id="newpw2">
                     </td>
                 </tr>
                 <tr>
-                    <td></td><td><button onclick="changePw" >Ändern</button></td>
+                    <td></td><td><button type="submit" >Ändern</button></td>
                 </tr>
             </table>
-            </form>
         </div>
+        <div id="errorChangePw">Test</div>
     </div>
+</form>
       <!-- Profil bearbeiten -->
       <form id="toSubmit">
       <div class="wrapper" id="autorProfilBearbeiten">
