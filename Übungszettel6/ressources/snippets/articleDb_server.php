@@ -32,13 +32,13 @@ function showArticles($status = -1, $owner = "%")
 
         if ($status == -1){
 
-            $stmt = $db->prepare("SELECT id, title, author, uploadDate FROM article WHERE owner=:owner");
+            $stmt = $db->prepare("SELECT id, title, author, uploadDate, abstract FROM article WHERE owner like :owner");
             $stmt -> bindParam(":owner",$owner);
             $stmt->execute();
 
         }else{
 
-            $stmt = ($db->prepare("SELECT id, title, author, uploadDate FROM article WHERE statusOfArticle like :status and owner=:owner"));
+            $stmt = ($db->prepare("SELECT id, title, author, uploadDate, abstract FROM article WHERE statusOfArticle like :status and owner like :owner"));
             $stmt -> bindParam(":owner",$owner);
             $stmt -> bindParam(":status",$status);
             $stmt->execute();
@@ -180,4 +180,6 @@ if (isset($_POST['context']) && !empty($_POST['context'])){
     $db=null;
 
 }
+
+//print_r(showArticles(1));
 ?>

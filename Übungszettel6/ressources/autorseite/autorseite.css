@@ -11,6 +11,8 @@ button {
     outline:none;
 }
 
+
+
 .trennlinie{
   height: 3px;
   background: linear-gradient(to right, #ffffff,#f2f2f2,#cccccc,#999999,#595959,#1a1a1a,#595959,#999999,#cccccc,#f2f2f2,#ffffff); 

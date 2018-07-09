@@ -1,9 +1,10 @@
 <?php
 
-function printArticle($title, $abstract, $idOfArticle, $author, $pdfPath)
+function printArticle($title, $abstract, $idOfArticle, $author)
 {
     $id = uniqid();
 
+    $urlPrefix = "ressources/archiv/artikel/" . urlencode( 'artikel%'.$idOfArticle) . ".pdf";
     echo '<div class="card margin">'
             . '<div class="card-header">'
                 . '<h3 class="mb-0">'
@@ -20,7 +21,7 @@ function printArticle($title, $abstract, $idOfArticle, $author, $pdfPath)
                 . '</div>'
                 . '<div class="card-body" style="border-top: 3px solid black;">'
                     . '<div style="text-align: right;">'
-                        .  '<a href ='. $pdfPath.'>Hier zum vollständigen Artikel</a>'
+                        .  '<a href ='. $urlPrefix .'>Hier zum vollständigen Artikel</a>'
                     .'</div>'
                 . '</div>'
             . '</div>'

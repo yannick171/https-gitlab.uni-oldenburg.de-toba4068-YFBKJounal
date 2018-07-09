@@ -69,7 +69,10 @@ if (!$articlesDb->query($sql)) {
 
             $date = date("d.m.Y, H:i:s");
             $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle, magazine, pdfPath,uploadDate) 
-                                VALUES ($user,'Ich bin eine Inhaltsangabe', '$artikel. Artikel von User: $user', 'Ich bin der Autor mit ID:$user', $artikel-1 , 1, 'pdfsOfArticles/artikel%$artikelCounter.pdf', '$date' )");
+                                VALUES ($user,'Ich bin eine Inhaltsangabe von $user. Hier kommt ein sehr langer Text um die Darstellung des Sliders auf der Startseite zu testen:' ||
+                                 ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ' ||
+                                  ' ABCDEFGHIJKLMNOPQRSTUVWXY  ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZZ', '$artikel. Artikel von User: $user', 'Ich bin der Autor mit ID:$user', $artikel-1 , 1, 'pdfsOfArticles/artikel%$artikelCounter.pdf', '$date' )");
+
 
             $artikelCounter++;
         }

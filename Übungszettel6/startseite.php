@@ -91,13 +91,70 @@ include("ressources/snippets/session.php");
                 </div>
             </div>
 
+                <?php
+                require_once ("ressources/snippets/articleDb_server.php");
+                $results = showArticles(1);
+
+                //Permutation von einigen Artikeln aus der Datenbank
+                $length = count($results);
+                $numberOfRandomArticles = min(15, $length);
+                echo "<input type='hidden' name='numberOfRandomArticles' value='$numberOfRandomArticles' id='numberOfRandomArticles'>";
+                $start = rand(0, $length-$numberOfRandomArticles);
+                $array = range($start,$numberOfRandomArticles-1);
+                $i=0;
+
+                while($i < $numberOfRandomArticles){
+                    $temp = $array[$i];
+                    $randomNumber = rand(1,$numberOfRandomArticles -1);
+                    $array[$i] = $array[$randomNumber];
+                    $array[$randomNumber] = $temp;
+                    $i = $i +1;
+                }
+
+                $i=1;
+                $urlPrefix = "ressources/archiv/artikel/";
+
+                foreach ($array as $number){
+                    $url = $urlPrefix . urlencode( "artikel%" . $results[$number]['id']) . ".pdf";
+
+                    echo "<div class='randomArticle'>";
+                    echo "<h4 class='articleTitle'><b>" . $results[$number]['title'] . "</b><br> <a href='$url' >Link</a></h4>";
+                    echo "<hr>";
+                    echo "<h6 class='articleAuthor'><b>Von:</b> " . $results[$number]['author'] . "</h6>";
+                    echo "<hr>";
+                    echo "<p class='articleAbstract'>" . $results[$number]['abstract'] . "</p>";
+                    echo "</div>";
+                    echo "</div>";
+                    $i = $i+1;
+                }
+                ?>
 
             <div class="row" id="artikel">
+                <button type="button" class="randomButton" id="leftArrow">
+                    <i class="material-icons">keyboard_arrow_left</i>
+                </button>
+                <div class="randomArticleSlot" id="randomArticleSlot-1">
+
+                    </div>
+                    <div class="randomArticleSlot" id="randomArticleSlot-2">
+
+                    </div>
+                    <div class="randomArticleSlot" id="randomArticleSlot-3">
+
+                    </div>
+                    <button type="button" class="randomButton"  id="rightArrow">
+                        <i class="material-icons">keyboard_arrow_right</i>
+                    </button>
+                </div>
+            </div>
+
+
+            <!--div class="row" id="artikel">
                 <button type="button" id="leftArrow">
                     <i class="material-icons randomButton">keyboard_arrow_left</i>
                 </button>
                 <div class="randomArticleSlot-1">
-                    <p id="randomArticle-1"></p>
+                    <div id="randomArticle-1"></p>
                 </div>
                 <div class="randomArticleSlot-2">
                     <p id="randomArticle-2"></p>
@@ -108,7 +165,7 @@ include("ressources/snippets/session.php");
                 <button type="button" id="rightArrow">
                     <i class="material-icons randomButton">keyboard_arrow_right</i>
                 </button>
-            </div>
+            </div -->
         </main>
     </div>
 </div>
@@ -117,98 +174,6 @@ include("ressources/snippets/session.php");
 
 <?php include("ressources/snippets/loadjavascript.php"); ?>
 
-<script>
-    $(document).ready(function () {
-        var path = "ressources/archiv/artikel/";
-        var files = [path + "artikel1.txt", path + "artikel2.txt", path + "artikel3.txt", path + "artikel4.txt", path + "artikel5.txt"];
-        //var files = [path+"img1.jpeg",path + "img2.jpeg",path + "img3.png",path + "img4.jpeg",path + "img5.png"];
-
-        for (var i = 0; i < files.length; i++) {
-            var temp = files[i];
-            var permutation = Math.floor((Math.random() * files.length));
-            files[i] = files[permutation];
-            files[permutation] = temp;
-        }
-
-        $("#randomArticle-1").load(files[0]);
-        $("#randomArticle-2").load(files[1]);
-        $("#randomArticle-3").load(files[2]);
-
-        var relativePosition = 0;
-        var range = 3;
-        var fadeSpeed = 350;
-
-        $(window).resize(function () {
-            if ($(window).width() < 768) {
-                range = 2;
-            }
-            else if ($(window).width() < 600) {
-                range = 1;
-            }
-            else {
-                range = 3;
-            }
-        })
-        $("#rightArrow").click(function () {
-            relativePosition = (relativePosition + range + files.length) % files.length;
-            $("#randomArticle-1").fadeOut(fadeSpeed);
-
-            setTimeout(function () {
-                $("#randomArticle-1").load(files[relativePosition]);
-                $("#randomArticle-1").fadeIn(fadeSpeed);
-            }, fadeSpeed);
-
-            setTimeout(function () {
-                $("#randomArticle-2").fadeOut(fadeSpeed);
-
-                setTimeout(function () {
-                    $("#randomArticle-2").load(files[(relativePosition + 1) % files.length]);
-                    $("#randomArticle-2").fadeIn(fadeSpeed);
-                }, fadeSpeed);
-
-            }, 200);
-
-            setTimeout(function () {
-                $("#randomArticle-3").fadeOut(fadeSpeed);
-
-                setTimeout(function () {
-                    $("#randomArticle-3").load(files[(relativePosition + 2) % files.length]);
-                    $("#randomArticle-3").fadeIn(fadeSpeed);
-                }, fadeSpeed);
-
-            }, fadeSpeed);
-        });
-
-        $("#leftArrow").click(function () {
-            relativePosition = (relativePosition - range + files.length) % files.length;
-            $("#randomArticle-3").fadeOut(fadeSpeed);
-
-            setTimeout(function () {
-                $("#randomArticle-3").load(files[(relativePosition + 2) % files.length]);
-                $("#randomArticle-3").fadeIn(fadeSpeed);
-            }, fadeSpeed);
-
-            setTimeout(function () {
-                $("#randomArticle-2").fadeOut(fadeSpeed);
-
-                setTimeout(function () {
-                    $("#randomArticle-2").load(files[(relativePosition + 1) % files.length]);
-                    $("#randomArticle-2").fadeIn(fadeSpeed);
-                }, fadeSpeed);
-
-            }, 200);
-
-            setTimeout(function () {
-                $("#randomArticle-1").fadeOut(fadeSpeed);
-
-                setTimeout(function () {
-                    $("#randomArticle-1").load(files[(relativePosition)]);
-                    $("#randomArticle-1").fadeIn(fadeSpeed);
-                }, fadeSpeed);
-
-            }, fadeSpeed);
-        });
-    })
-</script>
+<script src="ressources/js/slider.js"></script>
 </body>
 </html>
