@@ -40,7 +40,8 @@
 
 				if(isset($_GET) && !empty($_GET))
 				{
-                    $url = 'http://localhost/YFBKJounal/Übungszettel6/ressources/snippets/articleDb_server.php';
+                    //$url = 'http://localhost/YFBKJounal/Übungszettel6/ressources/snippets/articleDb_server.php';
+                    $url = 'http://' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['SCRIPT_NAME']) . '/ressources/snippets/articleDb_server.php';
 
                     $searchflag = false;
                     if (isset($_GET['search'])){
