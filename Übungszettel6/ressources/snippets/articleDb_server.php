@@ -4,10 +4,8 @@
     }
 
 function withdraw($db){
-    print_r($_POST);
-    try {
-        //$db = new PDO('sqlite:../SQLData/articles.db');
 
+    try {
         $db ->beginTransaction();
 
         $value = $_POST['target'];
@@ -55,7 +53,7 @@ function showArticles($status = -1, $owner = "%")
             return $articles;
         }
     }catch (Exception $e){
-        //$db ->rollBack();
+        $db ->rollBack();
         echo "An error has occurred";
     }
 }
@@ -76,14 +74,6 @@ function upload($db){
     $uploadOk = 1;
     $fileType = strtolower(pathinfo(basename($_FILES["uploadFile"]["name"]), PATHINFO_EXTENSION));
 
-
-    // Check if file already exists
-    /*if (file_exists($target_file))
-    {
-        return "Sorry, file already exists.";
-        $uploadOk = 0;
-    }
-*/
     // Check file size
     if ($_FILES["uploadFile"]["size"] > 500000) {
         return "Sorry, your file is too large.";
@@ -153,6 +143,46 @@ function upload($db){
     }
 }
 
+
+function search($p){
+    //$Suchparameter = json_decode($p);
+    $Suchparameter = $p;
+
+    $articlesDb = new PDO('sqlite:../SQLData/articles.db');
+    $allArticles = $articlesDb->query('SELECT * FROM article');
+
+    $result = array();
+
+
+    while ($article = $allArticles->fetch())
+    {
+        if(isset($Suchparameter['search']) && !empty($Suchparameter['search']) && !(strpos($article["title"], $Suchparameter['search']))){
+            continue;
+        }
+
+        if (isset($Suchparameter['author']) && !empty($Suchparameter['author'])&& !(strpos($article["author"], $Suchparameter['author']))){
+            continue;
+        }
+
+        if (isset($Suchparameter['uploadDate']) && !empty($Suchparameter['uploadDate']) && !(strpos($article["uploadDate"], $Suchparameter['uploadDate']))){
+            continue;
+        }
+
+        else
+        {
+
+            $append = array('id'=> $article['id'],
+                'title' => $article["title"],
+                'abstract' => $article["abstract"],
+                'author' => $article["author"],
+                'pdfPath' => $article["pdfPath"]
+            );
+            array_push($result,$append);
+        }
+    }
+    return $result;
+}
+
 if (isset($_POST['context']) && !empty($_POST['context'])){
     $context = $_POST['context'];
     $db = new PDO('sqlite:../SQLData/articles.db');
@@ -168,10 +198,6 @@ if (isset($_POST['context']) && !empty($_POST['context'])){
 
             break;
 
-        case "search":
-
-            break;
-
         case "withdraw":
             withdraw($db);
             header("Location: ../../autor.php#uploadArea");
@@ -181,5 +207,7 @@ if (isset($_POST['context']) && !empty($_POST['context'])){
 
 }
 
-//print_r(showArticles(1));
+if (isset($_GET) && !empty($_GET)){
+    echo json_encode(array(search($_GET)));
+}
 ?>

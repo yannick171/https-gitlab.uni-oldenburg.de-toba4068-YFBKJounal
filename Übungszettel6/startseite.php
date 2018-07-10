@@ -8,7 +8,6 @@ include("ressources/snippets/session.php");
 <head>
 
     <link rel="stylesheet" type="text/css" href="ressources/startseite/grid.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <?php include("ressources/snippets/article.php"); ?>
     <?php include("ressources/snippets/globalsources.php") ?>
     <title>
@@ -129,7 +128,7 @@ include("ressources/snippets/session.php");
                 }
                 ?>
 
-            <div class="row" id="artikel">
+            <div class="SliderRow" id="artikel">
                 <button type="button" class="randomButton" id="leftArrow">
                     <i class="material-icons">keyboard_arrow_left</i>
                 </button>

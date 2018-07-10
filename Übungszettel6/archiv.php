@@ -33,14 +33,14 @@
                     Archivs und darüber hinaus, also viel Glück und genießen Sie dieses Abendteuer.<br><br>
                     Ihre Redaktion
                 </p>
-                <img src = "../ressources/archivseite/buch.jpg" alt = "Buch zur Aufhüschung" class = "headingImage">
+                <!--img src = "../ressources/archivseite/buch.jpg" alt = "Buch zur Aufhüschung" class = "headingImage"-->
             </div>
 
 			<?php
 
-				if(isset($_GET))
+				if(isset($_GET) && !empty($_GET))
 				{
-                    $url = 'http://localhost/YFBKJounal/Übungszettel6/ressources/snippets/search_server.php';
+                    $url = 'http://localhost/YFBKJounal/Übungszettel6/ressources/snippets/articleDb_server.php';
 
                     $searchflag = false;
                     if (isset($_GET['search'])){

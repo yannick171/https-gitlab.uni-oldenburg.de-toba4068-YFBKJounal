@@ -14,33 +14,27 @@
 <script type="text/javascript" src="//s3.amazonaws.com/valao-cloud/cookie-hinweis/script-v2.js"></script>
 <!-- Ende Cookie Plugin -->
 
-<div class="login">
-        <ul>
-            <li class="nav-item">
-              <button style="background:transparent; color:white;" type = "button" class= "btn" onclick = "location.href='registration.php'" id ="bigfont">
-                <i class="material-icons">exit_to_app</i>  Registrieren
-              </button>
-            </li>
-            <?php
+<div style="font-weight: bold; background-color: #1a75ff; color: white; padding: 0.8%" class="container-fluid">
+    <div class="row defaultstyle">
+        <?php
             if (isset($_SESSION["loggedIn"])){
-              echo '<li class="nav-item" id ="logout-Button" >';
-              echo '<a href="ressources/snippets/logout.php" style="color:white;" >';
-              echo '<i class="material-icons">perm_identity</i> Abmelden</a></li>';
-              echo 'Willkommen '. $_SESSION["vorname"] ." " . $_SESSION["nachname"];
+                echo '<div class="col-sm-2">Willkommen ' . $_SESSION["vorname"]. ' ' . $_SESSION["nachname"] .  '</div>';
+                echo '<div class="col-sm-1 offset-9"><a href="ressources/snippets/logout.php"><i class="material-icons">perm_identity</i> Abmelden</a></div>';
             }else{
-            echo '<li id="login-button">';
-            echo '<button style="background:transparent; color:white;" type = "button" class= "btn" data-toggle= "modal" data-target= "#login-modal" id ="bigfont">';
-            echo '<i class="material-icons">perm_identity</i> Anmelden</button>';
+                echo '<div class="col-sm-1 offset-9">';
+                //echo '<button type = "button" data-toggle= "modal" data-target= "#login-modal" id ="bigfont">';
+                echo '<a href="#" data-toggle= "modal" data-target= "#login-modal">Anmelden</a></div>';
+                echo '<div class="col-sm-1 offset-1"><a href="registration.php"> Registrieren</a></div>';
             }
-            ?>
-        </ul>
+        ?>
+    </div>
 </div>
 
 <header>
     <img id="titelbild" src="ressources/images/banner.jpg" alt="Titelbild">
 </header>
 
-<nav style="background: #1a75ff; color: white; font-size:1.2em;" class="navbar navbar-expand-lg sticky-top">
+<nav style="font-weight: bold; background: #1a75ff; color: white; font-size:1.2em;" class="navbar navbar-expand-lg sticky-top">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <i style="color:white;" class="material-icons">reorder</i>
   </button>
