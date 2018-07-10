@@ -43,7 +43,10 @@ include("ressources/snippets/session.php");
                     eure Beiträge gehör.
                 </div>
 
-                <div class="box-4">
+                <div class="box-3">
+                    <a id="twitter-timeline" class="twitter-timeline" data-width="100%" data-height="500" data-theme="light" data-link-color="#2B7BB9" href="https://twitter.com/realDonaldTrump?ref_src=twsrc%5Etfw">Tweets by realDonaldTrump</a>
+                </div>
+            </div>
                     <?php
                     // Datenbankconnextion
                     $articlesConnection = new PDO('sqlite:ressources/SQLData/articles.db');
@@ -88,8 +91,6 @@ include("ressources/snippets/session.php");
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
                 <?php
                 require_once ("ressources/snippets/articleDb_server.php");
@@ -118,12 +119,11 @@ include("ressources/snippets/session.php");
                     $url = $urlPrefix . urlencode( "artikel%" . $results[$number]['id']) . ".pdf";
 
                     echo "<div class='randomArticle'>";
-                    echo "<h4 class='articleTitle'><b>" . $results[$number]['title'] . "</b><br> <a href='$url' >Link</a></h4>";
+                    echo "<h4 class='articleTitle'><b>" . $results[$number]['title'] . "</b><br><a href='$url' >Für den Volltext auf den Link klicken.</a></h4>";
                     echo "<hr>";
                     echo "<h6 class='articleAuthor'><b>Von:</b> " . $results[$number]['author'] . "</h6>";
                     echo "<hr>";
                     echo "<p class='articleAbstract'>" . $results[$number]['abstract'] . "</p>";
-                    echo "</div>";
                     echo "</div>";
                     $i = $i+1;
                 }
@@ -148,24 +148,6 @@ include("ressources/snippets/session.php");
                 </div>
             </div>
 
-
-            <!--div class="row" id="artikel">
-                <button type="button" id="leftArrow">
-                    <i class="material-icons randomButton">keyboard_arrow_left</i>
-                </button>
-                <div class="randomArticleSlot-1">
-                    <div id="randomArticle-1"></p>
-                </div>
-                <div class="randomArticleSlot-2">
-                    <p id="randomArticle-2"></p>
-                </div>
-                <div class="randomArticleSlot-3">
-                    <p id="randomArticle-3"></p>
-                </div>
-                <button type="button" id="rightArrow">
-                    <i class="material-icons randomButton">keyboard_arrow_right</i>
-                </button>
-            </div -->
         </main>
     </div>
 </div>
@@ -173,7 +155,7 @@ include("ressources/snippets/session.php");
 <?php include("ressources/snippets/footer.php"); ?>
 
 <?php include("ressources/snippets/loadjavascript.php"); ?>
-
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script src="ressources/js/slider.js"></script>
 </body>
 </html>

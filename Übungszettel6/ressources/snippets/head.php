@@ -93,7 +93,7 @@
                   <input type="password" class="form-control" id="pwd" name="loginpw">
                 </div>
             </div>
-                <div class="g-recaptcha" data-sitekey="6Ldb3mEUAAAAAM1xksEH_K2uy4EvTwMgvrCd2LoK"></div>
+                <!--div require class="g-recaptcha" data-sitekey="6Ldb3mEUAAAAAM1xksEH_K2uy4EvTwMgvrCd2LoK"></div-->
             <div class="modal-footer">
                 <div id="loginmessage"></div>
               <input type="submit" id="loginButton">
@@ -107,7 +107,6 @@
     //Skript zur login validierung
 
     var box = document.getElementById("loginmessage");
-
 
     function validateLogin() {
         event.preventDefault();

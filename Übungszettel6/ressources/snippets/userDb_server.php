@@ -39,7 +39,6 @@
 
     function login($db){
 
-        //$db = new PDO('sqlite:../SQLData/user.db');
         if (checkPassword($db)){
             try {
 
@@ -147,6 +146,7 @@
         $db = new PDO('sqlite:../SQLData/user.db');
 
         if ($_POST['context']=='login'){
+
 
             if(login($db)==false){
                 echo 0;
