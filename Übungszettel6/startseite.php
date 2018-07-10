@@ -5,6 +5,7 @@ include("ressources/snippets/session.php");
 <!DOCTYPE html>
 <html>
 
+
 <head>
 
     <link rel="stylesheet" type="text/css" href="ressources/startseite/grid.css">
@@ -15,12 +16,15 @@ include("ressources/snippets/session.php");
     </title>
 </head>
 
+
 <body>
+
+<div class="hintergrundbild pagecontainer">
 
 <!-- Header -->
 <?php include("ressources/snippets/head.php"); ?>
 
-
+<div class="pagecontainer">
 <div class="hintergrundbild">
     <div class="defaultstyle">
         <main class="">
@@ -152,6 +156,7 @@ include("ressources/snippets/session.php");
 </div>
 
 <?php include("ressources/snippets/footer.php"); ?>
+</div>
 
 <?php include("ressources/snippets/loadjavascript.php"); ?>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
