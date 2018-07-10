@@ -67,9 +67,7 @@
       <form id="toSubmit">
       <div class="wrapper" id="autorProfilBearbeiten">
         <div class="changeProfileButton">
-          <!--a href="#" onclick="$(this).closest('form').submit()" class="zustimmen"> Bestätigen </a-->
-            <!--a href="#" onclick="validateForm()" class="zustimmen"> Bestätigen </a -->
-            <button type="submit" >Bestätigen</button>
+            <button type="submit" style="float:left; padding-left:10%">Bestätigen</button>
           <button class="verwerfen"> Verwerfen </button>
         </div>
         <div class="metadata">

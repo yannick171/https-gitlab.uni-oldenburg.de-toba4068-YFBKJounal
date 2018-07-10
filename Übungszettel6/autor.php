@@ -12,7 +12,7 @@
 		</title>
         <?php include("ressources/snippets/globalsources.php") ?>
 
-        <link rel = "stylesheet" type="text/css" href = "ressources/autorseite/autorseite.css">
+        <link rel = "stylesheet" type="text/css" href = "ressources/css/autorseite.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 	<!--	<link href = "ressources/css/article.css" rel= "stylesheet"> -->
 	<!--	<link href = "ressources/css/countdown.css" rel = "stylesheet">-->

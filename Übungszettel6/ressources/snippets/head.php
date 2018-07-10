@@ -18,8 +18,8 @@
     <div class="row defaultstyle">
         <?php
             if (isset($_SESSION["loggedIn"])){
-                echo '<div class="col-sm-2">Willkommen ' . $_SESSION["vorname"]. ' ' . $_SESSION["nachname"] .  '</div>';
-                echo '<div class="col-sm-1 offset-9"><a href="ressources/snippets/logout.php"><i class="material-icons">perm_identity</i> Abmelden</a></div>';
+                echo '<div class="col-sm-3">Willkommen ' . $_SESSION["vorname"]. ' ' . $_SESSION["nachname"] .  '</div>';
+                echo '<div class="col-sm-1 offset-8"><a href="ressources/snippets/logout.php">Abmelden</a></div>';
             }else{
                 echo '<div class="col-sm-1 offset-9">';
                 //echo '<button type = "button" data-toggle= "modal" data-target= "#login-modal" id ="bigfont">';
@@ -49,7 +49,14 @@
             <li  style="" class="nav-item">
                 <a class="nav-link" href="about.php">Über uns</a>
             </li>
-            <?php if (isset($_SESSION["loggedIn"])) {echo '<li class="nav-item" id = "Profil"><a class="nav-link" href="autor.php">Meine Beiträge</a></li>'; }?>
+            <?php
+                if (isset($_SESSION["loggedIn"])) {
+                    if($_SESSION['userId']==0){
+                        echo '<li class="nav-item"><a class="nav-link" href="redakteur.php">Verwaltung</a></li>';
+                    }else{
+                        echo '<li class="nav-item" id = "Profil"><a class="nav-link" href="autor.php">Meine Beiträge</a></li>';
+                    }
+                }?>
         </ul>
         <ul class="navbar-nav ml-md-auto">
             <li class="nav-item">
