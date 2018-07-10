@@ -24,6 +24,10 @@ if (!$userDb->query($sql)) {
         $newpw = password_hash("testtest$i", PASSWORD_DEFAULT);
         $userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText) VALUES ('test$i@test.de','TestVorname$i', 'TestNachname$i', '$newpw' , 'Ich bin ein Testprofil Nr. $i')");
     }
+
+    //Admin
+        $newpw = password_hash("root", PASSWORD_DEFAULT);
+        $userDb->exec("INSERT INTO user (id, email, firstName, lastName, password, infoText) VALUES (0,'root@root.de','root', 'root', '$newpw' , 'Ich bin root')");
 }
 
 //ArtikelDB initialisieren
