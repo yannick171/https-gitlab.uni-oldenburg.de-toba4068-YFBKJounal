@@ -75,21 +75,24 @@
               <?php
 
               require "ressources/snippets/articleDb_server.php";
-              $result = showArticles(0 , $_SESSION["userId"]);
-                $counterWaiting = 0;
-                foreach ($result as $row) {
-                    echo '<form action="ressources/snippets/articleDb_server.php" method="post">';
-                    echo '<input type="hidden" value="withdraw" name="context">';
-                    echo '<input value="' . $row["id"] . '" type="hidden" name="target" >';
-                    echo '<tr><td scope="row">';
-                    echo '<button onclick="this.submit()">Zurückziehen</button></td>';
-                    echo '</form>';
-                    echo '<td>'.$row["title"]. '</td>';
-                    echo '<td>'.$row["author"]. '</td>';
-                    echo '<td>'.$row["uploadDate"]. '</td>';
-                    echo '</tr>';
-                    ++$counterWaiting;
-                };
+              $result = showArticles( array(0,1) , $_SESSION["userId"]);
+
+              if ($result != 0){
+                  $counterWaiting = 0;
+                  foreach ($result as $row) {
+                      echo '<form action="ressources/snippets/articleDb_server.php" method="post">';
+                      echo '<input type="hidden" value="withdraw" name="context">';
+                      echo '<input value="' . $row["id"] . '" type="hidden" name="target" >';
+                      echo '<tr><td scope="row">';
+                      echo '<button onclick="this.submit()">Zurückziehen</button></td>';
+                      echo '</form>';
+                      echo '<td>'.$row["title"]. '</td>';
+                      echo '<td>'.$row["author"]. '</td>';
+                      echo '<td>'.$row["uploadDate"]. '</td>';
+                      echo '</tr>';
+                      ++$counterWaiting;
+                  };
+              }
               ?>
             </tbody>
           </table>
@@ -112,15 +115,17 @@
             <tbody>
               <?php
 
-                  $result = showArticles(1, $_SESSION["userId"]);
-                  foreach ($result as $row) {
-                      //print_r($row);
-                      echo '<tr><th></th>';
-                      echo '<td>'.$row["title"]. '</td>';
-                      echo '<td>'.$row["author"]. '</td>';
-                      echo '<td>'.$row["uploadDate"]. '</td>';
-                      echo "</tr>";
-                  };
+                  $result = showArticles(array(2,3,4), $_SESSION["userId"]);
+                  if ($result != 0) {
+                      foreach ($result as $row) {
+                          //print_r($row);
+                          echo '<tr><th></th>';
+                          echo '<td>' . $row["title"] . '</td>';
+                          echo '<td>' . $row["author"] . '</td>';
+                          echo '<td>' . $row["uploadDate"] . '</td>';
+                          echo "</tr>";
+                      };
+                  }
               ?>
             </tbody>
           </table>
@@ -143,15 +148,17 @@
             <tbody>
               <?php
 
-              $result = showArticles(1 , $_SESSION["userId"]);
-              foreach ($result as $row) {
-                  //print_r($row);
-                  echo '<tr><th></th>';
-                  echo '<td>'.$row["title"]. '</td>';
-                  echo '<td>'.$row["author"]. '</td>';
-                  echo '<td>'.$row["uploadDate"]. '</td>';
-                  echo "</tr>";
-              };
+              $result = showArticles(array(5) , $_SESSION["userId"]);
+              if ($result != 0) {
+                  foreach ($result as $row) {
+                      //print_r($row);
+                      echo '<tr><th></th>';
+                      echo '<td>' . $row["title"] . '</td>';
+                      echo '<td>' . $row["author"] . '</td>';
+                      echo '<td>' . $row["uploadDate"] . '</td>';
+                      echo "</tr>";
+                  };
+              }
               ?>
             </tbody>
           </table>
@@ -163,7 +170,7 @@
 	</main>
         <?php include ("ressources/snippets/footer.php") ;?>
         <?php include ("ressources/snippets/loadjavascript.php") ;?>
-
+        <script src = "ressources/js/profile.js"></script>
          <script src = "ressources/js/authorActionhandler.js"></script>
         <script src="ressources/js/formvalid.js"></script>
     </body>

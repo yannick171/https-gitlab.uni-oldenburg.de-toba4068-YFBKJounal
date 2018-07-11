@@ -97,14 +97,14 @@ include("ressources/snippets/session.php");
 
                 <?php
                 require_once ("ressources/snippets/articleDb_server.php");
-                $results = showArticles(1);
+                $results = showArticles(array(3,4));
 
                 //Permutation von einigen Artikeln aus der Datenbank
                 $length = count($results);
                 $numberOfRandomArticles = min(15, $length);
                 echo "<input type='hidden' name='numberOfRandomArticles' value='$numberOfRandomArticles' id='numberOfRandomArticles'>";
-                $start = rand(0, $length-$numberOfRandomArticles);
-                $array = range($start,$numberOfRandomArticles-1);
+
+                $array = range(0,$numberOfRandomArticles-1);
                 $i=0;
 
                 while($i < $numberOfRandomArticles){
@@ -117,7 +117,7 @@ include("ressources/snippets/session.php");
 
                 $i=1;
                 $urlPrefix = "ressources/archiv/artikel/";
-
+                //print_r($array);
                 foreach ($array as $number){
                     $url = $urlPrefix . urlencode( "artikel%" . $results[$number]['id']) . ".pdf";
 

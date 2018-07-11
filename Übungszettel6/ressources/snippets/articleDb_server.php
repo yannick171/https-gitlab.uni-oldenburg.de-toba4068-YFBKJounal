@@ -27,28 +27,30 @@ function showArticles($status = -1, $owner = "%")
     try {
         $db->beginTransaction();
 
+        $articles = array();
 
         if ($status == -1){
 
             $stmt = $db->prepare("SELECT id, title, author, uploadDate, abstract FROM article WHERE owner like :owner");
             $stmt -> bindParam(":owner",$owner);
             $stmt->execute();
+            array_push($articles,$stmt->fetchAll(PDO::FETCH_ASSOC) );
 
         }else{
 
-            $stmt = ($db->prepare("SELECT id, title, author, uploadDate, abstract FROM article WHERE statusOfArticle like :status and owner like :owner"));
-            $stmt -> bindParam(":owner",$owner);
-            $stmt -> bindParam(":status",$status);
-            $stmt->execute();
+            foreach ($status as $value){
+                $stmt = ($db->prepare("SELECT id, title, author, uploadDate, abstract FROM article WHERE statusOfArticle like :status and owner like :owner"));
+                $stmt -> bindParam(":owner",$owner);
+                $stmt -> bindParam(":status",$value);
+                $stmt->execute();
+                $articles=array_merge($articles,$stmt->fetchAll(PDO::FETCH_ASSOC) );
+            }
         }
-
-        $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $db->rollBack();
 
         if (empty($articles)){
-            echo "false";
-            return false;
+            return 0;
         }else {
             return $articles;
         }
@@ -210,4 +212,5 @@ if (isset($_POST['context']) && !empty($_POST['context'])){
 if (isset($_GET) && !empty($_GET)){
     echo json_encode(array(search($_GET)));
 }
+
 ?>

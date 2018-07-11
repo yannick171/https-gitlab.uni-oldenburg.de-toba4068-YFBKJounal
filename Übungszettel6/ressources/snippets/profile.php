@@ -4,21 +4,17 @@
         <button id="autorProfilButton" class="zustimmen">Profil bearbeiten</button>
           <button id="changePasswordButton" class="verwerfen">Passwort ändern</button>
       </div>
-      <div class="metadata">
-        <strong>Name: </strong><br><br>
-        <strong>Vorname: </strong><br><br>
-        <strong>E-Mail: </strong>
-      </div>
+
         <?php
 
           echo '<div id="autorbox" class="autorInfobox autorInformationStyle">';
-          echo $_SESSION["nachname"] . '<br><br>';
-          echo $_SESSION["vorname"] . "<br><br>" ;
-          echo $_SESSION["email"] . "<br><br>" ;
+          echo '<table><tr><td><b>Nachname: </b></td><td id="nachnameProfil">' . $_SESSION["nachname"] . '</td></tr>';
+            echo '<tr><td><b>Vorname: </b></td><td id="vornameProfil">' .$_SESSION["vorname"]. '</td></tr>';
+        echo '<tr><td><b>E-Mail: </b></td><td id="emailProfil">' .$_SESSION["email"] .'</td></tr></table>';
           echo '</div>';
 
           echo '<div id="autorinfobox" class="autorIntrobox autorInformationStyle">';
-          echo $_SESSION["infoText"] . "<br><br>" ;
+          echo '<p id="abstractProfil">' . $_SESSION["infoText"] . '</p>' ;
           echo '</div>';
         ?>
       </div>

@@ -83,6 +83,7 @@ if (isset($_POST['bildUrl'])) {
 
     <!--?php include("ressources/redakteurseite/php/updateAccepted.php");?-->
 
+    <link rel="stylesheet" type="text/css" href="ressources/css/autorseite.css">
     <link rel="stylesheet" type="text/css" href="ressources/redakteurseite/redakteur.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
     <link href="ressources/css/article.css" rel="stylesheet">
@@ -97,51 +98,10 @@ if (isset($_POST['bildUrl'])) {
 
 
 <main class="defaultstyle">
-    <h1>Redakteur Profil</h1>
-    <article>
-        <section class="grid-container-article">
-            <div>
-                <img class="profilpic" src="ressources/redakteurseite/profilbild.png" alt="picture"/>
-                <button type="button">Bild ändern</button>
 
-            </div>
-            <div>
-                <p class="item2">
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>Name: <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        Namh Cnupeno
-                    </label>
-                    <br><br>
+    <?php include ("ressources/snippets/profile.php"); ?>
 
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>Vorname: <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        Saitama
-                    </label>
-                    <br><br>
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>E-Mail: <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        one.punchman@boredom.de
-                    </label>
-                    <br><br>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button">Daten ändern</button>
-                </p>
-            </div>
-            <div class="item-down-article">
-                <h3>Info</h3>
-                blabla dudu ich bin so ein Typ der in seinem Leben nichts anderes zu tun hat als Artikel für
-                irgendsoeine Onlinezeitschrift zu prüfen die sowieso niemand liest und weil mein leben so langweilig ist
-                bin ich nicht in der Lage einen Punkt zu schreiben blbablabla
-                <button type="button">Ändern</button>
-            </div>
-        </section>
-    </article>
-    <h1>
-        Redakteur Profil
-    </h1>
+    <div class="trennlinie"></div>
 
     <h1>Arbeitsbereich</h1>
 
@@ -361,5 +321,8 @@ if (isset($_POST['bildUrl'])) {
 <?php include("ressources/snippets/footer.php"); ?>
 <?php include("ressources/snippets/loadjavascript.php"); ?>
 <?php include("ressources/snippets/loadjavascriptRedakteur.php"); ?>
+
+<script src="ressources/js/formvalid.js"></script>
+<script src="ressources/js/profile.js"></script>
 </body>
 </html>
