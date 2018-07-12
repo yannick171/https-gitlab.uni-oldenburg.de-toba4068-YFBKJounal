@@ -9,7 +9,7 @@
         <?php include("ressources/snippets/globalsources.php") ?>
 
 		<link href = "ressources/css/article.css" rel= "stylesheet">
-		<link rel = "stylesheet" type="text/css" href = "ressources/ueberunsseite/ueber.css">
+		<link rel = "stylesheet" type="text/css" href = "ressources/ueberunsseite/ueberseite.css">
 
 </head>
 <body>
