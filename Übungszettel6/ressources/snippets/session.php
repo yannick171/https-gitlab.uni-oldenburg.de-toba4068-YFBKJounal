@@ -5,7 +5,8 @@
 
   if(isset($_SESSION["logout"])){
     $_SESSION = array();
-    session_destroy();
+      session_unset();
+      session_destroy();
   }
 
  ?>

@@ -73,14 +73,13 @@
     //falls changePw == 1, so soll nur das PW geändert werden
     function changeProfile($db, $changePw = 0){
 
-        $id = $_SESSION["userId"];
-
         if ($changePw == 1){
             try{
                 $db->beginTransaction();
-                $stmt = $db->prepare("UPDATE user SET password=:newpassword WHERE id='$id'");
+                $stmt = $db->prepare("UPDATE user SET password=:newpassword WHERE id=:id");
                 $newPw = $passwordHashed = password_hash($_POST['newpassword'], PASSWORD_DEFAULT);
                 $stmt->bindValue(":newpassword", $newPw, PDO::PARAM_STR);
+                $stmt->bindValue(":id", $_SESSION["userId"], PDO::PARAM_STR);
                 $stmt->execute();
                 $db->commit();
 
@@ -96,11 +95,12 @@
                 if (checkEmail($db)){
                     return "Email existiert bereits";
                 }else{
-                    $stmt = $db->prepare("UPDATE user SET email=:newEmail, lastName =:newLastname, firstName =:newFirstname, infoText =:newInfotext WHERE id='$id'");
+                    $stmt = $db->prepare("UPDATE user SET email=:newEmail, lastName =:newLastname, firstName =:newFirstname, infoText =:newInfotext WHERE id=:id");
                     $stmt->bindValue(":newEmail", $_POST["email"], PDO::PARAM_STR);
                     $stmt->bindValue(":newLastname", $_POST["nachname"], PDO::PARAM_STR);
                     $stmt->bindValue(":newFirstname", $_POST["vorname"], PDO::PARAM_STR);
                     $stmt->bindValue(":newInfotext", $_POST["infoText"], PDO::PARAM_STR);
+                    $stmt->bindValue(":id", $_SESSION["userId"], PDO::PARAM_STR);
                     $stmt->execute();
                     $db->commit();
 
@@ -122,11 +122,11 @@
 
     //Falls email bereits existiert, dann gibt die Funktion true zurück
     function checkEmail($db){
-        $id = $_SESSION["userId"];
 
         $db->beginTransaction();
-        $doesEmailExist = $db -> prepare( "SELECT email FROM user WHERE email =:newEmail and id !='$id' ");
+        $doesEmailExist = $db -> prepare( "SELECT email FROM user WHERE email =:newEmail and id !=:id ");
         $doesEmailExist->bindValue(":newEmail", $_POST["email"], PDO::PARAM_STR);
+        $doesEmailExist->bindValue(":id", $_SESSION["userId"], PDO::PARAM_STR);
         $doesEmailExist ->execute();
         $fetch = $doesEmailExist->fetch(PDO::FETCH_ASSOC);
 

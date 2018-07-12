@@ -1,4 +1,9 @@
-<?php include("ressources/snippets/session.php"); ?>
+<?php
+    include("ressources/snippets/session.php");
+    /*if (!isset($_SESSION) || empty($_SESSION) || $_SESSION['userId'] != 0){
+        header("Location: startseite.php");
+    }*/
+?>
 <!--?php include("ressources/SQLData/initArticledb.php"); ?-->
 <!--?php include("ressources/SQLData/initMagazine.php"); ?-->
 
