@@ -151,6 +151,12 @@
 							}
 						}
 						
+						if($counter != 0)
+						{
+							// Reihe Ende
+							echo '</div><br>';
+						}
+						
 						echo '<br><br><br>';
 					}
 				}
