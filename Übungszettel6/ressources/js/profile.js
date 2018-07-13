@@ -8,8 +8,8 @@ $(document).ready(function() {
     function updateTempData(){
         temp_infoText = $("#infotextInput").val();
         temp_email = $("#email").val();
-        temp_nachname = $("#nachnameInput").val();
-        temp_vorname = $("#vornameInput").val();
+        temp_nachname = $("#lname").val();
+        temp_vorname = $("#fname").val();
     }
 
     $("#changePasswordButton").on("click", function () {
@@ -31,8 +31,8 @@ $(document).ready(function() {
     $("#autorProfilBearbeiten").on("click", ".verwerfen", function () {
         $("#infotextInput").val(temp_infoText);
         $("#email").val(temp_email);
-        $("#nachnameInput").val(temp_nachname);
-        $("#vornameInput").val(temp_vorname);
+        $("#lname").val(temp_nachname);
+        $("#fname").val(temp_vorname);
 
         $("#autorProfil").css("display", "grid");
         $("#autorProfilBearbeiten").css("display", "none");
@@ -92,8 +92,8 @@ $(document).ready(function() {
         if (validateForm()) {
             var infoText = $("#infotextInput").val();
             var email = $("#email").val();
-            var nachname = $("#nachnameInput").val();
-            var vorname = $("#vornameInput").val();
+            var nachname = $("#lname").val();
+            var vorname = $("#fname").val();
 
             $.ajax({
                 type: "POST",
