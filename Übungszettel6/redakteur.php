@@ -190,7 +190,7 @@ if (isset($_POST['newTitle'])) {
                     <h3>
                         Einleitungstext der Ausgabe
                     </h3>
-                    <span style="display: block; word-wrap:break-word;">
+                    <span id = "descriptionOfMagazine" style="display: block; word-wrap:break-word;">
                         <?php echo $newestMagazine["description"]; ?>
                     </span>
                     <div class="centerButton">
