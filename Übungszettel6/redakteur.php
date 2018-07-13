@@ -78,11 +78,11 @@ if (isset($_POST['newTitle'])) {
 
     <!--?php include("ressources/redakteurseite/php/updateAccepted.php");?-->
 
-    <link rel="stylesheet" type="text/css" href="ressources/css/autorseite.css">
-    <link rel="stylesheet" type="text/css" href="ressources/redakteurseite/redakteur.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
-    <link href="ressources/css/article.css" rel="stylesheet">
-    <link href="ressources/css/countdown.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="ressources/css/autorseite.css"/>
+    <link rel="stylesheet" type="text/css" href="ressources/redakteurseite/redakteur.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet"/>
+    <link href="ressources/css/article.css" rel="stylesheet"/>
+    <link href="ressources/css/countdown.css" rel="stylesheet"/>
 
 </head>
 
@@ -101,7 +101,7 @@ if (isset($_POST['newTitle'])) {
     <div class="parentContainer">
 
         <div class="containerElement">
-            <h2 id="zuPrüfen" class=workingArea>
+            <h2 id="zuPrüfen" class="workingArea">
                 zu prüfen
             </h2>
 
@@ -133,7 +133,7 @@ if (isset($_POST['newTitle'])) {
             </ul>
         </div>
 
-        <input type="hidden" name="seperator" value="a">
+        <input type="hidden" name="seperator" value="a"/>
         <div class="containerElement">
             <h2 id="geprüft" class="workingArea">
                 geprüft
@@ -242,11 +242,11 @@ if (isset($_POST['newTitle'])) {
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
-                <form method="post" action= <?php $_SERVER['PHP_SELF'] ?>>
+                <form method="post" action=<?php $_SERVER['PHP_SELF'] ?> >
                     <div class="modal-body">
                         <p>Geben Sie den neuen Titel ein : </p>
                         <input name="newTitle" class="form-control mr-sm-2" type="text" placeholder="..."
-                               aria-label="text">
+                               aria-label="text" />
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-default">Anwenden</button>
@@ -261,7 +261,7 @@ if (isset($_POST['newTitle'])) {
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
-                <form method="post" action= <?php $_SERVER['PHP_SELF'] ?>>
+                <form method="post" action=<?php $_SERVER['PHP_SELF'] ?>>
                     <div class="modal-body">
                         <p>Geben Sie eine neue Beschreibung an : </p>
                         <div class="form-group">
