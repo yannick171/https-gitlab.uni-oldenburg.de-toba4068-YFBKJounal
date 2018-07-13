@@ -90,7 +90,7 @@
             <input type="button" id="button1" value="G" onclick="insertTag('<strong>','</strong>','infotextInput');" />
             <input type="button" id="button2" value="I" onclick="insertTag('<span>','</span>','infotextInput');" />
             <input type="button" id="button3" value="Links" onclick="insertTag('<a>','</a>','infotextInput');" />
-            <input type="button" id="button4" value="Bild" onclick="insertTag('<img>','</img>','infotextInput');"/>
+            <input type="button" id="button4" value="h1" onclick="insertTag('<h1>','</h1>','infotextInput');"/>
 			<input type="button" id="button5" value="P" onclick="insertTag('<p>','</p>','infotextInput');"/>
 			<input type="button" id="button6" value="Ul" onclick="insertTag('<ul>','</ul>','infotextInput');"/>
 			<input type="button" id="button7" value="Ol" onclick="insertTag('<ol>','</ol>','infotextInput');"/>
