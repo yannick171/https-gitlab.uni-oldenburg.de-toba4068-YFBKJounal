@@ -2,9 +2,23 @@ $(document).ready(function () {
 
     var relativePosition = 0;
     var range = new Number(3);
+    var fadeSpeed = 800;
     var clickDisabled = false;
     var anzahlArtikelImSlider = new Number(document.getElementById("numberOfRandomArticles").value);
 
+    /*
+    $(window).resize(function () {
+        if ($(window).width() < 768) {
+            range = 2;
+        }
+        else if ($(window).width() < 500) {
+            range = 1;
+        }
+        else {
+            range = 3;
+        }
+    });
+    */
     //QUelle: http://www.chrisbuttery.com/articles/fade-in-fade-out-with-javascript/
     function fadeOut(el){
         el.style.opacity = 1;
@@ -18,7 +32,7 @@ $(document).ready(function () {
         })();
     }
 
-        // fade in
+// fade in
 
     function fadeIn(el, display){
         el.style.opacity = 0;
@@ -42,7 +56,6 @@ $(document).ready(function () {
     slots[1].appendChild(articles[1]);
     slots[2].appendChild(articles[2]);
 
-    //Füge beim laden der Seite die ersten Elemente in den Slider ein und entferne den Rest aus dem DOM
     for (i=range; i< anzahlArtikelImSlider  ;i++){
         articles[i].remove();
     }
@@ -54,6 +67,7 @@ $(document).ready(function () {
     //Die eigentliche Funktionalität hinter dem Slider
     //slotNr: Gibt an in welchem randomArticleSlot der Artikel angezeigt werden soll
     //richtung: je nachdem ob der "linke" oder "rechte" Knopf gedrückt wird, muss der Slider andere Operationen durchführen
+
     function switchArticle(slotNr,richtung){
             fadeOut(slots[slotNr]);
             slots[slotNr].removeChild( articles[(relativePosition + slotNr) % anzahlArtikelImSlider]);
@@ -61,7 +75,7 @@ $(document).ready(function () {
             fadeIn(slots[slotNr]);
     }
 
-    //Blockt die Klick-Funktionalität, damit es keine Probleme mit der Variable 'relativePosition' gibt.
+    //Blockt die Klick-funktionalität, damit es keine Probleme mit der Variable 'relativePosition' gibt.
     function isClickDisabled(){
         if (clickDisabled){
             return 1;

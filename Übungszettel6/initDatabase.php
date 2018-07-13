@@ -7,7 +7,7 @@ $userDb = new PDO('sqlite:ressources/SQLData/user.db');
 $sql = "SELECT * FROM user";
 
 $anzahlBenutzer = 10;
-$anzahlArtikel = 6;
+$anzahlArtikel = 3;
 
 if (!$userDb->query($sql)) {
     $userDb->exec("CREATE TABLE user (
@@ -48,14 +48,7 @@ if (!$articlesDb->query($sql)) {
                     pdfPath TEXT 
                 )");
 
-    //Erstellt für jeden User Dummyartikel mit Status 0-5 + pdf
-    //Statuslegende:
-    //0-Eingereicht
-    //1-Reviewt
-    //2-Erscheint in der nächsten Ausgabe
-    //3-Ist in der aktuellen Ausgabe
-    //4-Archiv
-    //5-Abgelehnt
+    //Erstellt für jeden User Dummyartikel mit Status 0-2 + pdf
     $artikelCounter=1;
     for ($user=1;$user <= $anzahlBenutzer; $user++) {
         for ($artikel=1;$artikel <= $anzahlArtikel;$artikel++) {
@@ -87,7 +80,7 @@ if (!$articlesDb->query($sql)) {
 
             $artikelCounter++;
         }
-        $artikel = 1;
+        $artikel = 0;
     }
 
 }

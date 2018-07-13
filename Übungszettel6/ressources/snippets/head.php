@@ -18,7 +18,7 @@
     <div class="row defaultstyle">
         <?php
             if (isset($_SESSION["loggedIn"])){
-                echo '<div class="col-sm-3">Willkommen ' . htmlspecialchars($_SESSION["vorname"]). ' ' . htmlspecialchars($_SESSION["nachname"]) .  '</div>';
+                echo '<div class="col-sm-3">Willkommen ' . $_SESSION["vorname"]. ' ' . $_SESSION["nachname"] .  '</div>';
                 echo '<div class="col-sm-1 offset-8"><a href="ressources/snippets/logout.php">Abmelden</a></div>';
             }else{
                 echo '<div class="col-sm-1 offset-9">';

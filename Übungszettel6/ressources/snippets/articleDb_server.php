@@ -8,17 +8,12 @@ function withdraw($db){
     try {
         $db ->beginTransaction();
 
-        $stmt=$db->prepare("DELETE FROM article where id=:id");
+        $value = $_POST['target'];
+        $db->query("DELETE FROM article where id=$value");
+        unlink('../archiv/artikel/artikel%'.$value.'.pdf');
+        print_r($value);
 
-        $stmt->bindParam(":id",$_POST['target']);
-
-        if ($stmt->execute()){
-            unlink('../archiv/artikel/artikel%'.$_POST['target'].'.pdf');
-            $db ->commit();
-        }else{
-            $db->rollBack();
-        }
-
+        $db ->commit();
     }catch (Exception $e){
         $db->rollBack();
         echo "An error has occurred";
@@ -32,30 +27,28 @@ function showArticles($status = -1, $owner = "%")
     try {
         $db->beginTransaction();
 
-        $articles = array();
 
         if ($status == -1){
 
             $stmt = $db->prepare("SELECT id, title, author, uploadDate, abstract FROM article WHERE owner like :owner");
             $stmt -> bindParam(":owner",$owner);
             $stmt->execute();
-            array_push($articles,$stmt->fetchAll(PDO::FETCH_ASSOC) );
 
         }else{
 
-            foreach ($status as $value){
-                $stmt = ($db->prepare("SELECT id, title, author, uploadDate, abstract FROM article WHERE statusOfArticle like :status and owner like :owner"));
-                $stmt -> bindParam(":owner",$owner);
-                $stmt -> bindParam(":status",$value);
-                $stmt->execute();
-                $articles=array_merge($articles,$stmt->fetchAll(PDO::FETCH_ASSOC) );
-            }
+            $stmt = ($db->prepare("SELECT id, title, author, uploadDate, abstract FROM article WHERE statusOfArticle like :status and owner like :owner"));
+            $stmt -> bindParam(":owner",$owner);
+            $stmt -> bindParam(":status",$status);
+            $stmt->execute();
         }
+
+        $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $db->rollBack();
 
         if (empty($articles)){
-            return 0;
+            echo "false";
+            return false;
         }else {
             return $articles;
         }
@@ -152,7 +145,7 @@ function upload($db){
 
 
 function search($p){
-
+    //$Suchparameter = json_decode($p);
     $Suchparameter = $p;
 
     $articlesDb = new PDO('sqlite:../SQLData/articles.db');
@@ -160,9 +153,6 @@ function search($p){
 
     $result = array();
 
-
-    //Der eigentliche Suchalgorithmus.Es wird je nachdem wieviele Suchkriterien ausgewählt wurden, die Suche verstärkt.
-    //Wenn auch nur ein "Kriterium" nicht erfüllt ist, dann wird der nächste Eintrag in der DB angeschaut.
 
     while ($article = $allArticles->fetch())
     {
@@ -193,16 +183,19 @@ function search($p){
     return $result;
 }
 
-//Über den "context" wird die Datei angesprochen und führt die entsprechende(n) Methode(n) aus
-
 if (isset($_POST['context']) && !empty($_POST['context'])){
     $context = $_POST['context'];
     $db = new PDO('sqlite:../SQLData/articles.db');
+
 
     switch ($context){
         case "upload":
             echo upload($db);
             header("Location: ../../autor.php");
+            break;
+
+        case "checkPw":
+
             break;
 
         case "withdraw":
@@ -217,5 +210,4 @@ if (isset($_POST['context']) && !empty($_POST['context'])){
 if (isset($_GET) && !empty($_GET)){
     echo json_encode(array(search($_GET)));
 }
-
 ?>
