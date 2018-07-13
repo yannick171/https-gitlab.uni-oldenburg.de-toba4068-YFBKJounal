@@ -115,12 +115,12 @@ if (isset($_POST['newTitle'])) {
                         . '<div class="card-header">'
                         . '<h5 class="mb-0">'
                         . '<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#' . $id . '" aria-expanded="false" aria-controls="' . $id . '">'
-                        . $proof["title"]
+                        . htmlspecialchars($proof["title"])
                         . '</h5>'
                         . '</div>'
                         . '<div id="' . $id . '" class="collapse" aria-labelledby="headingFour">'
                         . '<div class="card-body">'
-                        . $proof["abstract"]
+                        . htmlspecialchars($proof["abstract"])
                         . '</div>'
                         . '<button onclick="addArticleToProofed(' . $proof["id"] . ')" class="btn btn-success btn-block">Artikel als geprüft markieren</button>'
                         . '<button onclick="addArticleToDeclinedToProof(' .$proof["id"] . ')" class="btn btn-danger btn-block">Artikel ablehnen</button>'
@@ -147,12 +147,12 @@ if (isset($_POST['newTitle'])) {
                         . '<div class="card-header">'
                         . '<h5 class="mb-0">'
                         . '<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#' . $id . '" aria-expanded="false" aria-controls="' . $id . '">'
-                        . $proof["title"]
+                        . htmlspecialchars($proof["title"])
                         . '</h5>'
                         . '</div>'
                         . '<div id="' . $id . '" class="collapse" aria-labelledby="headingFour">'
                         . '<div class="card-body">'
-                        . $proof["abstract"]
+                        . htmlspecialchars($proof["abstract"])
                         . '</div>'
                         . '<button onclick="addArticleToMagazine(' . $proof["id"] . ')" class="btn btn-success btn-block">Artikel zur nächsten Ausgabe hinzufügen</button>'
                         . '<button onclick="addArticleToDeclinedProofed(' . $proof["id"] . ')" class="btn btn-danger btn-block">Artikel ablehnen</button>'
@@ -178,7 +178,7 @@ if (isset($_POST['newTitle'])) {
                         Titel der Ausgabe
                     </h3>
                     <p id="nextMagazineTitle">
-                        <?php echo $newestMagazine["title"]; ?>
+                        <?php echo htmlspecialchars($newestMagazine["title"]); ?>
                     </p>
                     <div class="centerButton">
                         <button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalTitle">
@@ -190,8 +190,8 @@ if (isset($_POST['newTitle'])) {
                     <h3>
                         Einleitungstext der Ausgabe
                     </h3>
-                    <span id = "descriptionOfMagazine" style="display: block; word-wrap:break-word;">
-                        <?php echo $newestMagazine["description"]; ?>
+                    <span style="display: block; word-wrap:break-word;">
+                        <?php echo htmlspecialchars($newestMagazine["description"]); ?>
                     </span>
                     <div class="centerButton">
                         <button class="btn btn-default" data-toggle="modal" data-target="#modalDescription">
@@ -214,12 +214,12 @@ if (isset($_POST['newTitle'])) {
                             . '<div class="card-header">'
                             . '<h5 class="mb-0">'
                             . '<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#' . $id . '" aria-expanded="false" aria-controls="' . $id . '">'
-                            . $next["title"]
+                            . htmlspecialchars($next["title"])
                             . '</h5>'
                             . '</div>'
                             . '<div id="' . $id . '" class="collapse" aria-labelledby="headingFour">'
                             . '<div class="card-body">'
-                            . $next["abstract"]
+                            . htmlspecialchars($next["abstract"])
                             . '</div>'
                             . '<button onclick="addArticleToProofedFromNextMagazine(' . $next["id"] . ')" class="btn btn-warning btn-block">Artikel nach geprüft zurücklegen</button>'
                             . '<button onclick="addArticleToDeclinedNextMagazine(' . $next["id"] . ')" class="btn btn-danger btn-block">Artikel ablehnen</button>'
@@ -255,26 +255,6 @@ if (isset($_POST['newTitle'])) {
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="modalImage" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <form method="post" action= <?php $_SERVER['PHP_SELF'] ?>>
-                    <div class="modal-body">
-                        <p>Geben Sie die neue URL des Bildes an : </p>
-                        <input name="bildUrl" class="form-control mr-sm-2" type="text" placeholder="..."
-                               aria-label="text">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-default">Anwenden</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!--PHP for action on change path of picture-->
 
     <!-- Modal -->
     <div class="modal fade" id="modalDescription" role="dialog">

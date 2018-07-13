@@ -86,7 +86,9 @@
 					if (is_array($content)){
                         foreach ($content as $article) 
 						{
-                            printArticle(htmlspecialchars($article["title"]), htmlspecialchars($article["abstract"]), htmlspecialchars($article["id"]), htmlspecialchars($article["author"]));
+                            printArticle(htmlspecialchars($article["title"]), htmlspecialchars($article["abstract"]), htmlspecialchars($article["id"]), htmlspecialchars(
+							$article["author"])); 
+							echo '<br>';
 					    }
                     }else{
                         echo 'Keine Treffer.<br><br><br><br><br><br><br><br><br><br>';
