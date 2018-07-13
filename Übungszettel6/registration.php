@@ -1,5 +1,9 @@
 <?php
   include("ressources/snippets/session.php");
+
+    /*if (!empty($_SESSION)){
+        header("Location: startseite.php");
+    }*/
  ?>
 
 <!DOCTYPE html>
@@ -116,7 +120,6 @@
 					}
 					echo'
                     </p>
-                    <div class="g-recaptcha" data-sitekey="6Ldb3mEUAAAAAM1xksEH_K2uy4EvTwMgvrCd2LoK"></div>
                 </form>
 				<button onclick="validation()">Registrieren</button>
             </div>
