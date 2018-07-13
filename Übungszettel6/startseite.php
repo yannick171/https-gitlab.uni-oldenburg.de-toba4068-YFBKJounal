@@ -32,7 +32,14 @@ include("ressources/snippets/session.php");
                             <img class="introimg" src="ressources/startseite/introimg.jpg" alt="" />
                         </div>
                         <div class="box-2">
-                            <?php echo htmlspecialchars($_SESSION["infoText"]); ?>
+                            <?php
+                                $db = new PDO('sqlite:ressources/SQLData/user.db');
+                                $db->beginTransaction();
+                                $stmt = $db->prepare("SELECT infoText FROM user WHERE id=0 ");
+                                $stmt ->execute();
+                                $results = $stmt->fetch();
+                                echo $results['infoText'];
+                            ?>
                         </div>
 
                         <div class="box-3">
