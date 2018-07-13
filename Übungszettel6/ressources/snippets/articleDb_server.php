@@ -43,10 +43,22 @@ function showArticles($status = -1, $owner = "%")
 
         }else{
 
-            foreach ($status as $value){
-                $stmt = ($db->prepare("SELECT id, title, author, uploadDate, abstract FROM article WHERE statusOfArticle like :status and owner like :owner"));
-                $stmt -> bindParam(":owner",$owner);
-                $stmt -> bindParam(":status",$value);
+            foreach ($status as $value)
+			{
+				$sql = "SELECT id, title, author, uploadDate, abstract FROM article WHERE statusOfArticle like :status";
+				if(strcmp($owner, "%") != 0)
+				{
+					$sql = $sql . " and owner like :owner";
+					$stmt = ($db->prepare($sql));
+					$stmt -> bindParam(":owner",$owner);
+					$stmt -> bindParam(":status",$value);
+				}
+				else
+				{
+					$stmt = ($db->prepare($sql));
+					$stmt -> bindParam(":status",$value);
+				}
+				
                 $stmt->execute();
                 $articles=array_merge($articles,$stmt->fetchAll(PDO::FETCH_ASSOC) );
             }

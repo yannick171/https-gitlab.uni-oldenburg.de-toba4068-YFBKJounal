@@ -87,8 +87,9 @@ include("ressources/snippets/session.php");
                     </div>
 
                     <?php
-                    require_once ("ressources/snippets/articleDb_server.php");
-                    $results = showArticles(array(3,4));
+					
+					require_once ("ressources/snippets/articleDb_server.php");
+                    $results = showArticles(array(3, 4));
 
                     //Wähle zunächst alle Artikel, aber maximal 15 aus
                     $length = count($results);

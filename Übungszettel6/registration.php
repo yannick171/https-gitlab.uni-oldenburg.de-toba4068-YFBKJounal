@@ -88,6 +88,9 @@ if(isset($_POST["email"]) && !$emailerr)
 								<h3>Du bist nun registriert!</h3>
 							</div>
 						</main>';
+						
+			sleep(3);
+			header("Location: startseite.php");
         }
         catch(Exception $ex)
         {
