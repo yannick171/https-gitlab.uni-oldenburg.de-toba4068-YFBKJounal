@@ -14,6 +14,9 @@ passwort:   testtestX
 
 wobei X eine Zahl zwischen 1,...,10 ist.
 
+#Falls die Datenbanken neu initialisiert werden sollen, dann einfach die Datenbanken aus dem SQLData Ordner löschen
+# und initDatabase.php ausführen
+
 Das Verzeichnis unseres Repositorys : 
 
 https://gitlab.uni-oldenburg.de/toba4068/YFBKJounal.git
