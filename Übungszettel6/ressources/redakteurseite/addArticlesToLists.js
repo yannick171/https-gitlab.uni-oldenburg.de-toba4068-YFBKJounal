@@ -23,9 +23,6 @@ function addArticleToMagazine(id) {
     var subNode = selectedNode.childNodes[0].childNodes[1];
     var insertNode = subNode;
 
-    //for testing purpose
-    document.getElementById("test").innerHTML = subNode.childNodes[0];
-
     insertNode.removeChild(insertNode.childNodes[1]);
     insertNode.removeChild(insertNode.childNodes[1]);
 

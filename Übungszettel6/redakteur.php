@@ -136,7 +136,6 @@ if (isset($_POST['newTitle'])) {
             <h2 id="geprüft" class="workingArea">
                 geprüft
             </h2>
-            <p id = "test"></p>
             <ul id="acceptedArticles" class="list-group">
                 <?php
                 foreach ($proofed as $proof) {
@@ -180,21 +179,11 @@ if (isset($_POST['newTitle'])) {
                         <?php echo $newestMagazine["title"]; ?>
                     </p>
                     <div class="centerButton">
-                        <button type="button" data-toggle="modal" data-target="#modalTitle">
+                        <button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalTitle">
                             Titel ändern
                         </button>
                     </div>
                 </div>
-                <!--div class="containerChild">
-                    <h3>
-                        Titelbild der Ausgabe
-                    </h3>
-                    <img src="ressources/archivseite/TitelSeite.jpg" alt="Titelseite des Magazins"
-                         class="centerImage">
-                    <div class="centerButton">
-                        <button type="button" data-toggle="modal" data-target="#modalImage">Bild ändern</button>
-                    </div>
-                </div-->
                 <div class="containerChild">
                     <h3>
                         Einleitungstext der Ausgabe
@@ -203,7 +192,7 @@ if (isset($_POST['newTitle'])) {
                         <?php echo $newestMagazine["description"]; ?>
                     </span>
                     <div class="centerButton">
-                        <button type="button" data-toggle="modal" data-target="#modalDescription">
+                        <button class="btn btn-default" data-toggle="modal" data-target="#modalDescription">
                             Beschreibung ändern
                         </button>
                     </div>

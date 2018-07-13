@@ -79,11 +79,38 @@ if (!$articlesDb->query($sql)) {
             $obj_pdf->Output(__DIR__ . '/ressources/archiv/artikel/artikel%'. $artikelCounter.'.pdf', 'F');
 
             $date = date("d.m.Y, H:i:s");
-            $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle, magazine, pdfPath,uploadDate) 
+            if($artikel == 1 || $artikel == 6) {
+                $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle, magazine, pdfPath,uploadDate) 
                                 VALUES ($user,'Ich bin eine Inhaltsangabe von $user. Hier kommt ein sehr langer Text um die Darstellung des Sliders auf der Startseite zu testen:' ||
                                  ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ' ||
-                                  ' ABCDEFGHIJKLMNOPQRSTUVWXY  ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZZ', '$artikel. Artikel von User: $user', 'Ich bin der Autor mit ID:$user', $artikel-1 , 1, 'pdfsOfArticles/artikel%$artikelCounter.pdf', '$date' )");
-
+                                  ' ABCDEFGHIJKLMNOPQRSTUVWXY  ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZZ',
+                                   '$artikel. Artikel von User: $user', 'Ich bin der Autor mit ID:$user', $artikel-1 , 1, 'pdfsOfArticles/artikel%$artikelCounter.pdf',
+                                    '$date' )");
+            }
+            if($artikel == 2) {
+                $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle, magazine, pdfPath,uploadDate) 
+                                VALUES ($user,'Ich bin eine Inhaltsangabe von $user. Hier kommt ein sehr langer Text um die Darstellung des Sliders auf der Startseite zu testen:' ||
+                                 ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ' ||
+                                  ' ABCDEFGHIJKLMNOPQRSTUVWXY  ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZZ',
+                                   '$artikel. Artikel von User: $user', 'Ich bin der Autor mit ID:$user', $artikel-1 , 2, 'pdfsOfArticles/artikel%$artikelCounter.pdf',
+                                    '$date' )");
+            }
+            if($artikel == 3) {
+                $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle, magazine, pdfPath,uploadDate) 
+                                VALUES ($user,'Ich bin eine Inhaltsangabe von $user. Hier kommt ein sehr langer Text um die Darstellung des Sliders auf der Startseite zu testen:' ||
+                                 ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ' ||
+                                  ' ABCDEFGHIJKLMNOPQRSTUVWXY  ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZZ',
+                                   '$artikel. Artikel von User: $user', 'Ich bin der Autor mit ID:$user', $artikel-1 , 3, 'pdfsOfArticles/artikel%$artikelCounter.pdf',
+                                    '$date' )");
+            }
+            if($artikel == 4 || $artikel == 5) {
+                $articlesDb->exec("INSERT INTO article (owner, abstract, title, author, statusOfArticle, magazine, pdfPath,uploadDate) 
+                                VALUES ($user,'Ich bin eine Inhaltsangabe von $user. Hier kommt ein sehr langer Text um die Darstellung des Sliders auf der Startseite zu testen:' ||
+                                 ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ' ||
+                                  ' ABCDEFGHIJKLMNOPQRSTUVWXY  ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZ ABCDEFGHIJKLMNOPQRSTUVWXYZZ',
+                                   '$artikel. Artikel von User: $user', 'Ich bin der Autor mit ID:$user', $artikel-1 , 4, 'pdfsOfArticles/artikel%$artikelCounter.pdf',
+                                    '$date' )");
+            }
 
             $artikelCounter++;
         }
@@ -109,7 +136,15 @@ if (!$magazinesDb->query($sql)) {
                                 )");
 
 
-    $magazinesDb->exec("DElETE FROM article");
+    $magazinesDb->exec(("INSERT INTO Magazine (description, title) 
+    VALUES ('Das ist eine Beschreibung', 'Das ist ein Titel')"));
+
+    $magazinesDb->exec(("INSERT INTO Magazine (description, title) 
+    VALUES ('Das ist eine Beschreibung', 'Das ist ein Titel')"));
+
+    $magazinesDb->exec(("INSERT INTO Magazine (description, title) 
+    VALUES ('Das ist eine Beschreibung', 'Das ist ein Titel')"));
+
     $magazinesDb->exec(("INSERT INTO Magazine (description, title) 
     VALUES ('Das ist eine Beschreibung', 'Das ist ein Titel')"));
 }
