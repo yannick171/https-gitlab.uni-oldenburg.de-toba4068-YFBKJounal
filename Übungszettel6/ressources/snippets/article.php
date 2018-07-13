@@ -28,4 +28,26 @@ function printArticle($title, $abstract, $idOfArticle, $author)
         . '</div>'
         . '<input type="hidden" name="id" value="' . $idOfArticle . '">';
 }
+
+function printArticleBox($title, $abstract, $idOfArticle, $author, $date, $magazine)
+{
+    $id = uniqid();
+
+    $urlPrefix = "ressources/archiv/artikel/" . urlencode( 'artikel%'.$idOfArticle) . ".pdf";
+    echo '
+	
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">' . $title . '</h5>
+			<p class="card-text collapse" id = "collapseExample' . $id . '" aria-expanded="true" style="height: 0px;">
+			' . $abstract . '
+			</p>
+			<a role="button" class="collapsed" data-toggle="collapse" href="#collapseExample' . $id . '" aria-controls="collapseExample' . $id . '">Umklappen</a>
+			<br><br>
+			<a href ='. $urlPrefix .'>Hier zum vollständigen Artikel</a>
+		</div>
+	</div>
+	
+	' . '<input type="hidden" name="id" value="' . $idOfArticle . '">';
+}
 ?>
