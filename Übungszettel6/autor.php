@@ -1,9 +1,10 @@
 <?php
 include("ressources/snippets/session.php");
-/*
-if (!isset($_SESSION) || empty($_SESSION) || $_SESSION['userId'] == 0){
+
+if (!isset($_SESSION) || empty($_SESSION) || !$_SESSION['loggedIn'])
+{
     header("Location: startseite.php");
-}*/
+}
 ?>
 
 <!DOCTYPE html>
