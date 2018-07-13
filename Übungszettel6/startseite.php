@@ -32,17 +32,7 @@ include("ressources/snippets/session.php");
                             <img class="introimg" src="ressources/startseite/introimg.jpg" alt="" />
                         </div>
                         <div class="box-2">
-                            <h2>sharing is caring!</h2>
-                            Hier findet ihr eine Plattform zur veröffentlichung eurer Artikel, egal
-                            ob Fuzzylogik, künstliche neurale Netze, Evolutionäre Algorithmen oder andere Themen aus der KI.
-                            Helft uns dabei das Interesse an der KI weiter zu erhalten. Hier finden alle
-                            eure Beiträge gehör. Hier findet ihr eine Plattform zur veröffentlichung eurer Artikel, egal ob
-                            Fuzzylogik, künstliche neurale Netze, Evolutionäre Algorithmen oder andere Themen aus der KI. Helft
-                            uns dabei das Interesse an der KI weiter zu erhalten. Hier finden alle
-                            eure Beiträge gehör. Hier findet ihr eine Plattform zur veröffentlichung eurer Artikel, egal ob
-                            Fuzzylogik, künstliche neurale Netze, Evolutionäre Algorithmen oder andere Themen aus der KI. Helft
-                            uns dabei das Interesse an der KI weiter zu erhalten. Hier finden alle
-                            eure Beiträge gehör.
+                            <?php echo htmlspecialchars($_SESSION["infoText"]); ?>
                         </div>
 
                         <div class="box-3">
