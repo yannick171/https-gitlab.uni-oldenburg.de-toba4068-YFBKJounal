@@ -39,6 +39,7 @@ include("ressources/snippets/session.php");
                                 $stmt ->execute();
                                 $results = $stmt->fetch();
                                 echo $results['infoText'];
+                                $db->rollBack();
                             ?>
                         </div>
 
