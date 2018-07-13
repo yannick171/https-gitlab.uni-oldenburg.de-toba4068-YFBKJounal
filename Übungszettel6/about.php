@@ -17,28 +17,26 @@
 	  <?php include ("ressources/snippets/head.php") ;?>
 
     <main class="defaultstyle">
-        <h1>
-            Über uns
-        </h1>
+		
+		    <div id="mysection">
+                <div id="articleInMySection">
+					<h1>Über uns</h1>
         <p>
             Auf dieser Seite geht es um Hintergrundinformationen zum Journal.
             Wir möchten Menschen eine Plattform geben, die allen Interessierten das Thema der Computational Intelligence näherbringt.
             Jeder Wissenschaftler bekommt bei uns eine Möglichkeit seine Forschung zu publizieren.<br>
             Hier eine Liste wichtiger Informationen :
         </p>
-
-		
-		
-        <b>Personen</b>
-            <ul>
-				
-                <li>Kontakt</li>
-				<details name="kontakt" type="text" class="form-control" id="kontakt" placeholder="" name="kontakt">
-			<script src = "ressources/js/Kontaktformularvalid.js"></script>
-        <main class="defaultstyle">
-            <div class ="container">
-                <h2>Ausfüllen</h2>
-                <form action="about.php" id="registerform" method="post">
+                </div>
+				<div id="asideInMySection">
+					<img src="ressources/ueberunsseite/bulle.png" alt="" id="pfeile" />
+					      <div id="asideone">
+					<h2>Personen</h2>
+                <ul>
+                <li><button id="kontakt"  onmouseover="myFunction()" onmouseout="myfunction()" onclik="myFormular()"> Kontakt </button></li>
+					<script>
+					function myFormular(){
+							<form action="about.php" id="registerform" method="post">
 					<div class="form-group">  
 					<label for="Anrede">Anrede* : </label>
 						   <select name="Anrede" type="text" class="form-control" id="Anrede" placeholder="--bitte auswählen---" name="Anrede">
@@ -103,20 +101,31 @@
                     </p>
 
                 </form>
-				<button onclick="validateForm()">Registrieren</button>
-            </div>
-        </main>';
-				</details>
-				
-				
-				
+							
+						}
+					function myFunction(){
+						document.getElementById('kontakt').innerHTML="bonjour";
+					}
+						function myfunction(){
+							document.getElementById('kontakt').innerHTML="jojojoj";
+						}
+					
+					</script>
+					
                 <li><a href ="ressources/ueberunsseite/Redaktion.txt">Redaktion</a></li>
             </ul>
-        <b>Die Zeischrift</b>
+					
+					</div>
+					<div id="asidetwo">
+					
+					<h2>Die Zeischrift</h2>
             <ul>
                 <li><a href = "ressources/ueberunsseite/Konzept.txt">Konzept</a></li>
                 <li><a href = "ressources/ueberunsseite/Richtlinien.txt">Richtlinien</a></li>
             </ul>
+					</div>
+				</div>   
+            </div>
     </main>
         <?php include ("ressources/snippets/footer.php") ;?>
         <?php include ("ressources/snippets/loadjavascript.php") ;?>
