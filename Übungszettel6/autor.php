@@ -85,13 +85,13 @@ if (!isset($_SESSION) || empty($_SESSION) || $_SESSION['userId'] == 0){
                             foreach ($result as $row) {
                                 echo '<form action="ressources/snippets/articleDb_server.php" method="post">';
                                 echo '<input type="hidden" value="withdraw" name="context">';
-                                echo '<input value="' . $row["id"] . '" type="hidden" name="target" >';
+                                echo '<input value="' . htmlspecialchars($row["id"]) . '" type="hidden" name="target" >';
                                 echo '<tr><td scope="row">';
                                 echo '<button onclick="this.submit()">Zurückziehen</button></td>';
                                 echo '</form>';
-                                echo '<td>'.$row["title"]. '</td>';
-                                echo '<td>'.$row["author"]. '</td>';
-                                echo '<td>'.$row["uploadDate"]. '</td>';
+                                echo '<td>'.htmlspecialchars($row["title"]). '</td>';
+                                echo '<td>'.htmlspecialchars($row["author"]). '</td>';
+                                echo '<td>'.htmlspecialchars($row["uploadDate"]). '</td>';
                                 echo '</tr>';
                                 ++$counterWaiting;
                             };
@@ -123,9 +123,9 @@ if (!isset($_SESSION) || empty($_SESSION) || $_SESSION['userId'] == 0){
                             foreach ($result as $row) {
                                 //print_r($row);
                                 echo '<tr><th></th>';
-                                echo '<td>' . $row["title"] . '</td>';
-                                echo '<td>' . $row["author"] . '</td>';
-                                echo '<td>' . $row["uploadDate"] . '</td>';
+                                echo '<td>' . htmlspecialchars($row["title"]) . '</td>';
+                                echo '<td>' . htmlspecialchars($row["author"]) . '</td>';
+                                echo '<td>' . htmlspecialchars($row["uploadDate"]) . '</td>';
                                 echo "</tr>";
                             };
                         }
@@ -156,9 +156,9 @@ if (!isset($_SESSION) || empty($_SESSION) || $_SESSION['userId'] == 0){
                             foreach ($result as $row) {
                                 //print_r($row);
                                 echo '<tr><th></th>';
-                                echo '<td>' . $row["title"] . '</td>';
-                                echo '<td>' . $row["author"] . '</td>';
-                                echo '<td>' . $row["uploadDate"] . '</td>';
+                                echo '<td>' . htmlspecialchars($row["title"]) . '</td>';
+                                echo '<td>' . htmlspecialchars($row["author"]) . '</td>';
+                                echo '<td>' . htmlspecialchars($row["uploadDate"]) . '</td>';
                                 echo "</tr>";
                             };
                         }

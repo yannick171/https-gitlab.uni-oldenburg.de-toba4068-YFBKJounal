@@ -124,14 +124,14 @@ include("ressources/snippets/session.php");
                     //Dies ist nicht wirklich zufällig, da wir vom Punkt $start die nächsten 15 Artikel nur Permutiert haben,
                     //der Startpunkt $start war jedoch "zufällig" (ich weiß nicht wie "gut" der random-number-generator ist) gewählt.
                     foreach ($array as $number){
-                        $url = $urlPrefix . urlencode( "artikel%" . $results[$number % $numberOfRandomArticles]['id']) . ".pdf";
+                        $url = $urlPrefix . urlencode( "artikel%" . htmlspecialchars($results[$number % $numberOfRandomArticles]['id'])) . ".pdf";
 
                         echo "<div class='randomArticle'>";
-                        echo "<h4 class='articleTitle'><b>" . $results[$number % $numberOfRandomArticles]['title'] . "</b><br><a href='$url' >Für den Volltext auf den Link klicken.</a></h4>";
+                        echo "<h4 class='articleTitle'><b>" . htmlspecialchars($results[$number % $numberOfRandomArticles]['title']) . "</b><br><a href='$url' >Für den Volltext auf den Link klicken.</a></h4>";
                         echo "<hr>";
-                        echo "<h6 class='articleAuthor'><b>Von:</b> " . $results[$number % $numberOfRandomArticles]['author'] . "</h6>";
+                        echo "<h6 class='articleAuthor'><b>Von:</b> " . htmlspecialchars($results[$number % $numberOfRandomArticles]['author']) . "</h6>";
                         echo "<hr>";
-                        echo "<p class='articleAbstract'>" . $results[$number % $numberOfRandomArticles]['abstract'] . "</p>";
+                        echo "<p class='articleAbstract'>" . htmlspecialchars($results[$number % $numberOfRandomArticles]['abstract']) . "</p>";
                         echo "</div>";
                         $i = $i+1;
                     }

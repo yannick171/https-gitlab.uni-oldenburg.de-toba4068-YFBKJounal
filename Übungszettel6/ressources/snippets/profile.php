@@ -8,13 +8,13 @@
         <?php
 
           echo '<div id="autorbox" class="autorInfobox autorInformationStyle">';
-          echo '<table><tr><td><b>Nachname: </b></td><td id="nachnameProfil">' . $_SESSION["nachname"] . '</td></tr>';
-            echo '<tr><td><b>Vorname: </b></td><td id="vornameProfil">' .$_SESSION["vorname"]. '</td></tr>';
-        echo '<tr><td><b>E-Mail: </b></td><td id="emailProfil">' .$_SESSION["email"] .'</td></tr></table>';
+          echo '<table><tr><td><b>Nachname: </b></td><td id="nachnameProfil">' . htmlspecialchars($_SESSION["nachname"]) . '</td></tr>';
+            echo '<tr><td><b>Vorname: </b></td><td id="vornameProfil">' .htmlspecialchars($_SESSION["vorname"]). '</td></tr>';
+        echo '<tr><td><b>E-Mail: </b></td><td id="emailProfil">' .htmlspecialchars($_SESSION["email"]) .'</td></tr></table>';
           echo '</div>';
 
           echo '<div id="autorinfobox" class="autorIntrobox autorInformationStyle">';
-          echo '<p id="abstractProfil">' . $_SESSION["infoText"] . '</p>' ;
+          echo '<p id="abstractProfil">' . htmlspecialchars($_SESSION["infoText"]) . '</p>' ;
           echo '</div>';
         ?>
       </div>
