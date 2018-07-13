@@ -1,8 +1,13 @@
 <?php
-$articlesDb = new PDO('sqlite:../SQLData/articles.db');
-if(isset($_POST["id"]))
-{
-    $sql = "UPDATE article SET statusOfArticle = 5 WHERE id = " . $_POST["id"];
-    $articlesDb->exec($sql);
-}
+if (isset($_POST["id"]))
+    try {
+        $articlesDB = new PDO('sqlite:../SQLData/articles.db');
+        $articlesDB->beginTransaction();
+        $stmt = $articlesDB->prepare("UPDATE article SET statusOfArticle = 5 WHERE id = (:articleId)");
+        $stmt->bindParam(":articleId", $_POST["id"], PDO::PARAM_INT);
+        $stmt->execute();
+        $articlesDB->commit();
+    } catch (Exception $ex) {
+        $articlesDB->rollBack();
+    }
 ?>
