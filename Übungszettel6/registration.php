@@ -44,46 +44,67 @@
 				
 				$sql = "SELECT * FROM user";
 				
-			    if (!$userDb ->query($sql)) {
-					$userDb->exec("CREATE TABLE user (
-									id integer PRIMARY KEY AUTOINCREMENT,
-									email VARCHAR(100),
-									password VARCHAR(100),
-									firstName VARCHAR(20),
-									lastName VARCHAR(20),
-									regDate VARCHAR(20),
-									infoText TEXT
-									)");
-				    $hashTest = password_hash('test', PASSWORD_DEFAULT);
-					$userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText) VALUES ('test@test.test','TestVorname', 'TestNachname', 'test', 'Ich bin ein Testprofil')");
-				}
-				
-				$passwordHashed = password_hash($_POST['pswd'], PASSWORD_DEFAULT);
-				$userDb->exec("INSERT INTO user (email, firstName, lastName, password, infoText, regDate) VALUES ('" . $_POST["email"] . "','" . $_POST["firstname"] . "', '" . $_POST["lastname"] . "', '" . $passwordHashed . "', '---', '" . date("d.m.Y") . "')");
-
-				echo'
-				<main class="defaultstyle">
-				<div class ="container">
-					<h2>Registration</h2>
-					<br>
-					Du bist nun registriert!';
-				echo'</div>';
-				print "<tr><td>Id</td><td>Vorname</td><td>nachName</td><td>Beschreibung</td></tr>";
-				$result = $userDb->query('SELECT * FROM user');
-				foreach($result as $row)
+			    if (!$userDb ->query($sql)) 
 				{
-					print "<tr><td>".$row['id']."</td>";
-					print "<td>".$row['email']."</td>";
-					print "<td>".$row['firstName']."</td>";
-					print "<td>".$row['lastName']."</td>";
-					print "<td>".$row['infoText']."</tr>";
+					echo 'Error: Fehlerhanfte Datenbank!';
 				}
-				print "</table>";
-				/**/
-				// close the database connection
-				$userDb = NULL;
-	
-				echo'</main>';
+				else
+				{
+					
+					try
+					{
+						$passwordHashed = password_hash($_POST['pswd'], PASSWORD_DEFAULT);
+					
+						$userDb->beginTransaction();
+						$stmt = $userDb->prepare("INSERT INTO user (email, firstName, lastName, password, infoText, regDate) VALUES (:em, :fn, :ln, :pw, '---', :dt)");
+						$stmt->bindValue(":em", $_POST["email"]);
+						$stmt->bindValue(":fn", $_POST["firstname"]);
+						$stmt->bindValue(":ln", $_POST["lastname"]);
+						$stmt->bindValue(":pw", $passwordHashed);
+						$stmt->bindValue(":dt", date("d.m.Y"));
+						$stmt->execute();
+						
+						$userDb->commit();
+
+						$userDb->beginTransaction();
+						$stmt = $userDb->prepare("SELECT firstName, lastName, infoText, id FROM user WHERE email=:inputEmail ");
+						$stmt->bindValue(":inputEmail", $_POST["email"]);
+						$stmt ->execute();
+		
+						$entry = $stmt->fetch(PDO::FETCH_ASSOC);
+		
+						$_SESSION["email"] = $_POST["email"];
+						$_SESSION["nachname"] = $entry["lastName"];
+						$_SESSION["vorname"] = $entry["firstName"];
+						$_SESSION["infoText"] = $entry["infoText"];
+						$_SESSION["userId"] = $entry["id"];
+						$_SESSION["loggedIn"] = "true";
+						
+						echo'
+						<main class="defaultstyle">
+							<div class ="container">
+								<h2>Registration</h2>
+								<br>
+								<h3>Du bist nun registriert!</h3>
+							</div>
+						</main>';
+					}
+					catch(Exception $ex)
+					{
+						$userDb->rollBack();
+						echo'
+						<main class="defaultstyle">
+							<div class ="container">
+								<h2>Registration</h2>
+								<br>
+								<h3>Da ist etwas schiefgelaufen! Fehler: </h3> 
+								'. $ex->getMessage() . '
+							</div>
+						</main>';
+					}
+					
+					
+				}
 			}
 			else
 			{

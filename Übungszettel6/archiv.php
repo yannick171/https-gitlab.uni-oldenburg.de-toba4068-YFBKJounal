@@ -35,6 +35,8 @@
 					Ihre Redaktion
 				
 			</div>
+			<br> <br>
+			<div class = "jumbotron">
 			<?php
 
 				if(isset($_GET) && !empty($_GET))
@@ -73,7 +75,6 @@
                     $content = json_decode($antwort,true)[0];
 
 					echo '
-					<br>
 					<form method="get" action="archiv.php">
 						<h2>
 						Suchergebnisse für &nbsp;&nbsp;&nbsp;<input placeholder="Suchen" name="search" value="'.$_GET['search'].'" /><i class="fa fa-search"></i></h2>
@@ -113,7 +114,7 @@
 					
 					$i = 10;
 					
-					for ($i = 0; $i < count($magazines) && $i < 3; $i++)
+					for ($i = count($magazines) - 2; $i >= 0; $i--)
 					{
 						echo'<h3>' . htmlspecialchars($magazines[$i]["title"]) . '</h3>';
 						echo'<h5> Inhalt </h5>' . htmlspecialchars($magazines[$i]["description"]) . '<br><br>';
@@ -130,8 +131,6 @@
 								// Neue Reihe
 								echo '<div class="row">';
 							}
-							
-							
 							
 							echo '<div class="col-sm-' . intval(12 / $maxcount) . '">';
 							
@@ -157,7 +156,7 @@
 				}
 			
 			?>
-			
+			</div>
             </main>
     <?php include ("ressources/snippets/footer.php") ;?>
     <?php include ("ressources/snippets/loadjavascript.php") ;?>
