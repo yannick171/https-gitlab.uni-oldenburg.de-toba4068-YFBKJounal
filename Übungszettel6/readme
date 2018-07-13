@@ -1,4 +1,4 @@
-##############################
+﻿##############################
 #####Passwörter###############
 ##############################
 phpliteadmin: root
@@ -13,4 +13,8 @@ email:      testX@test.de
 passwort:   testtestX
 
 wobei X eine Zahl zwischen 1,...,10 ist.
+
+Das Verzeichnis unseres Repositorys : 
+
+https://gitlab.uni-oldenburg.de/toba4068/YFBKJounal.git
 
