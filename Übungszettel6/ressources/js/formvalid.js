@@ -3,10 +3,9 @@
 //Funktion ermittelt alle Elemente die der Klasse "toCheck" angehören -> Selbsterklärend
 //Es wird kontrolliert ob die Elemente leer sind -> Error
 
-function validateForm(caller)
+function validateForm()
 {
 	var elements = document.getElementsByClassName("toCheck");
-    var valideCharacters = /[^a-zA-Z0-9\-\/]/;
     var isvalid;
 
 	for (i=0;i<elements.length;i++){
@@ -22,12 +21,19 @@ function validateForm(caller)
 	} 
 	if(isvalid){
 		var emailerr = true;
-		
+		var nameerr = false;
 		if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById("email").value))
 		{
 			emailerr = false;
 		}
- 
+
+		if (/[^a-zA-Z]/.test(document.getElementById("fname").value) || /[^a-zA-Z]/.test(document.getElementById("lname").value)){
+            document.getElementById("error").innerHTML = "Dein Name enthält bestimmt keine Sonderzeichen!";
+            document.getElementById("error").style="color:red;";
+            nameerr = true;
+            return false;
+        }
+
 		if(emailerr == true)
 		{
 			document.getElementById("error").innerHTML = "Bitte eine echte Email eingeben!";
