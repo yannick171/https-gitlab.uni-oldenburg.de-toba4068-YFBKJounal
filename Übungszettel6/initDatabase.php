@@ -26,8 +26,19 @@ if (!$userDb->query($sql)) {
     }
 
     //Admin
+        $intro = "<h2>sharing is caring!</h2>
+                    Hier findet ihr eine Plattform zur veröffentlichung eurer Artikel, egal
+                    ob Fuzzylogik, künstliche neurale Netze, Evolutionäre Algorithmen oder andere Themen aus der KI.
+                    Helft uns dabei das Interesse an der KI weiter zu erhalten. Hier finden alle
+                    eure Beiträge gehör. Hier findet ihr eine Plattform zur veröffentlichung eurer Artikel, egal ob
+                    Fuzzylogik, künstliche neurale Netze, Evolutionäre Algorithmen oder andere Themen aus der KI. Helft
+                    uns dabei das Interesse an der KI weiter zu erhalten. Hier finden alle
+                    eure Beiträge gehör. Hier findet ihr eine Plattform zur veröffentlichung eurer Artikel, egal ob
+                    Fuzzylogik, künstliche neurale Netze, Evolutionäre Algorithmen oder andere Themen aus der KI. Helft
+                    uns dabei das Interesse an der KI weiter zu erhalten. Hier finden alle
+                    eure Beiträge gehör.";
         $newpw = password_hash("root", PASSWORD_DEFAULT);
-        $userDb->exec("INSERT INTO user (id, email, firstName, lastName, password, infoText) VALUES (0,'root@root.de','root', 'root', '$newpw' , 'Ich bin root')");
+        $userDb->exec("INSERT INTO user (id, email, firstName, lastName, password, infoText) VALUES (0,'root@root.de','root', 'root', '$newpw' , '$intro')");
 }
 
 //ArtikelDB initialisieren
