@@ -33,8 +33,8 @@ include("ressources/snippets/session.php");
             <div id="asideone">
                 <h2>Personen</h2>
                 <ul>
-                    <li><button id="kontakt"  onmouseover="myFormular()" onmouseout="myfunction()" onclik="myFormular()"> Kontakt </button></li>
-                    <script>
+                    <li>Kontakt</li>
+                    <!--script>
                         function myFormular(){
                         <form action="about.php" id="registerform" method="post">
                                 <div class="form-group">
@@ -110,7 +110,7 @@ include("ressources/snippets/session.php");
                             document.getElementById('kontakt').innerHTML="jojojoj";
                         }
 
-                    </script>
+                    </script-->
 
                     <li><a href ="ressources/ueberunsseite/Redaktion.txt">Redaktion</a></li>
                 </ul>
